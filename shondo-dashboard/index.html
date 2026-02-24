@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Shondo - Bảng quản trị đa kênh cho nhà bán hàng Shopee, TikTok, Lazada, Website và Cửa hàng">
+    <title>Shondo — Quản Trị Đa Kênh</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <!-- Sidebar Overlay (mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay" role="presentation"></div>
+
+        <!-- ============ SIDEBAR ============ -->
+        <!-- UX: Hick's Law — Progressive disclosure, nav grouped by section -->
+        <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
+            <div class="sidebar-logo">
+                <div class="logo-icon">S</div>
+                <span class="logo-text">Shondo</span>
+                <span class="logo-badge">Seller</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Chính</div>
+                <a href="#" class="nav-item active" data-page="dashboard" tabindex="0">
+                    <!-- UX: No emoji — SVG icon (Heroicons) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                    <span>Tổng quan</span>
+                </a>
+                <a href="#" class="nav-item" data-page="orders" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+                        <rect x="9" y="3" width="6" height="4" rx="1" />
+                        <path d="M9 14l2 2 4-4" />
+                    </svg>
+                    <span>Đơn hàng</span>
+                    <span class="badge">12</span>
+                </a>
+                <a href="#" class="nav-item" data-page="products" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    <span>Sản phẩm</span>
+                </a>
+
+                <div class="nav-section-label">Kênh bán</div>
+                <a href="#" class="nav-item" data-page="channels" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                    </svg>
+                    <span>Quản lý kênh</span>
+                </a>
+                <a href="#" class="nav-item" data-page="customers" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <span>Khách hàng</span>
+                </a>
+
+                <div class="nav-section-label">Phân tích</div>
+                <a href="#" class="nav-item" data-page="reports" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 20V10" />
+                        <path d="M12 20V4" />
+                        <path d="M6 20v-6" />
+                    </svg>
+                    <span>Báo cáo</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings" tabindex="0">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <span>Cài đặt</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="user-avatar">TH</div>
+                    <div class="user-info">
+                        <div class="user-name">Thanh Hằng</div>
+                        <div class="user-role">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ============ MAIN ============ -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="header" role="banner">
+                <div class="header-left">
+                    <!-- UX: Fitts's Law — 44px touch target for mobile menu -->
+                    <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18" />
+                        </svg>
+                    </button>
+
+                    <div class="header-search" role="search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="m21 21-4.3-4.3" />
+                        </svg>
+                        <input type="search" placeholder="Tìm đơn hàng, sản phẩm, khách hàng..." aria-label="Tìm kiếm">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Dark mode toggle -->
+                    <button class="theme-toggle" id="themeToggle" aria-label="Đổi giao diện sáng/tối">
+                        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            style="display:none">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+                        </svg>
+                    </button>
+
+                    <button class="header-btn" aria-label="Thông báo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg>
+                        <span class="notification-dot"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+
+                <!-- Page Header + Date Range -->
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Tổng quan</h1>
+                        <p class="page-subtitle">Dữ liệu cập nhật: Hôm nay, 25/02/2026</p>
+                    </div>
+
+                    <!-- UX: Hick's Law — Limited date range options -->
+                    <div class="date-range" role="group" aria-label="Khoảng thời gian">
+                        <button class="date-btn" data-range="today">Hôm nay</button>
+                        <button class="date-btn active" data-range="7d">7 ngày</button>
+                        <button class="date-btn" data-range="30d">30 ngày</button>
+                        <button class="date-btn" data-range="90d">Quý</button>
+                    </div>
+                </div>
+
+                <!-- UX: Selective Attention — Channel filters always visible -->
+                <div class="channel-filters" role="group" aria-label="Lọc theo kênh">
+                    <span class="channel-filters-label">Kênh:</span>
+                    <button class="channel-pill active" data-channel="all" tabindex="0">
+                        Tất cả
+                    </button>
+                    <button class="channel-pill active" data-channel="shopee" tabindex="0">
+                        <span class="channel-dot"></span>Shopee
+                    </button>
+                    <button class="channel-pill active" data-channel="tiktok" tabindex="0">
+                        <span class="channel-dot"></span>TikTok Shop
+                    </button>
+                    <button class="channel-pill active" data-channel="lazada" tabindex="0">
+                        <span class="channel-dot"></span>Lazada
+                    </button>
+                    <button class="channel-pill active" data-channel="website" tabindex="0">
+                        <span class="channel-dot"></span>Website
+                    </button>
+                    <button class="channel-pill active" data-channel="store" tabindex="0">
+                        <span class="channel-dot"></span>Cửa hàng
+                    </button>
+                </div>
+
+                <!-- ============ KPI CARDS ============ -->
+                <!-- UX: Miller's Law — ≤ 7 key metrics, UX: Cognitive Load — Progressive Disclosure -->
+                <section class="kpi-grid" aria-label="Chỉ số chính">
+                    <!-- KPI: Revenue -->
+                    <div class="kpi-card revenue" id="kpiRevenue">
+                        <div class="kpi-header">
+                            <div class="kpi-icon revenue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend up" id="kpiRevenueTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                                    <path d="M17 6h6v6" />
+                                </svg>
+                                +18.2%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiRevenueValue">1.284.500.000₫</div>
+                        <div class="kpi-label">Tổng doanh thu</div>
+                    </div>
+
+                    <!-- KPI: Orders -->
+                    <div class="kpi-card orders" id="kpiOrders">
+                        <div class="kpi-header">
+                            <div class="kpi-icon orders">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                    <path d="M3 6h18" />
+                                    <path d="M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend up" id="kpiOrdersTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                                    <path d="M17 6h6v6" />
+                                </svg>
+                                +12.5%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiOrdersValue">3.847</div>
+                        <div class="kpi-label">Đơn hàng</div>
+                    </div>
+
+                    <!-- KPI: Products -->
+                    <div class="kpi-card products" id="kpiProducts">
+                        <div class="kpi-header">
+                            <div class="kpi-icon products">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend up" id="kpiProductsTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                                    <path d="M17 6h6v6" />
+                                </svg>
+                                +5.3%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiProductsValue">1.256</div>
+                        <div class="kpi-label">Sản phẩm đang bán</div>
+                    </div>
+
+                    <!-- KPI: New Customers -->
+                    <div class="kpi-card customers" id="kpiCustomers">
+                        <div class="kpi-header">
+                            <div class="kpi-icon customers">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="8.5" cy="7" r="4" />
+                                    <path d="M20 8v6M23 11h-6" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend up" id="kpiCustomersTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                                    <path d="M17 6h6v6" />
+                                </svg>
+                                +22.1%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiCustomersValue">842</div>
+                        <div class="kpi-label">Khách hàng mới</div>
+                    </div>
+
+                    <!-- KPI: Return Rate -->
+                    <div class="kpi-card returns" id="kpiReturns">
+                        <div class="kpi-header">
+                            <div class="kpi-icon returns">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 4v6h6" />
+                                    <path d="M3.5 15A9 9 0 1 0 5 6L1 10" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend down" id="kpiReturnsTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 18l-9.5-9.5-5 5L1 6" />
+                                    <path d="M17 18h6v-6" />
+                                </svg>
+                                -1.8%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiReturnsValue">3.2%</div>
+                        <div class="kpi-label">Tỷ lệ hoàn/trả</div>
+                    </div>
+
+                    <!-- KPI: AOV -->
+                    <div class="kpi-card aov" id="kpiAov">
+                        <div class="kpi-header">
+                            <div class="kpi-icon aov">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" />
+                                    <path d="M16 7V5a4 4 0 0 0-8 0v2" />
+                                    <circle cx="12" cy="15" r="2" />
+                                </svg>
+                            </div>
+                            <span class="kpi-trend up" id="kpiAovTrend">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                                    <path d="M17 6h6v6" />
+                                </svg>
+                                +6.7%
+                            </span>
+                        </div>
+                        <div class="kpi-value" id="kpiAovValue">334.000₫</div>
+                        <div class="kpi-label">Giá trị TB / đơn</div>
+                    </div>
+                </section>
+
+                <!-- ============ CHANNEL PERFORMANCE ============ -->
+                <section class="channel-performance-grid" aria-label="Hiệu suất kênh bán">
+                    <!-- Shopee -->
+                    <div class="channel-card" data-channel="shopee">
+                        <div class="channel-card-header">
+                            <div class="channel-icon shopee">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z M3 6h18 M16 10a4 4 0 0 1-8 0" />
+                                </svg>
+                            </div>
+                            <span class="channel-card-name">Shopee</span>
+                        </div>
+                        <div class="channel-card-metric">
+                            <div class="metric-value">485.200.000₫</div>
+                            <div class="metric-label">Doanh thu</div>
+                        </div>
+                        <div class="channel-card-stats">
+                            <div><span class="stat-value">1.245</span> đơn</div>
+                            <div><span class="stat-value">37.8%</span> tỷ trọng</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width:37.8%;background:var(--shopee)"></div>
+                        </div>
+                    </div>
+
+                    <!-- TikTok -->
+                    <div class="channel-card" data-channel="tiktok">
+                        <div class="channel-card-header">
+                            <div class="channel-icon tiktok">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.88-2.89 2.89 2.89 0 0 1 2.88-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.37a8.16 8.16 0 0 0 4.76 1.52V7.45c-1 0-1.93-.28-2.73-.76h-.27z" />
+                                </svg>
+                            </div>
+                            <span class="channel-card-name">TikTok Shop</span>
+                        </div>
+                        <div class="channel-card-metric">
+                            <div class="metric-value">372.100.000₫</div>
+                            <div class="metric-label">Doanh thu</div>
+                        </div>
+                        <div class="channel-card-stats">
+                            <div><span class="stat-value">1.087</span> đơn</div>
+                            <div><span class="stat-value">29.0%</span> tỷ trọng</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width:29%;background:var(--tiktok)"></div>
+                        </div>
+                    </div>
+
+                    <!-- Lazada -->
+                    <div class="channel-card" data-channel="lazada">
+                        <div class="channel-card-header">
+                            <div class="channel-icon lazada">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1" />
+                                    <circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </div>
+                            <span class="channel-card-name">Lazada</span>
+                        </div>
+                        <div class="channel-card-metric">
+                            <div class="metric-value">198.700.000₫</div>
+                            <div class="metric-label">Doanh thu</div>
+                        </div>
+                        <div class="channel-card-stats">
+                            <div><span class="stat-value">624</span> đơn</div>
+                            <div><span class="stat-value">15.5%</span> tỷ trọng</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width:15.5%;background:var(--lazada)"></div>
+                        </div>
+                    </div>
+
+                    <!-- Website -->
+                    <div class="channel-card" data-channel="website">
+                        <div class="channel-card-header">
+                            <div class="channel-icon website">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M2 12h20" />
+                                    <path
+                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                </svg>
+                            </div>
+                            <span class="channel-card-name">Website</span>
+                        </div>
+                        <div class="channel-card-metric">
+                            <div class="metric-value">145.300.000₫</div>
+                            <div class="metric-label">Doanh thu</div>
+                        </div>
+                        <div class="channel-card-stats">
+                            <div><span class="stat-value">512</span> đơn</div>
+                            <div><span class="stat-value">11.3%</span> tỷ trọng</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width:11.3%;background:var(--website)"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cửa hàng -->
+                    <div class="channel-card" data-channel="store">
+                        <div class="channel-card-header">
+                            <div class="channel-icon store">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                    <path d="M9 22V12h6v10" />
+                                </svg>
+                            </div>
+                            <span class="channel-card-name">Cửa hàng</span>
+                        </div>
+                        <div class="channel-card-metric">
+                            <div class="metric-value">83.200.000₫</div>
+                            <div class="metric-label">Doanh thu</div>
+                        </div>
+                        <div class="channel-card-stats">
+                            <div><span class="stat-value">379</span> đơn</div>
+                            <div><span class="stat-value">6.5%</span> tỷ trọng</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width:6.5%;background:var(--store)"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ CHARTS ============ -->
+                <!-- UX: Prägnanz — 2D charts, clear labels, no decoration -->
+                <section class="charts-grid" aria-label="Biểu đồ">
+                    <!-- Revenue Chart -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Doanh thu theo kênh</h2>
+                            <div class="card-actions">
+                                <button class="card-action-btn active" data-chart="line">Đường</button>
+                                <button class="card-action-btn" data-chart="bar">Cột</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrapper">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders by Channel (Doughnut) -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Tỷ trọng kênh</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrapper">
+                                <canvas id="channelChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ ORDERS TABLE ============ -->
+                <section class="card" style="margin-bottom:24px" aria-label="Đơn hàng gần đây">
+                    <div class="table-header">
+                        <h2 class="card-title">Đơn hàng gần đây</h2>
+                        <button class="card-action-btn" style="min-height:36px;cursor:pointer">Xem tất cả →</button>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="ordersTable">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Kênh</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Giá trị</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersBody">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <span>Hiển thị 1-10 / 3.847 đơn hàng</span>
+                        <div class="pagination">
+                            <button aria-label="Trang trước">‹</button>
+                            <button class="active">1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button aria-label="Trang sau">›</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ BOTTOM GRID ============ -->
+                <section class="bottom-grid" aria-label="Chi tiết">
+                    <!-- Top Products -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Top sản phẩm bán chạy</h2>
+                            <button class="card-action-btn" style="cursor:pointer">Xem tất cả</button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="product-rank-list" id="topProductsList">
+                                <!-- Rendered by JS -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Revenue by Channel Bar -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Doanh thu theo ngày</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-wrapper" style="height:280px">
+                                <canvas id="dailyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div><!-- /.dashboard -->
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
