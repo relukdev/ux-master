@@ -1,6 +1,6 @@
 # Design System Extraction Plan — Phased Approach
 
-> Hướng dẫn chi tiết cách UX Master thu thập và xây dựng Design System hoàn chỉnh từ một trang web.
+> Hướng dẫn chi tiết cách MasterDesign Agent thu thập và xây dựng Design System hoàn chỉnh từ một trang web.
 
 ---
 

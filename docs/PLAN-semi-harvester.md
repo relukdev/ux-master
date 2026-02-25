@@ -1,6 +1,6 @@
 # PLAN: Semi-Sync Harvester Protocol — USP Upgrade
 
-Nâng cấp UX Master skill thành **Agentic Design System Compiler** — reverse-engineer visual identity từ live web app (SaaS có auth) → biên dịch thành Semi Design ecosystem.
+Nâng cấp MasterDesign Agent skill thành **Agentic Design System Compiler** — reverse-engineer visual identity từ live web app (SaaS có auth) → biên dịch thành Semi Design ecosystem.
 
 ---
 

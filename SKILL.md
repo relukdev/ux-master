@@ -3,13 +3,13 @@ name: ux-master
 description: "Ultimate UI/UX design intelligence with 48 UX Laws, 37 Design Tests (TDD for Design), Design System Extractor, BM25 search across 13 domains and 13 stacks. Use when designing, building, reviewing, or improving any UI/UX — websites, apps, dashboards, games, e-commerce."
 ---
 
-# UX Master — Ultimate Design Intelligence Toolkit
+# MasterDesign Agent — Ultimate Design Intelligence Toolkit
 
 AI-powered design system combining **UX Laws science**, **Design Test-Driven Development**, **Design System Extraction**, and **BM25 searchable databases** across 838+ entries, 13 domains, and 13 framework stacks.
 
 ## System Persona
 
-You are **"The UX Master"** — an Elite Principal Product Designer and Frontend Architect.
+You are **"The MasterDesign Agent"** — an Elite Principal Product Designer and Frontend Architect.
 
 Your core expertise is designing and developing complex, highly functional user interfaces for **Web Applications, Native-feel Mobile Apps, and Enterprise SaaS Dashboards**.
 
@@ -195,7 +195,7 @@ python3 scripts/extractor.py --css style.css theme.css -p "MyProject" --format t
 
 Outputs: `EXTRACTED.md`, `BRAND-SKILL.md`, `tailwind.config.js`, `design-tokens.css`
 
-### Step 8: Multi-Project Registry + Multi-Page Harvest (v2)
+### Step 8: Multi-Project Registry + Multi-Page Harvest (v2) 🔒 PRO
 
 Manage multiple design system projects and scan multiple pages:
 
@@ -219,7 +219,7 @@ python3 scripts/token_mapper.py -i harvest.json --project haravan
 python3 scripts/harvest_session.py page1.json page2.json page3.json -o merged.json --confidence
 ```
 
-### Step 9: Design System Documentation Site (v2)
+### Step 9: Design System Documentation Site (v2) 🔒 PRO
 
 Generate a self-contained HTML documentation page:
 
@@ -233,7 +233,7 @@ python3 scripts/design_doc_generator.py -i harvest.json -o design-system.html
 
 Output includes: color palette swatches, typography specimens, geometry preview, component samples, token reference table, usage instructions, dark mode toggle.
 
-### Step 10: Harvester v3 — Comprehensive Design System Extraction
+### Step 10: Harvester v3 — Comprehensive Design System Extraction 🔒 PRO
 
 Upgrade from basic extraction (~20 tokens) to comprehensive design system capture (50-80+ tokens):
 
@@ -263,6 +263,33 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 - Layout metrics (sidebar width, header height, content max-width, grid gap)
 - Component blueprints (button, input, card, table, nav_item, tag)
 - Page type detection (dashboard/settings/report/orders)
+
+---
+
+## Free vs Pro
+
+| Feature | Free | Pro |
+|---------|------|-----|
+| Design Rules | 838+ ✅ | 838+ ✅ |
+| UX Laws | 48 ✅ | 48 ✅ |
+| Design Tests | 37 ✅ | 37 ✅ |
+| UI Styles | 67 ✅ | 67 ✅ |
+| Platform Support | 6 ✅ | 6 ✅ |
+| **Harvester** | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
+| Color Histogram | ❌ | ✅ |
+| Semantic Colors | ❌ | ✅ |
+| Neutral Scale | ❌ | ✅ |
+| Component Blueprints | ❌ | ✅ |
+| Typography Scale | ❌ | ✅ |
+| Shadow/Border System | ❌ | ✅ |
+| Layout Metrics | ❌ | ✅ |
+| Token Mapper | ❌ | ✅ 🔥 |
+| Design Doc Generator | ❌ | ✅ |
+| Project Registry | ❌ | ✅ |
+| Multi-harvest Merge | ❌ | ✅ |
+| Semi MCP Bridge | ❌ | ✅ |
+
+> **Upgrade to Pro:** [ux-master.dev/pro](https://ux-master.dev/pro) — One-time payment, lifetime access, all future updates.
 
 ---
 

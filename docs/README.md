@@ -1,4 +1,4 @@
-# UX Master ✦
+# MasterDesign Agent ✦
 
 > **Ultimate AI Design Intelligence Toolkit** — 838+ rules, 48 UX Laws, 37 Design Tests, 13 domains, 13 framework stacks.
 
@@ -17,7 +17,7 @@
 <details>
 <summary><b>🇬🇧 English Summary</b> (click to expand)</summary>
 
-**UX Master** is an AI-powered design intelligence toolkit that transforms any AI coding tool (Cursor, Claude, Gemini, Amp, etc.) into a professional design studio.
+**MasterDesign Agent** is an AI-powered design intelligence toolkit that transforms any AI coding tool (Cursor, Claude, Gemini, Amp, etc.) into a professional design studio.
 
 **Key capabilities:**
 - **838+ design rules** mapped across 13 industries
@@ -43,7 +43,7 @@ Works with: Cursor, Claude/Amp, Gemini CLI, Antigravity, OpenCode.
 
 ## 📑 Mục lục
 
-- [UX Master là gì?](#-ux-master-là-gì)
+- [MasterDesign Agent là gì?](#-ux-master-là-gì)
 - [🆕 What's New — v2.0](#-whats-new--v20)
 - [Bắt đầu trong 60 giây](#-bắt-đầu-trong-60-giây)
 - [Cách sử dụng hàng ngày](#-cách-sử-dụng-hàng-ngày)
@@ -57,13 +57,13 @@ Works with: Cursor, Claude/Amp, Gemini CLI, Antigravity, OpenCode.
 
 ---
 
-## ✦ UX Master là gì?
+## ✦ MasterDesign Agent là gì?
 
-Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? **UX Master** là "bộ não design" cài thêm vào AI tool đó — giúp nó tạo ra giao diện **đẹp, chuẩn, và chuyển đổi cao** tự động.
+Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? **MasterDesign Agent** là "bộ não design" cài thêm vào AI tool đó — giúp nó tạo ra giao diện **đẹp, chuẩn, và chuyển đổi cao** tự động.
 
 ### Hiểu đơn giản:
 
-| Không có UX Master | Có UX Master |
+| Không có MasterDesign Agent | Có MasterDesign Agent |
 |---------------------|--------------|
 | AI tạo UI generic, trông "AI-made" | UI đẹp chuẩn studio, khách hàng wow |
 | Mỗi trang một kiểu, không nhất quán | Design system đồng bộ, chuyên nghiệp |
@@ -73,7 +73,7 @@ Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? 
 
 ### Tại sao đặc biệt?
 
-**UX Master không phải template.** Nó là hệ thống trí tuệ thiết kế:
+**MasterDesign Agent không phải template.** Nó là hệ thống trí tuệ thiết kế:
 
 - **838+ quy tắc design** — tự động áp dụng dựa trên ngành của bạn
 - **48 quy luật UX khoa học** — từ nghiên cứu của Nielsen Norman Group
@@ -120,6 +120,27 @@ Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? 
 
 ---
 
+## 💎 Free vs Pro
+
+MasterDesign Agent cung cấp 2 phiên bản: **Free forever** và **Pro (One-time payment)**.
+
+| Feature | Free | Pro |
+|---------|------|-----|
+| Mức Giá | **$0** | **$39** (One-time) |
+| Design Rules | 838+ | 838+ |
+| UX Laws | 48 | 48 |
+| Design Tests | 37 | 37 |
+| Harvester | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
+| Token Mapper | ❌ | ✅ CSS/Figma |
+| Design Doc Generator | ❌ | ✅ HTML Output |
+| Project Registry | ❌ | ✅ |
+| Hỗ Trợ | Community | Priority |
+
+> **Nâng cấp lên Pro ngay:** 👉 [ux-master.dev/pro](https://ux-master.dev/pro)
+> Thanh toán một lần (one-time payment). Sở hữu vĩnh viễn mọi bản cập nhật tương lai.
+
+---
+
 ## 🚀 Bắt đầu trong 60 giây
 
 ### Bước 1: Kiểm tra Python
@@ -142,7 +163,7 @@ python3 scripts/install.py
 
 Installer sẽ tự động:
 1. Phát hiện AI tools bạn đang dùng (Cursor, Claude, Gemini...)
-2. Cài UX Master vào đúng vị trí
+2. Cài MasterDesign Agent vào đúng vị trí
 3. Cấu hình để AI tool nhận diện skill
 
 > **Cài cho tool cụ thể:**
@@ -167,7 +188,7 @@ Nếu AI đề cập đến **design system, UX Laws, hoặc design tests** → 
 
 ### Bạn chỉ cần làm 1 việc: Mô tả sản phẩm bạn muốn.
 
-UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thiết kế đúng chuẩn. Không cần gõ lệnh, không cần nhớ cú pháp.
+MasterDesign Agent hoạt động ngầm — tự động "dạy" AI tool của bạn thiết kế đúng chuẩn. Không cần gõ lệnh, không cần nhớ cú pháp.
 
 ### Ví dụ thực tế:
 
@@ -175,7 +196,7 @@ UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thi
 
 > **Bạn nói:** "Tạo landing page cho dịch vụ chăm sóc da chuyên nghiệp, có booking form"
 
-**AI + UX Master tự động:**
+**AI + MasterDesign Agent tự động:**
 - Chọn style Glassmorphism + Soft UI (phù hợp luxury/wellness)
 - Dùng màu soft pink + calming teal
 - Font: Playfair Display (heading) + Lato (body)
@@ -187,7 +208,7 @@ UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thi
 
 > **Bạn nói:** "Tạo crypto dashboard hiển thị real-time data"
 
-**AI + UX Master tự động:**
+**AI + MasterDesign Agent tự động:**
 - Style: Dark mode Glassmorphism (chuẩn crypto/fintech)
 - Màu: Gold #F59E0B + Purple #8B5CF6 trên nền tối
 - Font: Orbitron (số liệu) + Exo 2 (text)
@@ -201,7 +222,7 @@ UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thi
 
 ### 1. Tự động chọn Design System
 
-Khi bạn mô tả sản phẩm, UX Master tự tìm:
+Khi bạn mô tả sản phẩm, MasterDesign Agent tự tìm:
 - **Phong cách** phù hợp nhất (trong 67 styles)
 - **Bảng màu** theo ngành (96 palettes)
 - **Cặp font** đẹp (57 font pairings từ Google Fonts)
@@ -226,7 +247,7 @@ Mỗi quy luật được áp dụng tự động dựa trên loại sản phẩ
 
 ### 3. 37 Bài Test Chất Lượng
 
-UX Master tự kiểm tra sản phẩm trước khi "giao hàng":
+MasterDesign Agent tự kiểm tra sản phẩm trước khi "giao hàng":
 
 - Nút bấm đủ lớn cho mobile (≥ 44px)?
 - Contrast text đủ rõ (≥ 4.5:1)?
@@ -281,7 +302,7 @@ python3 scripts/project_registry.py --list
 
 ## 📊 Dữ liệu thiết kế
 
-UX Master bao gồm **838+ entries** trải rộng khắp **13 domains**:
+MasterDesign Agent bao gồm **838+ entries** trải rộng khắp **13 domains**:
 
 | Domain | Entries | Mô tả |
 |--------|---------|-------|
@@ -321,23 +342,23 @@ UX Master bao gồm **838+ entries** trải rộng khắp **13 domains**:
 ### "Tôi chưa bao giờ dùng AI coding tool?"
 
 1. **Cài Cursor** (dễ nhất): Tải từ [cursor.sh](https://cursor.sh) → mở → bắt đầu chat
-2. **Cài UX Master** theo hướng dẫn ở trên
+2. **Cài MasterDesign Agent** theo hướng dẫn ở trên
 3. **Mô tả sản phẩm** — ví dụ: "Tạo website cho tiệm bánh của tôi"
-4. Xong! Cursor + UX Master sẽ tạo website đẹp cho bạn
+4. Xong! Cursor + MasterDesign Agent sẽ tạo website đẹp cho bạn
 
 ### "Có miễn phí không?"
 
-UX Master **hoàn toàn miễn phí, mãi mãi**. Bạn chỉ cần trả phí cho AI tool bạn dùng (Cursor Pro, Claude Pro...).
+MasterDesign Agent **hoàn toàn miễn phí, mãi mãi**. Bạn chỉ cần trả phí cho AI tool bạn dùng (Cursor Pro, Claude Pro...).
 
 ### "Có hoạt động trên Windows không?"
 
 Có! Cài Python từ [python.org](https://python.org) → mở PowerShell → chạy lệnh cài đặt.
 
-### "UX Master có thay thế designer không?"
+### "MasterDesign Agent có thay thế designer không?"
 
-Cho MVP, landing page, internal tools: **có, hoàn toàn**. Cho sản phẩm lớn cần brand identity phức tạp: UX Master là xuất phát điểm tuyệt vời, sau đó designer tinh chỉnh.
+Cho MVP, landing page, internal tools: **có, hoàn toàn**. Cho sản phẩm lớn cần brand identity phức tạp: MasterDesign Agent là xuất phát điểm tuyệt vời, sau đó designer tinh chỉnh.
 
-### "AI tool không nhận diện UX Master?"
+### "AI tool không nhận diện MasterDesign Agent?"
 
 1. Đảm bảo đã chạy installer thành công
 2. Thử restart AI tool
@@ -385,4 +406,4 @@ MIT License — Sử dụng tự do cho mọi dự án.
 
 ---
 
-> **UX Master** — Bạn mơ nó. AI xây nó. UX Master làm nó đẹp. ✦
+> **MasterDesign Agent** — Bạn mơ nó. AI xây nó. MasterDesign Agent làm nó đẹp. ✦
