@@ -536,18 +536,36 @@ def _build_token_table(tokens: dict, confidence: dict = None) -> str:
     rows = []
     for var, val in sorted(tokens.items()):
         # Determine category
-        if "color" in var or "bg-" in var or "text-" in var or "border" in var:
-            cat = "Color"
+        if "data-" in var:
+            cat = "Chart"
             preview = f'<span class="token-color-preview" style="background:{_esc(val)}"></span>'
-        elif "radius" in var:
-            cat = "Geometry"
+        elif "neutral-" in var or "grey-" in var:
+            cat = "Neutral"
+            preview = f'<span class="token-color-preview" style="background:{_esc(val)}"></span>' if val.startswith("#") else ""
+        elif "radius" in var or "thickness" in var:
+            cat = "Border"
+            preview = ""
+        elif "border" in var and "color" not in var:
+            cat = "Border"
             preview = ""
         elif "shadow" in var:
             cat = "Shadow"
             preview = ""
-        elif "font" in var:
+        elif "font" in var or "line-height" in var:
             cat = "Typography"
             preview = ""
+        elif "spacing" in var:
+            cat = "Spacing"
+            preview = ""
+        elif "height" in var or "width-icon" in var:
+            cat = "Sizing"
+            preview = ""
+        elif "layout" in var:
+            cat = "Layout"
+            preview = ""
+        elif "color" in var or "bg-" in var or "text-" in var or "fill-" in var:
+            cat = "Color"
+            preview = f'<span class="token-color-preview" style="background:{_esc(val)}"></span>' if val.startswith("#") or val.startswith("rgb") else ""
         else:
             cat = "Other"
             preview = ""

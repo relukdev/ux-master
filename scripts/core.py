@@ -78,6 +78,26 @@ CSV_CONFIG = {
         "output_cols": ["Test_ID", "Target", "Component", "UX_Law_ID", "UX_Law_Name",
                         "Assertion", "Pass_Criteria", "Fail_Criteria", "Severity",
                         "Test_Method", "Metric", "Platform"]
+    },
+    "animation": {
+        "file": "animation.csv",
+        "search_cols": ["Category", "Pattern", "Keywords", "Description", "CSS_Example"],
+        "output_cols": ["Category", "Pattern", "Keywords", "Description", "Do", "Don't", "CSS_Example", "Library", "Severity", "Platform"]
+    },
+    "responsive": {
+        "file": "responsive.csv",
+        "search_cols": ["Category", "Pattern", "Keywords", "Description"],
+        "output_cols": ["Category", "Pattern", "Keywords", "Description", "Do", "Don't", "Code_Good", "Code_Bad", "Severity", "Breakpoints"]
+    },
+    "accessibility": {
+        "file": "accessibility-advanced.csv",
+        "search_cols": ["Category", "WCAG_Criterion", "Keywords", "Description"],
+        "output_cols": ["Category", "WCAG_Criterion", "Keywords", "Description", "Do", "Don't", "Code_Good", "Code_Bad", "Severity", "Level"]
+    },
+    "devices": {
+        "file": "devices.csv",
+        "search_cols": ["Device", "Category", "UX_Priority", "Guidelines"],
+        "output_cols": ["Device", "Category", "Width_Min", "Width_Max", "Height", "Aspect_Ratio", "Touch", "Pixel_Density", "UX_Priority", "Guidelines"]
     }
 }
 
@@ -94,7 +114,11 @@ STACK_CONFIG = {
     "react-native": {"file": "stacks/react-native.csv"},
     "flutter": {"file": "stacks/flutter.csv"},
     "shadcn": {"file": "stacks/shadcn.csv"},
-    "jetpack-compose": {"file": "stacks/jetpack-compose.csv"}
+    "jetpack-compose": {"file": "stacks/jetpack-compose.csv"},
+    "angular": {"file": "stacks/angular.csv"},
+    "htmx": {"file": "stacks/htmx.csv"},
+    "electron": {"file": "stacks/electron.csv"},
+    "tauri": {"file": "stacks/tauri.csv"}
 }
 
 # Common columns for all stacks
@@ -211,16 +235,25 @@ def detect_domain(query):
         "landing": ["landing", "page", "cta", "conversion", "hero", "testimonial", "pricing", "section"],
         "product": ["saas", "ecommerce", "e-commerce", "fintech", "healthcare", "gaming", "portfolio", "crypto", "dashboard"],
         "style": ["style", "design", "ui", "minimalism", "glassmorphism", "neumorphism", "brutalism", "dark mode", "flat", "aurora", "prompt", "css", "implementation", "variable", "checklist", "tailwind"],
-        "ux": ["ux", "usability", "accessibility", "wcag", "touch", "scroll", "animation", "keyboard", "navigation", "mobile"],
+        "ux": ["ux", "usability"],
         "typography": ["font", "typography", "heading", "serif", "sans"],
         "icons": ["icon", "icons", "lucide", "heroicons", "symbol", "glyph", "pictogram", "svg icon"],
         "react": ["react", "next.js", "nextjs", "suspense", "memo", "usecallback", "useeffect", "rerender", "bundle", "waterfall", "barrel", "dynamic import", "rsc", "server component"],
-        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"],
+        "web": ["aria", "semantic", "virtualize", "autocomplete", "input type", "preconnect"],
         "ux-laws": ["law", "hick", "fitts", "miller", "gestalt", "proximity", "similarity",
                      "jakob", "doherty", "von restorff", "peak-end", "pareto", "principle",
                      "cognitive", "mental model", "aesthetic"],
         "design-tests": ["test", "assert", "pass", "fail", "audit", "check", "validate",
-                         "tdd", "design test", "dt-"]
+                         "tdd", "design test", "dt-"],
+        "animation": ["animation", "micro interaction", "hover", "transition", "skeleton",
+                      "loading", "parallax", "scroll-triggered", "ripple", "fade", "slide"],
+        "responsive": ["breakpoint", "container query", "fluid", "responsive", "mobile-first",
+                       "viewport", "orientation", "retina", "touch target"],
+        "accessibility": ["wcag", "accessibility", "a11y", "focus indicator", "target size",
+                          "screen reader", "contrast", "reduced motion", "skip link",
+                          "aria-live", "2.4.7", "2.5.8", "1.4.3"],
+        "devices": ["device", "watch", "wearable", "foldable", "tv", "carplay",
+                    "smart tv", "ar", "vr", "spatial", "tablet", "ipad"]
     }
 
     scores = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}

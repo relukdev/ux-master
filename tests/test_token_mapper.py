@@ -96,7 +96,7 @@ class TestDeriveShades(unittest.TestCase):
     def test_derive_light_variant(self):
         from token_mapper import derive_shades
         shades = derive_shades("#175CD3")
-        self.assertIn("light", shades)
+        self.assertIn("light-default", shades)
 
 
 class TestMapToSemiTokens(unittest.TestCase):

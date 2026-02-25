@@ -1,11 +1,11 @@
 ---
 name: ux-master
-description: "Ultimate UI/UX design intelligence with 48 UX Laws, 37 Design Tests (TDD for Design), Design System Extractor, BM25 search across 13 domains and 13 stacks. Use when designing, building, reviewing, or improving any UI/UX — websites, apps, dashboards, games, e-commerce."
+description: "Ultimate UI/UX design intelligence with 48 UX Laws, 37 Design Tests (TDD for Design), Design System Extractor, Code Template Generator, Multi-Device Breakpoints, BM25 search across 16 domains and 17 stacks. Use when designing, building, reviewing, or improving any UI/UX — websites, apps, dashboards, games, e-commerce."
 ---
 
 # MasterDesign Agent — Ultimate Design Intelligence Toolkit
 
-AI-powered design system combining **UX Laws science**, **Design Test-Driven Development**, **Design System Extraction**, and **BM25 searchable databases** across 838+ entries, 13 domains, and 13 framework stacks.
+AI-powered design system combining **UX Laws science**, **Design Test-Driven Development**, **Design System Extraction**, **Code Template Generator**, **Multi-Device Breakpoints**, and **BM25 searchable databases** across 1032+ entries, 16 domains, and 17 framework stacks.
 
 ## System Persona
 
@@ -176,7 +176,7 @@ python3 scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
 python3 scripts/search.py "<keyword>" --stack html-tailwind
 ```
 
-Available: `html-tailwind`, `react`, `nextjs`, `astro`, `vue`, `nuxtjs`, `nuxt-ui`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
+Available: `html-tailwind`, `react`, `nextjs`, `astro`, `vue`, `nuxtjs`, `nuxt-ui`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`, `angular`, `htmx`, `electron`, `tauri`
 
 ### Step 7: Extract Design System from Existing Site (NEW)
 
@@ -270,11 +270,17 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 
 | Feature | Free | Pro |
 |---------|------|-----|
-| Design Rules | 838+ ✅ | 838+ ✅ |
+| Design Rules | 1032+ ✅ | 1032+ ✅ |
 | UX Laws | 48 ✅ | 48 ✅ |
 | Design Tests | 37 ✅ | 37 ✅ |
 | UI Styles | 67 ✅ | 67 ✅ |
 | Platform Support | 6 ✅ | 6 ✅ |
+| Framework Stacks | 17 ✅ | 17 ✅ |
+| Animation Patterns | 30 ✅ | 30 ✅ |
+| Responsive Patterns | 25 ✅ | 25 ✅ |
+| Accessibility (WCAG 2.2) | 25 ✅ | 25 ✅ |
+| Device Profiles | 20 ✅ | 20 ✅ |
+| Code Templates | 4 ✅ | 4 ✅ |
 | **Harvester** | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
 | Color Histogram | ❌ | ✅ |
 | Semantic Colors | ❌ | ✅ |
@@ -293,7 +299,7 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 
 ---
 
-## Available Domains (13)
+## Available Domains (16)
 
 | Domain | Entries | Description |
 |--------|---------|-------------|
@@ -309,7 +315,32 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 | `web` | 30 | Web interface guidelines |
 | `ux-laws` | **48** | **UX Laws × Product Types matrix** |
 | `design-tests` | **37** | **Design Test Cases (TDD for Design)** |
-| stacks (13) | varies | Stack-specific guidelines |
+| `animation` | **30** | **Micro-interactions, transitions, performance** |
+| `responsive` | **25** | **Breakpoints, container queries, fluid design** |
+| `accessibility` | **25** | **WCAG 2.2 advanced patterns** |
+| `devices` | **20** | **Device breakpoints — mobile, tablet, watch, TV, foldable, VR** |
+| stacks (17) | varies | Stack-specific guidelines |
+
+### Stack-Specific Guidelines (17)
+
+| Stack | Description |
+|-------|-------------|
+| `html-tailwind` | Tailwind CSS utility patterns |
+| `react` | React hooks, performance |
+| `nextjs` | App Router, SSR, RSC |
+| `astro` | Islands architecture |
+| `vue` | Composition API, Pinia |
+| `nuxtjs` / `nuxt-ui` | Nuxt 3, Nuxt UI components |
+| `svelte` | Stores, transitions |
+| `swiftui` | iOS/macOS native |
+| `react-native` | Cross-platform mobile |
+| `flutter` | Dart widgets, Material |
+| `shadcn` | shadcn/ui components |
+| `jetpack-compose` | Android Jetpack |
+| `angular` | **Signals, standalone, NgRx SignalStore, Material 3** |
+| `htmx` | **Progressive enhancement, Alpine.js** |
+| `electron` | **Desktop — IPC, security, native integration** |
+| `tauri` | **Desktop — Rust commands, permissions, plugins** |
 
 ---
 

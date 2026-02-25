@@ -1,135 +1,350 @@
-<div align="center">
+# UX Master ✦
 
-# ✦ MasterDesign Agent
+> **Ultimate AI Design Intelligence Toolkit** — 1032+ rules, 48 UX Laws, 37 Design Tests, 16 domains, 17 framework stacks, code template generator, 20 device profiles.
 
-> **You dream it. AI builds it beautiful.**
+> **Biến mọi AI tool thành design studio chuyên nghiệp.**
+> Không cần biết code. Không cần thuê designer. Kết quả đẹp trong vài phút.
 
-[English](README.md) • [Tiếng Việt](README-vi.md) • [中文](README-zh.md) • [Русский](README-ru.md)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platforms](https://img.shields.io/badge/platforms-6-brightgreen.svg)
-![Entries](https://img.shields.io/badge/design%20rules-838%2B-purple.svg)
-![UX Laws](https://img.shields.io/badge/UX%20Laws-48-ff69b4.svg)
-![Tests](https://img.shields.io/badge/tests-7%20suites-green.svg)
-
-</div>
+![Entries](https://img.shields.io/badge/design%20rules-1032%2B-purple.svg)
+![Python](https://img.shields.io/badge/python-3.x-yellow.svg)
 
 ---
 
-## 🛑 The Real Problem
+## 📑 Mục lục
 
-You have a great idea. You describe it to your AI tool. But the UI it generates is... **ugly**. 
-It looks generic, "AI-made," and lacks a cohesive design system. Forms are too long, buttons are too small, and the user experience is frustrating. 
+- [UX Master là gì?](#-ux-master-là-gì)
+- [Bắt đầu trong 60 giây](#-bắt-đầu-trong-60-giây)
+- [Cách sử dụng hàng ngày](#-cách-sử-dụng-hàng-ngày)
+- [Tính năng chính](#-tính-năng-chính)
+- [Dữ liệu thiết kế](#-dữ-liệu-thiết-kế)
+- [Hỗ trợ 6 nền tảng AI](#-hỗ-trợ-6-nền-tảng-ai)
+- [Câu hỏi thường gặp](#-câu-hỏi-thường-gặp)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-This is the reality 90% of founders, developers, and PMs face. Great code with an ugly UI equals a dead product.
+---
 
-## ✨ The Magic Solution
+## ✦ UX Master là gì?
 
-**MasterDesign Agent** turns any AI coding tool into a **professional design studio**. 
-It works silently in the background of your favorite IDE or CLI. You just speak your ideas, and the AI automatically applies world-class design standards.
+Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? **UX Master** là "bộ não design" cài thêm vào AI tool đó — giúp nó tạo ra giao diện **đẹp, chuẩn, và chuyển đổi cao** tự động.
 
-| ❌ Without MasterDesign Agent | ✦ With MasterDesign Agent |
+### Hiểu đơn giản:
+
+| Không có UX Master | Có UX Master |
 |---------------------|--------------|
-| AI generates generic, "AI-made" UI | Studio-quality UI that WOWs customers |
-| Inconsistent spacing and colors | Cohesive, professional design system |
-| Tiny buttons, maze-like menus | Optimized with 48 scientific UX Laws |
-| No automated quality checks | 37 automated Design Tests |
-| Hire a designer: $3K–$15K, wait weeks | **$0, results in 60 seconds** |
+| AI tạo UI generic, trông "AI-made" | UI đẹp chuẩn studio, khách hàng wow |
+| Mỗi trang một kiểu, không nhất quán | Design system đồng bộ, chuyên nghiệp |
+| Nút bấm nhỏ, menu dài, form phức tạp | Tối ưu theo 48 quy luật UX khoa học |
+| Không biết design tốt hay xấu | 37 bài test tự động kiểm tra chất lượng |
+| Thuê designer: $3K–$15K, chờ 2–4 tuần | $0, kết quả trong vài phút |
 
----
+### Tại sao đặc biệt?
 
-## 🚀 What's New in v2.0
+**UX Master không phải template.** Nó là hệ thống trí tuệ thiết kế:
 
-We've massively upgraded the toolkit to give you unprecedented power over design systems:
-
-- 🧬 **Harvester v3 (Comprehensive Extraction):** Extract 50-80+ design tokens from any website. Captures color histograms, semantic colors, neutral scales, typography scales, spacing, and layout metrics. Instantly copy the "DNA" of top-tier sites.
-- 🗂️ **Project Registry:** Manage multiple design system projects effortlessly. Merge harvests from multiple pages into a single cohesive project.
-- 📖 **Design Doc Generator:** Automatically generate beautiful HTML documentation for your extracted design systems (color swatches, typography specimens, component samples).
-- 🔗 **Token Mapper & Semi MCP Bridge:** Map design tokens directly to Semi Design UI variables. Generate CSS overrides, Figma-ready JSON, and React component templates programmatically.
-- 🧪 **Comprehensive 7 Test Suites:** Full TDD for Design coverage with pass/fail criteria.
-
----
-
-## 🧠 Complete Design Intelligence
-
-MasterDesign Agent isn't just a template. It's a vast intelligence matrix containing **838+ design rules** mapped across **13 tech stacks** and **13 industries** (Fintech, SaaS, E-commerce, etc.).
-
-- **67 UI Styles:** From Glassmorphism to Brutalism.
-- **96 Color Palettes & 57 Font Pairings:** Hand-picked for maximum aesthetic impact.
-- **48 UX Laws:** Automatically applies Hick's Law (reduce choices), Fitts's Law (larger touch targets), Doherty Threshold (fast feedback), and more.
-- **37 Design Tests:** Acts as a strict QA filter before the AI finishes generating code.
-
----
-
-## ⚡ Get Started in 60 Seconds
-
-### Step 1: Check Python
-Ensure you have Python 3 installed:
-```bash
-python3 --version
-```
-
-### Step 2: Clone & Install
-```bash
-git clone https://github.com/relukdev/ux-master.git
-cd ux-master
-python3 scripts/install.py
-```
-
-The installer will auto-detect your AI tools and configure them instantly.
-*Want a specific platform?*
-```bash
-python3 scripts/install.py --platform cursor
-python3 scripts/install.py --platform amp --global
-# Or install for all:
-python3 scripts/install.py --platform all --global
-```
-
-### Step 3: Experience the Magic
-Open your AI tool (e.g., Cursor) and prompt:
-> *"Create a landing page for a luxury spa, modern minimal style."*
-
-If the AI mentions **design systems, UX Laws, or design tests** — you are officially running MasterDesign Agent! 🎉
-
----
-
-## 🔌 Supported AI Platforms
-
-MasterDesign Agent integrates seamlessly with your workflow:
-- **Cursor** (`--platform cursor`) - The most popular AI IDE.
-- **Claude / Amp** (`--platform amp`) - Anthropic's powerful CLI.
-- **Gemini CLI** (`--platform gemini`) - Google's AI assistant.
-- **Antigravity** (`--platform antigravity`) - Google's internal VS Code extension.
-- **OpenCode** (`--platform opencode`) - Open-source alternative.
-- **Claude Code** (`--platform claude`) - Legacy support.
+- **1032+ quy tắc design** — tự động áp dụng dựa trên ngành của bạn
+- **48 quy luật UX khoa học** — từ nghiên cứu của Nielsen Norman Group
+- **37 bài test chất lượng** — biết chính xác đâu cần sửa
+- **67 phong cách thiết kế** — từ Glassmorphism đến Brutalism
+- **17 framework stacks** — React, Angular, Flutter, SwiftUI, Electron, Tauri...
+- **20 device profiles** — từ Apple Watch đến Smart TV, Foldable, VR
+- **Code template generator** — tạo starter code từ design tokens
+- **16 ngành được tối ưu** — Fintech, E-commerce, Healthcare, SaaS...
 
 ---
 
 ## 💎 Free vs Pro
 
+UX Master cung cấp 2 phiên bản: **Free forever** và **Pro (One-time payment)**.
+
 | Feature | Free | Pro |
 |---------|------|-----|
-| Pricing | **$0** | **$39** (One-time) |
-| Design Rules & UX Laws | 838+ & 48 | 838+ & 48 |
+| Mức Giá | **$0** | **$39** (One-time) |
+| Design Rules | 1032+ | 1032+ |
+| UX Laws | 48 | 48 |
 | Design Tests | 37 | 37 |
 | Harvester | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
 | Token Mapper | ❌ | ✅ CSS/Figma |
 | Design Doc Generator | ❌ | ✅ HTML Output |
 | Project Registry | ❌ | ✅ |
-| Support | Community | Priority |
+| Hỗ Trợ | Community | Priority |
 
-> **Upgrade to Pro today:** 👉 [ux-master.dev/pro](https://ux-master.dev/pro)
+> **Nâng cấp lên Pro ngay:** 👉 [ux-master.dev/pro](https://ux-master.dev/pro)
+> Thanh toán một lần (one-time payment). Sở hữu vĩnh viễn mọi bản cập nhật tương lai.
+
+---
+
+## 🚀 Bắt đầu trong 60 giây
+
+### Bước 1: Kiểm tra Python
+
+```bash
+python3 --version
+```
+
+> **Chưa có Python?**
+> - **Mac:** `brew install python3` hoặc tải từ [python.org](https://python.org)
+> - **Windows:** Tải từ [python.org](https://python.org) → tick "Add to PATH"
+
+### Bước 2: Clone & Cài đặt
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ux-master.git
+cd ux-master
+python3 scripts/install.py
+```
+
+Installer sẽ tự động:
+1. Phát hiện AI tools bạn đang dùng (Cursor, Claude, Gemini...)
+2. Cài UX Master vào đúng vị trí
+3. Cấu hình để AI tool nhận diện skill
+
+> **Cài cho tool cụ thể:**
+> ```bash
+> python3 scripts/install.py --platform cursor
+> python3 scripts/install.py --platform amp --global
+> python3 scripts/install.py --platform gemini --global
+> python3 scripts/install.py --platform all --global    # Cài tất cả
+> ```
+
+### Bước 3: Kiểm tra thành công
+
+Mở AI tool (Cursor, Claude...) và thử:
+
+> "Tạo landing page cho quán cà phê, phong cách modern minimal"
+
+Nếu AI đề cập đến **design system, UX Laws, hoặc design tests** → **cài thành công!** 🎉
+
+---
+
+## 💡 Cách sử dụng hàng ngày
+
+### Bạn chỉ cần làm 1 việc: Mô tả sản phẩm bạn muốn.
+
+UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thiết kế đúng chuẩn. Không cần gõ lệnh, không cần nhớ cú pháp.
+
+### Ví dụ thực tế:
+
+#### 1. Landing page cho dịch vụ spa
+
+> **Bạn nói:** "Tạo landing page cho dịch vụ chăm sóc da chuyên nghiệp, có booking form"
+
+**AI + UX Master tự động:**
+- Chọn style Glassmorphism + Soft UI (phù hợp luxury/wellness)
+- Dùng màu soft pink + calming teal
+- Font: Playfair Display (heading) + Lato (body)
+- Áp dụng Hick's Law: tối đa 2 nút CTA trên hero section
+- Booking form chỉ 3–4 fields (tên, SĐT, dịch vụ, ngày)
+- Nút booking ≥ 44px, có cursor pointer, hover effect
+
+#### 2. Dashboard quản lý cho Fintech
+
+> **Bạn nói:** "Tạo crypto dashboard hiển thị real-time data"
+
+**AI + UX Master tự động:**
+- Style: Dark mode Glassmorphism (chuẩn crypto/fintech)
+- Màu: Gold #F59E0B + Purple #8B5CF6 trên nền tối
+- Font: Orbitron (số liệu) + Exo 2 (text)
+- Jakob's Law: layout giống Binance/Coinbase (user quen thuộc)
+- Doherty Threshold: feedback < 200ms cho giao dịch
+- Max 7 metrics hiển thị mặc định (Miller's Law)
+
+#### 3. App đặt lịch khám bệnh
+
+> **Bạn nói:** "Tạo app mobile đặt lịch khám cho phòng khám tư"
+
+**AI + UX Master tự động:**
+- Style: Clean, accessible (ưu tiên rõ ràng cho healthcare)
+- Màu: Calm blue + Health green — tạo cảm giác tin tưởng
+- Font size ≥ 16px (người lớn tuổi dễ đọc)
+- Navigation ≤ 5 items (Hick's Law)
+- Booking ≤ 3 bước
+- Nút khẩn cấp luôn hiển thị
+
+#### 4. Landing page sản phẩm luxury
+
+> **Bạn nói:** "Tạo product page cho thương hiệu thời trang cao cấp"
+
+**AI + UX Master tự động:**
+- Style: Liquid Glass + whitespace nhiều (≥ 40%)
+- Màu: Premium dark + gold accents
+- Font: Playfair Display (serif heading) — luxury feel
+- Ảnh product 2x resolution
+- Không popup khi đang checkout (Flow state)
+- Checkout flow chuẩn e-commerce (Jakob's Law)
+
+---
+
+## 🎯 Tính năng chính
+
+### 1. Tự động chọn Design System
+
+Khi bạn mô tả sản phẩm, UX Master tự tìm:
+- **Phong cách** phù hợp nhất (trong 67 styles)
+- **Bảng màu** theo ngành (96 palettes)
+- **Cặp font** đẹp (57 font pairings từ Google Fonts)
+- **Layout pattern** phù hợp (30 landing patterns)
+- **Icon set** nên dùng (100 recommendations)
+- **Animation patterns** (30 micro-interactions)
+- **Responsive strategies** (25 breakpoint patterns)
+- **Accessibility checks** (25 WCAG 2.2 patterns)
+
+### 2. 48 Quy luật UX Khoa học
+
+Mỗi quy luật được áp dụng tự động dựa trên loại sản phẩm:
+
+| Quy luật | Ý nghĩa | Áp dụng khi |
+|----------|---------|-------------|
+| **Hick's Law** | Càng ít lựa chọn → quyết định càng nhanh | Menu, CTA, forms |
+| **Fitts's Law** | Nút càng lớn & gần → click càng dễ | Buttons, navigation |
+| **Miller's Law** | Con người nhớ 7±2 thứ cùng lúc | Dashboard metrics, nav |
+| **Jakob's Law** | User thích layout quen thuộc | E-commerce, SaaS |
+| **Doherty Threshold** | Phản hồi < 400ms → cảm thấy "nhanh" | Loading, transitions |
+| **Aesthetic-Usability** | Đẹp → user nghĩ dễ dùng hơn | Mọi sản phẩm |
+| **Von Restorff** | Thứ khác biệt → được nhớ | CTA, pricing |
+
+*...và 41 quy luật nữa, tự động áp dụng dựa trên context.*
+
+### 3. 37 Bài Test Chất Lượng
+
+UX Master tự kiểm tra sản phẩm trước khi "giao hàng":
+
+- Nút bấm đủ lớn cho mobile (≥ 44px)?
+- Contrast text đủ rõ (≥ 4.5:1)?
+- Responsive trên mọi màn hình?
+- CTA nổi bật, không quá nhiều?
+- Form không quá dài?
+- Loading có feedback?
+- Accessible cho mọi user?
+
+### 4. Copy Design từ Website Yêu Thích
+
+Thích design của Linear, Stripe, hay Notion? Nói AI:
+
+> "Phân tích design của linear.app rồi áp dụng style đó cho dashboard của tôi"
+
+UX Master trích xuất: màu sắc, font, spacing, component patterns — rồi áp dụng vào sản phẩm của bạn.
+
+---
+
+## 📊 Dữ liệu thiết kế
+
+UX Master bao gồm **1032+ entries** trải rộng khắp **16 domains**:
+
+| Domain | Entries | Mô tả |
+|--------|---------|-------|
+| `product` | 96 | Product type recommendations (SaaS, e-commerce, healthcare...) |
+| `style` | 67 | UI styles + AI prompts + CSS keywords |
+| `color` | 96 | Color palettes theo product type |
+| `typography` | 57 | Font pairings với Google Fonts |
+| `ux` | 99 | Best practices và anti-patterns |
+| `icons` | 100 | Icon library recommendations |
+| `ux-laws` | **48** | UX Laws × Product Types matrix |
+| `design-tests` | **37** | Design Test Cases (TDD for Design) |
+| `landing` | 30 | Page structure và CTA strategies |
+| `react` | 44 | React/Next.js performance patterns |
+| `web` | 30 | Web interface guidelines |
+| `chart` | 25 | Chart types và library recommendations |
+| `animation` | **30** | **Micro-interactions, transitions, scroll animations** |
+| `responsive` | **25** | **Breakpoints, container queries, fluid design** |
+| `accessibility` | **25** | **WCAG 2.2 advanced patterns** |
+| `devices` | **20** | **Device profiles — watch, foldable, TV, VR** |
+| stacks | **17** | Stack-specific guidelines (React, Vue, Angular, Flutter, Electron, Tauri...) |
+
+---
+
+## 🔌 Hỗ trợ 6 nền tảng AI
+
+| Nền tảng | Cài đặt | Ghi chú |
+|----------|---------|---------|
+| **Cursor** | `--platform cursor` | IDE phổ biến nhất cho vibe coding |
+| **Claude / Amp** | `--platform amp --global` | CLI mạnh mẽ từ Anthropic |
+| **Gemini CLI** | `--platform gemini --global` | Google's AI coding tool |
+| **Antigravity** | `--platform antigravity --global` | Google's VS Code extension |
+| **OpenCode** | `--platform opencode` | Open-source alternative |
+| **Claude Code (Legacy)** | `--platform claude --global` | Phiên bản cũ |
+
+> **Mẹo:** `python3 scripts/install.py --platform all --global` để cài tất cả cùng lúc.
+
+---
+
+## ❓ Câu hỏi thường gặp
+
+### "Tôi chưa bao giờ dùng AI coding tool?"
+
+1. **Cài Cursor** (dễ nhất): Tải từ [cursor.sh](https://cursor.sh) → mở → bắt đầu chat
+2. **Cài UX Master** theo hướng dẫn ở trên
+3. **Mô tả sản phẩm** — ví dụ: "Tạo website cho tiệm bánh của tôi"
+4. Xong! Cursor + UX Master sẽ tạo website đẹp cho bạn
+
+### "Có miễn phí không?"
+
+UX Master **hoàn toàn miễn phí, mãi mãi**. Bạn chỉ cần trả phí cho AI tool bạn dùng (Cursor Pro, Claude Pro...).
+
+### "Có hoạt động trên Windows không?"
+
+Có! Cài Python từ [python.org](https://python.org) → mở PowerShell → chạy lệnh cài đặt.
+
+### "UX Master có thay thế designer không?"
+
+Cho MVP, landing page, internal tools: **có, hoàn toàn**. Cho sản phẩm lớn cần brand identity phức tạp: UX Master là xuất phát điểm tuyệt vời, sau đó designer tinh chỉnh.
+
+### "AI tool không nhận diện UX Master?"
+
+1. Đảm bảo đã chạy installer thành công
+2. Thử restart AI tool
+3. Với Cursor: kiểm tra file `.cursorrules` đã được tạo
+4. Với Amp/Claude: kiểm tra thư mục `~/.agents/skills/ux-master/` tồn tại
+
+### "Tôi muốn design giống website X?"
+
+Nói cho AI: *"Phân tích design của [website URL] rồi áp dụng style tương tự cho sản phẩm của tôi"*. UX Master sẽ trích xuất tokens và tái sử dụng.
+
+---
+
+## 💜 Chia sẻ
+
+Biết founder, PM, hay maker nào đang build sản phẩm? Gửi cho họ link này.
+
+> *"Mình vừa tìm được UX Master — cài vào AI coding tool là nó tự biết design đẹp. Miễn phí, cài 60 giây. Thử đi!"*
+
+---
+
+## 📋 Checklist trước khi launch
+
+- [ ] Mở trên điện thoại — có đẹp & dễ dùng không?
+- [ ] Nút CTA chính có nổi bật không?
+- [ ] Có quá nhiều thông tin trên 1 trang không?
+- [ ] Form có ngắn gọn nhất có thể không?
+- [ ] Loading có nhanh không? (< 3 giây)
+- [ ] Text có đọc được rõ ràng không?
+- [ ] Nhờ 1 người không biết gì thử dùng — họ có hiểu không?
 
 ---
 
 ## 🤝 Contributing
-Contributions are welcome! If you want to improve the AI reasoning rules, add new tech stack guidelines, or expand the UX laws:
-1. Fork the repo and create your branch (`git checkout -b feature/amazing-idea`).
-2. Commit your changes.
-3. Push to the branch and open a Pull Request.
 
-## 📄 License
-This project is licensed under the MIT License - free to use for any project.
+Contributions welcome! Nếu bạn muốn đóng góp:
+
+1. Fork repo
+2. Tạo branch: `git checkout -b feature/your-feature`
+3. Commit: `git commit -m 'Add your feature'`
+4. Push: `git push origin feature/your-feature`
+5. Tạo Pull Request
+
+### Đóng góp dữ liệu:
+- Thêm entries vào CSV files trong thư mục `data/`
+- Thêm stack guidelines vào `data/stacks/`
+- Cải thiện reasoning rules trong `data/ui-reasoning.csv`
 
 ---
-> **MasterDesign Agent** — 1 person = entire design team. ✦
+
+## 📄 License
+
+MIT License — Sử dụng tự do cho mọi dự án.
+
+---
+
+> **UX Master** — Bạn mơ nó. AI xây nó. UX Master làm nó đẹp. ✦

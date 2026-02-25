@@ -17,7 +17,7 @@ const LANGS = [
 ];
 
 // Translation data loaded from external files
-const T = {};
+window.T = window.T || {};
 let currentLang = 'en';
 
 // Detect best language on first visit
@@ -31,14 +31,14 @@ function detectLang() {
 
 // Apply translations to all [data-i18n] elements
 function applyLang(code) {
-    if (!T[code]) return;
+    if (!window.T[code]) return;
     currentLang = code;
     document.documentElement.lang = code;
     localStorage.setItem('ux-master-lang', code);
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        const val = T[code][key];
+        const val = window.T[code][key];
         if (val) el.textContent = val;
     });
 
@@ -74,7 +74,7 @@ document.addEventListener('click', (e) => {
 
 // Load a translation module
 function loadTranslation(code, data) {
-    T[code] = data;
+    window.T[code] = data;
 }
 
 // Initialize after all translation scripts are loaded
