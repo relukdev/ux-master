@@ -195,6 +195,44 @@ python3 scripts/extractor.py --css style.css theme.css -p "MyProject" --format t
 
 Outputs: `EXTRACTED.md`, `BRAND-SKILL.md`, `tailwind.config.js`, `design-tokens.css`
 
+### Step 8: Multi-Project Registry + Multi-Page Harvest (v2)
+
+Manage multiple design system projects and scan multiple pages:
+
+```bash
+# Create a project
+python3 scripts/project_registry.py --create "Haravan" --url "https://showcase.myharavan.com"
+
+# List all projects
+python3 scripts/project_registry.py --list
+
+# Get project info
+python3 scripts/project_registry.py --get haravan
+
+# Add page harvest to project
+python3 scripts/project_registry.py --add-harvest haravan -i harvest.json
+
+# Token mapper with project (auto-saves to output/<slug>/)
+python3 scripts/token_mapper.py -i harvest.json --project haravan
+
+# Merge multiple harvest files
+python3 scripts/harvest_session.py page1.json page2.json page3.json -o merged.json --confidence
+```
+
+### Step 9: Design System Documentation Site (v2)
+
+Generate a self-contained HTML documentation page:
+
+```bash
+# From project
+python3 scripts/design_doc_generator.py --project haravan --open
+
+# From harvest file directly
+python3 scripts/design_doc_generator.py -i harvest.json -o design-system.html
+```
+
+Output includes: color palette swatches, typography specimens, geometry preview, component samples, token reference table, usage instructions, dark mode toggle.
+
 ---
 
 ## Available Domains (13)
