@@ -39,7 +39,7 @@ function applyLang(code) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         const val = window.T[code][key];
-        if (val) el.textContent = val;
+        if (val) el.innerHTML = val;
     });
 
     // Update dropdown label
