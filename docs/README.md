@@ -9,15 +9,46 @@
 ![Platforms](https://img.shields.io/badge/platforms-6-brightgreen.svg)
 ![Entries](https://img.shields.io/badge/design%20rules-838%2B-purple.svg)
 ![Python](https://img.shields.io/badge/python-3.x-yellow.svg)
+![Tests](https://img.shields.io/badge/tests-7%20suites-green.svg)
+![Scripts](https://img.shields.io/badge/scripts-10%2B-orange.svg)
+
+---
+
+<details>
+<summary><b>🇬🇧 English Summary</b> (click to expand)</summary>
+
+**UX Master** is an AI-powered design intelligence toolkit that transforms any AI coding tool (Cursor, Claude, Gemini, Amp, etc.) into a professional design studio.
+
+**Key capabilities:**
+- **838+ design rules** mapped across 13 industries
+- **48 UX Laws** (Nielsen Norman Group research) applied automatically
+- **37 Design Tests** — TDD for Design with measurable pass/fail criteria
+- **67 UI styles**, 96 color palettes, 57 font pairings
+- **Harvester v3** — extract 50-80+ design tokens from any website
+- **Design Doc Generator** — auto-generate HTML design system documentation
+- **Project Registry** — manage multiple design system projects
+
+**Quick Start:**
+```bash
+git clone https://github.com/relukdev/ux-master.git
+cd ux-master
+python3 scripts/install.py
+```
+
+Works with: Cursor, Claude/Amp, Gemini CLI, Antigravity, OpenCode.
+
+</details>
 
 ---
 
 ## 📑 Mục lục
 
 - [UX Master là gì?](#-ux-master-là-gì)
+- [🆕 What's New — v2.0](#-whats-new--v20)
 - [Bắt đầu trong 60 giây](#-bắt-đầu-trong-60-giây)
 - [Cách sử dụng hàng ngày](#-cách-sử-dụng-hàng-ngày)
 - [Tính năng chính](#-tính-năng-chính)
+- [Semi-Sync Harvester Protocol](#-semi-sync-harvester-protocol-v2v3)
 - [Dữ liệu thiết kế](#-dữ-liệu-thiết-kế)
 - [Hỗ trợ 6 nền tảng AI](#-hỗ-trợ-6-nền-tảng-ai)
 - [Câu hỏi thường gặp](#-câu-hỏi-thường-gặp)
@@ -52,6 +83,43 @@ Bạn đang dùng AI để build sản phẩm (Cursor, Claude, Gemini, Amp...)? 
 
 ---
 
+## 🆕 What's New — v2.0
+
+> Tổng hợp tất cả tính năng mới từ các bản cập nhật gần nhất.
+
+### Harvester v3 — Comprehensive Design System Extraction
+- Trích xuất **50-80+ design tokens** (vs ~20 ở v1)
+- Color histogram + semantic colors (primary, success, warning, danger)
+- Neutral scale (10-shade gray ramp), expanded surfaces
+- Typography scale, spacing system, border/shadow system
+- Layout metrics, component blueprints, page type detection
+
+### Project Registry — Multi-Project Management
+- Tạo và quản lý nhiều dự án design system
+- Merge harvests từ nhiều trang vào 1 project
+- Auto-save output vào `output/<project-slug>/`
+
+### Design Doc Generator — Auto HTML Documentation
+- Tạo trang HTML documentation tự động từ harvest data
+- Color palette swatches, typography specimens, geometry preview
+- Component samples, token reference table, dark mode toggle
+
+### Token Mapper — Semi Design Integration
+- Map design tokens sang Semi Design CSS variables
+- Tạo CSS overrides, Figma-ready JSON, React component template
+- Auto-detect v3 harvest format
+
+### Semi MCP Bridge — Programmatic Access
+- Bridge pattern cho Semi Design token system
+- Programmatic API cho automation workflows
+
+### 7 Test Suites
+- `test_harvester.py`, `test_harvester_v3.py`, `test_token_mapper.py`
+- `test_semi_mcp_bridge.py`, `test_design_doc.py`, `test_harvest_session.py`
+- `test_project_registry.py` — comprehensive test coverage
+
+---
+
 ## 🚀 Bắt đầu trong 60 giây
 
 ### Bước 1: Kiểm tra Python
@@ -67,7 +135,7 @@ python3 --version
 ### Bước 2: Clone & Cài đặt
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ux-master.git
+git clone https://github.com/relukdev/ux-master.git
 cd ux-master
 python3 scripts/install.py
 ```
@@ -127,30 +195,6 @@ UX Master hoạt động ngầm — tự động "dạy" AI tool của bạn thi
 - Doherty Threshold: feedback < 200ms cho giao dịch
 - Max 7 metrics hiển thị mặc định (Miller's Law)
 
-#### 3. App đặt lịch khám bệnh
-
-> **Bạn nói:** "Tạo app mobile đặt lịch khám cho phòng khám tư"
-
-**AI + UX Master tự động:**
-- Style: Clean, accessible (ưu tiên rõ ràng cho healthcare)
-- Màu: Calm blue + Health green — tạo cảm giác tin tưởng
-- Font size ≥ 16px (người lớn tuổi dễ đọc)
-- Navigation ≤ 5 items (Hick's Law)
-- Booking ≤ 3 bước
-- Nút khẩn cấp luôn hiển thị
-
-#### 4. Landing page sản phẩm luxury
-
-> **Bạn nói:** "Tạo product page cho thương hiệu thời trang cao cấp"
-
-**AI + UX Master tự động:**
-- Style: Liquid Glass + whitespace nhiều (≥ 40%)
-- Màu: Premium dark + gold accents
-- Font: Playfair Display (serif heading) — luxury feel
-- Ảnh product 2x resolution
-- Không popup khi đang checkout (Flow state)
-- Checkout flow chuẩn e-commerce (Jakob's Law)
-
 ---
 
 ## 🎯 Tính năng chính
@@ -192,13 +236,46 @@ UX Master tự kiểm tra sản phẩm trước khi "giao hàng":
 - Loading có feedback?
 - Accessible cho mọi user?
 
-### 4. Copy Design từ Website Yêu Thích
+---
 
-Thích design của Linear, Stripe, hay Notion? Nói AI:
+## 🔬 Semi-Sync Harvester Protocol (v2/v3)
 
-> "Phân tích design của linear.app rồi áp dụng style đó cho dashboard của tôi"
+Copy design system từ bất kỳ website nào:
 
-UX Master trích xuất: màu sắc, font, spacing, component patterns — rồi áp dụng vào sản phẩm của bạn.
+### Harvester v3 Workflow
+
+```bash
+# 1. Inject harvester_v3.js vào browser console trên trang mục tiêu
+#    Copy scripts/harvester_v3.js → DevTools → Console → Enter
+
+# 2. Copy JSON output → lưu vào output/<project>/harvest-v3-raw.json
+
+# 3. Map tokens sang Semi Design
+python3 scripts/token_mapper.py -i output/<project>/harvest-v3-raw.json --project <slug>
+
+# 4. Generate documentation
+python3 scripts/design_doc_generator.py --project <slug> --open
+```
+
+### Project Registry
+
+```bash
+# Tạo project
+python3 scripts/project_registry.py --create "MyBrand" --url "https://example.com"
+
+# Merge harvests
+python3 scripts/harvest_session.py page1.json page2.json -o merged.json --confidence
+
+# List projects
+python3 scripts/project_registry.py --list
+```
+
+### Harvester v3 trích xuất:
+- Color histogram + semantic colors (primary, success, warning, danger, info)
+- Neutral scale (10-shade gray ramp: 50→900)
+- Typography scale (heading+body families, 5-8 sizes, 4 weights)
+- Spacing system, border system, shadow system
+- Layout metrics, component blueprints, page type detection
 
 ---
 
@@ -269,15 +346,7 @@ Cho MVP, landing page, internal tools: **có, hoàn toàn**. Cho sản phẩm l�
 
 ### "Tôi muốn design giống website X?"
 
-Nói cho AI: *"Phân tích design của [website URL] rồi áp dụng style tương tự cho sản phẩm của tôi"*. UX Master sẽ trích xuất tokens và tái sử dụng.
-
----
-
-## 💜 Chia sẻ
-
-Biết founder, PM, hay maker nào đang build sản phẩm? Gửi cho họ link này.
-
-> *"Mình vừa tìm được UX Master — cài vào AI coding tool là nó tự biết design đẹp. Miễn phí, cài 60 giây. Thử đi!"*
+Dùng **Harvester v3**: Inject `harvester_v3.js` vào browser console → copy JSON → chạy `token_mapper.py` → nhận design system hoàn chỉnh.
 
 ---
 

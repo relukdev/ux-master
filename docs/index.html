@@ -275,15 +275,19 @@
     <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
       <a href="#problem" class="hover:text-white transition-colors cursor-pointer">Why</a>
       <a href="#magic" class="hover:text-white transition-colors cursor-pointer">Magic</a>
+      <a href="#harvester" class="hover:text-white transition-colors cursor-pointer">v2.0</a>
       <a href="#how" class="hover:text-white transition-colors cursor-pointer">How</a>
       <a href="#start" class="hover:text-white transition-colors cursor-pointer">Start Free</a>
     </div>
     <div class="flex items-center gap-3">
+      <button id="langToggle" onclick="toggleLang()"
+        class="text-xs font-mono text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10 transition-all cursor-pointer">EN</button>
       <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
         class="hidden sm:inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 py-2 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
         Star on GitHub</a>
       <a href="#start"
-        class="cta-primary text-white text-sm font-semibold px-5 py-2 rounded-xl transition-all cursor-pointer">Try It
+        class="cta-primary text-white text-sm font-semibold px-5 py-2 rounded-xl transition-all cursor-pointer"
+        data-vi="Dùng thử →" data-en="Try Free →">Try It
         Free →</a>
     </div>
   </nav>
@@ -303,48 +307,60 @@
           <span
             class="w-5 h-5 rounded-full bg-gradient-to-br from-amber-400 to-orange-400 border-2 border-surface-400"></span>
         </span>
-        Founders & PMs đang dùng trên 6 nền tảng AI
+        <span data-vi="Founders & PMs đang dùng trên 6 nền tảng AI"
+          data-en="Founders & PMs using on 6 AI platforms">Founders & PMs đang dùng trên 6 nền tảng AI</span>
       </div>
       <h1
         class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-6">
-        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">Bạn nói ý
-          tưởng.</span><br>
-        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">AI biến
-          nó thành sản phẩm đẹp.</span>
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent"
+          data-vi="Bạn nói ý tưởng." data-en="You dream it.">Bạn nói ý tưởng.</span><br>
+        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent"
+          data-vi="AI biến nó thành sản phẩm đẹp." data-en="AI builds it beautiful.">AI biến nó thành sản phẩm
+          đẹp.</span>
       </h1>
       <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-        Không cần biết code. Không cần thuê designer.<br class="hidden sm:block">
-        <span class="text-white font-medium">UX Master</span> biến mọi AI tool thành design studio chuyên nghiệp.
+        <span data-vi="Không cần biết code. Không cần thuê designer."
+          data-en="No coding skills needed. No designer required.">Không cần biết code. Không cần thuê
+          designer.</span><br class="hidden sm:block">
+        <span class="text-white font-medium">UX Master</span> <span
+          data-vi="biến mọi AI tool thành design studio chuyên nghiệp."
+          data-en="turns any AI tool into a professional design studio.">biến mọi AI tool thành design studio chuyên
+          nghiệp.</span>
       </p>
-      <p class="text-zinc-600 text-sm max-w-lg mx-auto mb-10">Hoạt động với Cursor, Claude, Gemini, Amp, và mọi AI
-        coding tool bạn đang dùng.</p>
+      <p class="text-zinc-600 text-sm max-w-lg mx-auto mb-10"
+        data-vi="Hoạt động với Cursor, Claude, Gemini, Amp, và mọi AI coding tool bạn đang dùng."
+        data-en="Works with Cursor, Claude, Gemini, Amp, and any AI coding tool you use.">Hoạt động với Cursor, Claude,
+        Gemini, Amp, và mọi AI coding tool bạn đang dùng.</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
         <a href="#start"
-          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base">✦
-          Bắt đầu miễn phí — 60 giây</a>
+          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base"
+          data-vi="✦ Bắt đầu miễn phí — 60 giây" data-en="✦ Get Started Free — 60 seconds">✦ Bắt đầu miễn phí — 60
+          giây</a>
         <a href="#magic"
-          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base">Xem
-          phép màu ↓</a>
+          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base"
+          data-vi="Xem phép màu ↓" data-en="See the magic ↓">Xem phép màu ↓</a>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-center">
         <div>
           <div class="stat-value text-2xl font-bold text-white" data-target="838" data-suffix="+">0</div>
-          <div class="text-xs text-zinc-500 mt-1">Quy tắc thiết kế</div>
+          <div class="text-xs text-zinc-500 mt-1" data-vi="Quy tắc thiết kế" data-en="Design Rules">Quy tắc thiết kế
+          </div>
         </div>
         <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
         <div>
           <div class="text-2xl font-bold text-accent-light">60s</div>
-          <div class="text-xs text-zinc-500 mt-1">Cài đặt xong</div>
+          <div class="text-xs text-zinc-500 mt-1" data-vi="Cài đặt xong" data-en="Setup Done">Cài đặt xong</div>
         </div>
         <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
         <div>
           <div class="text-2xl font-bold text-magic">$0</div>
-          <div class="text-xs text-zinc-500 mt-1">Chi phí designer</div>
+          <div class="text-xs text-zinc-500 mt-1" data-vi="Chi phí designer" data-en="Designer Cost">Chi phí designer
+          </div>
         </div>
         <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
         <div>
           <div class="stat-value text-2xl font-bold text-success" data-target="6" data-suffix="">0</div>
-          <div class="text-xs text-zinc-500 mt-1">Nền tảng AI</div>
+          <div class="text-xs text-zinc-500 mt-1" data-vi="Nền tảng AI" data-en="AI Platforms">Nền tảng AI</div>
         </div>
       </div>
     </div>
@@ -354,15 +370,22 @@
   <!-- PROBLEM -->
   <section id="problem" class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3">Vấn đề thật sự</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Bạn có ý tưởng tuyệt vời.<br>Nhưng AI
-        tạo ra UI... xấu.</h2>
-      <p class="text-zinc-500 text-base max-w-xl mx-auto">Đây là thực trạng mà 90% founders và PMs đang gặp phải.</p>
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Vấn đề thật sự"
+        data-en="The Real Problem">Vấn đề thật sự</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="Bạn có ý tưởng tuyệt vời. Nhưng AI tạo ra UI... xấu."
+        data-en="You have a great idea. But AI creates... ugly UI.">Bạn có ý tưởng tuyệt vời.<br>Nhưng AI tạo ra UI...
+        xấu.</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"
+        data-vi="Đây là thực trạng mà 90% founders và PMs đang gặp phải."
+        data-en="This is the reality 90% of founders and PMs face.">This is the reality 90% of founders and PMs face.
+      </p>
     </div>
     <div class="grid md:grid-cols-2 gap-6 mb-12">
       <div class="before-card rounded-2xl p-8 reveal">
         <div class="flex items-center gap-2 mb-6"><span class="text-red-400 text-lg">✕</span><span
-            class="text-red-400 font-semibold text-sm uppercase tracking-wide">Không có UX Master</span></div>
+            class="text-red-400 font-semibold text-sm uppercase tracking-wide" data-vi="Không có UX Master"
+            data-en="Without UX Master">Không có UX Master</span></div>
         <ul class="space-y-4 text-sm">
           <li class="flex gap-3 text-zinc-400"><span class="text-red-400/60 mt-0.5 shrink-0">●</span><span>UI trông
               "AI-generated" — generic, không chuyên nghiệp</span></li>
@@ -378,7 +401,8 @@
       </div>
       <div class="after-card rounded-2xl p-8 reveal reveal-delay-1">
         <div class="flex items-center gap-2 mb-6"><span class="text-emerald-400 text-lg">✦</span><span
-            class="text-emerald-400 font-semibold text-sm uppercase tracking-wide">Với UX Master</span></div>
+            class="text-emerald-400 font-semibold text-sm uppercase tracking-wide" data-vi="Với UX Master"
+            data-en="With UX Master">Với UX Master</span></div>
         <ul class="space-y-4 text-sm">
           <li class="flex gap-3 text-zinc-300"><span class="text-emerald-400/80 mt-0.5 shrink-0">✓</span><span>UI đẹp
               chuẩn studio — khách hàng <span class="text-white font-medium">wow</span> ngay lần đầu</span></li>
@@ -403,10 +427,15 @@
   <!-- MAGIC -->
   <section id="magic" class="max-w-6xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Phép màu</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Chỉ cần nói. AI hiểu bạn muốn gì.</h2>
-      <p class="text-zinc-500 text-base max-w-xl mx-auto">UX Master hoạt động ngầm — tự động biến mọi yêu cầu thành
-        thiết kế chuyên nghiệp.</p>
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Phép màu"
+        data-en="The Magic">Phép màu</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="Chỉ cần nói. AI hiểu bạn muốn gì." data-en="Just speak. AI knows what you want.">Chỉ cần nói. AI hiểu
+        bạn muốn gì.</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"
+        data-vi="UX Master hoạt động ngầm — tự động biến mọi yêu cầu thành thiết kế chuyên nghiệp."
+        data-en="UX Master works silently — automatically turning every request into professional design.">UX Master
+        hoạt động ngầm — tự động biến mọi yêu cầu thành thiết kế chuyên nghiệp.</p>
     </div>
     <div class="max-w-3xl mx-auto mb-16 reveal">
       <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
@@ -495,9 +524,12 @@
   <!-- WHO IS THIS FOR -->
   <section class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-warn text-sm font-semibold tracking-widest uppercase mb-3">Dành cho ai?</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Bạn không cần biết code.<br>Bạn chỉ
-        cần biết mình muốn gì.</h2>
+      <p class="text-warn text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Dành cho ai?"
+        data-en="Who is this for?">Dành cho ai?</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="Bạn không cần biết code. Bạn chỉ cần biết mình muốn gì."
+        data-en="You don’t need to code. You just need to know what you want.">Bạn không cần biết code.<br>Bạn chỉ cần
+        biết mình muốn gì.</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal">
       <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer">
@@ -534,10 +566,14 @@
   <!-- HOW IT WORKS -->
   <section id="how" class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Đơn giản đến bất ngờ</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">3 bước. Xong.</h2>
-      <p class="text-zinc-500 text-base max-w-lg mx-auto">Không cần học gì mới. Không cần cài package. Không cần config.
-      </p>
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Đơn giản đến bất ngờ"
+        data-en="Surprisingly simple">Đơn giản đến bất ngờ</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4" data-vi="3 bước. Xong."
+        data-en="3 steps. Done.">3 bước. Xong.</h2>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto"
+        data-vi="Không cần học gì mới. Không cần cài package. Không cần config."
+        data-en="Nothing new to learn. No packages. No config.">Không cần học gì mới. Không cần cài package. Không cần
+        config.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-8 reveal">
       <div class="text-center">
@@ -583,8 +619,10 @@
   <!-- SOCIAL PROOF -->
   <section class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3">Kết quả thật</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Không phải lời hứa. Là kết quả.</h2>
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Kết quả thật"
+        data-en="Real Results">Kết quả thật</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="Không phải lời hứa. Là kết quả." data-en="Not promises. Results.">Không phải lời hứa. Là kết quả.</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
       <div class="glass-card rounded-2xl p-7">
@@ -630,9 +668,13 @@
   <!-- USE CASES -->
   <section class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Mọi ngành, mọi sản phẩm</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight">UX Master biết ngành của bạn.</h2>
-      <p class="text-zinc-500 text-base mt-4 max-w-lg mx-auto">838+ quy tắc thiết kế được ánh xạ vào 13 lĩnh vực.</p>
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3"
+        data-vi="Mọi ngành, mọi sản phẩm" data-en="Every industry, every product">Mọi ngành, mọi sản phẩm</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight" data-vi="UX Master biết ngành của bạn."
+        data-en="UX Master knows your industry.">UX Master biết ngành của bạn.</h2>
+      <p class="text-zinc-500 text-base mt-4 max-w-lg mx-auto"
+        data-vi="838+ quy tắc thiết kế được ánh xạ vào 13 lĩnh vực."
+        data-en="838+ design rules mapped across 13 domains.">838+ quy tắc thiết kế được ánh xạ vào 13 lĩnh vực.</p>
     </div>
     <div class="flex flex-wrap justify-center gap-3 reveal">
       <span class="persona-pill px-5 py-2.5 rounded-xl text-sm text-zinc-300 cursor-pointer">🏦 Fintech</span>
@@ -652,13 +694,104 @@
   </section>
   <div class="glow-line max-w-4xl mx-auto"></div>
 
+  <!-- SEMI-SYNC HARVESTER -->
+  <section id="harvester" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Mới — v2.0"
+        data-en="New — v2.0">Mới — v2.0</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="Copy design hệ thống từ bất kỳ website nào." data-en="Clone any website's design system.">Copy design
+        hệ thống từ bất kỳ website nào.</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"
+        data-vi="Harvester v3 trích xuất 50-80+ design tokens — color, typography, spacing, shadows, components — từ bất kỳ trang web nào."
+        data-en="Harvester v3 extracts 50-80+ design tokens — color, typography, spacing, shadows, components — from any website.">
+        Harvester v3 trích xuất 50-80+ design tokens — color, typography, spacing, shadows, components — từ bất kỳ trang
+        web nào.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+      <div class="glass-card rounded-2xl p-6">
+        <div
+          class="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center text-cyan-400 mb-4 text-xl">
+          🔍</div>
+        <h3 class="font-heading font-bold text-base mb-2" data-vi="Harvester v3" data-en="Harvester v3">Harvester v3
+        </h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"
+          data-vi="Trích xuất 50-80+ tokens: colors, typography, spacing, borders, shadows, layout, components."
+          data-en="Extract 50-80+ tokens: colors, typography, spacing, borders, shadows, layout, components.">Trích xuất
+          50-80+ tokens: colors, typography, spacing, borders, shadows, layout, components.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6">
+        <div
+          class="w-11 h-11 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-500/5 flex items-center justify-center text-violet-400 mb-4 text-xl">
+          📦</div>
+        <h3 class="font-heading font-bold text-base mb-2" data-vi="Project Registry" data-en="Project Registry">Project
+          Registry</h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"
+          data-vi="Quản lý nhiều dự án design system, merge harvests từ nhiều trang."
+          data-en="Manage multiple design system projects, merge harvests from multiple pages.">Quản lý nhiều dự án
+          design system, merge harvests từ nhiều trang.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6">
+        <div
+          class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center text-emerald-400 mb-4 text-xl">
+          📄</div>
+        <h3 class="font-heading font-bold text-base mb-2" data-vi="Design Doc Generator" data-en="Design Doc Generator">
+          Design Doc Generator</h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"
+          data-vi="Tự động tạo HTML documentation với color swatches, typography specimens, component samples."
+          data-en="Auto-generate HTML docs with color swatches, typography specimens, component samples.">Tự động tạo
+          HTML documentation với color swatches, typography specimens, component samples.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6">
+        <div
+          class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-500/5 flex items-center justify-center text-amber-400 mb-4 text-xl">
+          🔗</div>
+        <h3 class="font-heading font-bold text-base mb-2" data-vi="Token Mapper" data-en="Token Mapper">Token Mapper
+        </h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"
+          data-vi="Map tokens sang Semi Design, tạo CSS overrides, Figma-ready JSON, React components."
+          data-en="Map tokens to Semi Design, generate CSS overrides, Figma-ready JSON, React components.">Map tokens
+          sang Semi Design, tạo CSS overrides, Figma-ready JSON, React components.</p>
+      </div>
+    </div>
+    <div class="max-w-3xl mx-auto mt-10 reveal">
+      <div class="glass-card rounded-2xl p-6">
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mb-3 font-medium" data-vi="Workflow 4 bước"
+          data-en="4-Step Workflow">Workflow 4 bước</p>
+        <div class="grid grid-cols-4 gap-3 text-center">
+          <div>
+            <div class="text-lg mb-1">💉</div>
+            <p class="text-[10px] text-zinc-400" data-vi="Inject v3.js" data-en="Inject v3.js">Inject v3.js</p>
+          </div>
+          <div>
+            <div class="text-lg mb-1">📋</div>
+            <p class="text-[10px] text-zinc-400" data-vi="Copy JSON" data-en="Copy JSON">Copy JSON</p>
+          </div>
+          <div>
+            <div class="text-lg mb-1">🔄</div>
+            <p class="text-[10px] text-zinc-400" data-vi="Map tokens" data-en="Map tokens">Map tokens</p>
+          </div>
+          <div>
+            <div class="text-lg mb-1">✨</div>
+            <p class="text-[10px] text-zinc-400" data-vi="Generate docs" data-en="Generate docs">Generate docs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
   <!-- GET STARTED -->
   <section id="start" class="max-w-4xl mx-auto px-4 py-24">
     <div class="text-center mb-12 reveal">
-      <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3">Bắt đầu ngay</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">60 giây. Miễn phí. Mãi mãi.</h2>
-      <p class="text-zinc-500 text-base max-w-lg mx-auto">Chỉ cần Python (đã cài sẵn trên Mac/Linux). Không cần thẻ tín
-        dụng.</p>
+      <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Bắt đầu ngay"
+        data-en="Get Started">Bắt đầu ngay</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4" data-vi="60 giây. Miễn phí. Mãi mãi."
+        data-en="60 seconds. Free. Forever.">60 giây. Miễn phí. Mãi mãi.</h2>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto"
+        data-vi="Chỉ cần Python (đã cài sẵn trên Mac/Linux). Không cần thẻ tín dụng."
+        data-en="Just need Python (pre-installed on Mac/Linux). No credit card required.">Chỉ cần Python (đã cài sẵn
+        trên Mac/Linux). Không cần thẻ tín dụng.</p>
     </div>
     <div class="glass-card rounded-2xl p-8 mb-8 reveal border-accent/20">
       <div class="flex items-center gap-3 mb-6">
@@ -721,11 +854,15 @@
   <!-- DATA COVERAGE -->
   <section class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
-      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Under the Hood</p>
-      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">838+ quy tắc. 13 domains. Không phải
-        template.</h2>
-      <p class="text-zinc-500 text-base max-w-lg mx-auto">Mỗi quy tắc được ánh xạ theo ngành, loại sản phẩm, và context
-        cụ thể.</p>
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3" data-vi="Under the Hood"
+        data-en="Under the Hood">Under the Hood</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"
+        data-vi="838+ quy tắc. 13 domains. Không phải template." data-en="838+ rules. 13 domains. Not a template.">838+
+        quy tắc. 13 domains. Không phải template.</h2>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto"
+        data-vi="Mỗi quy tắc được ánh xạ theo ngành, loại sản phẩm, và context cụ thể."
+        data-en="Each rule mapped by industry, product type, and specific context.">Mỗi quy tắc được ánh xạ theo ngành,
+        loại sản phẩm, và context cụ thể.</p>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 reveal">
       <div class="glass-card rounded-xl p-4 text-center">
@@ -786,10 +923,13 @@
       <div
         class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
         ❤️</div>
-      <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4">Biết ai đang build sản phẩm?<br>Gửi
-        cho họ.</h2>
-      <p class="text-zinc-500 text-sm mb-8 max-w-md mx-auto">Mỗi founder, PM, hay maker bạn giới thiệu là thêm một sản
-        phẩm đẹp hơn ra đời.</p>
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4"
+        data-vi="Biết ai đang build sản phẩm? Gửi cho họ." data-en="Know someone building a product? Share with them.">
+        Biết ai đang build sản phẩm?<br>Gửi cho họ.</h2>
+      <p class="text-zinc-500 text-sm mb-8 max-w-md mx-auto"
+        data-vi="Mỗi founder, PM, hay maker bạn giới thiệu là thêm một sản phẩm đẹp hơn ra đời."
+        data-en="Every founder, PM, or maker you introduce means one more beautiful product in the world.">Mỗi founder,
+        PM, hay maker bạn giới thiệu là thêm một sản phẩm đẹp hơn ra đời.</p>
       <div class="flex flex-wrap items-center justify-center gap-3">
         <button onclick="shareTwitter()"
           class="share-btn px-6 py-3 rounded-xl text-sm font-medium text-zinc-300 cursor-pointer">Share on X</button>
@@ -813,7 +953,8 @@
           ✦</div>
         <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
       </div>
-      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <p class="text-zinc-600 text-sm mb-6" data-vi="Biến AI thành design studio của bạn."
+        data-en="Turn AI into your design studio.">Biến AI thành design studio của bạn.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
         <a href="README.md" class="hover:text-zinc-300 transition-colors cursor-pointer">Hướng dẫn</a><span>·</span>
         <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
@@ -821,7 +962,9 @@
         <span>Miễn phí mãi mãi</span><span>·</span><span>6 nền tảng AI</span><span>·</span><span>838+ quy tắc
           design</span>
       </div>
-      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+      <p class="text-zinc-800 text-xs" data-vi="Bạn mơ nó. AI xây nó. UX Master làm nó đẹp."
+        data-en="You dream it. AI builds it. UX Master makes it beautiful.">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.
+      </p>
     </div>
   </footer>
 
@@ -829,10 +972,24 @@
     const observer = new IntersectionObserver(e => { e.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); observer.unobserve(e.target) } }) }, { threshold: .08, rootMargin: '0px 0px -30px 0px' }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     function animateCounters() { document.querySelectorAll('[data-target]').forEach(el => { const t = parseInt(el.dataset.target), s = el.dataset.suffix || '', d = 1400, st = performance.now(); function u(n) { const e = n - st, p = Math.min(e / d, 1), ea = 1 - Math.pow(1 - p, 4); el.textContent = Math.round(t * ea) + s; if (p < 1) requestAnimationFrame(u) } requestAnimationFrame(u) }) }
     const ho = new IntersectionObserver(e => { if (e[0].isIntersecting) { animateCounters(); ho.disconnect() } }, { threshold: .3 }); const se = document.querySelector('.stat-value'); if (se) ho.observe(se.closest('div').parentElement);
-    const shareText = "UX Master — biến AI thành design studio chuyên nghiệp. Không cần biết code, không cần thuê designer. Miễn phí.", shareUrl = window.location.href;
+    const shareText = "UX Master — turn any AI into a professional design studio. 838+ rules, 48 UX Laws. Free forever.", shareUrl = window.location.href;
     function shareTwitter() { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank') }
     function shareLinkedIn() { window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank') }
-    function copyLink() { navigator.clipboard.writeText(shareUrl).then(() => { const b = document.getElementById('copyBtn'); b.textContent = 'Đã copy!'; setTimeout(() => { b.textContent = 'Copy Link' }, 2000) }) }
+    function copyLink() { navigator.clipboard.writeText(shareUrl).then(() => { const b = document.getElementById('copyBtn'); b.textContent = 'Copied!'; setTimeout(() => { b.textContent = 'Copy Link' }, 2000) }) }
+    // Language toggle
+    let currentLang = localStorage.getItem('ux-master-lang') || 'vi';
+    function applyLang(lang) {
+      document.querySelectorAll('[data-vi][data-en]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.textContent = text;
+      });
+      document.getElementById('langToggle').textContent = lang === 'vi' ? 'EN' : 'VI';
+      document.documentElement.lang = lang;
+      localStorage.setItem('ux-master-lang', lang);
+      currentLang = lang;
+    }
+    function toggleLang() { applyLang(currentLang === 'vi' ? 'en' : 'vi'); }
+    if (currentLang === 'en') applyLang('en');
   </script>
 </body>
 
