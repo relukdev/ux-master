@@ -84,36 +84,59 @@ MAPPING = {
     ("colors", "success"):      "--semi-color-success",
     ("colors", "warning"):      "--semi-color-warning",
     ("colors", "danger"):       "--semi-color-danger",
+    ("colors", "info"):         "--semi-color-info",
+    ("colors", "link"):         "--semi-color-link",
+    ("colors", "disabled_bg"):  "--semi-color-disabled-bg",
+    ("colors", "disabled_text"): "--semi-color-disabled-text",
     # Surfaces
-    ("surfaces", "app_bg"):     "--semi-color-bg-0",
-    ("surfaces", "card_bg"):    "--semi-color-bg-1",
-    ("surfaces", "sidebar_bg"): "--semi-color-bg-2",
-    ("surfaces", "border"):     "--semi-color-border",
-    # Typography
-    ("typography", "title_color"):  "--semi-color-text-0",
-    ("typography", "body_color"):   "--semi-color-text-1",
-    ("typography", "muted_color"):  "--semi-color-text-2",
-    ("typography", "font_family"):  "--semi-font-family-regular",
-    ("typography", "body_size"):    "--semi-font-size-regular",
-    # Geometry
-    ("geometry", "button_radius"):  "--semi-border-radius-medium",
-    ("geometry", "card_radius"):    "--semi-border-radius-large",
-    ("geometry", "card_shadow"):    "--semi-shadow-elevated",
+    ("surfaces", "app_bg"):      "--semi-color-bg-0",
+    ("surfaces", "card_bg"):     "--semi-color-bg-1",
+    ("surfaces", "sidebar_bg"):  "--semi-color-bg-2",
+    ("surfaces", "header_bg"):   "--semi-color-bg-3",
+    ("surfaces", "modal_bg"):    "--semi-color-bg-modal",
+    ("surfaces", "hover_bg"):    "--semi-color-fill-0",
+    ("surfaces", "selected_bg"): "--semi-color-fill-1",
+    ("surfaces", "input_bg"):    "--semi-color-fill-2",
+    ("surfaces", "border"):      "--semi-color-border",
+    # Typography (v2 compat)
+    ("typography", "title_color"):   "--semi-color-text-0",
+    ("typography", "body_color"):    "--semi-color-text-1",
+    ("typography", "muted_color"):   "--semi-color-text-2",
+    ("typography", "font_family"):   "--semi-font-family-regular",
+    ("typography", "body_size"):     "--semi-font-size-regular",
+    # Typography (v3)
+    ("typography", "heading_family"): "--semi-font-family-heading",
+    ("typography", "body_family"):   "--semi-font-family-regular",
+    ("typography", "heading_color"): "--semi-color-text-0",
+    ("typography", "heading_weight"): "--semi-font-weight-bold",
+    # Geometry (v2 compat)
+    ("geometry", "button_radius"):   "--semi-border-radius-medium",
+    ("geometry", "card_radius"):     "--semi-border-radius-large",
+    ("geometry", "card_shadow"):     "--semi-shadow-elevated",
 }
 
 # Which tokens are colors (need hex conversion)
 COLOR_TOKENS = {
     "--semi-color-primary", "--semi-color-success", "--semi-color-warning",
-    "--semi-color-danger", "--semi-color-bg-0", "--semi-color-bg-1",
-    "--semi-color-bg-2", "--semi-color-border", "--semi-color-text-0",
+    "--semi-color-danger", "--semi-color-info", "--semi-color-link",
+    "--semi-color-disabled-bg", "--semi-color-disabled-text",
+    "--semi-color-bg-0", "--semi-color-bg-1", "--semi-color-bg-2",
+    "--semi-color-bg-3", "--semi-color-bg-modal",
+    "--semi-color-fill-0", "--semi-color-fill-1", "--semi-color-fill-2",
+    "--semi-color-border", "--semi-color-text-0",
     "--semi-color-text-1", "--semi-color-text-2",
 }
 
 
 def map_to_semi_tokens(raw: dict) -> dict:
-    """Map raw harvest JSON to Semi Design CSS variables."""
+    """Map raw harvest JSON to Semi Design CSS variables.
+    
+    Supports both v2 (basic) and v3 (comprehensive) harvest formats.
+    """
     tokens = {}
+    is_v3 = raw.get("_version", 1) >= 3
 
+    # Base mapping (works for v2 and v3)
     for (section, key), semi_var in MAPPING.items():
         value = raw.get(section, {}).get(key)
         if value:
@@ -137,7 +160,101 @@ def map_to_semi_tokens(raw: dict) -> dict:
             tokens[f"{base_var}-hover"] = shades["hover"]
             tokens[f"{base_var}-active"] = shades["active"]
 
+    # === v3 Extensions ===
+    if is_v3:
+        _map_v3_neutrals(raw, tokens)
+        _map_v3_typography(raw, tokens)
+        _map_v3_spacing(raw, tokens)
+        _map_v3_borders(raw, tokens)
+        _map_v3_shadows(raw, tokens)
+        _map_v3_layout(raw, tokens)
+
     return tokens
+
+
+def _map_v3_neutrals(raw: dict, tokens: dict):
+    """Map neutral scale from v3 harvest."""
+    neutrals = raw.get("neutrals", {})
+    for step, val in neutrals.items():
+        tokens[f"--semi-color-neutral-{step}"] = rgb_to_hex(val) if val else val
+
+
+def _map_v3_typography(raw: dict, tokens: dict):
+    """Map typography scale from v3 harvest."""
+    typo = raw.get("typography", {})
+    sizes = typo.get("sizes", {})
+    size_map = {
+        "xs": "--semi-font-size-extra-small",
+        "sm": "--semi-font-size-small",
+        "base": "--semi-font-size-regular",
+        "lg": "--semi-font-size-large",
+        "xl": "--semi-font-size-header-5",
+        "2xl": "--semi-font-size-header-4",
+        "3xl": "--semi-font-size-header-3",
+        "4xl": "--semi-font-size-header-2",
+    }
+    for key, var in size_map.items():
+        if key in sizes:
+            tokens[var] = sizes[key]
+
+    weights = typo.get("weights", {})
+    weight_map = {"regular": "--semi-font-weight-regular", "medium": "--semi-font-weight-medium",
+                  "semibold": "--semi-font-weight-semibold", "bold": "--semi-font-weight-bold"}
+    for key, var in weight_map.items():
+        if key in weights:
+            tokens[var] = weights[key]
+
+
+def _map_v3_spacing(raw: dict, tokens: dict):
+    """Map spacing scale from v3 harvest."""
+    scale = raw.get("spacing", {}).get("scale", [])
+    names = ["extra-tight", "tight", "medium", "regular", "loose", "extra-loose"]
+    # Pick evenly spaced values if we have more than names
+    if scale:
+        step = max(1, len(scale) // len(names))
+        for i, name in enumerate(names):
+            idx = min(i * step, len(scale) - 1)
+            tokens[f"--semi-spacing-{name}"] = scale[idx]
+
+
+def _map_v3_borders(raw: dict, tokens: dict):
+    """Map border system from v3 harvest."""
+    borders = raw.get("borders", {})
+    if "width" in borders:
+        tokens["--semi-border-width"] = borders["width"]
+    if "color" in borders:
+        tokens["--semi-border-color"] = rgb_to_hex(borders["color"])
+    radii = borders.get("radius", {})
+    radius_map = {"sm": "--semi-border-radius-small", "md": "--semi-border-radius-medium",
+                  "lg": "--semi-border-radius-large", "xl": "--semi-border-radius-extra-large",
+                  "full": "--semi-border-radius-full"}
+    for key, var in radius_map.items():
+        if key in radii:
+            tokens[var] = radii[key]
+
+
+def _map_v3_shadows(raw: dict, tokens: dict):
+    """Map shadow system from v3 harvest."""
+    shadows = raw.get("shadows", {})
+    shadow_map = {"sm": "--semi-shadow-sm", "md": "--semi-shadow-elevated", "lg": "--semi-shadow-lg"}
+    for key, var in shadow_map.items():
+        if key in shadows:
+            tokens[var] = shadows[key]
+
+
+def _map_v3_layout(raw: dict, tokens: dict):
+    """Map layout metrics from v3 harvest."""
+    layout = raw.get("layout", {})
+    layout_map = {
+        "sidebar_width": "--semi-layout-sidebar-width",
+        "header_height": "--semi-layout-header-height",
+        "content_max_width": "--semi-layout-content-max-width",
+        "content_padding": "--semi-layout-content-padding",
+        "grid_gap": "--semi-layout-grid-gap",
+    }
+    for key, var in layout_map.items():
+        if key in layout:
+            tokens[var] = layout[key]
 
 
 # ============ OUTPUT GENERATORS ============

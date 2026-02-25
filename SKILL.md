@@ -233,6 +233,37 @@ python3 scripts/design_doc_generator.py -i harvest.json -o design-system.html
 
 Output includes: color palette swatches, typography specimens, geometry preview, component samples, token reference table, usage instructions, dark mode toggle.
 
+### Step 10: Harvester v3 — Comprehensive Design System Extraction
+
+Upgrade from basic extraction (~20 tokens) to comprehensive design system capture (50-80+ tokens):
+
+```bash
+# 1. Inject harvester_v3.js in browser console on target page
+#    Copy-paste scripts/harvester_v3.js → browser DevTools console → Enter
+#    Copy the JSON output
+
+# 2. Save raw harvest
+#    Paste JSON into output/<project>/harvest-v3-raw.json
+
+# 3. Map to Semi tokens (auto-detects v3 format)
+python3 scripts/token_mapper.py -i output/<project>/harvest-v3-raw.json --project <slug>
+
+# 4. Generate design system doc with all 9 sections
+python3 scripts/design_doc_generator.py --project <slug> --open
+```
+
+**v3 extracts:**
+- Color histogram + semantic colors (primary, success, warning, danger, info, link, disabled)
+- Neutral scale (10-shade gray ramp: 50→900)
+- Expanded surfaces (app, card, sidebar, header, modal, hover, selected, input)
+- Typography scale (heading+body families, 5-8 sizes, 4 weights)
+- Spacing system (padding/margin/gap → 8-step scale)
+- Border system (width, color, radius sm/md/lg/xl/full)
+- Shadow system (sm/md/lg classified by blur depth)
+- Layout metrics (sidebar width, header height, content max-width, grid gap)
+- Component blueprints (button, input, card, table, nav_item, tag)
+- Page type detection (dashboard/settings/report/orders)
+
 ---
 
 ## Available Domains (13)

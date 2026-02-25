@@ -71,9 +71,14 @@ def generate_doc_html(tokens: dict, harvest: dict = None, meta: dict = None, con
 
     typography_html = _build_typography_section(typography_tokens, harvest)
     geometry_html = _build_geometry_section(geometry_tokens, shadow_tokens)
-    components_html = _build_components_section(tokens)
+    components_html = _build_components_section(tokens, harvest)
     token_table_html = _build_token_table(tokens, confidence)
     usage_html = _build_usage_section(project_name)
+
+    # v3 sections
+    neutrals_html = _build_neutrals_section(harvest.get("neutrals", {}))
+    spacing_html = _build_spacing_section(harvest.get("spacing", {}))
+    layout_html = _build_layout_section(harvest.get("layout", {}))
 
     html = f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
@@ -130,6 +135,7 @@ def generate_doc_html(tokens: dict, harvest: dict = None, meta: dict = None, con
         <section class="section" id="colors">
             <h2 class="section-title">🎨 Color Palette</h2>
             {color_swatches_html}
+            {neutrals_html}
         </section>
 
         <!-- Section 3: Typography -->
@@ -138,25 +144,37 @@ def generate_doc_html(tokens: dict, harvest: dict = None, meta: dict = None, con
             {typography_html}
         </section>
 
-        <!-- Section 4: Geometry -->
+        <!-- Section 4: Spacing -->
+        <section class="section" id="spacing">
+            <h2 class="section-title">📏 Spacing Scale</h2>
+            {spacing_html}
+        </section>
+
+        <!-- Section 5: Geometry -->
         <section class="section" id="geometry">
             <h2 class="section-title">📐 Geometry</h2>
             {geometry_html}
         </section>
 
-        <!-- Section 5: Components Preview -->
+        <!-- Section 6: Layout -->
+        <section class="section" id="layout">
+            <h2 class="section-title">📱 Layout Blueprint</h2>
+            {layout_html}
+        </section>
+
+        <!-- Section 7: Components Preview -->
         <section class="section" id="components">
             <h2 class="section-title">🧱 Components Preview</h2>
             {components_html}
         </section>
 
-        <!-- Section 6: Token Reference -->
+        <!-- Section 8: Token Reference -->
         <section class="section" id="tokens">
             <h2 class="section-title">📋 Token Reference</h2>
             {token_table_html}
         </section>
 
-        <!-- Section 7: Usage -->
+        <!-- Section 9: Usage -->
         <section class="section" id="usage">
             <h2 class="section-title">⚙️ Usage</h2>
             {usage_html}
@@ -280,8 +298,11 @@ def _build_geometry_section(geometry_tokens: dict, shadow_tokens: dict) -> str:
         </div>"""
 
 
-def _build_components_section(tokens: dict) -> str:
-    """Build component preview section using CSS variables."""
+def _build_components_section(tokens: dict, harvest: dict = None) -> str:
+    """Build component preview section using CSS variables and v3 component data."""
+    harvest = harvest or {}
+    v3_components = harvest.get("components", {})
+
     primary = tokens.get("--semi-color-primary", "#2463EB")
     primary_hover = tokens.get("--semi-color-primary-hover", primary)
     bg = tokens.get("--semi-color-bg-1", "#FFFFFF")
@@ -294,6 +315,37 @@ def _build_components_section(tokens: dict) -> str:
     success = tokens.get("--semi-color-success", "#10B981")
     danger = tokens.get("--semi-color-danger", "#EF4444")
     warning = tokens.get("--semi-color-warning", "#F59E0B")
+    info = tokens.get("--semi-color-info", "#3B82F6")
+    hover_bg = tokens.get("--semi-color-fill-0", "#F3F4F6")
+    header_bg = tokens.get("--semi-color-bg-3", bg)
+
+    # Use v3 component data if available
+    btn_p = v3_components.get("button", {}).get("primary", {})
+    btn_s = v3_components.get("button", {}).get("secondary", {})
+    btn_o = v3_components.get("button", {}).get("outline", {})
+    btn_d = v3_components.get("button", {}).get("danger", {})
+    inp = v3_components.get("input", {}).get("default", {})
+    card_v3 = v3_components.get("card", {}).get("default", {})
+    table_h = v3_components.get("table", {}).get("header", {})
+    table_c = v3_components.get("table", {}).get("cell", {})
+    nav_d = v3_components.get("nav_item", {}).get("default", {})
+    nav_a = v3_components.get("nav_item", {}).get("active", {})
+
+    # Dynamic styles from v3 or fallback
+    btn_primary_bg = btn_p.get("bg", primary)
+    btn_primary_color = btn_p.get("color", "#fff")
+    btn_primary_radius = btn_p.get("border_radius", radius)
+    btn_primary_pad = btn_p.get("padding", "8px 16px")
+    btn_sec_bg = btn_s.get("bg", "transparent")
+    btn_sec_color = btn_s.get("color", text0)
+    input_pad = inp.get("padding", "10px 12px")
+    input_radius = inp.get("border_radius", radius)
+    card_pad = card_v3.get("padding", "20px")
+    card_r = card_v3.get("border_radius", card_radius)
+    card_sh = card_v3.get("box_shadow", shadow)
+    tbl_h_bg = table_h.get("bg", "#F9FAFB")
+    tbl_h_fw = table_h.get("font_weight", "600")
+    tbl_c_pad = table_c.get("padding", "12px 16px")
 
     return f"""
         <div class="component-grid">
@@ -301,36 +353,180 @@ def _build_components_section(tokens: dict) -> str:
             <div class="component-card">
                 <h4>Buttons</h4>
                 <div class="component-row">
-                    <button class="comp-btn comp-btn-primary" style="background:{primary}; border-radius:{radius}; color:#fff">Primary</button>
-                    <button class="comp-btn comp-btn-outline" style="border: 1px solid {border}; border-radius:{radius}; color:{text0}; background:transparent">Secondary</button>
-                    <button class="comp-btn comp-btn-danger" style="background:{danger}; border-radius:{radius}; color:#fff">Danger</button>
+                    <button class="comp-btn comp-btn-primary" style="background:{btn_primary_bg}; border-radius:{btn_primary_radius}; color:{btn_primary_color}; padding:{btn_primary_pad}">Primary</button>
+                    <button class="comp-btn comp-btn-outline" style="border: 1px solid {border}; border-radius:{btn_primary_radius}; color:{btn_sec_color}; background:{btn_sec_bg}">Secondary</button>
+                    <button class="comp-btn comp-btn-danger" style="background:{danger}; border-radius:{btn_primary_radius}; color:#fff">Danger</button>
+                </div>
+                <div class="component-row" style="margin-top:8px">
+                    <button class="comp-btn" style="background:{success}; border-radius:{btn_primary_radius}; color:#fff; padding:6px 12px; font-size:12px">Small</button>
+                    <button class="comp-btn" style="background:{primary}; border-radius:{btn_primary_radius}; color:#fff; padding:{btn_primary_pad}">Medium</button>
+                    <button class="comp-btn" style="background:{primary}; border-radius:{btn_primary_radius}; color:#fff; padding:12px 24px; font-size:16px">Large</button>
                 </div>
             </div>
 
             <!-- Card -->
             <div class="component-card">
                 <h4>Card</h4>
-                <div class="comp-card-preview" style="background:{bg}; border-radius:{card_radius}; box-shadow:{shadow}; border:1px solid {border}">
+                <div class="comp-card-preview" style="background:{bg}; border-radius:{card_r}; box-shadow:{card_sh}; border:1px solid {border}; padding:{card_pad}">
                     <div class="comp-card-title" style="color:{text0}">Card Title</div>
-                    <div class="comp-card-body" style="color:{text1}">Card content with the extracted design tokens applied.</div>
+                    <div class="comp-card-body" style="color:{text1}">Card content with extracted design tokens applied.</div>
                 </div>
             </div>
 
-            <!-- Input -->
+            <!-- Input + Forms -->
             <div class="component-card">
-                <h4>Input</h4>
-                <input type="text" class="comp-input" placeholder="Enter text..." style="border: 1px solid {border}; border-radius:{radius}; color:{text0}">
+                <h4>Form Elements</h4>
+                <input type="text" class="comp-input" placeholder="Text input..." style="border: 1px solid {border}; border-radius:{input_radius}; color:{text0}; padding:{input_pad}; margin-bottom:8px">
+                <div class="component-row">
+                    <select style="border:1px solid {border}; border-radius:{input_radius}; padding:{input_pad}; background:{bg}; color:{text0}; font-size:14px; flex:1">
+                        <option>Select option</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="component-card" style="grid-column: span 2">
+                <h4>Table</h4>
+                <div style="overflow-x:auto; border:1px solid {border}; border-radius:{radius}">
+                    <table style="width:100%; border-collapse:collapse; font-size:14px">
+                        <thead>
+                            <tr style="background:{tbl_h_bg}">
+                                <th style="padding:{tbl_c_pad}; text-align:left; font-weight:{tbl_h_fw}; font-size:12px; color:{text1}; border-bottom:1px solid {border}">Name</th>
+                                <th style="padding:{tbl_c_pad}; text-align:left; font-weight:{tbl_h_fw}; font-size:12px; color:{text1}; border-bottom:1px solid {border}">Status</th>
+                                <th style="padding:{tbl_c_pad}; text-align:left; font-weight:{tbl_h_fw}; font-size:12px; color:{text1}; border-bottom:1px solid {border}">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid {border}">
+                                <td style="padding:{tbl_c_pad}; color:{text0}">Order #1024</td>
+                                <td style="padding:{tbl_c_pad}"><span class="comp-tag" style="background:{success}20; color:{success}; border-radius:6px">Completed</span></td>
+                                <td style="padding:{tbl_c_pad}; color:{text0}">$1,250.00</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid {border}">
+                                <td style="padding:{tbl_c_pad}; color:{text0}">Order #1025</td>
+                                <td style="padding:{tbl_c_pad}"><span class="comp-tag" style="background:{warning}20; color:{warning}; border-radius:6px">Pending</span></td>
+                                <td style="padding:{tbl_c_pad}; color:{text0}">$430.50</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:{tbl_c_pad}; color:{text0}">Order #1026</td>
+                                <td style="padding:{tbl_c_pad}"><span class="comp-tag" style="background:{danger}20; color:{danger}; border-radius:6px">Cancelled</span></td>
+                                <td style="padding:{tbl_c_pad}; color:{text0}">$89.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Tags -->
             <div class="component-card">
-                <h4>Tags</h4>
+                <h4>Tags / Badges</h4>
                 <div class="component-row">
                     <span class="comp-tag" style="background:{primary}20; color:{primary}; border-radius:{radius}">Primary</span>
                     <span class="comp-tag" style="background:{success}20; color:{success}; border-radius:{radius}">Success</span>
                     <span class="comp-tag" style="background:{warning}20; color:{warning}; border-radius:{radius}">Warning</span>
                     <span class="comp-tag" style="background:{danger}20; color:{danger}; border-radius:{radius}">Danger</span>
+                    <span class="comp-tag" style="background:{info}20; color:{info}; border-radius:{radius}">Info</span>
                 </div>
+            </div>
+
+            <!-- Nav Items -->
+            <div class="component-card">
+                <h4>Navigation</h4>
+                <div style="background:#1F2937; border-radius:{card_r}; padding:12px">
+                    <div style="padding:8px 12px; color:rgba(255,255,255,0.5); font-size:14px; border-radius:{radius}; cursor:pointer; margin-bottom:4px">📊 Dashboard</div>
+                    <div style="padding:8px 12px; color:#fff; background:rgba(255,255,255,0.1); font-size:14px; border-radius:{radius}; cursor:pointer; margin-bottom:4px">📦 Orders</div>
+                    <div style="padding:8px 12px; color:rgba(255,255,255,0.5); font-size:14px; border-radius:{radius}; cursor:pointer; margin-bottom:4px">⚙️ Settings</div>
+                    <div style="padding:8px 12px; color:rgba(255,255,255,0.5); font-size:14px; border-radius:{radius}; cursor:pointer">📈 Reports</div>
+                </div>
+            </div>
+        </div>"""
+
+
+def _build_neutrals_section(neutrals: dict) -> str:
+    """Build neutral color scale visualization."""
+    if not neutrals:
+        return ""
+    
+    swatches = []
+    for step in ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"]:
+        val = neutrals.get(step, neutrals.get(int(step), ""))
+        if val:
+            swatches.append(f"""
+                <div class="neutral-swatch" onclick="copyColor('{_esc(val)}')">
+                    <div class="neutral-color" style="background: {_esc(val)}"></div>
+                    <div class="neutral-label">{step}</div>
+                    <code class="neutral-hex">{_esc(val)}</code>
+                </div>""")
+
+    if not swatches:
+        return ""
+
+    return f"""
+        <h3 class="subsection-title">Neutral Scale</h3>
+        <div class="neutral-grid">{"".join(swatches)}
+        </div>"""
+
+
+def _build_spacing_section(spacing: dict) -> str:
+    """Build spacing scale visualization with bars."""
+    scale = spacing.get("scale", [])
+    if not scale:
+        return '<p style="color: var(--doc-text-secondary)">No spacing data extracted. Run harvester v3 for spacing inference.</p>'
+    
+    bars = []
+    for val in scale:
+        px = val.replace("px", "")
+        bars.append(f"""
+            <div class="spacing-item">
+                <code class="spacing-value">{_esc(val)}</code>
+                <div class="spacing-bar" style="width: {_esc(val)}; min-width: 4px"></div>
+                <span class="spacing-px">{_esc(px)}</span>
+            </div>""")
+
+    return f"""
+        <div class="spacing-scale">{"".join(bars)}
+        </div>"""
+
+
+def _build_layout_section(layout: dict) -> str:
+    """Build layout blueprint diagram."""
+    if not layout:
+        return '<p style="color: var(--doc-text-secondary)">No layout data extracted. Run harvester v3 on a dashboard page.</p>'
+    
+    sidebar_w = layout.get("sidebar_width", "256px")
+    header_h = layout.get("header_height", "64px")
+    content_mw = layout.get("content_max_width", "1200px")
+    content_p = layout.get("content_padding", "24px")
+    grid_gap = layout.get("grid_gap", "16px")
+
+    return f"""
+        <div class="layout-blueprint">
+            <div class="layout-diagram">
+                <div class="layout-sidebar" style="width: 120px">
+                    <div class="layout-metric-label">Sidebar</div>
+                    <code>{_esc(sidebar_w)}</code>
+                </div>
+                <div class="layout-main-area">
+                    <div class="layout-header" style="height: 40px">
+                        <div class="layout-metric-label">Header</div>
+                        <code>{_esc(header_h)}</code>
+                    </div>
+                    <div class="layout-content">
+                        <div class="layout-metric-label">Content</div>
+                        <code>max-width: {_esc(content_mw)}</code>
+                        <code>padding: {_esc(content_p)}</code>
+                        <code>gap: {_esc(grid_gap)}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-tokens">
+            <div class="geo-grid">
+                <div class="geo-item"><div class="geo-info"><div class="geo-label">Sidebar Width</div><code>{_esc(sidebar_w)}</code></div></div>
+                <div class="geo-item"><div class="geo-info"><div class="geo-label">Header Height</div><code>{_esc(header_h)}</code></div></div>
+                <div class="geo-item"><div class="geo-info"><div class="geo-label">Content Max Width</div><code>{_esc(content_mw)}</code></div></div>
+                <div class="geo-item"><div class="geo-info"><div class="geo-label">Content Padding</div><code>{_esc(content_p)}</code></div></div>
+                <div class="geo-item"><div class="geo-info"><div class="geo-label">Grid Gap</div><code>{_esc(grid_gap)}</code></div></div>
             </div>
         </div>"""
 
@@ -757,6 +953,140 @@ def _get_css(tokens: dict) -> str:
             padding: 4px 10px;
             font-size: 12px;
             font-weight: 500;
+        }}
+
+        /* Neutral Scale */
+        .neutral-grid {{
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            border-radius: var(--doc-radius);
+            overflow: hidden;
+        }}
+
+        .neutral-swatch {{
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.15s;
+        }}
+
+        .neutral-swatch:hover {{ transform: translateY(-2px); }}
+
+        .neutral-color {{
+            height: 48px;
+            width: 100%;
+        }}
+
+        .neutral-label {{
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 4px;
+            color: var(--doc-text-secondary);
+        }}
+
+        .neutral-hex {{
+            font-size: 9px;
+            color: var(--doc-text-secondary);
+        }}
+
+        /* Spacing Scale */
+        .spacing-scale {{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: var(--doc-surface);
+            border: 1px solid var(--doc-border);
+            border-radius: var(--doc-radius);
+            padding: 20px;
+        }}
+
+        .spacing-item {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }}
+
+        .spacing-value {{
+            width: 48px;
+            text-align: right;
+            font-size: 12px;
+            color: var(--doc-text-secondary);
+            flex-shrink: 0;
+        }}
+
+        .spacing-bar {{
+            height: 12px;
+            background: var(--doc-primary);
+            border-radius: 4px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }}
+
+        .spacing-bar:hover {{ opacity: 1; }}
+
+        .spacing-px {{
+            font-size: 11px;
+            color: var(--doc-text-secondary);
+        }}
+
+        /* Layout Blueprint */
+        .layout-blueprint {{
+            margin-bottom: 20px;
+        }}
+
+        .layout-diagram {{
+            display: flex;
+            border: 2px dashed var(--doc-border);
+            border-radius: var(--doc-radius);
+            min-height: 200px;
+            overflow: hidden;
+        }}
+
+        .layout-sidebar {{
+            background: rgba(31, 41, 55, 0.9);
+            color: #D1D5DB;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            border-right: 2px dashed var(--doc-border);
+            flex-shrink: 0;
+        }}
+
+        .layout-main-area {{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }}
+
+        .layout-header {{
+            background: var(--doc-surface);
+            border-bottom: 2px dashed var(--doc-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }}
+
+        .layout-content {{
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            background: var(--doc-bg);
+        }}
+
+        .layout-metric-label {{
+            font-size: 12px;
+            font-weight: 600;
+        }}
+
+        .layout-tokens {{
+            margin-top: 16px;
         }}
 
         /* Token Table */
