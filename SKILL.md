@@ -1,11 +1,21 @@
 ---
 name: ux-master
-description: "Ultimate UI/UX design intelligence with 48 UX Laws, 37 Design Tests (TDD for Design), Design System Extractor, Code Template Generator, Multi-Device Breakpoints, BM25 search across 16 domains and 17 stacks. Use when designing, building, reviewing, or improving any UI/UX — websites, apps, dashboards, games, e-commerce."
+description: "Ultimate UI/UX design intelligence with Harvester v4 (AI-powered visual extraction), 48 UX Laws, 37 Design Tests, Figma & Google Stitch integration, MCP server for Claude/Cursor, Component Generator, and BM25 search across 16 domains. One command = Complete design system. 10x productivity boost."
 ---
 
-# MasterDesign Agent — Ultimate Design Intelligence Toolkit
+# 🚀 UX Master v4 — Ultimate Design Intelligence Platform
 
-AI-powered design system combining **UX Laws science**, **Design Test-Driven Development**, **Design System Extraction**, **Code Template Generator**, **Multi-Device Breakpoints**, and **BM25 searchable databases** across 1032+ entries, 16 domains, and 17 framework stacks.
+**AI-powered design system platform combining:**
+- 🎯 **Harvester v4** — One-command design system extraction from any website
+- 🤖 **MCP Server** — Native integration with Claude/Cursor/AI assistants  
+- 🎨 **Figma Bridge** — Bidirectional sync with Figma Tokens Studio
+- ✨ **Google Stitch** — AI design generation with extracted tokens
+- 📐 **48 UX Laws** — Behavioral psychology-based design rules
+- ✅ **37 Design Tests** — TDD for design validation
+- 💻 **Component Generator** — React/Vue/Semi Design components
+- 🔍 **BM25 Search** — 1032+ design patterns across 16 domains
+
+**One command = Complete design system. 10x productivity. Zero manual work.**
 
 ## System Persona
 
@@ -281,7 +291,7 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 | Accessibility (WCAG 2.2) | 25 ✅ | 25 ✅ |
 | Device Profiles | 20 ✅ | 20 ✅ |
 | Code Templates | 4 ✅ | 4 ✅ |
-| **Harvester** | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
+| **Harvester** | **v3 (80+ tokens)** | **v4 (120+ tokens)** 🔥 |
 | Color Histogram | ❌ | ✅ |
 | Semantic Colors | ❌ | ✅ |
 | Neutral Scale | ❌ | ✅ |
@@ -294,6 +304,204 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 | Project Registry | ❌ | ✅ |
 | Multi-harvest Merge | ❌ | ✅ |
 | Semi MCP Bridge | ❌ | ✅ |
+
+---
+
+## 🚀 NEW: Harvester v4 — AI-Powered Visual Extraction
+
+**Harvester v4** là bản nâng cấp toàn diện với khả năng thu thập design system tự động thông qua browser automation và tái hiện kiến trúc chuẩn Semi Design.
+
+### Tính năng mới v4
+
+| Feature | v3 | v4 |
+|---------|----|----|
+| Tokens | ~80 | **~120+** |
+| Browser Automation | ❌ | ✅ Auto-open |
+| Multi-page Crawl | ❌ | ✅ |
+| AI Visual Analysis | ❌ | ✅ Psychology |
+| Component Blueprints | Basic | ✅ Advanced |
+| Auto Component Gen | ❌ | ✅ React/Semi/Vue |
+| Design System Index | ❌ | ✅ Semi-architecture |
+| CLI Integration | ❌ | ✅ Unified CLI |
+
+### Quick Start v4
+
+```bash
+# 1. Quick workflow - Extract + Index + Generate
+cd /Users/todyle/Library/Mobile\ Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master
+python3 scripts/harvester_cli.py quick https://example.com --framework semi
+
+# 2. Multi-page harvest with component generation
+python3 scripts/harvester_cli.py extract \
+  --url https://example.com \
+  --crawl --max-pages 5 \
+  --generate --framework react-tailwind
+
+# 3. Index existing harvest
+python3 scripts/harvester_cli.py index \
+  --input output/harvest.json \
+  --name "MyApp" --figma
+
+# 4. Generate components from design system
+python3 scripts/harvester_cli.py generate \
+  --input output/design-system.json \
+  --all --framework semi
+```
+
+### Harvester v4 Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Harvester v4 Workflow                                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │   Extract    │───→│    Index     │───→│   Generate   │  │
+│  │  (Browser)   │    │ (Semi Arch)  │    │ (Components) │  │
+│  └──────────────┘    └──────────────┘    └──────────────┘  │
+│         │                   │                   │           │
+│    harvester_v4.js    design_system_      component_       │
+│    harvester_browser.py  indexer.py       generator.py      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Step 11: Harvester v4 — Full Automation 🔥
+
+#### A. Browser Automation
+
+```bash
+# Single URL harvest
+python3 scripts/harvester_browser.py --url https://example.com --output ./output
+
+# With mobile viewport
+python3 scripts/harvester_browser.py --url https://example.com --mobile
+
+# Multi-page crawl
+python3 scripts/harvester_browser.py --url https://example.com --crawl --max-pages 10
+
+# Interactive mode
+python3 scripts/harvester_browser.py --interactive
+```
+
+**v4 extracts (120+ tokens):**
+- Visual element detection & classification
+- Color psychology analysis
+- Layout pattern recognition (grid, flex, sidebar)
+- Typography hierarchy with font pairing
+- Component relationship mapping
+- Animation & transition detection
+- Accessibility audit (contrast, labels)
+
+#### B. Design System Indexing (Semi Architecture)
+
+```bash
+# Index single harvest
+python3 scripts/design_system_indexer.py \
+  --input harvest.json \
+  --name "MyApp" \
+  --output ./design-system
+
+# Merge multiple harvests
+python3 scripts/design_system_indexer.py \
+  --multi ./harvests/page1.json ./harvests/page2.json \
+  --name "MergedSystem"
+
+# Generate Figma tokens
+python3 scripts/design_system_indexer.py \
+  --input harvest.json \
+  --name "MyApp" \
+  --figma
+```
+
+**Kiến trúc Semi Design:**
+- Color System: Primary, Secondary, Tertiary, Neutrals (50-900)
+- Background: bg-0 → bg-4
+- Fill: fill-0 → fill-2  
+- Text: text-0 → text-3
+- Semantic: success, warning, danger, info, link
+- Spacing: none → super-loose (10 steps)
+- Border: radius xs → full
+- Shadow: sm → elevated → lg
+
+#### C. Component Generation
+
+```bash
+# Generate all components
+python3 scripts/component_generator.py \
+  --input design-system.json \
+  --all --output ./components
+
+# Generate specific component
+python3 scripts/component_generator.py \
+  --input design-system.json \
+  --component button \
+  --framework semi
+
+# Supported frameworks
+# --framework react-tailwind (default)
+# --framework semi (Semi Design)
+# --framework vue (Vue 3 + Tailwind)
+```
+
+**Generated components:**
+- Button (primary, secondary, outline, ghost, danger)
+- Card (default, bordered, elevated)
+- Input (text, password, textarea, select)
+- Badge/Tag (default, success, warning, danger, info)
+- Avatar (circle, square, sizes)
+- Alert (info, success, warning, error)
+- Modal/Dialog
+- Table
+- Tabs
+- Dropdown
+- Tooltip
+- Divider
+- Skeleton
+- Empty state
+
+#### D. Unified CLI
+
+```bash
+# Full workflow
+python3 scripts/harvester_cli.py quick https://example.com
+
+# Individual phases
+python3 scripts/harvester_cli.py extract --url https://example.com --generate
+python3 scripts/harvester_cli.py index --input harvest.json --name "MyApp"
+python3 scripts/harvester_cli.py generate --input design-system.json --all
+```
+
+### v4 Output Structure
+
+```
+output/
+├── harvest-raw.json           # Raw extraction data
+├── design-system.json         # Indexed design system
+├── design-system.css          # CSS variables (Semi spec)
+├── figma-tokens.json          # Figma Tokens Studio
+├── component-blueprints.json  # Component specs
+├── screenshot-desktop.png     # Visual reference
+├── screenshot-mobile.png      # Mobile viewport
+└── components/                # Generated components
+    ├── button/
+    │   ├── component.tsx
+    │   └── index.ts
+    ├── card/
+    ├── input/
+    └── ...
+```
+
+### Requirements
+
+```bash
+# Install Playwright for browser automation
+pip install playwright
+playwright install chromium
+
+# Or all browsers
+playwright install
+```
 
 > **Upgrade to Pro:** [ux-master.dev/pro](https://ux-master.dev/pro) — One-time payment, lifetime access, all future updates.
 
