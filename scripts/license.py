@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MasterDesign Agent — License Verification Utility
+UX Master — License Verification Utility
 
 Checks for Pro license via environment variable UX_MASTER_PRO_KEY.
 Used by Pro features to gate access and display upgrade prompts.
@@ -56,7 +56,7 @@ def print_upgrade_banner(feature_name: str):
     print()
     print("╔" + "═" * width + "╗")
     print("║" + f"  🔒 {feature_name}".ljust(width) + "║")
-    print("║" + f"     requires MasterDesign Agent Pro".ljust(width) + "║")
+    print("║" + f"     requires UX Master Pro".ljust(width) + "║")
     print("║" + " " * width + "║")
     print("║" + f"  What you get with Pro:".ljust(width) + "║")
     print("║" + f"  • Harvester v3 (80+ tokens)".ljust(width) + "║")
@@ -76,6 +76,6 @@ if __name__ == "__main__":
     if is_pro():
         key = get_license_key()
         masked = key[:4] + "****" + key[-4:] if len(key) > 8 else "****"
-        print(f"✅ MasterDesign Agent Pro licensed: {masked}")
+        print(f"✅ UX Master Pro licensed: {masked}")
     else:
         print_upgrade_banner("License Check")

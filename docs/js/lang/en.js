@@ -212,8 +212,9 @@ window.T = window.T || {}; window.T["en"] = {
   "tut_cta_sub": "Start with the first video — completely free. No signup needed.",
   "tut_cta_btn1": "▶ Watch first video",
   "tut_cta_btn2": "Install UX Master",
-  "nav_guides": "Guides",
+  "nav_foryou": "For You",
   "nav_tutorials": "Tutorials",
+  "nav_claw": "Claw",
   "footer_home": "Home",
   "dsw_tag": "Superpower",
   "dsw_h2": "From any website → your code.<br>Automatically.",
@@ -448,9 +449,9 @@ window.T = window.T || {}; window.T["en"] = {
   "react_guide_ready": "Happy coding!",
 
   "nav_home": "Home",
-  "nav_guides": "Guides",
+  "nav_foryou": "For You",
   "nav_tutorials": "Tutorials",
-  "nav_technical": "Technical",
+  "nav_claw": "Claw",
   "btn_copy": "Copy",
   "btn_copied": "Copied!",
 

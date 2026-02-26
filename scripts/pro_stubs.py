@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MasterDesign Agent — Pro Feature Stubs (Free Tier)
+UX Master — Pro Feature Stubs (Free Tier)
 
 Provides stub functions for all Pro features that display upgrade banners.
 When users call Pro features without a license, they see what they're
@@ -93,7 +93,7 @@ def show_all_features():
     """Show overview of all Pro features."""
     print()
     print("┌──────────────────────────────────────────────────────┐")
-    print("│           MasterDesign Agent Pro — Feature Overview            │")
+    print("│           UX Master Pro — Feature Overview            │")
     print("├──────────────────────────────────────────────────────┤")
     
     for key, feature in PRO_FEATURES.items():

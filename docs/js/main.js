@@ -1,5 +1,5 @@
 /* ============================================
-   MasterDesign Agent — Main Scripts
+   UX Master — Main Scripts
    Scroll reveal, counters, sharing, mobile menu
    ============================================ */
 
@@ -52,7 +52,7 @@ if (statEl) heroObserver.observe(statEl.closest('div').parentElement);
 
 // --- Share Functions ---
 const shareText =
-    'MasterDesign Agent — turn any AI into a professional design studio. 838+ rules, 48 UX Laws. Free forever.';
+    'UX Master — turn any AI into a professional design studio. 838+ rules, 48 UX Laws. Free forever.';
 const shareUrl = window.location.href;
 
 function shareTwitter() {

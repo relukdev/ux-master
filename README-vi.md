@@ -1,13 +1,13 @@
 <div align="center">
 
-# ✦ MasterDesign Agent
+# ✦ UX Master
 
 > **Bạn kể ý tưởng. AI tạo ra kiệt tác.**
 
 [English](README.md) • [Tiếng Việt](README-vi.md) • [中文](README-zh.md) • [Русский](README-ru.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Platforms](https://img.shields.io/badge/platforms-6-brightgreen.svg)
+![Platforms](https://img.shields.io/badge/platforms-8-brightgreen.svg)
 ![Entries](https://img.shields.io/badge/design%20rules-838%2B-purple.svg)
 ![UX Laws](https://img.shields.io/badge/UX%20Laws-48-ff69b4.svg)
 ![Tests](https://img.shields.io/badge/tests-7%20suites-green.svg)
@@ -25,10 +25,10 @@ Nó trông đại trà, mang đậm "mùi AI", và thiếu vắng một hệ th�
 
 ## ✨ Phép màu công nghệ
 
-**MasterDesign Agent** biến mọi công cụ AI (Cursor, Claude, Gemini...) của bạn thành một **buồng thiết kế cao cấp**.
+**UX Master** biến mọi công cụ AI (Cursor, Claude, Gemini...) của bạn thành một **buồng thiết kế cao cấp**.
 Nó hoạt động âm thầm phía sau. Bạn chỉ cần ra lệnh, và AI sẽ tự động áp dụng các tiêu chuẩn thiết kế hàng đầu thế giới để nhào nặn ra sản phẩm.
 
-| ❌ Không có MasterDesign Agent | ✦ Với MasterDesign Agent |
+| ❌ Không có UX Master | ✦ Với UX Master |
 |---------------------|--------------|
 | AI tạo UI đại trà, giả tạo | Giao diện choáng ngợp, chốt gục khách hàng |
 | Mỗi trang một kiểu, lộn xộn | Hệ thống thiết kế đồng bộ tuyệt đối |
@@ -42,7 +42,7 @@ Nó hoạt động âm thầm phía sau. Bạn chỉ cần ra lệnh, và AI s�
 
 Chúng tôi đã nâng cấp toàn diện sức mạnh của bộ kit:
 
-- 🧬 **Harvester v3 (Trích xuất toàn diện):** Bóc tách 50-80+ design tokens từ bất kỳ website nào. Chụp lại biểu đồ màu, hệ màu semantic, thang màu xám, tỷ lệ chữ, khoảng cách và thông số layout. Biến DNA của đối thủ thành của bạn trong 5 phút.
+- 🧬 **Harvester v4 (Trích xuất toàn diện):** Bóc tách 120+ design tokens từ bất kỳ website nào. Chụp lại biểu đồ màu, hệ màu semantic, thang màu xám, tỷ lệ chữ, khoảng cách và thông số layout. Biến DNA của đối thủ thành của bạn trong 5 phút.
 - 🗂️ **Project Registry:** Quản lý hàng loạt dự án thiết kế dễ dàng. Trộn (merge) dữ liệu harvest từ nhiều trang vào một dự án duy nhất.
 - 📖 **Design Doc Generator:** Tự động gen ra trang HTML Tàit liệu thiết kế (Documentation) hiển thị bảng màu, font chữ, components mẫu.
 - 🔗 **Token Mapper & Semi MCP Bridge:** Chuyển hóa design tokens sang biến CSS của Semi Design. Tự động sinh code CSS overrides, JSON cho Figma và template React component.
@@ -52,11 +52,12 @@ Chúng tôi đã nâng cấp toàn diện sức mạnh của bộ kit:
 
 ## 🧠 Bộ não thiết kế đích thực
 
-MasterDesign Agent không phải là một cái template. Nó là một ma trận trí tuệ chứa **838+ quy tắc thiết kế**, bao phủ **13 tech stacks** và **13 ngành hàng** (Fintech, SaaS, Thương mại điện tử...).
+UX Master không phải là một cái template. Nó là một ma trận trí tuệ chứa **838+ quy tắc thiết kế**, bao phủ **13 tech stacks** và **13 ngành hàng** (Fintech, SaaS, Thương mại điện tử...).
 
 - **67 Phong cách UI:** Từ Glassmorphism thanh lịch tới Brutalism táo bạo.
 - **96 Bảng màu & 57 Cặp font chữ:** Chọn lọc khắt khe cho hiệu ứng thị giác tối đa.
 - **48 Định luật UX:** Tự động áp dụng Định luật Hick (giảm lựa chọn), Định luật Fitts (tăng kích thước vùng bấm), Ngưỡng Doherty (phản hồi siêu tốc), v.v.
+- **8 Kỹ năng Framework:** React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind.
 - **37 Bài Design Tests:** Đóng vai trò như một màng lọc QA trước khi AI nhả code cho bạn.
 
 ---
@@ -89,7 +90,7 @@ python3 scripts/install.py --platform all --global
 Mở AI tool của bạn (vd: Cursor) và gõ:
 > *"Tạo landing page cho dịch vụ spa thượng lưu, phong cách modern minimal."*
 
-Nếu AI bắt đầu nhắc đến **design systems, UX Laws, hoặc design tests** — Chúc mừng, MasterDesign Agent đã thức tỉnh! 🎉
+Nếu AI bắt đầu nhắc đến **design systems, UX Laws, hoặc design tests** — Chúc mừng, UX Master đã thức tỉnh! 🎉
 
 ---
 
@@ -97,6 +98,8 @@ Nếu AI bắt đầu nhắc đến **design systems, UX Laws, hoặc design tes
 
 Hòa hợp kỳ diệu cùng luồng làm việc của bạn:
 - **Cursor** (`--platform cursor`) - IDE code bằng AI số 1 hiện nay.
+- **OpenClaw** (`--platform openclaw`) - Telegram bot AI agent mạnh mẽ.
+- **ZeroClaw** (`--platform zeroclaw`) - Rust-native local AI agent bảo mật cao.
 - **Claude / Amp** (`--platform amp`) - CLI siêu mạnh từ Anthropic.
 - **Gemini CLI** (`--platform gemini`) - Công cụ của Google.
 - **Antigravity** (`--platform antigravity`) - Extension nội bộ của Google.
@@ -132,4 +135,4 @@ Dự án luôn chào đón sự đóng góp của bạn! Nếu bạn muốn cả
 Sử dụng MIT License - bạn được quyền tự do dùng trong bất kỳ dự án nào.
 
 ---
-> **MasterDesign Agent** — 1 cái đầu cân cả phòng thiết kế. ✦
+> **UX Master** — 1 cái đầu cân cả phòng thiết kế. ✦

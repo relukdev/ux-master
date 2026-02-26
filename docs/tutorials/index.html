@@ -53,10 +53,14 @@
       <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer">Home</a>
-      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer">Guides</a>
-      <a href="#" class="text-white transition-colors cursor-pointer">Tutorials</a>
-      <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer">Technical</a>
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_home">Home</span></a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_foryou">For You</span></a>
+      <a href="#" class="text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_tutorials">Tutorials</span></a>
+      <a href="../claw/index.html" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_claw">Claw</span></a>
     </div>
     <div class="flex items-center gap-1.5 sm:gap-3">
       <div class="lang-dropdown" id="langDropdown">
@@ -97,11 +101,13 @@
   <!-- MOBILE MENU -->
   <div id="mobileMenu"
     class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
-    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a>
-    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Guides</a>
-    <a href="#" onclick="closeMobileMenu()" class="text-white py-2">Tutorials</a>
-    <a href="../technical/index.html" onclick="closeMobileMenu()"
-      class="text-zinc-300 hover:text-white py-2">Technical</a>
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_home">Home</span></a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_foryou">For You</span></a>
+    <a href="#" onclick="closeMobileMenu()" class="text-white py-2"><span data-i18n="nav_tutorials">Tutorials</span></a>
+    <a href="../claw/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_claw">Claw</span></a>
   </div>
 
   <!-- HERO -->
@@ -305,6 +311,57 @@
   </section>
   <div class="glow-line max-w-4xl mx-auto"></div>
 
+  <!-- TECHNICAL REFERENCE -->
+  <section class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-indigo-400 text-sm font-semibold tracking-widest uppercase mb-3">Deep Dive</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Technical Reference</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">API documentation, engine architecture, and Harvester v4
+        technical details.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- API Reference -->
+      <a href="../technical/api-reference.html" class="glass-card rounded-2xl p-6 reveal group cursor-pointer block">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/5 flex items-center justify-center text-xl">
+            💻</div>
+          <h3 class="font-heading font-bold">API Reference</h3>
+        </div>
+        <p class="text-zinc-500 text-sm mb-3">Complete API reference for CLI, Python SDK, MCP Server, and Validation
+          Engine.</p>
+      </a>
+
+      <!-- Harvester v4 -->
+      <a href="../technical/harvester-v4.html"
+        class="glass-card rounded-2xl p-6 reveal reveal-delay-1 group cursor-pointer block">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/5 flex items-center justify-center text-xl">
+            🔍</div>
+          <h3 class="font-heading font-bold">Harvester v4</h3>
+        </div>
+        <p class="text-zinc-500 text-sm mb-3">AI-powered design system extraction. Browser automation and Semi Design
+          mapper.</p>
+      </a>
+
+      <!-- How it Works -->
+      <a href="../technical/how-it-works.html"
+        class="glass-card rounded-2xl p-6 reveal reveal-delay-2 group cursor-pointer block">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-pink-500/5 flex items-center justify-center text-xl">
+            ⚙️</div>
+          <h3 class="font-heading font-bold">How It Works</h3>
+        </div>
+        <p class="text-zinc-500 text-sm mb-3">Technical deep dive into the UX Master architecture and code generation
+          pipelines.</p>
+      </a>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
   <!-- FEATURED TUTORIALS -->
   <section class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-16 reveal">
@@ -483,11 +540,11 @@
       <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
         <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
-        <a href="../guides/index.html"
-          class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+            data-i18n="nav_foryou">For You</span></a><span>·</span>
         <a href="#" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
-        <a href="../technical/index.html"
-          class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="../claw/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+            data-i18n="nav_claw">Claw</span></a><span>·</span>
         <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
           class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
       </div>

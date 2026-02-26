@@ -1,5 +1,5 @@
 /* ============================================
-   MasterDesign Agent — i18n System
+   UX Master — i18n System
    Supports 11 languages with auto-detection
    ============================================ */
 

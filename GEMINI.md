@@ -53,7 +53,7 @@ npx tsc --noEmit  # Validate generated TypeScript
 - Expand component templates from 4 to 20+
 - Upgrade `design_doc_generator.py` to semi.design quality
 
-## The MasterDesign Agent — Core Directives
+## The UX Master — Core Directives
 
 1. Extract design tokens accurately from any visual source (browser, code, or design file).
 2. Map all tokens to Semi Design CSS variables with zero ambiguity.

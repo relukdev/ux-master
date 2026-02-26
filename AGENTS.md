@@ -2,7 +2,7 @@
 
 **Cross-platform agent configuration** for Google Antigravity, OpenAI Codex, OpenCode, Cursor, Claude, and compatible AI tools.
 
-## The MasterDesign Agent
+## The UX Master
 
 UX Master is an **AI-powered design system extraction and generation platform**. The agent's role: extract design tokens from websites, map them to Semi Design, generate production-ready components, and document everything. Think of it as "Figma Tokens Studio" meets "Semi Design" — fully automated.
 
@@ -157,4 +157,4 @@ See **SKILL.md** in root directory for detailed capability matrix, agent persona
 
 **Last Updated:** 2026-02-26
 **Version:** 1.0
-**Maintainer:** MasterDesign Agent
+**Maintainer:** UX Master

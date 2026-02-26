@@ -90,10 +90,10 @@ output/example/
 - **Component blueprint extraction** — buttons, cards, inputs, tables
 - **Accessibility audit** — contrast ratios, missing labels
 
-### 🤖 MCP Server — AI Assistant Integration
-- Native integration with **Claude, Cursor, Windsurf**
+### 🤖 MCP Server & Native Agent Integration
+- Native integration with **Claude, Cursor, Windsurf, OpenClaw, ZeroClaw**
 - 5 powerful tools: extract, generate, export, create prompts
-- AI can extract and generate directly from chat
+- AI can extract and generate directly from chat or Telegram bots
 
 ### 🎨 Figma Bridge — Bidirectional Sync
 - **Export**: Send tokens to Figma Tokens Studio
@@ -107,9 +107,9 @@ output/example/
 - **Batch generate** multiple screens with consistent style
 - AI-generated UI that matches your design system
 
-### 💻 Component Generator
+### 💻 Component Generator & Framework Skills
 - **15+ component types**: Button, Card, Input, Badge, Table, Tabs, etc.
-- **3 frameworks**: React + Tailwind, Semi Design, Vue 3
+- **8 frameworks**: React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind
 - **TypeScript + types**: Full type safety
 - **Production-ready**: Best practices built-in
 

@@ -6,7 +6,7 @@ UX Master is an AI-powered design system extraction and generation platform comb
 
 ## Unified Skill
 
-The full UX Master skill is at `.skills/skills/ux-master/SKILL.md` — read this for the complete workflow, persona ("The MasterDesign Agent"), 5 Core Directives, and both design intelligence and harvester pipelines.
+The full UX Master skill is at `.skills/skills/ux-master/SKILL.md` — read this for the complete workflow, persona ("The UX Master"), 5 Core Directives, and both design intelligence and harvester pipelines.
 
 Cross-platform configs also available:
 - `AGENTS.md` — For Antigravity, Codex, OpenCode, Cursor
