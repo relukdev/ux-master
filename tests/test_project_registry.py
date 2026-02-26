@@ -142,5 +142,55 @@ class TestProjectRegistry(unittest.TestCase):
         self.assertTrue(path.exists())
 
 
+class TestRegistryDefaults(unittest.TestCase):
+    """Central registry defaults."""
+
+    def test_default_output_dir_is_uxmaster(self):
+        """Default output should be ~/.uxmaster/projects/."""
+        reg = ProjectRegistry()
+        expected = Path.home() / ".uxmaster" / "projects"
+        self.assertEqual(reg.output_dir, expected)
+
+    def test_custom_output_dir_still_works(self):
+        """Backward compat: custom output_dir is respected."""
+        tmp = Path(tempfile.mkdtemp())
+        try:
+            reg = ProjectRegistry(output_dir=tmp)
+            self.assertEqual(reg.output_dir, tmp)
+        finally:
+            shutil.rmtree(tmp)
+
+
+class TestRegistrySiteDir(unittest.TestCase):
+    """Site directory management."""
+
+    def setUp(self):
+        self.tmp_dir = Path(tempfile.mkdtemp())
+        self.registry = ProjectRegistry(output_dir=self.tmp_dir)
+        self.registry.create("Test", "https://test.com")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp_dir)
+
+    def test_get_site_dir_path(self):
+        site_dir = self.registry.get_site_dir("test")
+        self.assertEqual(site_dir, self.tmp_dir / "test" / "site")
+
+    def test_get_site_dir_with_content(self):
+        site_dir = self.registry.get_site_dir("test")
+        site_dir.mkdir(parents=True, exist_ok=True)
+        (site_dir / "index.html").write_text("<html></html>")
+        self.assertTrue(site_dir.exists())
+        self.assertTrue((site_dir / "index.html").exists())
+
+    def test_serve_missing_site_raises(self):
+        with self.assertRaises(FileNotFoundError):
+            self.registry.serve("test")
+
+    def test_serve_nonexistent_slug_raises(self):
+        with self.assertRaises(FileNotFoundError):
+            self.registry.serve("nope")
+
+
 if __name__ == "__main__":
     unittest.main()

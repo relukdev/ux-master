@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-OUTPUT_DIR = Path(__file__).parent.parent / "output"
+OUTPUT_DIR = Path.home() / ".uxmaster" / "projects"
 
 
 def slugify(name: str) -> str:
@@ -127,6 +127,31 @@ class ProjectRegistry:
             return None
         with open(merged_path, "r") as f:
             return json.load(f)
+
+    def get_site_dir(self, slug: str) -> Path:
+        """Get the site directory path for a project."""
+        return self.output_dir / slug / "site"
+
+    def serve(self, slug: str, port: int = 3939):
+        """Start local HTTP server for a project's guideline site."""
+        import http.server
+        import functools
+
+        site_dir = self.get_site_dir(slug)
+        if not site_dir.exists() or not (site_dir / "index.html").exists():
+            raise FileNotFoundError(
+                f"Site not found for '{slug}'. Run 'build {slug}' first."
+            )
+
+        Handler = functools.partial(
+            http.server.SimpleHTTPRequestHandler,
+            directory=str(site_dir)
+        )
+        print(f"[SERVE] {slug} design system at http://localhost:{port}")
+        print(f"[DIR] {site_dir}")
+        print("Press Ctrl+C to stop.")
+        with http.server.HTTPServer(("", port), Handler) as httpd:
+            httpd.serve_forever()
 
     def _write_manifest(self, slug: str, manifest: dict):
         """Write manifest.json to project directory."""
