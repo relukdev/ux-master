@@ -1,6 +1,6 @@
 # 🎨 UX Master v4 — AI-Powered Design System Platform
 
-[![Version](https://img.shields.io/badge/version-4.0.0-blue.svg)](https://github.com/ux-master/ux-master)
+[![Version](https://img.shields.io/badge/version-4.1.1-blue.svg)](https://github.com/ux-master/ux-master)
 [![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
