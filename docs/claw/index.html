@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claw Guides — UX Master</title>
+    <meta name="description"
+        content="Install UX Master on OpenClaw and ZeroClaw. Chat to design. Rust-native speed. Full AI design system.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], body: ['"Inter"', 'system-ui', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'] }, colors: { surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' }, accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' }, magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' }, success: { DEFAULT: '#10b981', light: '#34d399' }, warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }, claw: { DEFAULT: '#0ea5e9', light: '#38bdf8' }, zero: { DEFAULT: '#f97316', light: '#fb923c' } } } } }</script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .guide-content h2 {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .guide-content h3 {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: .75rem;
+            color: #e4e4e7
+        }
+
+        .guide-content p {
+            color: #a1a1aa;
+            line-height: 1.8;
+            margin-bottom: 1rem
+        }
+
+        .guide-content ul,
+        .guide-content ol {
+            color: #a1a1aa;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem
+        }
+
+        .guide-content li {
+            margin-bottom: .5rem;
+            line-height: 1.7
+        }
+
+        .guide-content pre {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: .75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto
+        }
+
+        .guide-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .85rem;
+            color: #a78bfa
+        }
+
+        .guide-content pre code {
+            color: #d4d4d8
+        }
+
+        .guide-content blockquote {
+            border-left: 3px solid rgba(16, 185, 129, .4);
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            color: #a1a1aa;
+            font-style: italic
+        }
+
+        .guide-content strong {
+            color: #e4e4e7
+        }
+
+        .guide-content hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, .3), rgba(6, 182, 212, .2), transparent);
+            margin: 3rem 0
+        }
+
+        .chat-bubble {
+            background: rgba(14, 165, 233, .08);
+            border: 1px solid rgba(14, 165, 233, .15);
+            border-radius: 1rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: .75rem
+        }
+
+        .chat-bubble.user {
+            background: rgba(255, 255, 255, .05);
+            border-color: rgba(255, 255, 255, .1);
+            color: #e4e4e7;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- NAVBAR -->
+    <nav
+        class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+        <a href="../index.html" class="flex items-center gap-2.5 group">
+            <div
+                class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+                ✦</div>
+            <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+            <a href="../index.html" class="hover:text-white transition-colors cursor-pointer"><span
+                    data-i18n="nav_home">Home</span></a>
+            <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer"><span
+                    data-i18n="nav_foryou">For You</span></a>
+            <a href="../tutorials/index.html" class="hover:text-white transition-colors cursor-pointer"><span
+                    data-i18n="nav_tutorials">Tutorials</span></a>
+            <a href="#" class="text-white transition-colors cursor-pointer"><span data-i18n="nav_claw">Claw</span></a>
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-3">
+            <div class="lang-dropdown" id="langDropdown">
+                <button
+                    class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+                    onclick="toggleLangMenu()">
+                    <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+                    <span class="text-[10px] opacity-70">▾</span>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+                    <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+                    <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+                    <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+                    <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+                    <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+                    <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+                    <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+                    <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+                    <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+                </div>
+            </div>
+            <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+                class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+                Star</a>
+            <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+                onclick="toggleMobileMenu()">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu"
+        class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+        <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+                data-i18n="nav_home">Home</span></a>
+        <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+                data-i18n="nav_foryou">For You</span></a>
+        <a href="../tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+                data-i18n="nav_tutorials">Tutorials</span></a>
+        <a href="#" onclick="closeMobileMenu()" class="text-white py-2"><span data-i18n="nav_claw">Claw</span></a>
+    </div>
+
+    <!-- HERO -->
+    <section class="relative min-h-[60vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+        <div class="hero-bg"></div>
+        <div class="grid-pattern"></div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <!-- OpenClaw -->
+                <div
+                    class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-claw/20 to-claw-light/10 flex items-center justify-center text-4xl sm:text-5xl border border-claw/20 shadow-[0_0_30px_rgba(14,165,233,0.15)]">
+                    🐾</div>
+                <div class="text-zinc-600 font-bold text-xl">&</div>
+                <!-- ZeroClaw -->
+                <div
+                    class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-zero/20 to-zero-light/10 flex items-center justify-center text-4xl sm:text-5xl border border-zero/20 shadow-[0_0_30px_rgba(249,115,22,0.15)]">
+                    ⚡</div>
+            </div>
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-zinc-300 mb-4 tracking-wide uppercase">
+                AI Agent Platforms</div>
+            <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+                <span
+                    class="bg-gradient-to-r from-claw-light via-white to-zero-light bg-clip-text text-transparent">OpenClaw
+                    & ZeroClaw</span><br>
+                <span class="text-white">Design Intelligence.</span>
+            </h1>
+            <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+                Two powerful AI agent ecosystems. One master design UX skill. From Telegram bots to Rust-native speed,
+                UX Master integrates flawlessly with the tools you already use.
+            </p>
+        </div>
+    </section>
+    <div class="glow-line max-w-4xl mx-auto"></div>
+
+    <!-- COMPARISON -->
+    <section class="max-w-5xl mx-auto px-4 py-16 reveal">
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- OpenClaw Card -->
+            <div
+                class="glass-card rounded-2xl p-8 border-t-4 border-t-claw/50 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-claw/10 rounded-full blur-3xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50">
+                </div>
+                <div class="flex items-center gap-4 mb-6">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-claw/10 flex items-center justify-center text-2xl border border-claw/20 text-claw">
+                        🐾</div>
+                    <div>
+                        <h2 class="font-heading font-bold text-2xl text-white">OpenClaw</h2>
+                        <p class="text-claw-light text-sm">The Telegram Bot Ecosystem</p>
+                    </div>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">
+                    Designed for makers who love chatting with their infrastructure. Run it on your VPS and install
+                    skills directly through Telegram.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-claw mr-3">✓</span> Installed
+                        via OpenCode</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-claw mr-3">✓</span> Telegram
+                        Bot interface</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-claw mr-3">✓</span>
+                        conversational Design System extraction</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-claw mr-3">✓</span> Hosted on
+                        VPS</li>
+                </ul>
+                <a href="#openclaw"
+                    class="inline-flex items-center justify-center w-full bg-claw/10 hover:bg-claw/20 text-claw-light font-medium py-2.5 rounded-xl transition-colors border border-claw/10">View
+                    OpenClaw Guide</a>
+            </div>
+
+            <!-- ZeroClaw Card -->
+            <div
+                class="glass-card rounded-2xl p-8 border-t-4 border-t-zero/50 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-zero/10 rounded-full blur-3xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50">
+                </div>
+                <div class="flex items-center gap-4 mb-6">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-zero/10 flex items-center justify-center text-2xl border border-zero/20 text-zero">
+                        ⚡</div>
+                    <div>
+                        <h2 class="font-heading font-bold text-2xl text-white">ZeroClaw</h2>
+                        <p class="text-zero-light text-sm">The Rust-Native Engine</p>
+                    </div>
+                </div>
+                <p class="text-zinc-400 text-sm mb-6 leading-relaxed">
+                    Built for performance. ZeroClaw brings local-first, blazing fast operations written in Rust. No
+                    latency, complete privacy.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-zero mr-3">✓</span>
+                        Rust-native speed</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-zero mr-3">✓</span> 100% Local
+                        processing</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-zero mr-3">✓</span> Zero
+                        latency skill loading</li>
+                    <li class="flex items-center text-sm text-zinc-300"><span class="text-zero mr-3">✓</span> Strict
+                        Privacy</li>
+                </ul>
+                <a href="#zeroclaw"
+                    class="inline-flex items-center justify-center w-full bg-zero/10 hover:bg-zero/20 text-zero-light font-medium py-2.5 rounded-xl transition-colors border border-zero/10">View
+                    ZeroClaw Guide</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPENCLAW GUIDE -->
+    <article id="openclaw" class="max-w-4xl mx-auto px-4 pt-20 pb-10 guide-content">
+        <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">🐾</span>
+            <h2 class="!mt-0 !mb-0 text-3xl">OpenClaw Guide</h2>
+        </div>
+        <p class="text-lg">Chat. Install. Design. Extract design systems using the OpenClaw Telegram bot.</p>
+
+        <section class="reveal mt-8">
+            <h3>Method 1: Via Telegram Bot (Recommended)</h3>
+            <p>Chat with your OpenClaw bot on Telegram:</p>
+            <div class="chat-bubble user">
+                <p class="!mb-0"><strong>You:</strong> Install the ux-master skill from GitHub</p>
+            </div>
+            <div class="chat-bubble">
+                <p class="!text-claw-light !mb-0"><strong>🐾 OpenClaw:</strong> Cloning ux-master... ✅ Skill installed
+                    successfully! 1032+ design rules loaded. Type "help ux-master" to see available commands.</p>
+            </div>
+
+            <h3>Method 2: One-Command Install</h3>
+            <p>SSH into your VPS and run:</p>
+            <pre><code>bash <(curl -sL https://raw.githubusercontent.com/relukdev/ux-master/main/dist/clawhub/ux-master/scripts/install.sh)</code></pre>
+
+            <h3>Extract Design Systems using Telegram</h3>
+            <p>Extract a complete design system from any website just by chatting:</p>
+            <div class="chat-bubble user">
+                <p class="!mb-0"><strong>You:</strong> Extract design system from https://linear.app</p>
+            </div>
+            <div class="chat-bubble">
+                <p class="!text-claw-light !mb-2"><strong>🐾 OpenClaw:</strong> Running UX Master Harvester...</p>
+                <p class="!text-zinc-300 text-sm !mb-0">✅ Extracted 127 tokens: 24 colors, 8 fonts, 12 spacing scales,
+                    shadows, borders<br>
+                    ✅ Generated: design-system.css, design-system.json, semi-theme-override.css<br>
+                    ✅ Components ready: Button, Card, Input, Badge</p>
+            </div>
+        </section>
+    </article>
+
+    <div class="glow-line max-w-4xl mx-auto"></div>
+
+    <!-- ZEROCLAW GUIDE -->
+    <article id="zeroclaw" class="max-w-4xl mx-auto px-4 pt-20 pb-16 guide-content">
+        <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">⚡</span>
+            <h2 class="!mt-0 !mb-0 text-3xl">ZeroClaw Guide</h2>
+        </div>
+        <p class="text-lg">Rust-Native speed for local-first design generation.</p>
+
+        <section class="reveal mt-8">
+            <h3>⚡ Quick Install</h3>
+            <p>ZeroClaw uses the standard <strong>agentskills.io</strong> format. UX Master is fully compatible:</p>
+
+            <pre><code># Clone UX Master
+git clone https://github.com/relukdev/ux-master.git ~/skills/ux-master
+
+# Tell ZeroClaw about it
+zeroclaw skills add ~/skills/ux-master</code></pre>
+
+            <h3>Verify Installation</h3>
+            <pre><code># Check skill is loaded
+zeroclaw skills list
+
+# Expected output:
+# ux-master    v2.0.0    1032+ design rules, 48 UX Laws, 8 framework skills</code></pre>
+
+            <h3>🏗️ Architecture Fit</h3>
+            <p>ZeroClaw's architecture and UX Master's local-first approach are a perfect match:</p>
+            <div class="grid sm:grid-cols-2 gap-4 my-6">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                    <h4 class="text-white font-bold mb-2">🔒 100% Local Processing</h4>
+                    <p class="text-sm text-zinc-400">All design analysis runs on your machine. No API calls. No
+                        telemetry. Your tokens never leave your system.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                    <h4 class="text-white font-bold mb-2">⚡ Zero Latency</h3>
+                        <p class="text-sm text-zinc-400">SKILL.md is loaded instantly. BM25 search across 1032+ rules
+                            executes in milliseconds.</p>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="max-w-6xl mx-auto px-4 py-16 border-t border-white/5 mt-10">
+        <div class="text-center">
+            <div class="flex items-center justify-center gap-2.5 mb-6">
+                <div
+                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+                    ✦</div>
+                <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+            </div>
+            <p class="text-zinc-600 text-sm mb-6">Turn AI into your design studio.</p>
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-500 mb-8 font-medium">
+                <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+                        data-i18n="nav_home">Home</span></a><span>·</span>
+                <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+                        data-i18n="nav_foryou">For You</span></a><span>·</span>
+                <a href="../tutorials/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+                        data-i18n="nav_tutorials">Tutorials</span></a><span>·</span>
+                <a href="#" class="text-white transition-colors cursor-pointer"><span
+                        data-i18n="nav_claw">Claw</span></a><span>·</span>
+                <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+                    class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+            </div>
+            <p class="text-zinc-800 text-xs">You dream it. AI builds it. UX Master makes it beautiful.</p>
+        </div>
+    </footer>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/lang/en.js"></script>
+    <script src="../js/lang/vi.js"></script>
+    <script src="../js/lang/zh.js"></script>
+    <script src="../js/lang/ja.js"></script>
+    <script src="../js/lang/ko.js"></script>
+    <script src="../js/lang/ru.js"></script>
+    <script src="../js/lang/de.js"></script>
+    <script src="../js/lang/fr.js"></script>
+    <script src="../js/lang/id.js"></script>
+    <script src="../js/lang/hi.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
