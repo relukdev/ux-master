@@ -57,6 +57,24 @@ try:
 except ImportError:
     GENERATOR_AVAILABLE = False
 
+try:
+    from project_registry import ProjectRegistry
+    REGISTRY_AVAILABLE = True
+except ImportError:
+    REGISTRY_AVAILABLE = False
+
+try:
+    from site_generator import SiteGenerator
+    SITE_GEN_AVAILABLE = True
+except ImportError:
+    SITE_GEN_AVAILABLE = False
+
+try:
+    from token_mapper import map_tokens
+    TOKEN_MAPPER_AVAILABLE = True
+except ImportError:
+    TOKEN_MAPPER_AVAILABLE = False
+
 
 class HarvesterCLI:
     """Unified CLI for Harvester v4 workflow."""
@@ -308,6 +326,144 @@ class HarvesterCLI:
         
         return 0
 
+    # ── New CLI commands ──────────────────────────────────────
+
+    def projects_list(self, args):
+        """List all projects in the registry."""
+        if not REGISTRY_AVAILABLE:
+            print("[ERROR] Project registry not available.")
+            return 1
+
+        registry = ProjectRegistry()
+        projects = registry.list_all()
+
+        if not projects:
+            print("No projects found.")
+            print("  Run: harvester quick <url> --name <project>")
+            return 0
+
+        print(f"Found {len(projects)} project(s):\n")
+        for p in projects:
+            pages = p.get('harvest_count', 0)
+            print(f"  [{p['slug']}] {p['name']} — {pages} page(s) — {p.get('url', '')}")
+        return 0
+
+    def projects_info(self, args):
+        """Show project details."""
+        if not REGISTRY_AVAILABLE:
+            print("[ERROR] Project registry not available.")
+            return 1
+
+        registry = ProjectRegistry()
+        info = registry.get(args.slug)
+        if info is None:
+            print(f"Project '{args.slug}' not found.")
+            return 1
+
+        print(json.dumps(info, indent=2))
+        return 0
+
+    def projects_delete(self, args):
+        """Delete a project."""
+        if not REGISTRY_AVAILABLE:
+            print("[ERROR] Project registry not available.")
+            return 1
+
+        registry = ProjectRegistry()
+        if registry.delete(args.slug):
+            print(f"[OK] Deleted project '{args.slug}'")
+            return 0
+        else:
+            print(f"Project '{args.slug}' not found.")
+            return 1
+
+    def serve_project(self, args):
+        """Serve design system site for a project."""
+        if not REGISTRY_AVAILABLE:
+            print("[ERROR] Project registry not available.")
+            return 1
+
+        registry = ProjectRegistry()
+        try:
+            registry.serve(args.slug, port=args.port)
+        except FileNotFoundError as e:
+            print(f"[ERROR] {e}")
+            return 1
+        return 0
+
+    def build_project(self, args):
+        """Build/rebuild guideline site for a project."""
+        if not REGISTRY_AVAILABLE or not SITE_GEN_AVAILABLE:
+            print("[ERROR] Required modules not available.")
+            return 1
+
+        registry = ProjectRegistry()
+        project = registry.get(args.slug)
+        if project is None:
+            print(f"Project '{args.slug}' not found.")
+            return 1
+
+        project_dir = registry.get_project_dir(args.slug)
+        site_dir = registry.get_site_dir(args.slug)
+
+        # Load design system data
+        ds_path = project_dir / "design-system.json"
+        if not ds_path.exists():
+            for alt in ["hexabox-design-system/design-system.json"]:
+                alt_path = project_dir / alt
+                if alt_path.exists():
+                    ds_path = alt_path
+                    break
+
+        if ds_path.exists():
+            with open(ds_path, 'r') as f:
+                design_system = json.load(f)
+        else:
+            design_system = {}
+            print("[WARN] No design-system.json found, generating with empty tokens.")
+
+        # Load tokens
+        tokens = {}
+        for tokens_file in ["semi-theme-override.css", "tokens/semi-theme.css"]:
+            token_path = project_dir / tokens_file
+            if token_path.exists():
+                import re as _re
+                content = token_path.read_text()
+                for match in _re.finditer(r'(--[\\w-]+)\\s*:\\s*([^;]+)', content):
+                    tokens[match.group(1)] = match.group(2).strip()
+                break
+
+        # Load components
+        components = {}
+        comp_dir = project_dir / "components"
+        if comp_dir.exists():
+            for sub in sorted(comp_dir.iterdir()):
+                if sub.is_dir():
+                    files = {}
+                    for f in sub.iterdir():
+                        if f.is_file():
+                            files[f.name] = f.read_text()
+                    if files:
+                        components[sub.name] = files
+
+        # Generate site
+        print(f"[BUILD] Generating guideline site for '{args.slug}'...")
+        gen = SiteGenerator(
+            design_system=design_system,
+            tokens=tokens,
+            meta=project,
+            output_dir=site_dir,
+            components=components,
+        )
+        gen.generate()
+
+        print(f"[OK] Site generated at {site_dir}/")
+        print(f"  → {site_dir}/index.html")
+        print(f"  → {site_dir}/tokens.html")
+        print(f"  → {site_dir}/components.html")
+        print(f"\n  Run: harvester serve {args.slug}")
+        return 0
+
 
 def create_parser():
     """Create argument parser."""
@@ -399,7 +555,41 @@ For more help: harvester <command> --help
     quick_parser.add_argument("--framework", "-f", default="react-tailwind",
                              choices=["react-tailwind", "semi", "vue"],
                              help="Target framework")
-    
+    quick_parser.add_argument("--name", "-n", help="Project name (default: derive from URL)")
+
+    # Projects command
+    projects_parser = subparsers.add_parser(
+        "projects",
+        help="Manage design system projects",
+        description="List, inspect, and manage design system projects"
+    )
+    projects_sub = projects_parser.add_subparsers(dest="projects_action")
+
+    projects_sub.add_parser("list", help="List all projects")
+
+    info_parser = projects_sub.add_parser("info", help="Show project details")
+    info_parser.add_argument("slug", help="Project slug")
+
+    del_parser = projects_sub.add_parser("delete", help="Delete a project")
+    del_parser.add_argument("slug", help="Project slug")
+
+    # Serve command
+    serve_parser = subparsers.add_parser(
+        "serve",
+        help="Serve design system guideline site",
+        description="Start local HTTP server for a project's design system site"
+    )
+    serve_parser.add_argument("slug", help="Project slug")
+    serve_parser.add_argument("--port", "-p", type=int, default=3939, help="Port (default: 3939)")
+
+    # Build command
+    build_parser = subparsers.add_parser(
+        "build",
+        help="Build guideline site for a project",
+        description="Generate or rebuild the design system guideline site"
+    )
+    build_parser.add_argument("slug", help="Project slug")
+
     return parser
 
 
@@ -422,6 +612,19 @@ def main():
         sys.exit(cli.index(args))
     elif args.command == "generate":
         sys.exit(cli.generate(args))
+    elif args.command == "projects":
+        if not hasattr(args, 'projects_action') or not args.projects_action:
+            parser.parse_args(["projects", "--help"])
+        elif args.projects_action == "list":
+            sys.exit(cli.projects_list(args))
+        elif args.projects_action == "info":
+            sys.exit(cli.projects_info(args))
+        elif args.projects_action == "delete":
+            sys.exit(cli.projects_delete(args))
+    elif args.command == "serve":
+        sys.exit(cli.serve_project(args))
+    elif args.command == "build":
+        sys.exit(cli.build_project(args))
     else:
         parser.print_help()
         sys.exit(1)
