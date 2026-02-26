@@ -1,0 +1,23 @@
+{
+  "skill_name": "ux-master",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tôi cần tạo design system từ trang https://templates.envytheme.com/fila/project-management.html — extract toàn bộ colors, typography rồi generate cho tôi bộ React components và doc site luôn nhé",
+      "expected_output": "Full pipeline: harvest URL → show token preview for confirmation → generate 22 React components → generate doc site HTML → validate TypeScript compilation",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a Tailwind-based React project at ./src and I want to extract the design tokens from it and rebuild them as a Semi Design theme package. Can you create the full design system with components?",
+      "expected_output": "Source code extraction pipeline: parse tailwind.config.js + CSS variables → map to Semi tokens → show preview → generate components + theme package + docs",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Take a look at https://demo.themeselection.com/materio-bootstrap-html-admin-template/html/vertical-menu-template/dashboards-crm.html and create a design token file with Semi Design variables. I just need the CSS tokens and a preview, not the full components yet",
+      "expected_output": "Partial pipeline: harvest URL → map tokens → validate → show preview HTML. Should NOT generate components since user only asked for tokens",
+      "files": []
+    }
+  ]
+}

@@ -22,19 +22,29 @@ let currentLang = 'en';
 
 // Detect best language on first visit
 function detectLang() {
-    const stored = localStorage.getItem('ux-master-lang');
-    if (stored && LANGS.find(l => l.code === stored)) return stored;
-    const nav = (navigator.language || '').slice(0, 2).toLowerCase();
-    if (LANGS.find(l => l.code === nav)) return nav;
+    try {
+        const stored = localStorage.getItem('ux-master-lang');
+        if (stored && LANGS.find(l => l.code === stored)) return stored;
+    } catch (e) { }
+
+    try {
+        const nav = (navigator.language || '').slice(0, 2).toLowerCase();
+        if (LANGS.find(l => l.code === nav)) return nav;
+    } catch (e) { }
+
     return 'en';
 }
 
 // Apply translations to all [data-i18n] elements
 function applyLang(code) {
-    if (!window.T[code]) return;
+    if (!window.T || !window.T[code]) return;
+
     currentLang = code;
     document.documentElement.lang = code;
-    localStorage.setItem('ux-master-lang', code);
+
+    try {
+        localStorage.setItem('ux-master-lang', code);
+    } catch (e) { }
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -54,12 +64,18 @@ function applyLang(code) {
 }
 
 function setLang(code) {
+    const e = window.event;
+    if (e && e.preventDefault) e.preventDefault();
     applyLang(code);
     closeLangMenu();
 }
 
 function toggleLangMenu() {
-    document.getElementById('langMenu').classList.toggle('open');
+    const e = window.event;
+    if (e && e.preventDefault) e.preventDefault();
+
+    const m = document.getElementById('langMenu');
+    if (m) m.classList.toggle('open');
 }
 
 function closeLangMenu() {
@@ -74,6 +90,7 @@ document.addEventListener('click', (e) => {
 
 // Load a translation module
 function loadTranslation(code, data) {
+    window.T = window.T || {};
     window.T[code] = data;
 }
 

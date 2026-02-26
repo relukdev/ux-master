@@ -1,0 +1,321 @@
+# 🎯 Design System Generator — Phân tích tổng quan
+
+## 1. Ý tưởng (Vision)
+
+**Mục tiêu cuối cùng**: Tạo ra một công cụ **tự động trích xuất và tái tạo Design System hoàn chỉnh** từ bất kỳ sản phẩm nào — output đạt chất lượng ngang [semi.design](https://semi.design/en-US), có thể sử dụng trực tiếp trong production.
+
+### Luồng hoạt động mong muốn
+
+```mermaid
+graph LR
+    A[Input] --> B[Extraction Engine]
+    B --> C[Token Processor]
+    C --> D[Semi Design System]
+    D --> E[Output]
+    
+    A1[URL Website] --> A
+    A2[Source Code] --> A
+    A3[Figma File] --> A
+    
+    E --> E1[Interactive Doc Site]
+    E --> E2[Component Library]
+    E --> E3[Figma Tokens]
+    E --> E4[CSS/SCSS Variables]
+    E --> E5[Theme Package]
+```
+
+### Outcome kỳ vọng
+
+| Output | Mô tả | Như Semi Design |
+|--------|--------|-----------------|
+| **Doc Site** | Trang tài liệu tương tác với live preview | [semi.design/en-US/basic/tokens](https://semi.design/en-US/basic/tokens) |
+| **Component Library** | React/Vue components sinh sẵn, chạy được | 60+ components Semi Design |
+| **Theme Package** | `semi-theme-{brand}` override đầy đủ | [DSM Theme Editor](https://semi.design/dsm) |
+| **Figma Tokens** | Import vào Figma Tokens Studio | Figma ↔ Code bidirectional |
+| **MCP Integration** | AI assistants dùng trực tiếp tokens | Semi MCP Bridge |
+
+---
+
+## 2. Hiện trạng (Current State)
+
+### Pipeline hiện tại
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  INPUT                                                                │
+│  ┌─────────┐  ┌─────────────┐  ┌──────────────┐                     │
+│  │  URL    │  │ Source Code │  │    CSS files  │                     │
+│  │(Browser)│  │ (extractor) │  │  (extractor)  │                     │
+│  └────┬────┘  └──────┬──────┘  └──────┬───────┘                     │
+│       │              │               │                                │
+│  ┌────▼────────────────▼───────────────▼───┐                          │
+│  │     EXTRACTION (harvester_v4.js)         │                         │
+│  │     harvester_browser.py                 │                         │
+│  │     extractor.py (CSS/local)             │                         │
+│  └───────────────┬──────────────────────────┘                         │
+│                  │                                                    │
+│  ┌───────────────▼──────────────────────────┐                         │
+│  │     TOKEN MAPPING (token_mapper.py)       │  65+ tokens           │
+│  └───────────────┬──────────────────────────┘                         │
+│                  │                                                    │
+│  ┌───────────────▼──────────────────────────┐                         │
+│  │     INDEXING (design_system_indexer.py)    │  Semi architecture    │
+│  └───────────────┬──────────────────────────┘                         │
+│                  │                                                    │
+│  ┌───────────────▼────────────────┐  ┌───────────────────────────┐   │
+│  │  COMPONENTS                    │  │  DOCUMENTATION             │   │
+│  │  (component_generator.py)      │  │  (design_doc_generator.py) │   │
+│  │  4 components sinh được        │  │  1 HTML file (60KB)        │   │
+│  └────────────────────────────────┘  └───────────────────────────┘   │
+│                                                                       │
+│  OUTPUT: output/fila/                                                 │
+│  ├── harvest-v4-raw.json      (11.7KB)                               │
+│  ├── semi-theme-override.css  (3KB, 65 tokens)                       │
+│  ├── design-system.css        (4.6KB)                                │
+│  ├── design-system.json       (4.5KB)                                │
+│  ├── figma-tokens.json        (13.8KB)                               │
+│  ├── design-system.html       (60KB)                                 │
+│  └── components/ (4: button, card, input, badge)                     │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+### Codebase hiện tại (~6,500 dòng code)
+
+| Script | Dòng | Chức năng | Trạng thái |
+|--------|------|-----------|------------|
+| [harvester_v4.js](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/harvester_v4.js) | 1,004 | Browser injection, DOM analysis | ✅ Hoạt động |
+| [harvester_browser.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/harvester_browser.py) | 718 | Playwright automation | ✅ Hoạt động |
+| [token_mapper.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/token_mapper.py) | 627 | Semi token compilation | ✅ Cơ bản |
+| [design_system_indexer.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/design_system_indexer.py) | 890 | Semi architecture mapping | ✅ Cơ bản |
+| [component_generator.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/component_generator.py) | 632 | React/Semi/Vue generation | ⚠️ Có lỗi syntax |
+| [design_doc_generator.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/design_doc_generator.py) | 1,326 | HTML documentation | ⚠️ Thiếu nhiều section |
+| [extractor.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/extractor.py) | 1,437 | CSS/local extraction | ✅ Hoạt động |
+| [harvester_cli.py](file:///Users/todyle/Library/Mobile%20Documents/com~apple~CloudDocs/Code/AgentSkills/ux-master/scripts/harvester_cli.py) | 432 | Unified CLI | ✅ Cơ bản |
+
+---
+
+## 3. Thách thức (Critical Challenges)
+
+### 🔴 Thách thức 1: Component Generation Code Không Chạy Được
+
+Generated component code có **lỗi cú pháp nghiêm trọng**:
+
+```tsx
+// ❌ Current output — BROKEN CODE
+export const Button = React.forwardRef<
+  HTMLBUTTONElement,  // ❌ Wrong casing
+  ButtonProps
+>((variant, size, disabled, loading, children, className, ...props}, ref) => {  // ❌ Missing {
+  return (
+    <BUTTON  // ❌ Wrong tag casing
+      className={cn(
+        "inline-flex items-center justify-center
+        font-medium transition-colors   // ❌ Unclosed string
+        "  // Size: sm
+          "h-8 px-3 text-sm": size === "sm",  // ❌ Invalid syntax
+```
+
+> [!CAUTION]
+> Component generator tạo code **không compile được**. Đây là blocker lớn nhất — không ai dùng được output này.
+
+### 🔴 Thách thức 2: Chỉ 4/60+ Components
+
+Semi Design có **60+ components**. Hiện tại chỉ sinh được 4 (button, card, input, badge) và code không chạy:
+
+| Semi Design Components | Hiện tại | Cần thêm |
+|------------------------|----------|----------|
+| Button, Input, Card, Badge | ✅ (lỗi) | Fix syntax |
+| Select, Checkbox, Radio, Switch | ❌ | Cần thêm |
+| Table, Pagination, Tree | ❌ | Cần thêm |
+| Modal, Drawer, Notification | ❌ | Cần thêm |
+| Tabs, Menu, Breadcrumb, Steps | ❌ | Cần thêm |
+| DatePicker, TimePicker, Calendar | ❌ | Cần thêm |
+| Form, Upload, Transfer | ❌ | Cần thêm |
+| Progress, Skeleton, Spin | ❌ | Cần thêm |
+| Typography, Avatar, Tag, Tooltip | ❌ | Cần thêm |
+| Dropdown, Cascader, AutoComplete | ❌ | Cần thêm |
+
+### 🔴 Thách thức 3: Documentation Page Quá Đơn Giản
+
+So sánh output hiện tại vs Semi Design:
+
+| Feature | semi.design | Hiện tại | Gap |
+|---------|-------------|----------|-----|
+| **Live Code Editor** | ✅ CodeSandbox nhúng | ❌ | Cần LiveCode |
+| **Component Preview** | ✅ Interactive với states | ❌ Static HTML | Cần render thực |
+| **API Documentation** | ✅ Props table tự động | ❌ | Cần PropTypes parser |
+| **Search** | ✅ Full-text search | ❌ | Cần search engine |
+| **Theming Demo** | ✅ Live theme switching | ⚠️ Dark mode toggle | Cần multi-theme |
+| **Color Palette Display** | ✅ 10-shade scales | ⚠️ Hiển thị border radius (bug) | Fix color mapping |
+| **Design Tokens Table** | ✅ Full variable list | ✅ Có | OK |
+| **Copy-paste Tokens** | ✅ Click to copy | ❌ | Cần thêm |
+| **Responsive Preview** | ✅ Multi-viewport | ❌ | Cần thêm |
+| **Accessibility Info** | ✅ WCAG badges | ❌ | Cần thêm |
+
+### 🟡 Thách thức 4: Source Code Extraction Chưa Có
+
+Hiện tại chỉ hỗ trợ:
+- ✅ **Browser scanning** (URL → inject JS → extract DOM styles)
+- ✅ **CSS file parsing** (local CSS → regex parse)
+
+Chưa có:
+- ❌ **React/Vue/Angular component analysis** — đọc JSX/TSX, phân tích props, variants
+- ❌ **Tailwind config extraction** — parse `tailwind.config.js` → tokens
+- ❌ **SCSS/SASS variable extraction** — parse `$variables` → tokens  
+- ❌ **CSS-in-JS analysis** — styled-components, emotion
+- ❌ **Design token file parsing** — `tokens.json`, `.designtokens`
+
+### 🟡 Thách thức 5: Thiếu Theme Package Generation
+
+Semi Design cho phép tạo **theme package** (`semi-theme-*`) có thể:
+- npm publish
+- Import trực tiếp vào project Semi Design
+- Sync với Figma qua DSM
+
+Hiện tại chỉ tạo CSS file, chưa thể tạo npm package hoàn chỉnh.
+
+### 🟡 Thách thức 6: Token Accuracy Thấp
+
+Khi harvest Fila template:
+- Neutral scale bị lệch (50-800 gần như cùng 1 shade)
+- Color mapping sai (hiển thị border radius thay vì actual colors)
+- Nhiều colors bị miss do sampling (chỉ sample 3000/2229 elements nhưng logic step calculation có issues)
+- Warning/Danger colors map sang background thay vì base color
+
+---
+
+## 4. Roadmap — Các việc cần làm
+
+### Phase 1: Fix Core Quality (1-2 tuần)
+
+> **Mục tiêu**: Output chạy được, không lỗi, tokens chính xác
+
+- [ ] **Fix Component Generator** — sửa template syntax cho React/Semi/Vue, đảm bảo generated code compile + render
+- [ ] **Fix Token Accuracy** — cải thiện color extraction logic, neutral scale generation, semantic color mapping
+- [ ] **Fix Design Doc Color Display** — hiển thị actual color swatches thay vì border radius
+- [ ] **Add Test Suite** — unit tests cho token mapper, component generator, color utilities
+- [ ] **Improve Harvester Reliability** — handle SPA, lazy loading, iframe, shadow DOM tốt hơn
+
+### Phase 2: Expand Component Library (2-3 tuần)
+
+> **Mục tiêu**: 20+ components chuẩn Semi Design
+
+- [ ] **Add Semi Component Templates** — tạo template cho top 20 Semi components
+- [ ] **Component Variants** — primary/secondary/outline/ghost/danger cho mỗi component
+- [ ] **Component States** — default/hover/active/focus/disabled/loading
+- [ ] **Component Sizes** — small/default/large
+- [ ] **Props Interface** — TypeScript interfaces chính xác cho mỗi component
+- [ ] **Storybook Integration** — export thành Storybook stories
+
+### Phase 3: Source Code Extraction (2-3 tuần)
+
+> **Mục tiêu**: Đọc source code → extract design system
+
+- [ ] **AST Parser cho React** — parse JSX/TSX, extract component patterns, props, styles
+- [ ] **Tailwind Config Parser** — đọc `tailwind.config.js` → design tokens
+- [ ] **SCSS Variable Parser** — parse `$var: value` → tokens
+- [ ] **CSS Variable Parser** — parse `:root { --var: value }` → tokens
+- [ ] **Design Token File Parser** — đọc `tokens.json`, Style Dictionary format
+- [ ] **Merge Strategy** — merge browser harvest + source code analysis → higher confidence tokens
+
+### Phase 4: Semi Design Doc Site (3-4 tuần)
+
+> **Mục tiêu**: Output tương đương semi.design
+
+- [ ] **Static Site Generator** — Tạo multi-page doc site (React/Next.js hoặc Astro)
+- [ ] **Live Code Editor** — nhúng code editor với live preview (Monaco + Sandpack)
+- [ ] **Component Gallery** — preview interactive cho mỗi component
+- [ ] **Props API Table** — auto-generated từ TypeScript interfaces
+- [ ] **Theme Editor** — UI cho phép customize tokens realtime
+- [ ] **Search** — full-text search across tokens, components, docs
+- [ ] **Copy-to-Clipboard** — click to copy CSS variable, component code
+- [ ] **Responsive Preview** — multi-viewport preview mode
+- [ ] **Accessibility Dashboard** — WCAG compliance report per component
+
+### Phase 5: Theme Package + Ecosystem (2-3 tuần)
+
+> **Mục tiêu**: npm-publishable theme + Figma sync
+
+- [ ] **Theme Package Generator** — tạo `semi-theme-{brand}` npm package
+- [ ] **package.json + Build Script** — publishable to npm
+- [ ] **Figma Tokens Sync** — bidirectional sync với Figma Tokens Studio
+- [ ] **MCP Integration** — AI assistants (Claude/Cursor) consume tokens trực tiếp
+- [ ] **Design-to-Code Pipeline** — Figma → tokens → code generation
+
+---
+
+## 5. So sánh với Semi Design Source
+
+Tham khảo [DouyinFE/semi-design](https://github.com/DouyinFE/semi-design):
+
+| Semi Design Architecture | Hiện tại có | Gap |
+|--------------------------|-------------|-----|
+| `packages/semi-foundation/` — Framework-agnostic logic | ❌ | Cần Foundation layer |
+| `packages/semi-ui/` — React components (60+) | ⚠️ 4 basic | Cần 56+ components |
+| `packages/semi-theme-default/` — Default theme SCSS | ⚠️ CSS output | Cần SCSS + npm pkg |
+| `packages/semi-icons/` — Icon set | ❌ | Optional |
+| `packages/semi-webpack-plugin/` — Build tooling | ❌ | Cần cho npm publish |
+| `content/` — Documentation site | ⚠️ 1 HTML page | Cần multi-page site |
+| Theme Editor (DSM) | ❌ | Cần web UI |
+| Design to Code | ❌ | Cần Figma plugin |
+
+### Key Insight từ Semi Design Source
+
+Semi Design sử dụng **Foundation/Adapter pattern**:
+- **Foundation** = pure logic (no DOM), framework-agnostic
+- **Adapter** = React/Vue/Web Components wrapper
+
+Nếu follow pattern này, tool của chúng ta có thể:
+1. Generate Foundation classes (logic: state management, event handling)
+2. Generate React Adapter (renders with Semi tokens + user's brand)
+3. Generate Vue Adapter (same Foundation, different view layer)
+
+> [!IMPORTANT]
+> Semi Design có ~200,000 lines of code cho 60+ components. Việc sinh đầy đủ 60+ components là **không thực tế** trong ngắn hạn. Nên tập trung vào **Top 20 components** phổ biến nhất trước.
+
+---
+
+## 6. Chiến lược đề xuất
+
+### Approach: "Smart Template + Token Injection"
+
+Thay vì sinh component từ 0 (khó, dễ lỗi), nên:
+
+1. **Chuẩn bị 20+ component templates** chạy được, test kỹ
+2. **Harvester extract tokens** từ target website/source code
+3. **Inject tokens vào templates** → custom-branded components
+4. **Generate documentation site** từ templates + tokens
+
+```mermaid
+graph TD
+    A[Component Templates<br/>20+ tested, working] --> D[Output]
+    B[Harvested Tokens<br/>Colors, Typography, Spacing] --> D
+    C[Semi Design Spec<br/>Variable naming] --> D
+    D --> E[Brand X Components<br/>Working React code]
+    D --> F[Brand X Doc Site<br/>Semi.design quality]
+    D --> G[Brand X Theme<br/>npm package]
+```
+
+### Ưu tiên cao nhất
+
+1. 🔴 **Fix component generator** — code phải compile được
+2. 🔴 **Fix token accuracy** — colors phải chính xác
+3. 🟡 **Nâng cấp doc page** — interactive previews
+4. 🟡 **Source code extractor** — đọc React/Tailwind projects
+5. 🟢 **Theme package** — npm publishable
+
+---
+
+## 7. Effort Estimate
+
+| Phase | Mô tả | Effort | Priority |
+|-------|--------|--------|----------|
+| Phase 1 | Fix Core Quality | 1-2 tuần | 🔴 P0 |
+| Phase 2 | 20+ Components | 2-3 tuần | 🔴 P0 |
+| Phase 3 | Source Code Extraction | 2-3 tuần | 🟡 P1 |
+| Phase 4 | Semi Doc Site | 3-4 tuần | 🟡 P1 |
+| Phase 5 | Theme + Ecosystem | 2-3 tuần | 🟢 P2 |
+| **Total** | | **10-15 tuần** | |
+
+> [!TIP]
+> Có thể rút ngắn bằng cách dùng existing Semi Design components làm base templates thay vì sinh từ 0. Clone + customize sẽ nhanh hơn generate.

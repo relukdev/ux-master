@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide for Growth Marketers — UX Master</title>
+    <meta name="description"
+        content="High-converting landing pages. A/B test design variants. Competitive design intelligence.">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], body: ['"Inter"', 'system-ui', 'sans-serif'] }, colors: { surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' }, accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9' }, magic: { DEFAULT: '#ec4899', light: '#f472b6' }, success: { DEFAULT: '#10b981' }, warn: { DEFAULT: '#f59e0b' } } } } }</script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .guide-content h2 {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .guide-content h3 {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: .75rem;
+            color: #e4e4e7
+        }
+
+        .guide-content p {
+            color: #a1a1aa;
+            line-height: 1.8;
+            margin-bottom: 1rem
+        }
+
+        .guide-content ul {
+            color: #a1a1aa;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem
+        }
+
+        .guide-content li {
+            margin-bottom: .5rem;
+            line-height: 1.7
+        }
+
+        .guide-content pre {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: .75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto
+        }
+
+        .guide-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .85rem;
+            color: #a78bfa
+        }
+
+        .guide-content pre code {
+            color: #d4d4d8
+        }
+
+        .guide-content blockquote {
+            border-left: 3px solid rgba(124, 58, 237, .4);
+            padding-left: 1.25rem;
+            margin: 1.5rem 0;
+            color: #a1a1aa;
+            font-style: italic
+        }
+
+        .guide-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: .9rem
+        }
+
+        .guide-content th {
+            text-align: left;
+            padding: .75rem 1rem;
+            background: rgba(255, 255, 255, .03);
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+            color: #e4e4e7;
+            font-weight: 600
+        }
+
+        .guide-content td {
+            padding: .75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            color: #a1a1aa
+        }
+
+        .guide-content strong {
+            color: #e4e4e7
+        }
+
+        .guide-content hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, .3), transparent);
+            margin: 3rem 0
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <nav
+        class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+        <a href="../index.html" class="flex items-center gap-2.5">
+            <div
+                class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+                ✦</div><span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400"><a href="../index.html"
+                class="hover:text-white transition-colors">Home</a><a href="index.html"
+                class="text-white transition-colors">Guides</a><a href="../tutorials/index.html"
+                class="hover:text-white transition-colors">Tutorials</a><a href="../technical/index.html"
+                class="hover:text-white transition-colors">Technical</a></div>
+        <div class="flex items-center gap-1.5 sm:gap-3">
+            <div class="lang-dropdown" id="langDropdown"><button
+                    class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+                    onclick="toggleLangMenu()"><span id="currentLangLabel"
+                        class="text-xs uppercase tracking-wide">EN</span><span
+                        class="text-[10px] opacity-70">▾</span></button>
+                <div class="lang-menu" id="langMenu"><button data-lang="en" onclick="setLang('en')">🇺🇸
+                        English</button><button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button><button
+                        data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button><button data-lang="ja"
+                        onclick="setLang('ja')">🇯🇵 日本語</button><button data-lang="ko" onclick="setLang('ko')">🇰🇷
+                        한국어</button><button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button><button
+                        data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button><button data-lang="fr"
+                        onclick="setLang('fr')">🇫🇷 Français</button><button data-lang="id"
+                        onclick="setLang('id')">🇮🇩 Bahasa</button><button data-lang="hi" onclick="setLang('hi')">🇮🇳
+                        हिन्दी</button></div>
+            </div>
+            <a href="../index.html#start"
+                class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0"><span
+                    data-i18n="nav_try">Try It Free</span></a>
+            <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+                onclick="toggleMobileMenu()"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg></button>
+        </div>
+    </nav>
+    <div id="mobileMenu"
+        class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+        <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a><a
+            href="index.html" onclick="closeMobileMenu()" class="text-white py-2">Guides</a><a
+            href="../tutorials/index.html" onclick="closeMobileMenu()"
+            class="text-zinc-300 hover:text-white py-2">Tutorials</a><a href="../technical/index.html"
+            onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Technical</a>
+    </div>
+
+    <section class="relative min-h-[50vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+        <div class="hero-bg"></div>
+        <div class="grid-pattern"></div>
+        <div class="relative z-10 max-w-4xl mx-auto text-center">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-300 text-sm mb-6 transition-colors">←
+                <span data-i18n="gp_back">Back to all guides</span></a>
+            <div
+                class="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 flex items-center justify-center text-5xl mx-auto mb-6">
+                📈</div>
+            <h1 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.1] mb-4"><span
+                    data-i18n="gp_marketer_h1">Growth Marketer's Guide<br>Landing Pages That Convert</span></h1>
+            <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed"><span
+                    data-i18n="gp_marketer_sub">High-converting landing pages in hours. A/B test design variants
+                    rapidly. Competitive design intelligence at your fingertips.</span></p>
+        </div>
+    </section>
+    <div class="glow-line max-w-4xl mx-auto"></div>
+
+    <section class="max-w-4xl mx-auto px-4 py-16 reveal">
+        <div class="glass-card rounded-2xl p-8">
+            <h2 class="font-heading font-bold text-xl mb-4"><span data-i18n="gp_who_title">Who This Guide Is For</span>
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 text-zinc-400"><span class="text-2xl">📈</span><span
+                        data-i18n="gp_marketer_who1">Growth Marketer optimizing conversion</span></div>
+                <div class="flex items-center gap-3 text-zinc-400"><span class="text-2xl">🎯</span><span
+                        data-i18n="gp_marketer_who2">Performance Marketer running campaigns</span></div>
+                <div class="flex items-center gap-3 text-zinc-400"><span class="text-2xl">📊</span><span
+                        data-i18n="gp_marketer_who3">CRO Specialist A/B testing pages</span></div>
+                <div class="flex items-center gap-3 text-zinc-400"><span class="text-2xl">💼</span><span
+                        data-i18n="gp_marketer_who4">Marketing Lead managing brand consistency</span></div>
+            </div>
+        </div>
+    </section>
+
+    <article class="max-w-4xl mx-auto px-4 py-8 guide-content">
+        <section class="reveal">
+            <h2><span data-i18n="gp_marketer_s1">📊 Design × Conversion Data</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Design Factor</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Page load (1s→3s)</td>
+                        <td><strong>-32%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Color contrast fix</td>
+                        <td><strong>+24%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>CTA optimization</td>
+                        <td><strong>+28%</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Visual hierarchy</td>
+                        <td><strong>+47%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr>
+        <section class="reveal">
+            <h2><span data-i18n="gp_marketer_s2">🚀 Build Landing Pages Fast</span></h2>
+            <pre><code>python scripts/wizard.py --url https://stripe.com/payments --name "StripeLP"
+python scripts/component_generator.py --input output/StripeLP/design-system.json --all</code></pre>
+            <h3>CRO Checklist</h3>
+            <ul>
+                <li>CTA uses high-contrast color</li>
+                <li>Hero headline under 10 words</li>
+                <li>Social proof above the fold</li>
+                <li>Page loads in under 3 seconds</li>
+                <li>Form has ≤ 4 fields</li>
+            </ul>
+        </section>
+        <hr>
+        <section class="reveal">
+            <h2><span data-i18n="gp_marketer_s3">🧪 A/B Test Design Variants</span></h2>
+            <pre><code># 3 variants from different references
+python scripts/wizard.py --url https://stripe.com --name "VariantA"
+python scripts/wizard.py --url https://linear.app --name "VariantB"
+python scripts/wizard.py --url https://notion.so --name "VariantC"</code></pre>
+            <p>Test different design systems — each carries different color psychology and spatial rhythm.</p>
+        </section>
+        <hr>
+        <section class="reveal">
+            <h2><span data-i18n="gp_marketer_s5">🏆 Results</span></h2>
+            <blockquote>"Conversion: 2.1% → 4.8% (+128%). Redesign in 6 hours." — SaaS</blockquote>
+            <blockquote>"5 variants in 2 days. Best converted 340% better." — E-commerce</blockquote>
+            <blockquote>"Live in 5 hours. 500+ signups week one." — Fintech</blockquote>
+        </section>
+    </article>
+    <div class="glow-line max-w-4xl mx-auto"></div>
+
+    <section class="max-w-4xl mx-auto px-4 py-24">
+        <div class="text-center reveal">
+            <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4"><span
+                    data-i18n="gp_marketer_cta_h2">Ready to build pages that convert?</span></h2>
+            <p class="text-zinc-500 text-base max-w-lg mx-auto mb-8"><span data-i18n="gp_marketer_cta_sub">Extract from
+                    top-converting sites and let data drive your design.</span></p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="../index.html#start"
+                    class="cta-primary text-white font-semibold px-8 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base"><span
+                        data-i18n="gp_cta_start">Get Started Free →</span></a>
+                <a href="index.html"
+                    class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base"><span
+                        data-i18n="gp_back">Back to all guides</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto px-4 py-16">
+        <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+        <div class="text-center">
+            <div class="flex items-center justify-center gap-2.5 mb-6">
+                <div
+                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+                    ✦</div><span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+            </div>
+            <p class="text-zinc-600 text-sm mb-6"><span data-i18n="sub_footer_tagline">Turn AI into your design
+                    studio.</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/lang/en.js"></script>
+    <script src="../js/lang/vi.js"></script>
+    <script src="../js/lang/zh.js"></script>
+    <script src="../js/lang/ja.js"></script>
+    <script src="../js/lang/ko.js"></script>
+    <script src="../js/lang/ru.js"></script>
+    <script src="../js/lang/de.js"></script>
+    <script src="../js/lang/fr.js"></script>
+    <script src="../js/lang/id.js"></script>
+    <script src="../js/lang/hi.js"></script>
+    <script src="../js/main.js"></script>
+    <script>initI18n();</script>
+</body>
+
+</html>

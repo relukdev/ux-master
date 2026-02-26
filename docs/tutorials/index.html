@@ -59,21 +59,32 @@
       <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer">Technical</a>
     </div>
     <div class="flex items-center gap-1.5 sm:gap-3">
-      <button id="themeToggle" class="lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
-        aria-label="Toggle theme" onclick="toggleTheme()">
-        <svg id="themeIconDark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-        <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-          </path>
-        </svg>
-      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+          <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+          <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+          <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+          <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+          <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+          <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+          <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+          <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        </div>
+      </div>
       <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
         class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
         Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0"><span
+          data-i18n="nav_try">Try It Free</span></a>
       <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
         onclick="toggleMobileMenu()">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,7 +100,8 @@
     <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a>
     <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Guides</a>
     <a href="#" onclick="closeMobileMenu()" class="text-white py-2">Tutorials</a>
-    <a href="../technical/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Technical</a>
+    <a href="../technical/index.html" onclick="closeMobileMenu()"
+      class="text-zinc-300 hover:text-white py-2">Technical</a>
   </div>
 
   <!-- HERO -->
@@ -100,16 +112,18 @@
       <div
         class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-8">
         <span class="text-accent-light">🎓</span>
-        <span>Learn by Doing</span>
+        <span data-i18n="sub_tut_badge">Learn by Doing</span>
       </div>
-      <h1
-        class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
-        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">From Zero to</span><br>
-        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">UX Master</span>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent"><span
+            data-i18n="sub_tut_h1a">From Zero to</span></span><br>
+        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent"><span
+            data-i18n="sub_tut_h1b">UX Master</span></span>
       </h1>
       <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
-        Step-by-step tutorials that take you from installation to advanced workflows.<br class="hidden sm:block">
-        Build real projects while learning 48 UX Laws and 37 Design Tests.
+        <span data-i18n="sub_tut_p1">Step-by-step tutorials that take you from installation to advanced
+          workflows.</span><br class="hidden sm:block">
+        <span data-i18n="sub_tut_p2">Build real projects while learning 48 UX Laws and 37 Design Tests.</span>
       </p>
     </div>
   </section>
@@ -120,53 +134,69 @@
     <div class="text-center mb-16 reveal">
       <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3">Getting Started</p>
       <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Start Your Journey</h2>
-      <p class="text-zinc-500 text-base max-w-xl mx-auto">New to UX Master? Start here. Three paths based on your experience level.</p>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">New to UX Master? Start here. Three paths based on your
+        experience level.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 reveal">
       <!-- Beginner -->
       <div class="glass-card rounded-2xl p-7 relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-success/10 text-success text-[10px] font-bold px-3 py-1 rounded-bl-xl">Beginner</div>
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-success/20 to-success/5 flex items-center justify-center text-2xl mb-5">
+        <div class="absolute top-0 right-0 bg-success/10 text-success text-[10px] font-bold px-3 py-1 rounded-bl-xl">
+          Beginner</div>
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-success/20 to-success/5 flex items-center justify-center text-2xl mb-5">
           🌱</div>
         <h3 class="font-heading font-bold text-lg mb-2">5-Minute Quick Start</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Get UX Master running in 5 minutes. Figma plugin, MCP server, or CLI — choose your path.</p>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Get UX Master running in 5 minutes. Figma plugin, MCP
+          server, or CLI — choose your path.</p>
         <ul class="text-xs text-zinc-400 space-y-2 mb-6">
           <li class="flex items-center gap-2"><span class="text-success">✓</span> Installation</li>
           <li class="flex items-center gap-2"><span class="text-success">✓</span> First design system</li>
           <li class="flex items-center gap-2"><span class="text-success">✓</span> Basic validation</li>
         </ul>
-        <a href="quickstart.md" class="block text-center bg-success/10 hover:bg-success/20 text-success font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Start Tutorial →</a>
+        <a href="quickstart.md"
+          class="block text-center bg-success/10 hover:bg-success/20 text-success font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Start
+          Tutorial →</a>
       </div>
 
       <!-- Intermediate -->
       <div class="glass-card rounded-2xl p-7 relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-warn/10 text-warn text-[10px] font-bold px-3 py-1 rounded-bl-xl">Intermediate</div>
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-warn/20 to-warn/5 flex items-center justify-center text-2xl mb-5">
+        <div class="absolute top-0 right-0 bg-warn/10 text-warn text-[10px] font-bold px-3 py-1 rounded-bl-xl">
+          Intermediate</div>
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-warn/20 to-warn/5 flex items-center justify-center text-2xl mb-5">
           🚀</div>
         <h3 class="font-heading font-bold text-lg mb-2">User Guide</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Deep dive into UX Master's features. Generate design systems, apply UX Laws, run validation tests.</p>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Deep dive into UX Master's features. Generate design
+          systems, apply UX Laws, run validation tests.</p>
         <ul class="text-xs text-zinc-400 space-y-2 mb-6">
           <li class="flex items-center gap-2"><span class="text-warn">★</span> Design system generation</li>
           <li class="flex items-center gap-2"><span class="text-warn">★</span> 48 UX Laws explained</li>
           <li class="flex items-center gap-2"><span class="text-warn">★</span> 37 Design Tests</li>
         </ul>
-        <a href="user-guide.md" class="block text-center bg-warn/10 hover:bg-warn/20 text-warn font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Read Guide →</a>
+        <a href="user-guide.md"
+          class="block text-center bg-warn/10 hover:bg-warn/20 text-warn font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Read
+          Guide →</a>
       </div>
 
       <!-- Advanced -->
       <div class="glass-card rounded-2xl p-7 relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-magic/10 text-magic text-[10px] font-bold px-3 py-1 rounded-bl-xl">Advanced</div>
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-magic/20 to-magic/5 flex items-center justify-center text-2xl mb-5">
+        <div class="absolute top-0 right-0 bg-magic/10 text-magic text-[10px] font-bold px-3 py-1 rounded-bl-xl">
+          Advanced</div>
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-magic/20 to-magic/5 flex items-center justify-center text-2xl mb-5">
           ⚡</div>
         <h3 class="font-heading font-bold text-lg mb-2">Full Tutorial Library</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Master advanced workflows. Harvester v4, Figma bridge, component generation, and more.</p>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Master advanced workflows. Harvester v4, Figma bridge,
+          component generation, and more.</p>
         <ul class="text-xs text-zinc-400 space-y-2 mb-6">
           <li class="flex items-center gap-2"><span class="text-magic">⚡</span> Harvester v4</li>
           <li class="flex items-center gap-2"><span class="text-magic">⚡</span> Figma integration</li>
           <li class="flex items-center gap-2"><span class="text-magic">⚡</span> Component generation</li>
         </ul>
-        <a href="tutorials.md" class="block text-center bg-magic/10 hover:bg-magic/20 text-magic font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Explore All →</a>
+        <a href="tutorials.md"
+          class="block text-center bg-magic/10 hover:bg-magic/20 text-magic font-medium px-4 py-2.5 rounded-xl transition-all text-sm">Explore
+          All →</a>
       </div>
     </div>
   </section>
@@ -183,10 +213,13 @@
       <!-- Installation -->
       <a href="quickstart.md" class="glass-card rounded-2xl p-6 reveal group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center text-xl">📦</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center text-xl">
+            📦</div>
           <h3 class="font-heading font-bold">Installation</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Install UX Master for Figma, CLI, or MCP server. Platform-specific guides.</p>
+        <p class="text-zinc-500 text-sm mb-3">Install UX Master for Figma, CLI, or MCP server. Platform-specific guides.
+        </p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">3 tutorials</span>
         </div>
@@ -195,10 +228,13 @@
       <!-- Design Systems -->
       <div class="glass-card rounded-2xl p-6 reveal reveal-delay-1 group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center text-xl">🎨</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center text-xl">
+            🎨</div>
           <h3 class="font-heading font-bold">Design Systems</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Generate, extract, and maintain design systems. Colors, typography, spacing.</p>
+        <p class="text-zinc-500 text-sm mb-3">Generate, extract, and maintain design systems. Colors, typography,
+          spacing.</p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">Coming soon</span>
         </div>
@@ -207,10 +243,13 @@
       <!-- UX Laws -->
       <div class="glass-card rounded-2xl p-6 reveal reveal-delay-2 group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/5 flex items-center justify-center text-xl">🧠</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/5 flex items-center justify-center text-xl">
+            🧠</div>
           <h3 class="font-heading font-bold">48 UX Laws</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Learn and apply psychological principles. Fitts's Law, Hick's Law, Doherty Threshold.</p>
+        <p class="text-zinc-500 text-sm mb-3">Learn and apply psychological principles. Fitts's Law, Hick's Law, Doherty
+          Threshold.</p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">Coming soon</span>
         </div>
@@ -219,34 +258,45 @@
       <!-- Validation -->
       <div class="glass-card rounded-2xl p-6 reveal group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500/20 to-pink-500/5 flex items-center justify-center text-xl">✅</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500/20 to-pink-500/5 flex items-center justify-center text-xl">
+            ✅</div>
           <h3 class="font-heading font-bold">37 Design Tests</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Validate your designs automatically. Mobile, accessibility, color, typography tests.</p>
+        <p class="text-zinc-500 text-sm mb-3">Validate your designs automatically. Mobile, accessibility, color,
+          typography tests.</p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">Coming soon</span>
         </div>
       </div>
 
       <!-- Figma -->
-      <a href="../guides/for-designers.md" class="glass-card rounded-2xl p-6 reveal reveal-delay-1 group cursor-pointer block">
+      <a href="../guides/for-designers.md"
+        class="glass-card rounded-2xl p-6 reveal reveal-delay-1 group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-xl">🎯</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-xl">
+            🎯</div>
           <h3 class="font-heading font-bold">Figma Integration</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Import/export with Figma. Tokens Studio integration, component syncing.</p>
+        <p class="text-zinc-500 text-sm mb-3">Import/export with Figma. Tokens Studio integration, component syncing.
+        </p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">In Guides</span>
         </div>
       </a>
 
       <!-- Harvester -->
-      <a href="../technical/harvester-v4.md" class="glass-card rounded-2xl p-6 reveal reveal-delay-2 group cursor-pointer block">
+      <a href="../technical/harvester-v4.md"
+        class="glass-card rounded-2xl p-6 reveal reveal-delay-2 group cursor-pointer block">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/5 flex items-center justify-center text-xl">🔍</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-violet-500/5 flex items-center justify-center text-xl">
+            🔍</div>
           <h3 class="font-heading font-bold">Harvester v4</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Extract design systems from any website. Browser automation, AI visual analysis.</p>
+        <p class="text-zinc-500 text-sm mb-3">Extract design systems from any website. Browser automation, AI visual
+          analysis.</p>
         <div class="flex gap-2">
           <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-zinc-400">In Technical</span>
         </div>
@@ -263,46 +313,61 @@
     </div>
 
     <div class="space-y-4 reveal">
-      <a href="quickstart.md" class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
+      <a href="quickstart.md"
+        class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
         <div class="flex items-center gap-4 flex-1 min-w-0">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-success/20 to-emerald-500/5 flex items-center justify-center text-2xl shrink-0">⚡</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-success/20 to-emerald-500/5 flex items-center justify-center text-2xl shrink-0">
+            ⚡</div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 mb-1">
               <span class="text-[10px] bg-success/10 text-success px-2 py-0.5 rounded font-medium">Beginner</span>
               <span class="text-[10px] text-zinc-500">5 min read</span>
             </div>
-            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">5-Minute Quick Start</h3>
-            <p class="text-zinc-500 text-sm truncate">Get UX Master running in 5 minutes. Choose between Figma plugin, MCP server, or CLI.</p>
+            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">5-Minute
+              Quick Start</h3>
+            <p class="text-zinc-500 text-sm truncate">Get UX Master running in 5 minutes. Choose between Figma plugin,
+              MCP server, or CLI.</p>
           </div>
         </div>
         <span class="text-zinc-600 group-hover:text-accent-light transition-colors shrink-0">→</span>
       </a>
 
-      <a href="user-guide.md" class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
+      <a href="user-guide.md"
+        class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
         <div class="flex items-center gap-4 flex-1 min-w-0">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-warn/20 to-amber-500/5 flex items-center justify-center text-2xl shrink-0">📖</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-warn/20 to-amber-500/5 flex items-center justify-center text-2xl shrink-0">
+            📖</div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 mb-1">
               <span class="text-[10px] bg-warn/10 text-warn px-2 py-0.5 rounded font-medium">Intermediate</span>
               <span class="text-[10px] text-zinc-500">15 min read</span>
             </div>
-            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">Complete User Guide</h3>
-            <p class="text-zinc-500 text-sm truncate">Deep dive into all UX Master features. Generate design systems, validate designs, export to Figma.</p>
+            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">Complete
+              User Guide</h3>
+            <p class="text-zinc-500 text-sm truncate">Deep dive into all UX Master features. Generate design systems,
+              validate designs, export to Figma.</p>
           </div>
         </div>
         <span class="text-zinc-600 group-hover:text-accent-light transition-colors shrink-0">→</span>
       </a>
 
-      <a href="../guides/react-guide-vi.md" class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
+      <a href="../guides/react-guide-vi.md"
+        class="glass-card rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6 group cursor-pointer block">
         <div class="flex items-center gap-4 flex-1 min-w-0">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-2xl shrink-0">⚛️</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-2xl shrink-0">
+            ⚛️</div>
           <div class="min-w-0">
             <div class="flex items-center gap-2 mb-1">
               <span class="text-[10px] bg-accent/10 text-accent-light px-2 py-0.5 rounded font-medium">Developer</span>
               <span class="text-[10px] text-zinc-500">20 min read</span>
             </div>
-            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">React Guide (Vietnamese)</h3>
-            <p class="text-zinc-500 text-sm truncate">Hướng dẫn chi tiết sử dụng UX Master với React — component generation, design tokens, best practices.</p>
+            <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">React Guide
+              (Vietnamese)</h3>
+            <p class="text-zinc-500 text-sm truncate">Hướng dẫn chi tiết sử dụng UX Master với React — component
+              generation, design tokens, best practices.</p>
           </div>
         </div>
         <span class="text-zinc-600 group-hover:text-accent-light transition-colors shrink-0">→</span>
@@ -320,12 +385,15 @@
 
     <div class="relative reveal">
       <!-- Timeline line -->
-      <div class="absolute left-7 top-8 bottom-8 w-px bg-gradient-to-b from-success via-warn to-magic hidden sm:block"></div>
+      <div class="absolute left-7 top-8 bottom-8 w-px bg-gradient-to-b from-success via-warn to-magic hidden sm:block">
+      </div>
 
       <div class="space-y-8">
         <!-- Step 1 -->
         <div class="flex gap-6 items-start">
-          <div class="w-14 h-14 rounded-full bg-success/20 border border-success/30 flex items-center justify-center text-success font-bold text-lg shrink-0 relative z-10">1</div>
+          <div
+            class="w-14 h-14 rounded-full bg-success/20 border border-success/30 flex items-center justify-center text-success font-bold text-lg shrink-0 relative z-10">
+            1</div>
           <div class="flex-1 pt-2">
             <h3 class="font-heading font-bold text-lg mb-1">Install & Setup</h3>
             <p class="text-zinc-500 text-sm mb-2">Choose your platform and get UX Master running in minutes.</p>
@@ -335,27 +403,35 @@
 
         <!-- Step 2 -->
         <div class="flex gap-6 items-start">
-          <div class="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-lg shrink-0 relative z-10">2</div>
+          <div
+            class="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-lg shrink-0 relative z-10">
+            2</div>
           <div class="flex-1 pt-2">
             <h3 class="font-heading font-bold text-lg mb-1">Generate Your First Design System</h3>
-            <p class="text-zinc-500 text-sm mb-2">Create a complete design system with colors, typography, and UX Laws.</p>
+            <p class="text-zinc-500 text-sm mb-2">Create a complete design system with colors, typography, and UX Laws.
+            </p>
             <a href="user-guide.md" class="text-emerald-400 text-sm hover:underline">View tutorial →</a>
           </div>
         </div>
 
         <!-- Step 3 -->
         <div class="flex gap-6 items-start">
-          <div class="w-14 h-14 rounded-full bg-warn/20 border border-warn/30 flex items-center justify-center text-warn font-bold text-lg shrink-0 relative z-10">3</div>
+          <div
+            class="w-14 h-14 rounded-full bg-warn/20 border border-warn/30 flex items-center justify-center text-warn font-bold text-lg shrink-0 relative z-10">
+            3</div>
           <div class="flex-1 pt-2">
             <h3 class="font-heading font-bold text-lg mb-1">Apply 48 UX Laws</h3>
-            <p class="text-zinc-500 text-sm mb-2">Learn to apply psychological principles for better user experiences.</p>
+            <p class="text-zinc-500 text-sm mb-2">Learn to apply psychological principles for better user experiences.
+            </p>
             <span class="text-zinc-600 text-sm">Coming soon</span>
           </div>
         </div>
 
         <!-- Step 4 -->
         <div class="flex gap-6 items-start">
-          <div class="w-14 h-14 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent-light font-bold text-lg shrink-0 relative z-10">4</div>
+          <div
+            class="w-14 h-14 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent-light font-bold text-lg shrink-0 relative z-10">
+            4</div>
           <div class="flex-1 pt-2">
             <h3 class="font-heading font-bold text-lg mb-1">Validate with 37 Design Tests</h3>
             <p class="text-zinc-500 text-sm mb-2">Run automated tests to ensure your designs meet quality standards.</p>
@@ -365,7 +441,9 @@
 
         <!-- Step 5 -->
         <div class="flex gap-6 items-start">
-          <div class="w-14 h-14 rounded-full bg-magic/20 border border-magic/30 flex items-center justify-center text-magic-light font-bold text-lg shrink-0 relative z-10">5</div>
+          <div
+            class="w-14 h-14 rounded-full bg-magic/20 border border-magic/30 flex items-center justify-center text-magic-light font-bold text-lg shrink-0 relative z-10">
+            5</div>
           <div class="flex-1 pt-2">
             <h3 class="font-heading font-bold text-lg mb-1">Advanced: Harvester & Figma</h3>
             <p class="text-zinc-500 text-sm mb-2">Extract design systems from websites and sync with Figma.</p>
@@ -380,11 +458,15 @@
   <!-- CTA -->
   <section class="max-w-4xl mx-auto px-4 py-24">
     <div class="glass-card rounded-2xl p-8 sm:p-12 text-center reveal">
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
+      <div
+        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
         🎓</div>
       <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4">Ready to start learning?</h2>
-      <p class="text-zinc-500 text-base max-w-lg mx-auto mb-8">Jump into the 5-minute quick start guide and create your first design system today.</p>
-      <a href="quickstart.md" class="inline-block cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base">Start Learning Now →</a>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto mb-8">Jump into the 5-minute quick start guide and create your
+        first design system today.</p>
+      <a href="quickstart.md"
+        class="inline-block cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base">Start
+        Learning Now →</a>
     </div>
   </section>
 
@@ -401,9 +483,11 @@
       <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
         <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
-        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../guides/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
         <a href="#" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
-        <a href="../technical/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="../technical/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
         <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
           class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
       </div>
@@ -411,41 +495,19 @@
     </div>
   </footer>
 
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/lang/zh.js"></script>
+  <script src="../js/lang/ja.js"></script>
+  <script src="../js/lang/ko.js"></script>
+  <script src="../js/lang/ru.js"></script>
+  <script src="../js/lang/de.js"></script>
+  <script src="../js/lang/fr.js"></script>
+  <script src="../js/lang/id.js"></script>
+  <script src="../js/lang/hi.js"></script>
   <script src="../js/main.js"></script>
-  <script>
-    // Scroll reveal animation
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-    }
-
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-    }
-
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-    }
-
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-mode');
-    }
-  </script>
+  <script>initI18n();</script>
 </body>
 
 </html>

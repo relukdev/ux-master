@@ -1,9 +1,12 @@
 ---
 name: ux-master
-description: "Ultimate UI/UX design intelligence with Harvester v4 (AI-powered visual extraction), 48 UX Laws, 37 Design Tests, Figma & Google Stitch integration, MCP server for Claude/Cursor, Component Generator, and BM25 search across 16 domains. One command = Complete design system. 10x productivity boost."
+description: "Ultimate AI-powered design system generator: Extract 120+ tokens from any website or codebase → Generate Semi Design-themed React/Vue components → Create interactive doc site. Includes 48 UX Laws, 37 Design Tests (TDD for design), BM25 search across 1032+ patterns, Figma sync, MCP server. One command = Complete production-ready design system. 10x productivity, zero manual design work. Use this skill whenever the user wants to: extract design system, generate components, create theme, build component library, reverse-engineer a site's visual identity. Also for 'design tokens', 'brand extraction', 'UX Master', 'harvester', or any URL + components/theme request."
 ---
 
-# 🚀 UX Master v4 — Ultimate Design Intelligence Platform
+# UX Master v4 — Ultimate Design Intelligence Platform
+
+> **Cross-Platform Configs:** `CLAUDE.md` (Claude Code) | `AGENTS.md` (Antigravity/Codex/OpenCode/Cursor) | `GEMINI.md` (Gemini CLI)
+> **Unified Skill:** `.skills/skills/ux-master/SKILL.md` | **Orchestrator:** `python3 scripts/uxm.py --info`
 
 **AI-powered design system platform combining:**
 - 🎯 **Harvester v4** — One-command design system extraction from any website

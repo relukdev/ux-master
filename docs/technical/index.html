@@ -48,15 +48,32 @@
       border-radius: 0.75rem;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
     }
+
     .code-header {
       background: rgba(255, 255, 255, 0.03);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .syntax-keyword { color: #c678dd; }
-    .syntax-string { color: #98c379; }
-    .syntax-comment { color: #5c6370; font-style: italic; }
-    .syntax-function { color: #61afef; }
-    .syntax-variable { color: #e06c75; }
+
+    .syntax-keyword {
+      color: #c678dd;
+    }
+
+    .syntax-string {
+      color: #98c379;
+    }
+
+    .syntax-comment {
+      color: #5c6370;
+      font-style: italic;
+    }
+
+    .syntax-function {
+      color: #61afef;
+    }
+
+    .syntax-variable {
+      color: #e06c75;
+    }
   </style>
 </head>
 
@@ -78,21 +95,32 @@
       <a href="#" class="text-white transition-colors cursor-pointer">Technical</a>
     </div>
     <div class="flex items-center gap-1.5 sm:gap-3">
-      <button id="themeToggle" class="lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
-        aria-label="Toggle theme" onclick="toggleTheme()">
-        <svg id="themeIconDark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-        <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-          </path>
-        </svg>
-      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+          <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+          <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+          <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+          <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+          <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+          <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+          <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+          <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        </div>
+      </div>
       <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
         class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
         Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0"><span
+          data-i18n="nav_try">Try It Free</span></a>
       <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
         onclick="toggleMobileMenu()">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,7 +135,8 @@
     class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
     <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a>
     <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Guides</a>
-    <a href="../tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Tutorials</a>
+    <a href="../tutorials/index.html" onclick="closeMobileMenu()"
+      class="text-zinc-300 hover:text-white py-2">Tutorials</a>
     <a href="#" onclick="closeMobileMenu()" class="text-white py-2">Technical</a>
   </div>
 
@@ -121,10 +150,12 @@
         <span class="text-accent-light">⚙️</span>
         <span>Technical Documentation</span>
       </div>
-      <h1
-        class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
-        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">APIs, SDKs &</span><br>
-        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">Integration Guides</span>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">APIs, SDKs
+          &</span><br>
+        <span
+          class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">Integration
+          Guides</span>
       </h1>
       <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
         Complete technical reference for UX Master.<br class="hidden sm:block">
@@ -138,22 +169,31 @@
   <section class="max-w-6xl mx-auto px-4 py-16">
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
       <a href="api-reference.md" class="glass-card rounded-xl p-5 text-center hover:border-accent/30 transition-all">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-3 text-lg">📡</div>
+        <div
+          class="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mx-auto mb-3 text-lg">
+          📡</div>
         <h3 class="font-heading font-bold text-sm mb-1">API Reference</h3>
         <p class="text-zinc-500 text-xs">Complete API docs</p>
       </a>
       <a href="harvester-v4.md" class="glass-card rounded-xl p-5 text-center hover:border-accent/30 transition-all">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center mx-auto mb-3 text-lg">🔍</div>
+        <div
+          class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center mx-auto mb-3 text-lg">
+          🔍</div>
         <h3 class="font-heading font-bold text-sm mb-1">Harvester v4</h3>
         <p class="text-zinc-500 text-xs">Design extraction</p>
       </a>
       <a href="how-it-works.md" class="glass-card rounded-xl p-5 text-center hover:border-accent/30 transition-all">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/5 flex items-center justify-center mx-auto mb-3 text-lg">⚙️</div>
+        <div
+          class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500/20 to-teal-500/5 flex items-center justify-center mx-auto mb-3 text-lg">
+          ⚙️</div>
         <h3 class="font-heading font-bold text-sm mb-1">How It Works</h3>
         <p class="text-zinc-500 text-xs">Architecture</p>
       </a>
-      <a href="https://github.com/relukdev/ux-master" target="_blank" class="glass-card rounded-xl p-5 text-center hover:border-accent/30 transition-all">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center mx-auto mb-3 text-lg">💻</div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank"
+        class="glass-card rounded-xl p-5 text-center hover:border-accent/30 transition-all">
+        <div
+          class="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center mx-auto mb-3 text-lg">
+          💻</div>
         <h3 class="font-heading font-bold text-sm mb-1">GitHub</h3>
         <p class="text-zinc-500 text-xs">Source code</p>
       </a>
@@ -173,7 +213,8 @@
       <div class="glass-card rounded-2xl overflow-hidden">
         <div class="code-header px-5 py-3 flex items-center justify-between">
           <span class="text-xs text-zinc-400 font-medium">Installation</span>
-          <button onclick="copyCode(this)" class="text-xs text-zinc-500 hover:text-white transition-colors">Copy</button>
+          <button onclick="copyCode(this)"
+            class="text-xs text-zinc-500 hover:text-white transition-colors">Copy</button>
         </div>
         <div class="p-5 overflow-x-auto">
           <pre class="text-sm"><code><span class="syntax-comment"># Install UX-Master CLI</span>
@@ -188,7 +229,8 @@
       <div class="grid md:grid-cols-2 gap-4">
         <div class="glass-card rounded-2xl p-6">
           <h3 class="font-heading font-bold text-base mb-4 flex items-center gap-2">
-            <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">1</span>
+            <span
+              class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">1</span>
             Initialize
           </h3>
           <div class="code-block overflow-x-auto">
@@ -207,7 +249,8 @@
 
         <div class="glass-card rounded-2xl p-6">
           <h3 class="font-heading font-bold text-base mb-4 flex items-center gap-2">
-            <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">2</span>
+            <span
+              class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">2</span>
             Search
           </h3>
           <div class="code-block overflow-x-auto">
@@ -215,7 +258,8 @@
               <span class="text-[10px] text-zinc-500">Shell</span>
             </div>
             <div class="p-4">
-              <pre class="text-xs"><code><span class="syntax-comment"># Search UX Laws</span>
+              <pre
+                class="text-xs"><code><span class="syntax-comment"># Search UX Laws</span>
 <span class="syntax-function">uxm</span> search <span class="syntax-string">"mobile touch"</span> <span class="syntax-keyword">--domain</span> ux-laws
 
 <span class="syntax-comment"># Generate design system</span>
@@ -226,7 +270,8 @@
 
         <div class="glass-card rounded-2xl p-6">
           <h3 class="font-heading font-bold text-base mb-4 flex items-center gap-2">
-            <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">3</span>
+            <span
+              class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">3</span>
             Validate
           </h3>
           <div class="code-block overflow-x-auto">
@@ -234,7 +279,8 @@
               <span class="text-[10px] text-zinc-500">Shell</span>
             </div>
             <div class="p-4">
-              <pre class="text-xs"><code><span class="syntax-comment"># Validate HTML file</span>
+              <pre
+                class="text-xs"><code><span class="syntax-comment"># Validate HTML file</span>
 <span class="syntax-function">uxm</span> validate index.html <span class="syntax-keyword">--suite</span> mobile
 
 <span class="syntax-comment"># Validate URL</span>
@@ -245,7 +291,8 @@
 
         <div class="glass-card rounded-2xl p-6">
           <h3 class="font-heading font-bold text-base mb-4 flex items-center gap-2">
-            <span class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">4</span>
+            <span
+              class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent-light text-sm">4</span>
             Extract
           </h3>
           <div class="code-block overflow-x-auto">
@@ -253,7 +300,8 @@
               <span class="text-[10px] text-zinc-500">Shell</span>
             </div>
             <div class="p-4">
-              <pre class="text-xs"><code><span class="syntax-comment"># Extract design system</span>
+              <pre
+                class="text-xs"><code><span class="syntax-comment"># Extract design system</span>
 <span class="syntax-function">uxm</span> extract https://stripe.com
 
 <span class="syntax-comment"># Export to Figma</span>
@@ -271,7 +319,8 @@
     <div class="text-center mb-16 reveal">
       <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3">MCP Server</p>
       <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Model Context Protocol</h2>
-      <p class="text-zinc-500 text-base max-w-xl mx-auto">Connect UX Master to Claude, Cursor, and other AI assistants via MCP.</p>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Connect UX Master to Claude, Cursor, and other AI assistants
+        via MCP.</p>
     </div>
 
     <div class="glass-card rounded-2xl p-8 reveal">
@@ -279,7 +328,7 @@
         <div>
           <h3 class="font-heading font-bold text-lg mb-4">What is MCP?</h3>
           <p class="text-zinc-400 text-sm leading-relaxed mb-4">
-            Model Context Protocol (MCP) allows AI assistants to use UX Master tools directly. 
+            Model Context Protocol (MCP) allows AI assistants to use UX Master tools directly.
             Your AI can search UX Laws, validate designs, and extract design systems automatically.
           </p>
           <ul class="space-y-2 text-sm text-zinc-400">
@@ -353,7 +402,8 @@
     <div class="text-center mb-16 reveal">
       <p class="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3">Harvester v4</p>
       <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">AI-Powered Design Extraction</h2>
-      <p class="text-zinc-500 text-base max-w-xl mx-auto">Extract complete design systems from any website automatically.</p>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Extract complete design systems from any website
+        automatically.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 mb-12 reveal">
@@ -375,10 +425,12 @@
       <div class="code-block">
         <div class="code-header px-5 py-3 flex items-center justify-between">
           <span class="text-xs text-zinc-400 font-medium">Quick Extraction</span>
-          <button onclick="copyCode(this)" class="text-xs text-zinc-500 hover:text-white transition-colors">Copy</button>
+          <button onclick="copyCode(this)"
+            class="text-xs text-zinc-500 hover:text-white transition-colors">Copy</button>
         </div>
         <div class="p-5 overflow-x-auto">
-          <pre class="text-sm"><code><span class="syntax-comment"># Single URL harvest</span>
+          <pre
+            class="text-sm"><code><span class="syntax-comment"># Single URL harvest</span>
 <span class="syntax-function">python3</span> scripts/harvester_browser.py <span class="syntax-keyword">--url</span> https://example.com
 
 <span class="syntax-comment"># Multi-page crawl</span>
@@ -391,8 +443,10 @@
 
       <div class="grid md:grid-cols-2 gap-6">
         <a href="harvester-v4.md" class="glass-card rounded-2xl p-6 group cursor-pointer block">
-          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-accent-light transition-colors">Complete Harvester Guide</h3>
-          <p class="text-zinc-500 text-sm">Full documentation on browser automation, AI visual analysis, and component generation.</p>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-accent-light transition-colors">Complete
+            Harvester Guide</h3>
+          <p class="text-zinc-500 text-sm">Full documentation on browser automation, AI visual analysis, and component
+            generation.</p>
         </a>
         <div class="glass-card rounded-2xl p-6">
           <h3 class="font-heading font-bold text-base mb-2">Output Includes</h3>
@@ -470,25 +524,33 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/5 flex items-center justify-center text-xl">🎯</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/5 flex items-center justify-center text-xl">
+            🎯</div>
           <h3 class="font-heading font-bold">Figma</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Bidirectional sync with Figma Tokens Studio. Import/export design tokens.</p>
+        <p class="text-zinc-500 text-sm mb-3">Bidirectional sync with Figma Tokens Studio. Import/export design tokens.
+        </p>
         <a href="../guides/for-designers.md" class="text-accent-light text-xs hover:underline">View guide →</a>
       </div>
 
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/5 flex items-center justify-center text-xl">💠</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/5 flex items-center justify-center text-xl">
+            💠</div>
           <h3 class="font-heading font-bold">Google Stitch</h3>
         </div>
-        <p class="text-zinc-500 text-sm mb-3">Generate AI prompts for Google Stitch. Create consistent AI-generated designs.</p>
+        <p class="text-zinc-500 text-sm mb-3">Generate AI prompts for Google Stitch. Create consistent AI-generated
+          designs.</p>
         <a href="../guides/for-designers.md" class="text-accent-light text-xs hover:underline">View guide →</a>
       </div>
 
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/5 flex items-center justify-center text-xl">⚛️</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/5 flex items-center justify-center text-xl">
+            ⚛️</div>
           <h3 class="font-heading font-bold">React / Next.js</h3>
         </div>
         <p class="text-zinc-500 text-sm mb-3">Component generation for React. Tailwind CSS integration.</p>
@@ -497,7 +559,9 @@
 
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/5 flex items-center justify-center text-xl">🍃</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/5 flex items-center justify-center text-xl">
+            🍃</div>
           <h3 class="font-heading font-bold">Vue / Nuxt</h3>
         </div>
         <p class="text-zinc-500 text-sm mb-3">Vue 3 component templates. Nuxt UI integration patterns.</p>
@@ -506,7 +570,9 @@
 
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/5 flex items-center justify-center text-xl">🟧</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/5 flex items-center justify-center text-xl">
+            🟧</div>
           <h3 class="font-heading font-bold">Svelte</h3>
         </div>
         <p class="text-zinc-500 text-sm mb-3">SvelteKit integration. Store patterns and transitions.</p>
@@ -515,7 +581,9 @@
 
       <div class="glass-card rounded-2xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center text-xl">📱</div>
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center text-xl">
+            📱</div>
           <h3 class="font-heading font-bold">React Native</h3>
         </div>
         <p class="text-zinc-500 text-sm mb-3">Cross-platform mobile components. Native styling patterns.</p>
@@ -528,19 +596,28 @@
   <!-- SUPPORT -->
   <section class="max-w-4xl mx-auto px-4 py-24">
     <div class="glass-card rounded-2xl p-8 sm:p-12 text-center reveal">
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
+      <div
+        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
         🆘</div>
       <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4">Need Help?</h2>
       <p class="text-zinc-500 text-base max-w-lg mx-auto mb-8">
         Found a bug? Need help with integration? Join our community or open an issue on GitHub.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://github.com/relukdev/ux-master/issues" target="_blank" class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-6 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <a href="https://github.com/relukdev/ux-master/issues" target="_blank"
+          class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-6 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
           Open GitHub Issue
         </a>
-        <a href="https://discord.gg/uxmaster" target="_blank" class="inline-flex items-center gap-2 cta-primary text-white font-medium px-6 py-3 rounded-xl transition-all cursor-pointer">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        <a href="https://discord.gg/uxmaster" target="_blank"
+          class="inline-flex items-center gap-2 cta-primary text-white font-medium px-6 py-3 rounded-xl transition-all cursor-pointer">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+          </svg>
           Join Discord
         </a>
       </div>
@@ -560,8 +637,10 @@
       <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
         <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
-        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
-        <a href="../tutorials/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="../guides/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../tutorials/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
         <a href="#" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
         <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
           class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
@@ -570,53 +649,19 @@
     </div>
   </footer>
 
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/lang/zh.js"></script>
+  <script src="../js/lang/ja.js"></script>
+  <script src="../js/lang/ko.js"></script>
+  <script src="../js/lang/ru.js"></script>
+  <script src="../js/lang/de.js"></script>
+  <script src="../js/lang/fr.js"></script>
+  <script src="../js/lang/id.js"></script>
+  <script src="../js/lang/hi.js"></script>
   <script src="../js/main.js"></script>
-  <script>
-    // Scroll reveal animation
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-    }
-
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-    }
-
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-    }
-
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-mode');
-    }
-
-    // Copy code function
-    function copyCode(btn) {
-      const codeBlock = btn.closest('.code-block') || btn.closest('.glass-card');
-      const code = codeBlock.querySelector('code');
-      if (code) {
-        navigator.clipboard.writeText(code.innerText);
-        const originalText = btn.innerText;
-        btn.innerText = 'Copied!';
-        setTimeout(() => btn.innerText = originalText, 2000);
-      }
-    }
-  </script>
+  <script>initI18n();</script>
 </body>
 
 </html>

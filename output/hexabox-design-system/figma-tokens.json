@@ -1,0 +1,198 @@
+{
+  "_version": "1.0",
+  "color/white": {
+    "value": "#FFFFFF",
+    "type": "color",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "color/black": {
+    "value": "#000000",
+    "type": "color",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "color/overlay/bg": {
+    "value": "rgba(0, 0, 0, 0.6)",
+    "type": "color",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "color/shadow": {
+    "value": "rgba(0, 0, 0, 0.04)",
+    "type": "color",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "font/weight/light": {
+    "value": "200",
+    "type": "fontWeights",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "font/weight/regular": {
+    "value": "400",
+    "type": "fontWeights",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "font/weight/medium": {
+    "value": "500",
+    "type": "fontWeights",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "font/weight/semibold": {
+    "value": "600",
+    "type": "fontWeights",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "font/weight/bold": {
+    "value": "700",
+    "type": "fontWeights",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/none": {
+    "value": "0",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/super/tight": {
+    "value": "2px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/extra/tight": {
+    "value": "4px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/tight": {
+    "value": "8px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/base/tight": {
+    "value": "12px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/base": {
+    "value": "16px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/base/loose": {
+    "value": "20px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/loose": {
+    "value": "24px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/extra/loose": {
+    "value": "32px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "spacing/super/loose": {
+    "value": "40px",
+    "type": "spacing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/thickness/control": {
+    "value": "1px",
+    "type": "other",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/thickness": {
+    "value": "0",
+    "type": "other",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/thickness/control/focus": {
+    "value": "1px",
+    "type": "other",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/xs": {
+    "value": "3px",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/sm": {
+    "value": "3px",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/md": {
+    "value": "6px",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/lg": {
+    "value": "12px",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/full": {
+    "value": "9999px",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "border/radius/circle": {
+    "value": "50%",
+    "type": "borderRadius",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "shadow/sm": {
+    "value": "0 0 1px rgba(0, 0, 0, 0.1)",
+    "type": "boxShadow",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "shadow/elevated": {
+    "value": "0 0 1px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.1)",
+    "type": "boxShadow",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "shadow/lg": {
+    "value": "0 0 1px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.12)",
+    "type": "boxShadow",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "height/control/small": {
+    "value": "24px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "height/control/default": {
+    "value": "32px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "height/control/large": {
+    "value": "40px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "width/icon/extra/small": {
+    "value": "8px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "width/icon/small": {
+    "value": "12px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "width/icon/medium": {
+    "value": "16px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "width/icon/large": {
+    "value": "20px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  },
+  "width/icon/extra/large": {
+    "value": "24px",
+    "type": "sizing",
+    "description": "Generated from HexaBox Design System design system"
+  }
+}

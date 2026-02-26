@@ -1,0 +1,96 @@
+/* Semi-Sync Harvester — Theme Override */
+/* Source: unknown */
+/* Title:  */
+/* Extracted:  */
+/* Total Tokens: 68 */
+/* Spec: Semi Design global.scss (DouyinFE/semi-design) */
+
+body {
+
+  /* -- Brand Colors (7) -- */
+  --semi-color-primary: #4F46E5;
+  --semi-color-primary-active: #3F38B7;
+  --semi-color-primary-disabled: #B8B5F4;
+  --semi-color-primary-hover: #473FCE;
+  --semi-color-primary-light-active: #D3D0F8;
+  --semi-color-primary-light-default: #E9E8FB;
+  --semi-color-primary-light-hover: #DFDDFA;
+
+  /* -- Secondary & Tertiary (14) -- */
+  --semi-color-secondary: #6961E8;
+  --semi-color-secondary-active: #544DB9;
+  --semi-color-secondary-disabled: #C3BFF5;
+  --semi-color-secondary-hover: #5E57D0;
+  --semi-color-secondary-light-active: #D9D7F9;
+  --semi-color-secondary-light-default: #EDECFC;
+  --semi-color-secondary-light-hover: #E4E2FA;
+  --semi-color-tertiary: #6B7075;
+  --semi-color-tertiary-active: #55595D;
+  --semi-color-tertiary-disabled: #C3C5C7;
+  --semi-color-tertiary-hover: #606469;
+  --semi-color-tertiary-light-active: #DADBDC;
+  --semi-color-tertiary-light-default: #EDEDEE;
+  --semi-color-tertiary-light-hover: #E4E5E6;
+
+  /* -- Semantic Colors (27) -- */
+  --semi-color-danger: #EF4444;
+  --semi-color-danger-active: #BF3636;
+  --semi-color-danger-disabled: #F8B4B4;
+  --semi-color-danger-hover: #D73D3D;
+  --semi-color-danger-light-active: #FBD0D0;
+  --semi-color-danger-light-default: #FDE8E8;
+  --semi-color-danger-light-hover: #FCDDDD;
+  --semi-color-info-active: #2F68C4;
+  --semi-color-info-disabled: #B0CDFB;
+  --semi-color-info-hover: #3575DD;
+  --semi-color-info-light-active: #CEDFFC;
+  --semi-color-info-light-default: #E7F0FD;
+  --semi-color-info-light-hover: #DBE8FD;
+  --semi-color-success: #10B981;
+  --semi-color-success-active: #0C9467;
+  --semi-color-success-disabled: #9FE3CC;
+  --semi-color-success-hover: #0EA674;
+  --semi-color-success-light-active: #C3EDDF;
+  --semi-color-success-light-default: #E2F6EF;
+  --semi-color-success-light-hover: #D3F2E8;
+  --semi-color-warning: #F59E0B;
+  --semi-color-warning-active: #C47E08;
+  --semi-color-warning-disabled: #FBD89D;
+  --semi-color-warning-hover: #DC8E09;
+  --semi-color-warning-light-active: #FCE6C2;
+  --semi-color-warning-light-default: #FDF3E1;
+  --semi-color-warning-light-hover: #FDEDD3;
+
+  /* -- Default Colors (3) -- */
+  --semi-color-default: #F9F9F9;
+  --semi-color-default-active: #EAEAEA;
+  --semi-color-default-hover: #F1F1F1;
+
+  /* -- Disabled States (4) -- */
+  --semi-color-disabled-bg: #E6E8EA;
+  --semi-color-disabled-border: #E6E8EA;
+  --semi-color-disabled-fill: rgba(46, 50, 56, 0.04);
+  --semi-color-disabled-text: rgba(28, 31, 35, 0.35);
+
+  /* -- Link Colors (4) -- */
+  --semi-color-link: #4F46E5;
+  --semi-color-link-active: #3F38B7;
+  --semi-color-link-hover: #473FCE;
+  --semi-color-link-visited: #4F46E5;
+
+  /* -- Special Colors (7) -- */
+  --semi-color-black: #000000;
+  --semi-color-focus-border: #4F46E5;
+  --semi-color-highlight: #000000;
+  --semi-color-highlight-bg: #F0C000;
+  --semi-color-nav-bg: #FFFFFF;
+  --semi-color-overlay-bg: rgba(22, 22, 26, 0.6);
+  --semi-color-white: #FFFFFF;
+
+  /* -- Shadows (1) -- */
+  --semi-color-shadow: rgba(0, 0, 0, 0.04);
+
+  /* -- Other (1) -- */
+  --semi-color-info: #3B82F6;
+
+}
