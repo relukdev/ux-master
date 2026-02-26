@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides — UX Master | Hướng dẫn theo vai trò</title>
+  <meta name="description"
+    content="Hướng dẫn UX Master theo vai trò: Designers, Developers, Product Managers. Tìm guide phù hợp với công việc của bạn.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Guides — UX Master | Hướng dẫn theo vai trò">
+  <meta property="og:description"
+    content="Hướng dẫn UX Master theo vai trò: Designers, Developers, Product Managers. Tìm guide phù hợp với công việc của bạn.">
+  <meta property="og:url" content="https://github.com/relukdev/ux-master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guides — UX Master | Hướng dẫn theo vai trò">
+  <meta name="twitter:description"
+    content="Hướng dẫn UX Master theo vai trò: Designers, Developers, Product Managers. Tìm guide phù hợp với công việc của bạn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], body: ['"Inter"', 'system-ui', 'sans-serif'] }, colors: { surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' }, accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' }, magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' }, success: { DEFAULT: '#10b981', light: '#34d399' }, warn: { DEFAULT: '#f59e0b', light: '#fbbf24' } } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="index.html#problem" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_why">Why</span></a>
+      <a href="index.html#magic" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_magic">Magic</span></a>
+      <a href="guides.html" class="text-accent-light font-medium transition-colors cursor-pointer"><span
+          data-i18n="nav_guides">Guides</span></a>
+      <a href="index.html#how" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_how">How</span></a>
+      <a href="index.html#start" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_start">Start
+          Free</span></a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+          <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+          <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+          <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+          <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+          <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+          <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+          <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+          <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0"><span
+          data-i18n="nav_try">Try It Free</span></a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="index.html#problem" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_why">Why</span></a>
+    <a href="index.html#magic" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_magic">Magic</span></a>
+    <a href="guides.html" onclick="closeMobileMenu()" class="text-accent-light font-medium py-2"><span
+        data-i18n="nav_guides">Guides</span></a>
+    <a href="index.html#how" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_how">How</span></a>
+    <a href="index.html#start" onclick="closeMobileMenu()"
+      class="cta-primary text-white text-center py-3 rounded-xl mt-2"><span data-i18n="nav_try">Try It Free →</span></a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[70vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-8">
+        <span class="text-accent-light">📚</span>
+        <span data-i18n="guides_badge">Hướng dẫn chi tiết theo từng vai trò</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent"><span
+            data-i18n="guides_h1a">Hướng dẫn theo vai trò</span></span>
+      </h1>
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        <span data-i18n="guides_p1">Tìm hướng dẫn phù hợp với công việc của bạn.</span><br class="hidden sm:block">
+        <span class="text-white font-medium">UX Master</span> <span data-i18n="guides_p2">cung cấp guides chuyên sâu cho
+          Designers, Developers và Product Managers.</span>
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#personas"
+          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base min-h-[52px] flex items-center justify-center"><span
+            data-i18n="guides_cta1">✦
+            Chọn vai trò của bạn</span></a>
+        <a href="#detailed-guides"
+          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base min-h-[52px] flex items-center justify-center"><span
+            data-i18n="guides_cta2">Xem tất cả guides ↓</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- PERSONA CARDS -->
+  <section id="personas" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3"><span
+          data-i18n="personas_tag">Chọn vai trò</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="personas_h2">Bạn là
+          ai?</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="personas_sub">3 vai trò chính với hướng dẫn
+          được thiết kế riêng.</span></p>
+    </div>
+
+    <!-- 3 Persona Cards - Hick's Law: Max 3 choices -->
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <!-- Designer -->
+      <a href="#guide-designer" class="group block">
+        <div
+          class="glass-card rounded-2xl p-8 h-full transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 reveal">
+          <div
+            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-pink-500/10 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            🎨
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-white">Designers</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            <span data-i18n="designer_desc">Tạo design system, áp dụng UX laws, và kiểm tra chất lượng UI với các công
+              cụ automation.</span>
+          </p>
+          <div class="flex items-center gap-2 text-accent-light text-sm font-medium">
+            <span data-i18n="view_guide">Xem hướng dẫn</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Developer -->
+      <a href="#guide-developer" class="group block">
+        <div
+          class="glass-card rounded-2xl p-8 h-full transition-all duration-300 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/5 reveal reveal-delay-1">
+          <div
+            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            💻
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-white">Developers</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            <span data-i18n="developer_desc">Tích hợp UX Master vào workflow, sử dụng API, và tối ưu code với design
+              patterns.</span>
+          </p>
+          <div class="flex items-center gap-2 text-cyan-400 text-sm font-medium">
+            <span data-i18n="view_guide">Xem hướng dẫn</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product Manager -->
+      <a href="#guide-pm" class="group block">
+        <div
+          class="glass-card rounded-2xl p-8 h-full transition-all duration-300 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5 reveal reveal-delay-2">
+          <div
+            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+            📋
+          </div>
+          <h3 class="font-heading font-bold text-xl mb-3 text-white">Product Managers</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+            <span data-i18n="pm_desc">Biến PRD thành prototype, quản lý design system, và đảm bảo chất lượng sản
+              phẩm.</span>
+          </p>
+          <div class="flex items-center gap-2 text-emerald-400 text-sm font-medium">
+            <span data-i18n="view_guide">Xem hướng dẫn</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- DETAILED GUIDES -->
+  <section id="detailed-guides" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3"><span data-i18n="guides_list_tag">Thư
+          viện</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span
+          data-i18n="guides_list_h2">Guides chi tiết</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="guides_list_sub">6 guides thiết yếu để bắt
+          đầu với UX Master.</span></p>
+    </div>
+
+    <!-- 6 Guide Cards - Miller's Law: Chunk into groups of 6 -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+      <!-- Guide 1: Quick Start -->
+      <a href="#" class="group block">
+        <div class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-xl">
+              🚀
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">5 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_quickstart_title">Bắt đầu nhanh</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_quickstart_desc">Cài đặt UX Master và tạo sản phẩm đầu tiên trong 5 phút.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">All</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Beginner</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 2: Design System -->
+      <a href="#" class="group block">
+        <div
+          class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal reveal-delay-1">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center text-xl">
+              🎨
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">15 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_designsystem_title">Tạo Design System</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_designsystem_desc">Xây dựng design system hoàn chỉnh với colors, typography,
+              components.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Designer</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Intermediate</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 3: API Integration -->
+      <a href="#" class="group block">
+        <div
+          class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal reveal-delay-2">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-xl">
+              🔌
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">20 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_api_title">Tích hợp API</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_api_desc">Sử dụng UX Master API trong ứng dụng của bạn với REST và SDK.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Developer</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Advanced</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 4: UX Laws -->
+      <a href="#" class="group block">
+        <div class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-xl">
+              ⚖️
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">12 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_uxlaws_title">Áp dụng UX Laws</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_uxlaws_desc">48 quy luật UX và cách áp dụng vào thiết kế sản phẩm thực tế.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">PM</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Designer</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 5: Testing -->
+      <a href="#" class="group block">
+        <div
+          class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal reveal-delay-1">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-xl">
+              ✅
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">10 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_testing_title">Kiểm tra chất lượng</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_testing_desc">37 bài test tự động để đảm bảo sản phẩm đạt chuẩn chất lượng.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">PM</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">All</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 6: Harvester -->
+      <a href="#" class="group block">
+        <div
+          class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal reveal-delay-2">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-xl">
+              🎯
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">25 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="guide_harvester_title">Sử dụng Harvester</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="guide_harvester_desc">Trích xuất design tokens từ bất kỳ website nào với Harvester
+              v3.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Pro</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Advanced</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Guide 7: Design System Workflow -->
+      <a href="guides/react-guide-vi.md" class="group block">
+        <div class="glass-card rounded-2xl p-6 h-full transition-all duration-300 hover:border-accent/30 reveal">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-xl">
+              ⚛️
+            </div>
+            <span class="text-xs text-zinc-500 bg-white/5 px-2 py-1 rounded">20 min</span>
+          </div>
+          <h3 class="font-heading font-bold text-lg mb-2 text-white group-hover:text-accent-light transition-colors">
+            <span data-i18n="dsw_guide_title">Design System Workflow</span>
+          </h3>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-4">
+            <span data-i18n="dsw_guide_desc">Learn how AI uses harvested tokens to write consistent code across your
+              entire project.</span>
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Developer</span>
+            <span class="text-[10px] text-zinc-400 bg-white/5 px-2 py-1 rounded">Pro</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- GET STARTED BY ROLE -->
+  <section id="guide-designer" class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-3"><span
+          data-i18n="role_start_tag">Bắt đầu</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="role_start_h2">Bắt
+          đầu với vai trò của bạn</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="role_start_sub">Các bước cụ thể cho từng vai
+          trò.</span></p>
+    </div>
+
+    <!-- Designer Section -->
+    <div class="glass-card rounded-2xl p-8 mb-8 reveal border-violet-500/20">
+      <div class="flex items-center gap-4 mb-6">
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-pink-500/10 flex items-center justify-center text-3xl">
+          🎨
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-xl text-white">Dành cho Designers</h3>
+          <p class="text-zinc-400 text-sm">3 bước để trở thành power user</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-violet-500/20 text-violet-400 flex items-center justify-center text-sm font-bold shrink-0">1</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Cài đặt UX Master</h4>
+            <p class="text-zinc-500 text-xs">Chạy install script và chọn design tools bạn đang dùng</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-violet-500/20 text-violet-400 flex items-center justify-center text-sm font-bold shrink-0">2</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Khám phá Design Gallery</h4>
+            <p class="text-zinc-500 text-xs">Xem 67 UI styles và 96 color palettes có sẵn</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-violet-500/20 text-violet-400 flex items-center justify-center text-sm font-bold shrink-0">3</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Áp dụng UX Laws</h4>
+            <p class="text-zinc-500 text-xs">Sử dụng 48 quy luật UX để cải thiện thiết kế</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Developer Section -->
+    <div id="guide-developer" class="glass-card rounded-2xl p-8 mb-8 reveal border-cyan-500/20">
+      <div class="flex items-center gap-4 mb-6">
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center text-3xl">
+          💻
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-xl text-white">Dành cho Developers</h3>
+          <p class="text-zinc-400 text-sm">Tích hợp vào workflow của bạn</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm font-bold shrink-0">1</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Cài đặt CLI</h4>
+            <p class="text-zinc-500 text-xs">npm install -g @ux-master/cli hoặc sử dụng Python script</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm font-bold shrink-0">2</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Tích hợp với IDE</h4>
+            <p class="text-zinc-500 text-xs">Cài extension cho VS Code, Cursor, hoặc JetBrains</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-sm font-bold shrink-0">3</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Sử dụng trong CI/CD</h4>
+            <p class="text-zinc-500 text-xs">Tự động kiểm tra design quality trong pipeline</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PM Section -->
+    <div id="guide-pm" class="glass-card rounded-2xl p-8 reveal border-emerald-500/20">
+      <div class="flex items-center gap-4 mb-6">
+        <div
+          class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 flex items-center justify-center text-3xl">
+          📋
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-xl text-white">Dành cho Product Managers</h3>
+          <p class="text-zinc-400 text-sm">Quản lý chất lượng sản phẩm hiệu quả</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-bold shrink-0">1</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Viết PRD với UX Master</h4>
+            <p class="text-zinc-500 text-xs">Tích hợp design requirements vào PRD của bạn</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-bold shrink-0">2</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Review Design tự động</h4>
+            <p class="text-zinc-500 text-xs">Chạy 37 design tests trước khi approve</p>
+          </div>
+        </div>
+        <div
+          class="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/[0.07] transition-colors cursor-pointer min-h-[44px] items-center">
+          <span
+            class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm font-bold shrink-0">3</span>
+          <div>
+            <h4 class="font-medium text-white text-sm">Báo cáo & Analytics</h4>
+            <p class="text-zinc-500 text-xs">Theo dõi design quality score qua các sprint</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- CTA SECTION -->
+  <section class="max-w-4xl mx-auto px-4 py-24">
+    <div class="relative overflow-hidden rounded-3xl p-8 sm:p-12 text-center reveal"
+      style="background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(236,72,153,0.1) 100%); border: 1px solid rgba(124,58,237,0.2);">
+      <div class="absolute inset-0 opacity-30">
+        <div
+          class="absolute top-0 left-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-64 h-64 bg-magic/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
+        </div>
+      </div>
+      <div class="relative z-10">
+        <div
+          class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
+          ✦
+        </div>
+        <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4 text-white">
+          <span data-i18n="cta_title">Sẵn sàng bắt đầu?</span>
+        </h2>
+        <p class="text-zinc-400 text-base max-w-md mx-auto mb-8">
+          <span data-i18n="cta_desc">Dùng UX Master miễn phí. Không cần thẻ tín dụng. Không giới hạn thời gian.</span>
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="index.html#start"
+            class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base min-h-[52px] flex items-center justify-center">
+            <span data-i18n="cta_btn_primary">Bắt đầu miễn phí →</span>
+          </a>
+          <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+            class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base min-h-[52px] flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            <span data-i18n="cta_btn_secondary">Xem trên GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến <span data-i18n="magic_ai">AI</span> thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="guides.html" class="text-accent-light font-medium cursor-pointer"><span data-i18n="footer_guide">Hướng
+            dẫn</span></a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a><span>·</span>
+        <span><span data-i18n="footer_f1">Miễn phí mãi mãi</span></span><span>·</span><span>6 nền tảng <span
+            data-i18n="magic_ai">AI</span></span><span>·</span><span><span data-i18n="footer_f3">1032+ quy tắc
+            design</span></span>
+      </div>
+      <p class="text-zinc-800 text-xs"><span data-i18n="magic_you">Bạn</span> mơ nó. <span
+          data-i18n="magic_ai">AI</span> xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/lang/en.js"></script>
+  <script src="js/lang/vi.js"></script>
+  <script src="js/lang/zh.js"></script>
+  <script src="js/lang/ja.js"></script>
+  <script src="js/lang/ko.js"></script>
+  <script src="js/lang/ru.js"></script>
+  <script src="js/lang/de.js"></script>
+  <script src="js/lang/fr.js"></script>
+  <script src="js/lang/id.js"></script>
+  <script src="js/lang/hi.js"></script>
+  <script src="js/main.js"></script>
+  <script>initI18n();</script>
+</body>
+
+</html>

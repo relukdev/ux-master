@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides — UX Master | Personas & Use Cases</title>
+  <meta name="description"
+    content="Find your path with UX Master. Tailored guides for designers, developers, product managers, founders, and solo makers.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Guides — UX Master | Personas & Use Cases">
+  <meta property="og:description"
+    content="Tailored guides for every role. Designers, developers, PMs, founders — find your path.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer">Home</a>
+      <a href="#" class="text-white transition-colors cursor-pointer">Guides</a>
+      <a href="../tutorials/index.html" class="hover:text-white transition-colors cursor-pointer">Tutorials</a>
+      <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <button id="themeToggle" class="lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        aria-label="Toggle theme" onclick="toggleTheme()">
+        <svg id="themeIconDark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+        <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+          </path>
+        </svg>
+      </button>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a>
+    <a href="#" onclick="closeMobileMenu()" class="text-white py-2">Guides</a>
+    <a href="../tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Tutorials</a>
+    <a href="../technical/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[60vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-8">
+        <span class="text-accent-light">📚</span>
+        <span>Find Your Path</span>
+      </div>
+      <h1
+        class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">Who are you?</span><br>
+        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">We have a guide for that.</span>
+      </h1>
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+        Whether you're a designer, developer, PM, or founder — find tailored workflows,<br class="hidden sm:block">
+        best practices, and resources designed specifically for your role.
+      </p>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- PERSONAS GRID -->
+  <section class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Choose Your Persona</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Six Paths. One Destination.</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Select the role that describes you best to get personalized guidance.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Designer -->
+      <a href="for-designers.md" class="glass-card rounded-2xl p-7 reveal group cursor-pointer block">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-rose-500/5 flex items-center justify-center text-3xl">
+            🎨</div>
+          <span class="text-accent-light text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">View Guide →</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">UI/UX Designer</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Create consistent, scalable designs faster. Figma integration, design system audits, and Google Stitch workflows.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Figma</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Design Systems</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Stitch AI</span>
+        </div>
+      </a>
+
+      <!-- Developer -->
+      <a href="for-developers.md" class="glass-card rounded-2xl p-7 reveal reveal-delay-1 group cursor-pointer block">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-3xl">
+            💻</div>
+          <span class="text-accent-light text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">View Guide →</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">Developer</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Ship production-ready UI with confidence. Component generators, code templates, and validation tools.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">React/Vue</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Tailwind</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">TypeScript</span>
+        </div>
+      </a>
+
+      <!-- Product Manager -->
+      <a href="for-product-managers.md" class="glass-card rounded-2xl p-7 reveal reveal-delay-2 group cursor-pointer block">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/5 flex items-center justify-center text-3xl">
+            📋</div>
+          <span class="text-accent-light text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">View Guide →</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">Product Manager</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Turn PRDs into prototypes instantly. Validate concepts, run design tests, and align teams faster.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Prototyping</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Validation</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">UX Laws</span>
+        </div>
+      </a>
+
+      <!-- Founder -->
+      <div class="glass-card rounded-2xl p-7 reveal">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/5 flex items-center justify-center text-3xl">
+            🚀</div>
+          <span class="text-zinc-600 text-sm font-medium">Guide Coming Soon</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">Startup Founder</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Ship MVPs that look like they cost $50k. Impress investors and early users with polished design.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">MVP Design</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Pitch Decks</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Landing Pages</span>
+        </div>
+      </div>
+
+      <!-- Marketer -->
+      <div class="glass-card rounded-2xl p-7 reveal reveal-delay-1">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/5 flex items-center justify-center text-3xl">
+            📈</div>
+          <span class="text-zinc-600 text-sm font-medium">Guide Coming Soon</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">Growth Marketer</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">Create high-converting landing pages. A/B test visuals, optimize CTAs, and maximize conversion rates.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">CRO</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">A/B Testing</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Landing Pages</span>
+        </div>
+      </div>
+
+      <!-- Solo Maker -->
+      <div class="glass-card rounded-2xl p-7 reveal reveal-delay-2">
+        <div class="flex items-center justify-between mb-5">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/5 flex items-center justify-center text-3xl">
+            ✨</div>
+          <span class="text-zinc-600 text-sm font-medium">Guide Coming Soon</span>
+        </div>
+        <h3 class="font-heading font-bold text-xl mb-2">Solo Maker</h3>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-4">One person = whole team. UX Master is your designer, design system, and quality assurance in one.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Full Stack</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Side Projects</span>
+          <span class="text-xs bg-white/5 px-2 py-1 rounded text-zinc-400">Indie Hacker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- USE CASES BY INDUSTRY -->
+  <section class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3">By Industry</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Solutions for Every Domain</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">UX Master adapts to your industry's unique design challenges.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">🏦</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Fintech</h4>
+        <p class="text-zinc-500 text-xs">Trust, security, clarity</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">🛒</div>
+        <h4 class="font-heading font-bold text-sm mb-1">E-commerce</h4>
+        <p class="text-zinc-500 text-xs">Conversion, trust badges</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">🏥</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Healthcare</h4>
+        <p class="text-zinc-500 text-xs">Accessibility, calm UI</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">🎓</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Education</h4>
+        <p class="text-zinc-500 text-xs">Engagement, clarity</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">🎮</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Gaming</h4>
+        <p class="text-zinc-500 text-xs">Immersion, feedback</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">💎</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Luxury</h4>
+        <p class="text-zinc-500 text-xs">Elegance, whitespace</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">📊</div>
+        <h4 class="font-heading font-bold text-sm mb-1">SaaS / Dashboard</h4>
+        <p class="text-zinc-500 text-xs">Data density, actions</p>
+      </div>
+      <div class="persona-pill rounded-2xl p-6 text-center cursor-pointer hover:border-accent/30">
+        <div class="text-3xl mb-3">📱</div>
+        <h4 class="font-heading font-bold text-sm mb-1">Mobile Apps</h4>
+        <p class="text-zinc-500 text-xs">Touch targets, gestures</p>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- FEATURED GUIDES -->
+  <section class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3">Popular Guides</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Start With These</h2>
+    </div>
+
+    <div class="space-y-4 reveal">
+      <a href="for-designers.md" class="glass-card rounded-2xl p-6 flex items-center gap-6 group cursor-pointer block">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-pink-500/20 to-rose-500/5 flex items-center justify-center text-2xl shrink-0">
+          🎨</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">Complete Guide for Designers</h3>
+          <p class="text-zinc-500 text-sm">Extract design systems, Figma integration, Google Stitch workflows, and real case studies.</p>
+        </div>
+        <span class="text-zinc-600 group-hover:text-accent-light transition-colors">→</span>
+      </a>
+
+      <a href="../tutorials/quickstart.md" class="glass-card rounded-2xl p-6 flex items-center gap-6 group cursor-pointer block">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-magic/5 flex items-center justify-center text-2xl shrink-0">
+          ⚡</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">5-Minute Quick Start</h3>
+          <p class="text-zinc-500 text-sm">Get up and running with UX Master in under 5 minutes. Figma plugin, MCP server, or CLI.</p>
+        </div>
+        <span class="text-zinc-600 group-hover:text-accent-light transition-colors">→</span>
+      </a>
+
+      <a href="react-guide-vi.md" class="glass-card rounded-2xl p-6 flex items-center gap-6 group cursor-pointer block">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/5 flex items-center justify-center text-2xl shrink-0">
+          ⚛️</div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-heading font-bold text-lg mb-1 group-hover:text-accent-light transition-colors">React Guide (Vietnamese)</h3>
+          <p class="text-zinc-500 text-sm">Hướng dẫn sử dụng UX Master với React — dành cho developer Việt Nam.</p>
+        </div>
+        <span class="text-zinc-600 group-hover:text-accent-light transition-colors">→</span>
+      </a>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- CTA -->
+  <section class="max-w-4xl mx-auto px-4 py-24">
+    <div class="text-center reveal">
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4">Not sure where to start?</h2>
+      <p class="text-zinc-500 text-base max-w-lg mx-auto mb-8">Try the quick start guide or explore our tutorials. You'll be creating beautiful designs in minutes.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="../tutorials/quickstart.md" class="cta-primary text-white font-semibold px-8 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base">Start Quick Guide →</a>
+        <a href="../tutorials/index.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base">Browse All Tutorials</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="#" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../tutorials/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="../technical/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Scroll reveal animation
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+    }
+  </script>
+</body>
+
+</html>

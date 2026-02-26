@@ -34,13 +34,13 @@ uxm init --ai <platform> [options]
 
 **Options:**
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--ai, -a` | Target AI platform (required) | - |
-| `--global, -g` | Install to global config | `false` |
-| `--force, -f` | Overwrite existing files | `false` |
-| `--output, -o` | Output directory | `.` |
-| `--dry-run` | Preview without creating | `false` |
+| Option           | Description                   | Default   |
+| ---------------- | ----------------------------- | --------- |
+| `--ai, -a`     | Target AI platform (required) | -         |
+| `--global, -g` | Install to global config      | `false` |
+| `--force, -f`  | Overwrite existing files      | `false` |
+| `--output, -o` | Output directory              | `.`     |
+| `--dry-run`    | Preview without creating      | `false` |
 
 **Supported Platforms:**
 
@@ -76,14 +76,14 @@ uxm search <query> [options]
 
 **Options:**
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--domain, -d` | Search domain | - |
-| `--stack, -s` | Technology stack | - |
-| `--max-results, -n` | Max results | `3` |
+| Option                   | Description            | Default   |
+| ------------------------ | ---------------------- | --------- |
+| `--domain, -d`         | Search domain          | -         |
+| `--stack, -s`          | Technology stack       | -         |
+| `--max-results, -n`    | Max results            | `3`     |
 | `--design-system, -ds` | Generate design system | `false` |
-| `--project-name, -p` | Project name | - |
-| `--format, -f` | Output format | `ascii` |
+| `--project-name, -p`   | Project name           | -         |
+| `--format, -f`         | Output format          | `ascii` |
 
 **Domains:**
 
@@ -135,13 +135,13 @@ uxm validate <target> [options]
 
 **Options:**
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--suite, -s` | Test suite | `all` |
-| `--format, -f` | Output format | `rich` |
-| `--output, -o` | Output file | - |
-| `--url, -u` | Target is URL | `false` |
-| `--component, -c` | Component type | - |
+| Option              | Description    | Default   |
+| ------------------- | -------------- | --------- |
+| `--suite, -s`     | Test suite     | `all`   |
+| `--format, -f`    | Output format  | `rich`  |
+| `--output, -o`    | Output file    | -         |
+| `--url, -u`       | Target is URL  | `false` |
+| `--component, -c` | Component type | -         |
 
 **Test Suites:**
 
@@ -188,13 +188,13 @@ uxm extract <url> [options]
 
 **Options:**
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--output, -o` | Output file | - |
-| `--format, -f` | Output format | `json` |
-| `--depth, -d` | Crawl depth | `1` |
-| `--figma` | Export to Figma | `false` |
-| `--stitch` | Export to Stitch | `false` |
+| Option            | Description         | Default   |
+| ----------------- | ------------------- | --------- |
+| `--output, -o`  | Output file         | -         |
+| `--format, -f`  | Output format       | `json`  |
+| `--depth, -d`   | Crawl depth         | `1`     |
+| `--figma`       | Export to Figma     | `false` |
+| `--stitch`      | Export to Stitch    | `false` |
 | `--screenshots` | Capture screenshots | `false` |
 
 **Output Formats:**
@@ -229,11 +229,11 @@ uxm mcp start [options]
 
 **Options:**
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--port, -p` | Server port | `3000` |
-| `--host, -h` | Server host | `0.0.0.0` |
-| `--figma-token` | Figma API token | - |
+| Option            | Description     | Default     |
+| ----------------- | --------------- | ----------- |
+| `--port, -p`    | Server port     | `3000`    |
+| `--host, -h`    | Server host     | `0.0.0.0` |
+| `--figma-token` | Figma API token | -           |
 
 **Example:**
 
@@ -358,11 +358,11 @@ Search 48 UX Laws for psychology-driven design.
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `query` | string | Yes | Search query |
-| `product_type` | string | No | Filter by type |
-| `max_results` | integer | No | Max results (1-10) |
+| Parameter        | Type    | Required | Description        |
+| ---------------- | ------- | -------- | ------------------ |
+| `query`        | string  | Yes      | Search query       |
+| `product_type` | string  | No       | Filter by type     |
+| `max_results`  | integer | No       | Max results (1-10) |
 
 ---
 
@@ -398,11 +398,11 @@ Validate UI code against 37 Design Tests.
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `html` | string | Yes | HTML content |
-| `css` | string | No | CSS content |
-| `test_suite` | string | No | Test suite to run |
+| Parameter      | Type   | Required | Description       |
+| -------------- | ------ | -------- | ----------------- |
+| `html`       | string | Yes      | HTML content      |
+| `css`        | string | No       | CSS content       |
+| `test_suite` | string | No       | Test suite to run |
 
 **Test Suites:**
 
@@ -446,11 +446,11 @@ Extract design system from website using Harvester v4.
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `url` | string | Yes | Website URL |
-| `depth` | integer | No | Crawl depth (1-3) |
-| `include_screenshots` | boolean | No | Capture screenshots |
+| Parameter               | Type    | Required | Description         |
+| ----------------------- | ------- | -------- | ------------------- |
+| `url`                 | string  | Yes      | Website URL         |
+| `depth`               | integer | No       | Crawl depth (1-3)   |
+| `include_screenshots` | boolean | No       | Capture screenshots |
 
 ---
 
@@ -486,11 +486,11 @@ Generate design system from description.
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `query` | string | Yes | Project description |
-| `project_name` | string | No | Project name |
-| `output_format` | string | No | `json` or `markdown` |
+| Parameter         | Type   | Required | Description              |
+| ----------------- | ------ | -------- | ------------------------ |
+| `query`         | string | Yes      | Project description      |
+| `project_name`  | string | No       | Project name             |
+| `output_format` | string | No       | `json` or `markdown` |
 
 ---
 
@@ -528,11 +528,11 @@ Export design tokens to Figma Variables.
 
 **Parameters:**
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `file_key` | string | Yes | Figma file key |
-| `design_tokens` | object | Yes | Design tokens |
-| `collection_name` | string | No | Collection name |
+| Parameter           | Type   | Required | Description     |
+| ------------------- | ------ | -------- | --------------- |
+| `file_key`        | string | Yes      | Figma file key  |
+| `design_tokens`   | object | Yes      | Design tokens   |
+| `collection_name` | string | No       | Collection name |
 
 ---
 
@@ -655,84 +655,84 @@ with open('design-system.css', 'w') as f:
 
 #### Mobile Tests (7)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-MOB-001 | Fitts's Law | Critical | Touch targets >= 44px |
-| DT-MOB-002 | Thumb Zone | High | Actions in bottom 25% |
-| DT-MOB-003 | Touch Feedback | High | Hover/active states |
-| DT-MOB-004 | Tap Delay | Medium | No 300ms delay |
-| DT-MOB-005 | Swipe Gestures | Low | List swipe support |
-| DT-MOB-006 | Gestural Consistency | Medium | Consistent gestures |
-| DT-MOB-007 | Pull-to-Refresh | Low | PTR support |
+| ID         | Name                 | Severity | Check                 |
+| ---------- | -------------------- | -------- | --------------------- |
+| DT-MOB-001 | Fitts's Law          | Critical | Touch targets >= 44px |
+| DT-MOB-002 | Thumb Zone           | High     | Actions in bottom 25% |
+| DT-MOB-003 | Touch Feedback       | High     | Hover/active states   |
+| DT-MOB-004 | Tap Delay            | Medium   | No 300ms delay        |
+| DT-MOB-005 | Swipe Gestures       | Low      | List swipe support    |
+| DT-MOB-006 | Gestural Consistency | Medium   | Consistent gestures   |
+| DT-MOB-007 | Pull-to-Refresh      | Low      | PTR support           |
 
 #### Landing Page Tests (6)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-LND-001 | Hero Clarity | Critical | Value prop in 5 sec |
-| DT-LND-002 | CTA Prominence | Critical | Visual dominance |
-| DT-LND-003 | Social Proof | High | Above the fold |
-| DT-LND-004 | Form Friction | High | Max 5 fields |
-| DT-LND-005 | Trust Indicators | High | Security badges |
-| DT-LND-006 | FAQ Visibility | Medium | Easy to find |
+| ID         | Name             | Severity | Check               |
+| ---------- | ---------------- | -------- | ------------------- |
+| DT-LND-001 | Hero Clarity     | Critical | Value prop in 5 sec |
+| DT-LND-002 | CTA Prominence   | Critical | Visual dominance    |
+| DT-LND-003 | Social Proof     | High     | Above the fold      |
+| DT-LND-004 | Form Friction    | High     | Max 5 fields        |
+| DT-LND-005 | Trust Indicators | High     | Security badges     |
+| DT-LND-006 | FAQ Visibility   | Medium   | Easy to find        |
 
 #### Dashboard Tests (6)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-DSH-001 | Data Density | High | Information scent |
-| DT-DSH-002 | Quick Actions | High | Within 2 clicks |
-| DT-DSH-003 | Empty States | Medium | Guide users |
-| DT-DSH-004 | Loading States | Medium | Skeleton screens |
-| DT-DSH-005 | Real-time Updates | Medium | Fresh data |
-| DT-DSH-006 | Customization | Low | User control |
+| ID         | Name              | Severity | Check             |
+| ---------- | ----------------- | -------- | ----------------- |
+| DT-DSH-001 | Data Density      | High     | Information scent |
+| DT-DSH-002 | Quick Actions     | High     | Within 2 clicks   |
+| DT-DSH-003 | Empty States      | Medium   | Guide users       |
+| DT-DSH-004 | Loading States    | Medium   | Skeleton screens  |
+| DT-DSH-005 | Real-time Updates | Medium   | Fresh data        |
+| DT-DSH-006 | Customization     | Low      | User control      |
 
 #### Typography Tests (4)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-TYP-001 | Hierarchy | Critical | 3+ levels |
-| DT-TYP-002 | Line Length | Medium | 45-75 chars |
-| DT-TYP-003 | Font Families | Medium | Max 2-3 fonts |
-| DT-TYP-004 | Font Loading | Medium | Performance |
+| ID         | Name          | Severity | Check         |
+| ---------- | ------------- | -------- | ------------- |
+| DT-TYP-001 | Hierarchy     | Critical | 3+ levels     |
+| DT-TYP-002 | Line Length   | Medium   | 45-75 chars   |
+| DT-TYP-003 | Font Families | Medium   | Max 2-3 fonts |
+| DT-TYP-004 | Font Loading  | Medium   | Performance   |
 
 #### Color Tests (4)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-CLR-001 | WCAG Contrast | Critical | 4.5:1 ratio |
-| DT-CLR-002 | Semantic Colors | High | Primary/Success/etc |
-| DT-CLR-003 | Neutral Scale | High | 5+ levels |
-| DT-CLR-004 | Dark Mode | Low | Color support |
+| ID         | Name            | Severity | Check               |
+| ---------- | --------------- | -------- | ------------------- |
+| DT-CLR-001 | WCAG Contrast   | Critical | 4.5:1 ratio         |
+| DT-CLR-002 | Semantic Colors | High     | Primary/Success/etc |
+| DT-CLR-003 | Neutral Scale   | High     | 5+ levels           |
+| DT-CLR-004 | Dark Mode       | Low      | Color support       |
 
 #### Layout Tests (4)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-LYT-001 | Spacing System | High | 4px base |
-| DT-LYT-002 | Border Radius | Medium | Consistency |
-| DT-LYT-003 | Grid System | Medium | 8/12/24 col |
-| DT-LYT-004 | Breakpoints | High | Responsive |
+| ID         | Name           | Severity | Check       |
+| ---------- | -------------- | -------- | ----------- |
+| DT-LYT-001 | Spacing System | High     | 4px base    |
+| DT-LYT-002 | Border Radius  | Medium   | Consistency |
+| DT-LYT-003 | Grid System    | Medium   | 8/12/24 col |
+| DT-LYT-004 | Breakpoints    | High     | Responsive  |
 
 #### Accessibility Tests (5)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-A11-001 | Focus States | Critical | Visible focus |
-| DT-A11-002 | Input Labels | Critical | Associated labels |
-| DT-A11-003 | ARIA Usage | High | Proper attributes |
-| DT-A11-004 | Keyboard Nav | Critical | Tab order |
-| DT-A11-005 | Screen Readers | High | SR support |
+| ID         | Name           | Severity | Check             |
+| ---------- | -------------- | -------- | ----------------- |
+| DT-A11-001 | Focus States   | Critical | Visible focus     |
+| DT-A11-002 | Input Labels   | Critical | Associated labels |
+| DT-A11-003 | ARIA Usage     | High     | Proper attributes |
+| DT-A11-004 | Keyboard Nav   | Critical | Tab order         |
+| DT-A11-005 | Screen Readers | High     | SR support        |
 
 #### Interaction Tests (5)
 
-| ID | Name | Severity | Check |
-|----|------|----------|-------|
-| DT-INT-001 | Animation Perf | Medium | 60fps |
-| DT-INT-002 | Transition Timing | Medium | 150-300ms |
-| DT-INT-003 | Hover Response | Medium | < 150ms |
-| DT-INT-004 | Error Prevention | High | Undo/cancel |
-| DT-INT-005 | Undo Capability | Medium | Undo actions |
+| ID         | Name              | Severity | Check        |
+| ---------- | ----------------- | -------- | ------------ |
+| DT-INT-001 | Animation Perf    | Medium   | 60fps        |
+| DT-INT-002 | Transition Timing | Medium   | 150-300ms    |
+| DT-INT-003 | Hover Response    | Medium   | < 150ms      |
+| DT-INT-004 | Error Prevention  | High     | Undo/cancel  |
+| DT-INT-005 | Undo Capability   | Medium   | Undo actions |
 
 ---
 
@@ -799,13 +799,13 @@ if result["success"]:
 
 ## Error Codes
 
-| Code | Meaning | Resolution |
-|------|---------|------------|
-| 400 | Bad Request | Check parameters |
-| 404 | Not Found | Check URL/file path |
-| 422 | Validation Error | Check input format |
-| 500 | Server Error | Check logs |
-| 503 | Service Unavailable | MCP server not running |
+| Code | Meaning             | Resolution             |
+| ---- | ------------------- | ---------------------- |
+| 400  | Bad Request         | Check parameters       |
+| 404  | Not Found           | Check URL/file path    |
+| 422  | Validation Error    | Check input format     |
+| 500  | Server Error        | Check logs             |
+| 503  | Service Unavailable | MCP server not running |
 
 ---
 

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials — Học UX Master từ con số 0 | UX Master</title>
+  <meta name="description"
+    content="Học UX Master từ cơ bản đến nâng cao. 15+ video tutorials, hướng dẫn cài đặt, sử dụng và tối ưu UX cho mọi AI tool.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UX Master Tutorials — Học từ con số 0">
+  <meta property="og:description"
+    content="15+ video tutorials, 3 cấp độ học tập. Hướng dẫn cài đặt và sử dụng UX Master cho mọi AI tool.">
+  <meta property="og:url" content="https://github.com/relukdev/ux-master/tutorials.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UX Master Tutorials — Học từ con số 0">
+  <meta name="twitter:description"
+    content="15+ tutorials, 3 cấp độ, 30 phút/video. Hướng dẫn sử dụng UX Master từ A-Z.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], body: ['"Inter"', 'system-ui', 'sans-serif'] }, colors: { surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' }, accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' }, magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' }, success: { DEFAULT: '#10b981', light: '#34d399' }, warn: { DEFAULT: '#f59e0b', light: '#fbbf24' } } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="index.html#problem" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_why">Why</span></a>
+      <a href="index.html#magic" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_magic">Magic</span></a>
+      <a href="index.html#how" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_how">How</span></a>
+      <a href="#tutorials" class="text-accent-light font-medium transition-colors cursor-pointer"><span
+          data-i18n="nav_tutorials">Tutorials</span></a>
+      <a href="index.html#start" class="hover:text-white transition-colors cursor-pointer"><span
+          data-i18n="nav_start">Start
+          Free</span></a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+          <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+          <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+          <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+          <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+          <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+          <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+          <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+          <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0"><span
+          data-i18n="nav_try">Try It Free</span></a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="index.html#problem" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_why">Why</span></a>
+    <a href="index.html#magic" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_magic">Magic</span></a>
+    <a href="index.html#how" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
+        data-i18n="nav_how">How</span></a>
+    <a href="#tutorials" onclick="closeMobileMenu()" class="text-accent-light font-medium py-2"><span
+        data-i18n="nav_tutorials">Tutorials</span></a>
+    <a href="index.html#start" onclick="closeMobileMenu()"
+      class="cta-primary text-white text-center py-3 rounded-xl mt-2"><span data-i18n="nav_try">Try It Free →</span></a>
+  </div>
+
+  <!-- HERO -->
+  <section id="tutorials"
+    class="relative min-h-[70vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-8">
+        <span class="text-accent-light">📚</span>
+        <span data-i18n="tut_badge">Tutorials cho mọi cấp độ — Từ Beginner đến Advanced</span>
+      </div>
+      <h1
+        class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent"><span
+            data-i18n="tut_h1a">Học UX Master</span></span><br>
+        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent"><span
+            data-i18n="tut_h1b">từ con số 0</span></span>
+      </h1>
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+        <span data-i18n="tut_p1">Video hướng dẫn chi tiết, dễ hiểu.</span><br class="hidden sm:block">
+        <span data-i18n="tut_p2">Cài đặt trong 60 giây, sử dụng trong vài phút.</span>
+      </p>
+      <p class="text-zinc-600 text-sm max-w-lg mx-auto mb-10"><span data-i18n="tut_p3">Hoạt động với Cursor, Claude,
+          Gemini, Amp, và mọi AI coding tool.</span></p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#learning-path"
+          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base"><span
+            data-i18n="tut_cta1">✦
+            Bắt đầu học ngay</span></a>
+        <a href="#video-tutorials"
+          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base"><span
+            data-i18n="tut_cta2">Xem video tutorials ↓</span></a>
+      </div>
+
+      <!-- STATS -->
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-center">
+        <div>
+          <div class="stat-value text-2xl font-bold text-accent-light" data-target="15" data-suffix="+">0</div>
+          <div class="text-xs text-zinc-500 mt-1"><span data-i18n="tut_stat1">Video tutorials</span></div>
+        </div>
+        <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-2xl font-bold text-magic">3</div>
+          <div class="text-xs text-zinc-500 mt-1"><span data-i18n="tut_stat2">Cấp độ học tập</span></div>
+        </div>
+        <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-2xl font-bold text-success">30<span class="text-base">min</span></div>
+          <div class="text-xs text-zinc-500 mt-1"><span data-i18n="tut_stat3">Thời lượng/video</span></div>
+        </div>
+        <div class="w-px h-8 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-2xl font-bold text-cyan-400">6</div>
+          <div class="text-xs text-zinc-500 mt-1"><span data-i18n="tut_stat4">Nền tảng AI</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- LEARNING PATH (Hick's Law: Clear learning paths, max 3 levels) -->
+  <section id="learning-path" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3"><span data-i18n="path_tag">Lộ
+          trình học tập</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="path_h2">3 bước. Từ
+          Zero đến Hero.</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="path_sub">Hick's Law: Giới hạn 3 cấp độ để
+          bạn không bị choáng ngợp. Mỗi bước xây dựng trên nền tảng trước đó.</span></p>
+    </div>
+
+    <!-- Progress Path (Doherty Threshold: Progress indicators) -->
+    <div class="max-w-4xl mx-auto mb-16 reveal">
+      <div class="relative">
+        <!-- Progress Line -->
+        <div class="absolute top-12 left-0 right-0 h-1 bg-zinc-800 rounded-full hidden md:block">
+          <div class="h-full bg-gradient-to-r from-accent via-magic to-success rounded-full" style="width: 100%"></div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Level 1: Beginner -->
+          <div class="text-center relative">
+            <div
+              class="step-ring rounded-full flex items-center justify-center text-accent-light font-heading font-bold text-xl mx-auto mb-6 bg-surface-200 z-10 relative border-2 border-accent">
+              1
+            </div>
+            <div class="glass-card rounded-2xl p-7 hover:border-accent/30 transition-all cursor-pointer group">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center text-accent-light mb-5 text-2xl mx-auto group-hover:scale-110 transition-transform">
+                🌱
+              </div>
+              <h3 class="font-heading font-bold text-lg mb-2"><span data-i18n="path_beginner">Beginner</span></h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-4"><span data-i18n="path_beginner_desc">Cài đặt, cấu
+                  hình cơ bản, hiểu UX Master hoạt động như thế nào.</span></p>
+              <div class="flex items-center justify-center gap-2 text-xs">
+                <span class="px-2 py-1 bg-accent/10 text-accent-light rounded">5 videos</span>
+                <span class="px-2 py-1 bg-white/5 text-zinc-400 rounded">~2 giờ</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/5">
+                <ul class="text-left text-xs text-zinc-400 space-y-2">
+                  <li class="flex gap-2"><span class="text-accent-light">✓</span> Cài đặt UX Master</li>
+                  <li class="flex gap-2"><span class="text-accent-light">✓</span> Cấu hình AI tool</li>
+                  <li class="flex gap-2"><span class="text-accent-light">✓</span> Prompt đầu tiên</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 2: Intermediate -->
+          <div class="text-center relative">
+            <div
+              class="step-ring rounded-full flex items-center justify-center text-magic-light font-heading font-bold text-xl mx-auto mb-6 bg-surface-200 z-10 relative border-2 border-magic">
+              2
+            </div>
+            <div class="glass-card rounded-2xl p-7 hover:border-magic/30 transition-all cursor-pointer group">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-magic/20 to-magic/5 flex items-center justify-center text-magic-light mb-5 text-2xl mx-auto group-hover:scale-110 transition-transform">
+                ⚡
+              </div>
+              <h3 class="font-heading font-bold text-lg mb-2"><span data-i18n="path_intermediate">Intermediate</span>
+              </h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-4"><span data-i18n="path_intermediate_desc">Áp dụng UX
+                  Laws, tùy chỉnh design system, tối ưu workflow.</span></p>
+              <div class="flex items-center justify-center gap-2 text-xs">
+                <span class="px-2 py-1 bg-magic/10 text-magic-light rounded">6 videos</span>
+                <span class="px-2 py-1 bg-white/5 text-zinc-400 rounded">~3 giờ</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/5">
+                <ul class="text-left text-xs text-zinc-400 space-y-2">
+                  <li class="flex gap-2"><span class="text-magic-light">✓</span> 48 UX Laws explained</li>
+                  <li class="flex gap-2"><span class="text-magic-light">✓</span> Design system custom</li>
+                  <li class="flex gap-2"><span class="text-magic-light">✓</span> Advanced prompts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 3: Advanced -->
+          <div class="text-center relative">
+            <div
+              class="step-ring rounded-full flex items-center justify-center text-success-light font-heading font-bold text-xl mx-auto mb-6 bg-surface-200 z-10 relative border-2 border-success">
+              3
+            </div>
+            <div class="glass-card rounded-2xl p-7 hover:border-success/30 transition-all cursor-pointer group">
+              <div
+                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-success/20 to-success/5 flex items-center justify-center text-success-light mb-5 text-2xl mx-auto group-hover:scale-110 transition-transform">
+                🚀
+              </div>
+              <h3 class="font-heading font-bold text-lg mb-2"><span data-i18n="path_advanced">Advanced</span></h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-4"><span data-i18n="path_advanced_desc">Pro features,
+                  Token Mapper, Harvester v3, multi-project workflows.</span></p>
+              <div class="flex items-center justify-center gap-2 text-xs">
+                <span class="px-2 py-1 bg-success/10 text-success-light rounded">4 videos</span>
+                <span class="px-2 py-1 bg-white/5 text-zinc-400 rounded">~2.5 giờ</span>
+              </div>
+              <div class="mt-4 pt-4 border-t border-white/5">
+                <ul class="text-left text-xs text-zinc-400 space-y-2">
+                  <li class="flex gap-2"><span class="text-success-light">✓</span> Harvester v3 deep dive</li>
+                  <li class="flex gap-2"><span class="text-success-light">✓</span> Token Mapper mastery</li>
+                  <li class="flex gap-2"><span class="text-success-light">✓</span> Team workflows</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="max-w-2xl mx-auto reveal">
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-sm font-medium text-zinc-300"><span data-i18n="path_progress">Tiến độ của bạn</span></span>
+          <span class="text-xs text-zinc-500">0% <span data-i18n="path_completed">hoàn thành</span></span>
+        </div>
+        <div class="w-full bg-zinc-800 rounded-full h-3 overflow-hidden">
+          <div class="bg-gradient-to-r from-accent via-magic to-success h-full rounded-full transition-all duration-500"
+            style="width: 0%"></div>
+        </div>
+        <p class="text-xs text-zinc-500 mt-3 text-center"><span data-i18n="path_hint">Đăng nhập để lưu tiến độ học tập
+            của bạn</span></p>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- VIDEO TUTORIALS (Fitts's Law: Large clickable cards) -->
+  <section id="video-tutorials" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3"><span data-i18n="video_tag">Video
+          Library</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="video_h2">Học qua ví
+          dụ thực tế</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="video_sub">Fitts's Law: Cards lớn, dễ click.
+          Mỗi video đi kèm source code và tài liệu.</span></p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Tutorial 1 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal block">
+        <div
+          class="aspect-video bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">12:34</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-accent/20 text-accent-light text-[10px] rounded font-medium">BEGINNER</span>
+            <span class="text-[10px] text-zinc-500">Video 01</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-accent-light transition-colors">Cài đặt UX
+            Master trong 60 giây</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Hướng dẫn từng bước cài đặt UX Master cho Cursor, Claude, và
+            các AI tool khác.</p>
+        </div>
+      </a>
+
+      <!-- Tutorial 2 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal reveal-delay-1 block">
+        <div
+          class="aspect-video bg-gradient-to-br from-magic/30 to-magic/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">18:45</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-magic/20 text-magic-light text-[10px] rounded font-medium">INTERMEDIATE</span>
+            <span class="text-[10px] text-zinc-500">Video 04</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-magic-light transition-colors">Áp dụng 48 UX
+            Laws thực tế</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Cách UX Master tự động áp dụng quy luật Hick's Law, Fitts's
+            Law, và Doherty Threshold.</p>
+        </div>
+      </a>
+
+      <!-- Tutorial 3 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal reveal-delay-2 block">
+        <div
+          class="aspect-video bg-gradient-to-br from-success/30 to-success/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">24:12</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-success/20 text-success-light text-[10px] rounded font-medium">ADVANCED</span>
+            <span class="text-[10px] text-zinc-500">Video 12</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-success-light transition-colors">Master
+            Harvester v3 & Token Mapper</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Trích xuất design từ bất kỳ website nào và map thành tokens
+            sử dụng trong dự án.</p>
+        </div>
+      </a>
+
+      <!-- Tutorial 4 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal block">
+        <div
+          class="aspect-video bg-gradient-to-br from-cyan-500/30 to-cyan-500/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">15:30</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-accent/20 text-accent-light text-[10px] rounded font-medium">BEGINNER</span>
+            <span class="text-[10px] text-zinc-500">Video 02</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-accent-light transition-colors">Tạo Landing
+            Page đầu tiên</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Xây dựng landing page chuyên nghiệp cho startup với UX Master
+            + Cursor.</p>
+        </div>
+      </a>
+
+      <!-- Tutorial 5 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal reveal-delay-1 block">
+        <div
+          class="aspect-video bg-gradient-to-br from-amber-500/30 to-amber-500/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">28:55</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-magic/20 text-magic-light text-[10px] rounded font-medium">INTERMEDIATE</span>
+            <span class="text-[10px] text-zinc-500">Video 08</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-magic-light transition-colors">Tùy chỉnh
+            Design System</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Tạo design system riêng với màu sắc, typography, và
+            components phù hợp thương hiệu.</p>
+        </div>
+      </a>
+
+      <!-- Tutorial 6 -->
+      <a href="#" class="tutorial-card glass-card rounded-2xl overflow-hidden group reveal reveal-delay-2 block">
+        <div
+          class="aspect-video bg-gradient-to-br from-rose-500/30 to-rose-500/10 flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all"></div>
+          <div
+            class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded">32:20</span>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="px-2 py-0.5 bg-success/20 text-success-light text-[10px] rounded font-medium">ADVANCED</span>
+            <span class="text-[10px] text-zinc-500">Video 15</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2 group-hover:text-success-light transition-colors">Workflow
+            cho Team & Enterprise</h3>
+          <p class="text-zinc-500 text-sm leading-relaxed">Thiết lập UX Master cho team, shared design tokens, và
+            multi-project registry.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="#"
+        class="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-6 py-3 rounded-xl border border-white/10 transition-all">
+        <span data-i18n="video_viewall">Xem tất cả 15+ videos</span>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- QUICK START GUIDES -->
+  <section id="quick-start" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3"><span data-i18n="quick_tag">Quick
+          Reference</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="quick_h2">Quick Start
+          Guides</span></h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto"><span data-i18n="quick_sub">Tài liệu nhanh cho từng nền tảng
+          AI. Copy-paste và chạy.</span></p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+      <!-- Cursor Guide -->
+      <div class="glass-card rounded-2xl p-6 hover:border-accent/30 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">🖱️</div>
+          <div>
+            <h3 class="font-heading font-bold text-base">Cursor</h3>
+            <p class="text-xs text-zinc-500">IDE + AI</p>
+          </div>
+        </div>
+        <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+          <code class="text-xs text-accent-light font-mono">python3 scripts/install.py</code>
+        </div>
+        <ul class="space-y-2 text-xs text-zinc-400">
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Auto-detect Cursor</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> .cursorrules integration</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> 1-click setup</li>
+        </ul>
+        <a href="#" class="mt-4 block text-center text-xs text-accent-light hover:text-accent transition-colors">Xem
+          hướng dẫn →</a>
+      </div>
+
+      <!-- Claude Guide -->
+      <div class="glass-card rounded-2xl p-6 hover:border-magic/30 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">🧠</div>
+          <div>
+            <h3 class="font-heading font-bold text-base">Claude</h3>
+            <p class="text-xs text-zinc-500">Anthropic AI</p>
+          </div>
+        </div>
+        <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+          <code class="text-xs text-magic-light font-mono">claude config set skills</code>
+        </div>
+        <ul class="space-y-2 text-xs text-zinc-400">
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Skills directory setup</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> AGENTS.md integration</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Context-aware</li>
+        </ul>
+        <a href="#" class="mt-4 block text-center text-xs text-magic-light hover:text-magic transition-colors">Xem hướng
+          dẫn →</a>
+      </div>
+
+      <!-- Gemini Guide -->
+      <div class="glass-card rounded-2xl p-6 hover:border-cyan-500/30 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">♊</div>
+          <div>
+            <h3 class="font-heading font-bold text-base">Gemini</h3>
+            <p class="text-xs text-zinc-500">Google AI</p>
+          </div>
+        </div>
+        <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+          <code class="text-xs text-cyan-400 font-mono">gemini-cli skills add</code>
+        </div>
+        <ul class="space-y-2 text-xs text-zinc-400">
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Gemini CLI setup</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Multi-modal support</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Workspace integration</li>
+        </ul>
+        <a href="#" class="mt-4 block text-center text-xs text-cyan-400 hover:text-cyan-300 transition-colors">Xem hướng
+          dẫn →</a>
+      </div>
+
+      <!-- Amp Guide -->
+      <div class="glass-card rounded-2xl p-6 hover:border-amber-500/30 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">⚡</div>
+          <div>
+            <h3 class="font-heading font-bold text-base">Amp</h3>
+            <p class="text-xs text-zinc-500">AI Assistant</p>
+          </div>
+        </div>
+        <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+          <code class="text-xs text-amber-400 font-mono">amp skills install ux-master</code>
+        </div>
+        <ul class="space-y-2 text-xs text-zinc-400">
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Amp registry</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Real-time sync</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Cloud-native</li>
+        </ul>
+        <a href="#" class="mt-4 block text-center text-xs text-amber-400 hover:text-amber-300 transition-colors">Xem
+          hướng dẫn →</a>
+      </div>
+
+      <!-- OpenCode Guide -->
+      <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/30 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-xl">📝</div>
+          <div>
+            <h3 class="font-heading font-bold text-base">OpenCode</h3>
+            <p class="text-xs text-zinc-500">Open Source</p>
+          </div>
+        </div>
+        <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+          <code class="text-xs text-indigo-400 font-mono">opencode skills add</code>
+        </div>
+        <ul class="space-y-2 text-xs text-zinc-400">
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> OSS integration</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Community-driven</li>
+          <li class="flex gap-2"><span class="text-emerald-400">✓</span> Self-hosted</li>
+        </ul>
+        <a href="#" class="mt-4 block text-center text-xs text-indigo-400 hover:text-indigo-300 transition-colors">Xem
+          hướng dẫn →</a>
+      </div>
+
+      <!-- All Platforms -->
+      <div class="rounded-2xl p-6 relative overflow-hidden"
+        style="background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.25);">
+        <div class="relative z-10">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent/30 to-magic/20 flex items-center justify-center text-xl">
+              🌐</div>
+            <div>
+              <h3 class="font-heading font-bold text-base">All Platforms</h3>
+              <p class="text-xs text-zinc-500">Universal setup</p>
+            </div>
+          </div>
+          <p class="text-sm text-zinc-400 mb-4">Một lệnh cài đặt cho tất cả các AI tools bạn đang dùng.</p>
+          <div class="bg-zinc-900/80 rounded-xl p-3 mb-4">
+            <code class="text-xs text-accent-light font-mono">python3 scripts/install.py --all</code>
+          </div>
+          <a href="#" class="block text-center cta-primary text-white text-xs font-semibold px-4 py-2.5 rounded-xl">Xem
+            universal setup →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- CTA -->
+  <section class="max-w-4xl mx-auto px-4 py-24">
+    <div class="text-center reveal">
+      <div
+        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
+        🎓</div>
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4"><span data-i18n="tut_cta_h2">Sẵn sàng
+          bắt đầu học?</span></h2>
+      <p class="text-zinc-500 text-sm mb-8 max-w-md mx-auto"><span data-i18n="tut_cta_sub">Bắt đầu với video đầu tiên —
+          hoàn toàn miễn phí. Không cần đăng ký.</span></p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#video-tutorials"
+          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base"><span
+            data-i18n="tut_cta_btn1">▶ Xem video đầu tiên</span></a>
+        <a href="index.html#start"
+          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base"><span
+            data-i18n="tut_cta_btn2">Cài đặt UX Master</span></a>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến <span data-i18n="magic_ai">AI</span> thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+            data-i18n="footer_home">Trang chủ</span></a><span>·</span>
+        <a href="#tutorials" class="hover:text-zinc-300 transition-colors cursor-pointer text-accent-light"><span
+            data-i18n="nav_tutorials">Tutorials</span></a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a><span>·</span>
+        <span><span data-i18n="footer_f1">Miễn phí mãi mãi</span></span><span>·</span><span>6 nền tảng <span
+            data-i18n="magic_ai">AI</span></span><span>·</span><span><span data-i18n="footer_f3">1032+ quy tắc
+            design</span></span>
+      </div>
+      <p class="text-zinc-800 text-xs"><span data-i18n="magic_you">Bạn</span> mơ nó. <span
+          data-i18n="magic_ai">AI</span> xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/lang/en.js"></script>
+  <script src="js/lang/vi.js"></script>
+  <script src="js/lang/zh.js"></script>
+  <script src="js/lang/ja.js"></script>
+  <script src="js/lang/ko.js"></script>
+  <script src="js/lang/ru.js"></script>
+  <script src="js/lang/de.js"></script>
+  <script src="js/lang/fr.js"></script>
+  <script src="js/lang/id.js"></script>
+  <script src="js/lang/hi.js"></script>
+  <script src="js/main.js"></script>
+  <script>initI18n();</script>
+</body>
+
+</html>

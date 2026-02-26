@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Master — Technical Documentation & API Reference</title>
+  <meta name="description"
+    content="Complete technical documentation for UX Master. API reference, SDK guides, architecture diagrams, and integration examples for developers.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UX Master — Technical Documentation">
+  <meta property="og:description"
+    content="Complete API reference, SDK guides, and technical documentation for developers.">
+  <meta property="og:url" content="https://github.com/relukdev/ux-master">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UX Master — Technical Documentation">
+  <meta name="twitter:description" content="API reference, SDK guides, architecture diagrams for UX Master.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'], body: ['"Inter"', 'system-ui', 'sans-serif'], mono: ['"Fira Code"', 'monospace'] }, colors: { surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' }, accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' }, magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' }, success: { DEFAULT: '#10b981', light: '#34d399' }, warn: { DEFAULT: '#f59e0b', light: '#fbbf24' } } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Code block styling for technical docs */
+    .code-block {
+      background: linear-gradient(145deg, #0d0d12 0%, #111116 100%);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .code-header {
+      background: rgba(124, 58, 237, 0.08);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .code-lang {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #a1a1aa;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: rgba(124, 58, 237, 0.4);
+      color: #a78bfa;
+    }
+
+    .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #34d399;
+    }
+
+    pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    code {
+      font-family: 'Fira Code', monospace;
+      color: #e4e4e7;
+    }
+
+    .code-keyword {
+      color: #c084fc;
+    }
+
+    .code-string {
+      color: #86efac;
+    }
+
+    .code-function {
+      color: #60a5fa;
+    }
+
+    .code-comment {
+      color: #71717a;
+      font-style: italic;
+    }
+
+    .code-number {
+      color: #fbbf24;
+    }
+
+    .sdk-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .sdk-card:hover {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .endpoint-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .endpoint-get {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .endpoint-post {
+      background: rgba(124, 58, 237, 0.15);
+      color: #a78bfa;
+    }
+
+    .endpoint-put {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .endpoint-delete {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+    }
+
+    .arch-diagram {
+      background: linear-gradient(145deg, rgba(124, 58, 237, 0.05) 0%, rgba(236, 72, 153, 0.03) 100%);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .arch-node {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .arch-node:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: rgba(124, 58, 237, 0.3);
+    }
+
+    .arch-arrow {
+      color: #52525b;
+      font-size: 20px;
+    }
+
+    .nav-link.active {
+      color: #a78bfa;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #7c3aed, #ec4899);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="index.html" class="hover:text-white transition-colors cursor-pointer">Home</a>
+      <a href="index.html#magic" class="hover:text-white transition-colors cursor-pointer">Features</a>
+      <a href="index.html#how" class="hover:text-white transition-colors cursor-pointer">Docs</a>
+      <a href="technical.html" class="nav-link active transition-colors cursor-pointer">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <button id="themeToggle" class="lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        aria-label="Toggle theme" onclick="toggleTheme()">
+        <svg id="themeIconDark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+        <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+          </path>
+        </svg>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+          <button data-lang="zh" onclick="setLang('zh')">🇨🇳 中文</button>
+          <button data-lang="ja" onclick="setLang('ja')">🇯🇵 日本語</button>
+          <button data-lang="ko" onclick="setLang('ko')">🇰🇷 한국어</button>
+          <button data-lang="ru" onclick="setLang('ru')">🇷🇺 Русский</button>
+          <button data-lang="de" onclick="setLang('de')">🇩🇪 Deutsch</button>
+          <button data-lang="fr" onclick="setLang('fr')">🇫🇷 Français</button>
+          <button data-lang="id" onclick="setLang('id')">🇮🇩 Bahasa</button>
+          <button data-lang="hi" onclick="setLang('hi')">🇮🇳 हिन्दी</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Home</a>
+    <a href="index.html#magic" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Features</a>
+    <a href="index.html#how" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Docs</a>
+    <a href="technical.html" onclick="closeMobileMenu()" class="text-accent-light py-2">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[70vh] flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-8">
+        <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+        <span>API v1.0 Stable</span>
+        <span class="text-zinc-600">|</span>
+        <span class="text-accent-light">OpenAPI 3.1</span>
+      </div>
+      <h1
+        class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.05] mb-6">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">Tài liệu kỹ
+          thuật</span><br>
+        <span class="bg-gradient-to-r from-accent-light via-magic to-magic-light bg-clip-text text-transparent">& API
+          Reference</span>
+      </h1>
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-4 leading-relaxed">
+        Dành cho developers. SDKs, API endpoints, architecture diagrams, <br class="hidden sm:block">
+        và integration guides cho <span class="text-white font-medium">UX Master</span> platform.
+      </p>
+      <p class="text-zinc-600 text-sm max-w-lg mx-auto mb-10">
+        RESTful API • GraphQL Support • WebSocket Real-time • Multi-language SDKs
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#api-docs"
+          class="cta-primary text-white font-semibold px-10 py-4 rounded-2xl transition-all cursor-pointer glow-purple text-base">
+          📚 API Documentation
+        </a>
+        <a href="#sdk"
+          class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer text-base">
+          🚀 SDK Downloads ↓
+        </a>
+      </div>
+
+      <!-- STATS -->
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-center">
+        <div>
+          <div class="stat-value text-3xl font-bold text-accent-light" data-target="50" data-suffix="+">0</div>
+          <div class="text-xs text-zinc-500 mt-1">API Endpoints</div>
+        </div>
+        <div class="w-px h-10 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-3xl font-bold text-magic">6</div>
+          <div class="text-xs text-zinc-500 mt-1">SDK Platforms</div>
+        </div>
+        <div class="w-px h-10 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-3xl font-bold text-success">99.9%</div>
+          <div class="text-xs text-zinc-500 mt-1">Uptime SLA</div>
+        </div>
+        <div class="w-px h-10 bg-zinc-800 hidden sm:block"></div>
+        <div>
+          <div class="text-3xl font-bold text-cyan-400">&lt;50ms</div>
+          <div class="text-xs text-zinc-500 mt-1">Latency</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- QUICK START -->
+  <section id="quickstart" class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Quick Start</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">5 phút để chạy đầu tiên</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Cài đặt SDK, authenticate, và gọi API đầu tiên trong vòng 5
+        phút.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 reveal">
+      <!-- Step 1 -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent-light font-bold text-sm">
+            1</div>
+          <h3 class="font-heading font-bold text-lg">Cài SDK</h3>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code><span class="code-comment"># Node.js</span>
+<span class="code-keyword">npm</span> <span class="code-function">install</span> @uxmaster/sdk
+
+<span class="code-comment"># Python</span>
+<span class="code-keyword">pip</span> <span class="code-function">install</span> uxmaster-sdk
+
+<span class="code-comment"># Go</span>
+<span class="code-keyword">go</span> <span class="code-function">get</span> github.com/uxmaster/sdk-go</code></pre>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            class="w-8 h-8 rounded-lg bg-magic/20 flex items-center justify-center text-magic-light font-bold text-sm">2
+          </div>
+          <h3 class="font-heading font-bold text-lg">Authenticate</h3>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">javascript</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code><span class="code-keyword">import</span> { UXMaster } <span class="code-keyword">from</span> <span class="code-string">'@uxmaster/sdk'</span>;
+
+<span class="code-keyword">const</span> client = <span class="code-keyword">new</span> <span class="code-function">UXMaster</span>({
+  apiKey: <span class="code-string">'uxm_live_...'</span>,
+  environment: <span class="code-string">'production'</span>
+});</code></pre>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-success/20 flex items-center justify-center text-success font-bold text-sm">
+            3</div>
+          <h3 class="font-heading font-bold text-lg">Gọi API</h3>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">javascript</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code><span class="code-keyword">const</span> design = <span class="code-keyword">await</span> client.design.<span class="code-function">generate</span>({
+  style: <span class="code-string">'glassmorphism'</span>,
+  industry: <span class="code-string">'fintech'</span>,
+  platform: <span class="code-string">'web'</span>
+});
+
+console.<span class="code-function">log</span>(design.tokens);</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- API DOCUMENTATION -->
+  <section id="api-docs" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">API Reference</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">RESTful API Endpoints</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Complete API reference với OpenAPI 3.1 specification. Tất cả
+        endpoints đều có versioning và backward compatibility.</p>
+    </div>
+
+    <!-- Endpoints List -->
+    <div class="space-y-6 reveal">
+      <!-- Design Generation -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="endpoint-badge endpoint-post">POST</span>
+          <code class="text-sm text-zinc-300">/v1/design/generate</code>
+          <span class="text-xs text-zinc-500">Generate design system từ parameters</span>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>{
+  <span class="code-string">"style"</span>: <span class="code-string">"glassmorphism"</span>,
+  <span class="code-string">"industry"</span>: <span class="code-string">"fintech"</span>,
+  <span class="code-string">"platform"</span>: <span class="code-string">"web"</span>,
+  <span class="code-string">"dark_mode"</span>: <span class="code-keyword">true</span>,
+  <span class="code-string">"accessibility"</span>: <span class="code-string">"wcag-aaa"</span>
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- UX Laws -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="endpoint-badge endpoint-get">GET</span>
+          <code class="text-sm text-zinc-300">/v1/ux-laws</code>
+          <span class="text-xs text-zinc-500">Lấy danh sách 48 UX Laws</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Query Parameters</span>
+            </div>
+            <pre><code>?category=perception
+?category=gestalt
+?category=hicks-law
+?applicable_to=mobile</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Response</span>
+            </div>
+            <pre><code>{
+  <span class="code-string">"laws"</span>: [
+    {
+      <span class="code-string">"id"</span>: <span class="code-string">"hicks-law"</span>,
+      <span class="code-string">"name"</span>: <span class="code-string">"Hick's Law"</span>,
+      <span class="code-string">"principle"</span>: <span class="code-string">"Decision time ↑ with options"</span>
+    }
+  ]
+}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Tests -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="endpoint-badge endpoint-post">POST</span>
+          <code class="text-sm text-zinc-300">/v1/design/validate</code>
+          <span class="text-xs text-zinc-500">Chạy 37 design tests trên UI</span>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Request</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>{
+  <span class="code-string">"html_url"</span>: <span class="code-string">"https://example.com/page"</span>,
+  <span class="code-string">"tests"</span>: [<span class="code-string">"contrast"</span>, <span class="code-string">"responsive"</span>, <span class="code-string">"a11y"</span>],
+  <span class="code-string">"device_profile"</span>: <span class="code-string">"mobile-ios"</span>
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="glass-card rounded-2xl p-6">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="endpoint-badge endpoint-get">GET</span>
+          <code class="text-sm text-zinc-300">/v1/palettes/{id}</code>
+          <span class="text-xs text-zinc-500">Lấy color palette theo ID</span>
+        </div>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Response</span>
+          </div>
+          <pre><code>{
+  <span class="code-string">"id"</span>: <span class="code-string">"violet-sunset"</span>,
+  <span class="code-string">"colors"</span>: {
+    <span class="code-string">"primary"</span>: <span class="code-string">"#7c3aed"</span>,
+    <span class="code-string">"secondary"</span>: <span class="code-string">"#ec4899"</span>,
+    <span class="code-string">"accent"</span>: <span class="code-string">"#10b981"</span>
+  },
+  <span class="code-string">"tokens"</span>: { <span class="code-string">"css"</span>: <span class="code-string">"..."</span>, <span class="code-string">"scss"</span>: <span class="code-string">"..."</span> }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture" class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-magic text-sm font-semibold tracking-widest uppercase mb-3">System Architecture</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Architecture & Design</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Microservices architecture với event-driven design,
+        auto-scaling, và multi-region deployment.</p>
+    </div>
+
+    <!-- Architecture Diagram -->
+    <div class="arch-diagram mb-12 reveal">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+        <!-- Client Layer -->
+        <div class="arch-node">
+          <p class="text-sm font-semibold text-white">Clients</p>
+          <p class="text-xs text-zinc-500">Web, Mobile, CLI</p>
+        </div>
+        <div class="arch-arrow text-center hidden md:block">→</div>
+
+        <!-- API Gateway -->
+        <div class="arch-node border-accent/30">
+          <div class="text-2xl mb-2">⚡</div>
+          <p class="text-sm font-semibold text-accent-light">API Gateway</p>
+          <p class="text-xs text-zinc-500">Rate Limit, Auth</p>
+        </div>
+        <div class="arch-arrow text-center hidden md:block">→</div>
+
+        <!-- Services -->
+        <div class="space-y-3">
+          <div class="arch-node border-magic/30 py-3">
+            <p class="text-sm font-semibold text-magic-light">Design Engine</p>
+          </div>
+          <div class="arch-node border-magic/30 py-3">
+            <p class="text-sm font-semibold text-magic-light">UX Validator</p>
+          </div>
+        </div>
+        <div class="arch-arrow text-center hidden md:block">→</div>
+
+        <!-- Storage -->
+        <div class="arch-node">
+          <div class="text-2xl mb-2">💾</div>
+          <p class="text-sm font-semibold text-white">Storage</p>
+          <p class="text-xs text-zinc-500">PostgreSQL, Redis</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-3xl mb-3">⚡</div>
+        <h4 class="font-semibold text-white mb-1">API Gateway</h4>
+        <p class="text-xs text-zinc-500">Kong + Traefik</p>
+        <p class="text-xs text-accent-light mt-2">Rate limiting, caching</p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-3xl mb-3">🚀</div>
+        <h4 class="font-semibold text-white mb-1">Services</h4>
+        <p class="text-xs text-zinc-500">Node.js + Go</p>
+        <p class="text-xs text-magic-light mt-2">gRPC + REST</p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-3xl mb-3">📊</div>
+        <h4 class="font-semibold text-white mb-1">Database</h4>
+        <p class="text-xs text-zinc-500">PostgreSQL 15</p>
+        <p class="text-xs text-success-light mt-2">Read replicas</p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-3xl mb-3">🔴</div>
+        <h4 class="font-semibold text-white mb-1">Cache</h4>
+        <p class="text-xs text-zinc-500">Redis Cluster</p>
+        <p class="text-xs text-warn-light mt-2">Sub-millisecond</p>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- SDK & INTEGRATION -->
+  <section id="sdk" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-success text-sm font-semibold tracking-widest uppercase mb-3">SDKs & Integration</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">6 Platform SDKs</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Official SDKs cho tất cả major platforms. Type-safe, fully
+        documented, với auto-retry và error handling.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+      <!-- Node.js -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-2xl">🟢</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">Node.js</h3>
+            <p class="text-xs text-zinc-500">TypeScript ready</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>npm install @uxmaster/sdk</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v2.4.0</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+
+      <!-- Python -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-2xl">🐍</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">Python</h3>
+            <p class="text-xs text-zinc-500">Async support</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>pip install uxmaster-sdk</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v1.8.2</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+
+      <!-- Go -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-2xl">🐹</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">Go</h3>
+            <p class="text-xs text-zinc-500">High performance</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>go get github.com/uxmaster/sdk-go</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v1.3.0</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+
+      <!-- Rust -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-2xl">🦀</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">Rust</h3>
+            <p class="text-xs text-zinc-500">Memory safe</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">toml</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>[dependencies]
+uxmaster = "0.9.1"</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v0.9.1</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+
+      <!-- PHP -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-2xl">🐘</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">PHP</h3>
+            <p class="text-xs text-zinc-500">Laravel ready</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">bash</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>composer require uxmaster/sdk-php</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v2.1.0</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+
+      <!-- Ruby -->
+      <div class="sdk-card">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-2xl">💎</div>
+          <div>
+            <h3 class="font-heading font-bold text-lg">Ruby</h3>
+            <p class="text-xs text-zinc-500">Rails integration</p>
+          </div>
+        </div>
+        <div class="code-block mb-4">
+          <div class="code-header">
+            <span class="code-lang">ruby</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>gem 'uxmaster-sdk', '~> 1.2'</code></pre>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-emerald-400">✓</span>
+          <span class="text-zinc-400">v1.2.5</span>
+          <span class="text-zinc-600">|</span>
+          <span class="text-zinc-400">MIT License</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- WEBHOOKS & EVENTS -->
+  <section id="webhooks" class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-warn text-sm font-semibold tracking-widest uppercase mb-3">Real-time Events</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">Webhooks & Events</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">Nhận real-time notifications khi design được generate,
+        validation hoàn thành, hoặc system events.</p>
+    </div>
+
+    <div class="glass-card rounded-2xl p-8 reveal">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-heading font-bold text-lg mb-4">Webhook Payload</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">json</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>{
+  <span class="code-string">"event"</span>: <span class="code-string">"design.generated"</span>,
+  <span class="code-string">"timestamp"</span>: <span class="code-string">"2025-01-15T10:30:00Z"</span>,
+  <span class="code-string">"data"</span>: {
+    <span class="code-string">"design_id"</span>: <span class="code-string">"des_123abc"</span>,
+    <span class="code-string">"status"</span>: <span class="code-string">"completed"</span>,
+    <span class="code-string">"tokens_url"</span>: <span class="code-string">"https://api..."</span>
+  }
+}</code></pre>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-lg mb-4">Event Types</h3>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              <code class="text-sm text-zinc-300">design.generated</code>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+              <span class="w-2 h-2 rounded-full bg-magic"></span>
+              <code class="text-sm text-zinc-300">design.validated</code>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+              <span class="w-2 h-2 rounded-full bg-success"></span>
+              <code class="text-sm text-zinc-300">palette.created</code>
+            </div>
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-white/5">
+              <span class="w-2 h-2 rounded-full bg-warn"></span>
+              <code class="text-sm text-zinc-300">webhook.retrying</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- GITHUB & COMMUNITY -->
+  <section id="community" class="max-w-5xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent-light text-sm font-semibold tracking-widest uppercase mb-3">Open Source</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4">GitHub & Community</h2>
+      <p class="text-zinc-500 text-base max-w-xl mx-auto">UX Master là open source. Đóng góp, report issues, hoặc join
+        discussion với cộng đồng.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="glass-card rounded-2xl p-6 text-center hover:bg-white/5 transition-colors cursor-pointer group">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">⭐</div>
+        <h4 class="font-semibold text-white mb-1">Star Repository</h4>
+        <p class="text-xs text-zinc-500">1.2k+ stars</p>
+      </a>
+      <a href="https://github.com/relukdev/ux-master/issues" target="_blank" rel="noopener"
+        class="glass-card rounded-2xl p-6 text-center hover:bg-white/5 transition-colors cursor-pointer group">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🐛</div>
+        <h4 class="font-semibold text-white mb-1">Report Issues</h4>
+        <p class="text-xs text-zinc-500">Bug reports</p>
+      </a>
+      <a href="https://github.com/relukdev/ux-master/discussions" target="_blank" rel="noopener"
+        class="glass-card rounded-2xl p-6 text-center hover:bg-white/5 transition-colors cursor-pointer group">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">💬</div>
+        <h4 class="font-semibold text-white mb-1">Discussions</h4>
+        <p class="text-xs text-zinc-500">Q&A, Ideas</p>
+      </a>
+      <a href="https://github.com/relukdev/ux-master/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener"
+        class="glass-card rounded-2xl p-6 text-center hover:bg-white/5 transition-colors cursor-pointer group">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🤝</div>
+        <h4 class="font-semibold text-white mb-1">Contribute</h4>
+        <p class="text-xs text-zinc-500">PR welcome</p>
+      </a>
+    </div>
+
+    <!-- GitHub Stats -->
+    <div class="glass-card rounded-2xl p-8 mt-8 reveal">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold text-accent-light">1.2k</div>
+          <div class="text-xs text-zinc-500 mt-1">GitHub Stars</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-magic">48</div>
+          <div class="text-xs text-zinc-500 mt-1">Contributors</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-success">150+</div>
+          <div class="text-xs text-zinc-500 mt-1">Commits</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-cyan-400">MIT</div>
+          <div class="text-xs text-zinc-500 mt-1">License</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- CTA SECTION -->
+  <section class="max-w-4xl mx-auto px-4 py-24">
+    <div class="text-center reveal">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-accent/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-magic/5"></div>
+        <div class="relative z-10">
+          <div
+            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-magic/10 flex items-center justify-center mx-auto mb-6 text-3xl">
+            🚀
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl tracking-tight mb-4">Sẵn sàng bắt đầu?</h2>
+          <p class="text-zinc-400 text-base max-w-md mx-auto mb-8">
+            Tạo tài khoản miễn phí, lấy API key, và bắt đầu tích hợp UX Master vào ứng dụng của bạn ngay hôm nay.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+              class="cta-primary text-white font-semibold px-8 py-4 rounded-2xl transition-all cursor-pointer glow-purple">
+              📖 Xem Full Documentation
+            </a>
+            <a href="index.html#start"
+              class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-4 rounded-2xl border border-white/10 transition-all cursor-pointer">
+              🔑 Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="technical.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a><span>·</span>
+        <span>API v1.0</span><span>·</span>
+        <span>Open Source</span>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/lang/en.js"></script>
+  <script src="js/lang/vi.js"></script>
+  <script src="js/lang/zh.js"></script>
+  <script src="js/lang/ja.js"></script>
+  <script src="js/lang/ko.js"></script>
+  <script src="js/lang/ru.js"></script>
+  <script src="js/lang/de.js"></script>
+  <script src="js/lang/fr.js"></script>
+  <script src="js/lang/id.js"></script>
+  <script src="js/lang/hi.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    initI18n();
+
+    // Copy code function (Poka-Yoke: error prevention)
+    function copyCode(btn) {
+      const codeBlock = btn.closest('.code-block').querySelector('code');
+      const text = codeBlock.innerText;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.classList.add('copied');
+
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

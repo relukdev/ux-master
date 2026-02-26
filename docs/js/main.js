@@ -90,28 +90,7 @@ window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) closeMobileMenu();
 });
 
-// --- Theme Switcher ---
-let defaultTheme = localStorage.getItem('theme');
-if (!defaultTheme) {
-    const hour = new Date().getHours();
-    defaultTheme = (hour >= 6 && hour < 18) ? 'light' : 'dark';
-}
-
-function setTheme(theme) {
-    if (theme === 'light') {
-        document.body.classList.add('light-mode');
-        document.documentElement.classList.add('light-mode');
-    } else {
-        document.body.classList.remove('light-mode');
-        document.documentElement.classList.remove('light-mode');
-    }
-    localStorage.setItem('theme', theme);
-}
-
-function toggleTheme() {
-    const isLight = document.body.classList.contains('light-mode');
-    setTheme(isLight ? 'dark' : 'light');
-}
-
-// Run immediately
-setTheme(defaultTheme);
+// Force dark mode
+document.body.classList.remove('light-mode');
+document.documentElement.classList.remove('light-mode');
+localStorage.setItem('theme', 'dark');

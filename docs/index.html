@@ -42,32 +42,17 @@
       <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-      <a href="#problem" class="hover:text-white transition-colors cursor-pointer"><span
-          data-i18n="nav_why">Why</span></a>
-      <a href="#magic" class="hover:text-white transition-colors cursor-pointer"><span
-          data-i18n="nav_magic">Magic</span></a>
-      <a href="#how" class="hover:text-white transition-colors cursor-pointer"><span data-i18n="nav_how">How</span></a>
-      <a href="#start" class="hover:text-white transition-colors cursor-pointer"><span data-i18n="nav_start">Start
-          Free</span></a>
+      <a href="#" class="text-white transition-colors cursor-pointer">Home</a>
+      <a href="guides/index.html" class="hover:text-white transition-colors cursor-pointer">Guides</a>
+      <a href="tutorials/index.html" class="hover:text-white transition-colors cursor-pointer">Tutorials</a>
+      <a href="technical/index.html" class="hover:text-white transition-colors cursor-pointer">Technical</a>
     </div>
     <div class="flex items-center gap-1.5 sm:gap-3">
-      <button id="themeToggle" class="lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
-        aria-label="Toggle theme" onclick="toggleTheme()">
-        <svg id="themeIconDark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-        <svg id="themeIconLight" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-          </path>
-        </svg>
-      </button>
+
       <div class="lang-dropdown" id="langDropdown">
         <button
           class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
           onclick="toggleLangMenu()">
-          <span class="text-sm">🌐</span>
           <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
           <span class="text-[10px] opacity-70">▾</span>
         </button>
@@ -102,14 +87,10 @@
   <!-- MOBILE MENU -->
   <div id="mobileMenu"
     class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
-    <a href="#problem" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
-        data-i18n="nav_why">Why</span></a>
-    <a href="#magic" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
-        data-i18n="nav_magic">Magic</span></a>
-    <a href="#how" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2"><span
-        data-i18n="nav_how">How</span></a>
-    <a href="#start" onclick="closeMobileMenu()" class="cta-primary text-white text-center py-3 rounded-xl mt-2"><span
-        data-i18n="nav_try">Try It Free →</span></a>
+    <a href="#" onclick="closeMobileMenu()" class="text-white py-2">Home</a>
+    <a href="guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Guides</a>
+    <a href="tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Tutorials</a>
+    <a href="technical/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2">Technical</a>
   </div>
 
   <!-- HERO -->
@@ -460,6 +441,112 @@
           <p class="text-xs text-emerald-400">✓ Tuân thủ 48 quy luật UX</p>
           <p class="text-xs text-emerald-400">✓ Qua 37 bài test chất lượng</p>
         </div>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto"></div>
+
+  <!-- DESIGN SYSTEM WORKFLOW -->
+  <section id="ds-workflow" class="max-w-6xl mx-auto px-4 py-24">
+    <div class="text-center mb-16 reveal">
+      <p class="text-cyan-400 text-sm font-semibold tracking-widest uppercase mb-3"><span
+          data-i18n="dsw_tag">Superpower</span></p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl tracking-tight mb-4"><span data-i18n="dsw_h2">From any
+          website → your code.<br>Automatically.</span></h2>
+      <p class="text-zinc-500 text-base max-w-2xl mx-auto"><span data-i18n="dsw_sub">UX Master harvests design systems
+          from any website and generates CSS tokens + React components. AI then writes all new code using those exact
+          tokens — guaranteed consistency.</span></p>
+    </div>
+
+    <!-- 4-Step Pipeline -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16 reveal">
+      <div class="glass-card rounded-2xl p-6 text-center relative">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center text-cyan-400 mb-4 text-2xl mx-auto">
+          🌐</div>
+        <h3 class="font-heading font-bold text-base mb-2"><span data-i18n="dsw_s1_title">Harvest</span></h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"><span data-i18n="dsw_s1_desc">Point to any website. UX Master
+            extracts 120+ design tokens automatically.</span></p>
+        <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-zinc-600 text-lg z-10">→</div>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center relative">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center text-accent-light mb-4 text-2xl mx-auto">
+          🎨</div>
+        <h3 class="font-heading font-bold text-base mb-2"><span data-i18n="dsw_s2_title">Tokens</span></h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"><span data-i18n="dsw_s2_desc">Colors, fonts, spacing, shadows —
+            mapped to CSS variables (Semi Design spec).</span></p>
+        <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-zinc-600 text-lg z-10">→</div>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center relative">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-magic/20 to-magic/5 flex items-center justify-center text-magic-light mb-4 text-2xl mx-auto">
+          ⚛️</div>
+        <h3 class="font-heading font-bold text-base mb-2"><span data-i18n="dsw_s3_title">Components</span></h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"><span data-i18n="dsw_s3_desc">Button, Card, Input, Badge —
+            ready-to-use React components generated instantly.</span></p>
+        <div class="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 text-zinc-600 text-lg z-10">→</div>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-br from-success/20 to-success/5 flex items-center justify-center text-success-light mb-4 text-2xl mx-auto">
+          ✅</div>
+        <h3 class="font-heading font-bold text-base mb-2"><span data-i18n="dsw_s4_title">AI Codes</span></h3>
+        <p class="text-zinc-500 text-xs leading-relaxed"><span data-i18n="dsw_s4_desc">AI reads tokens and writes all
+            code using design system variables. Pixel-perfect.</span></p>
+      </div>
+    </div>
+
+    <!-- Before vs After Code -->
+    <div class="grid md:grid-cols-2 gap-6 mb-12 reveal">
+      <div class="before-card rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-4"><span class="text-red-400 text-lg">✕</span><span
+            class="text-red-400 font-semibold text-sm uppercase tracking-wide"><span data-i18n="dsw_before">Without
+              Design System</span></span></div>
+        <div class="bg-black/30 rounded-xl p-4">
+          <pre class="text-xs text-zinc-400 font-mono leading-relaxed overflow-x-auto"><code><span class="text-zinc-600">// ❌ Hardcoded — breaks when design changes</span>
+background: <span class="text-red-400">#0F79F3</span>;
+padding: <span class="text-red-400">14px</span>;
+font-family: <span class="text-red-400">"Outfit"</span>;
+border-radius: <span class="text-red-400">6px</span>;</code></pre>
+        </div>
+      </div>
+      <div class="after-card rounded-2xl p-6">
+        <div class="flex items-center gap-2 mb-4"><span class="text-emerald-400 text-lg">✦</span><span
+            class="text-emerald-400 font-semibold text-sm uppercase tracking-wide"><span data-i18n="dsw_after">With UX
+              Master Tokens</span></span></div>
+        <div class="bg-black/30 rounded-xl p-4">
+          <pre class="text-xs text-emerald-300/80 font-mono leading-relaxed overflow-x-auto"><code><span class="text-zinc-600">// ✅ Token-based — always in sync</span>
+background: <span class="text-emerald-400">var(--semi-color-primary)</span>;
+padding: <span class="text-emerald-400">var(--spacing-base)</span>;
+font-family: <span class="text-emerald-400">var(--semi-font-family-regular)</span>;
+border-radius: <span class="text-emerald-400">var(--border-radius-md)</span>;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Benefits -->
+    <div class="grid sm:grid-cols-3 gap-4 reveal">
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-2xl mb-2">🔄</div>
+        <h4 class="font-heading font-semibold text-sm mb-1 text-white"><span data-i18n="dsw_b1_title">Design changes?
+            Re-harvest.</span></h4>
+        <p class="text-zinc-500 text-xs"><span data-i18n="dsw_b1_desc">Tokens update → code stays the same. Zero
+            refactoring.</span></p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-2xl mb-2">🎯</div>
+        <h4 class="font-heading font-semibold text-sm mb-1 text-white"><span data-i18n="dsw_b2_title">Pixel-perfect
+            consistency</span></h4>
+        <p class="text-zinc-500 text-xs"><span data-i18n="dsw_b2_desc">Every page uses the same tokens. No more
+            "slightly different blues."</span></p>
+      </div>
+      <div class="glass-card rounded-xl p-5 text-center">
+        <div class="text-2xl mb-2">⚡</div>
+        <h4 class="font-heading font-semibold text-sm mb-1 text-white"><span data-i18n="dsw_b3_title">Works with any AI
+            tool</span></h4>
+        <p class="text-zinc-500 text-xs"><span data-i18n="dsw_b3_desc">Cursor, Claude, Gemini — all read the same CSS
+            variables.</span></p>
       </div>
     </div>
   </section>
@@ -1031,8 +1118,14 @@
       </div>
       <p class="text-zinc-600 text-sm mb-6">Biến <span data-i18n="magic_ai">AI</span> thành design studio của bạn.</p>
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
-        <a href="README.md" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
-            data-i18n="footer_guide">Hướng dẫn</span></a><span>·</span>
+        <a href="../README.md" class="hover:text-zinc-300 transition-colors cursor-pointer"><span
+            data-i18n="footer_guide">README</span></a><span>·</span>
+        <a href="guides/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="tutorials/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="technical/index.html"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
         <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
           class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a><span>·</span>
         <span><span data-i18n="footer_f1">Miễn phí mãi mãi</span></span><span>·</span><span>6 nền tảng <span
