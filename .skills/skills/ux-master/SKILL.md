@@ -288,6 +288,8 @@ This skill works with:
 - Cursor (via MCP server at `mcp/mcp-config.json`)
 - Antigravity (Python script execution)
 - Gemini CLI (with bash wrapper)
+- OpenClaw (install via ClawHub: `clawhub install ux-master`)
+- ZeroClaw (clone to `~/.zeroclaw/skills/ux-master`)
 - Any AI assistant supporting Python 3.x
 
 **Required:** Python 3.x (no external dependencies except optional Playwright for browser automation)

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Start — UX Master | Get Started in 5 Minutes</title>
+  <meta name="description"
+    content="Get started with UX Master in 5 minutes. Figma plugin, MCP server, or CLI — choose your path and start creating beautiful designs.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quick Start — UX Master | 5 Minutes Setup">
+  <meta property="og:description" content="Get UX Master running in 5 minutes. Three paths: Figma Plugin, MCP Server, or CLI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .code-block {
+      background: linear-gradient(145deg, #0d0d12 0%, #111116 100%);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .code-header {
+      background: rgba(124, 58, 237, 0.08);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .code-lang {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #a1a1aa;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .copy-btn:hover {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: rgba(124, 58, 237, 0.4);
+      color: #a78bfa;
+    }
+    pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: 'Fira Code', monospace;
+    }
+    code {
+      font-family: 'Fira Code', monospace;
+      color: #e4e4e7;
+    }
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #fafafa;
+    }
+    .prose h3 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #e4e4e7;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+    .prose ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .prose ol {
+      list-style: decimal;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose strong {
+      color: #fafafa;
+      font-weight: 600;
+    }
+    .prose hr {
+      border-color: rgba(255, 255, 255, 0.1);
+      margin: 2rem 0;
+    }
+    .path-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .path-card:hover {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.1));
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #a78bfa;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_home">Home</a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_guides">Guides</a>
+      <a href="index.html" class="text-white transition-colors cursor-pointer" data-i18n="nav_tutorials">Tutorials</a>
+      <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_technical">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0">Try
+        It Free</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_home">Home</a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_guides">Guides</a>
+    <a href="index.html" onclick="closeMobileMenu()" class="text-white py-2" data-i18n="nav_tutorials">Tutorials</a>
+    <a href="../technical/index.html" onclick="closeMobileMenu()"
+      class="text-zinc-300 hover:text-white py-2" data-i18n="nav_technical">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[50vh] flex items-center justify-center px-4 pt-24 pb-12 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-6">
+        <span class="text-accent-light">⚡</span>
+        <span data-i18n="tut_quickstart_badge">5-Minute Setup</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] mb-4">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent" data-i18n="tut_quickstart_h1">Quick Start Guide</span>
+      </h1>
+      <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto mb-6 leading-relaxed" data-i18n="tut_quickstart_desc">
+        Get UX Master running in 5 minutes. Choose your path: Figma Plugin, MCP Server, or CLI.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#figma" class="path-badge px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-medium hover:bg-pink-500/20 transition-all">🎨 Figma Plugin</a>
+        <a href="#mcp" class="path-badge px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium hover:bg-cyan-500/20 transition-all">🖥️ MCP Server</a>
+        <a href="#cli" class="path-badge px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-medium hover:bg-violet-500/20 transition-all">💻 CLI</a>
+      </div>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto mb-8"></div>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 pb-24 prose">
+    
+    <!-- CHOOSE YOUR PATH -->
+    <section class="mb-16">
+      <h2 class="text-center mb-8" data-i18n="guides_h2">🎯 Choose Your Path</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Figma Path -->
+        <div class="path-card text-center">
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="tut_quickstart_figma_title">Figma Plugin</h3>
+          <p class="text-sm text-zinc-400 mb-4" data-i18n="tut_quickstart_figma_desc">Recommended for Designers</p>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span class="text-zinc-500">⏱️ 2 min</span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-yellow-400">⭐ Easy</span>
+          </div>
+        </div>
+        <!-- MCP Path -->
+        <div class="path-card text-center">
+          <div class="text-4xl mb-4">🖥️</div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="tut_quickstart_mcp_title">MCP Server</h3>
+          <p class="text-sm text-zinc-400 mb-4" data-i18n="tut_quickstart_mcp_desc">For Teams & AI Integration</p>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span class="text-zinc-500">⏱️ 5 min</span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-orange-400">⭐⭐ Medium</span>
+          </div>
+        </div>
+        <!-- CLI Path -->
+        <div class="path-card text-center">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="tut_quickstart_cli_title">CLI</h3>
+          <p class="text-sm text-zinc-400 mb-4" data-i18n="tut_quickstart_cli_desc">For Power Users</p>
+          <div class="flex items-center justify-center gap-2 text-xs">
+            <span class="text-zinc-500">⏱️ 3 min</span>
+            <span class="text-zinc-600">|</span>
+            <span class="text-red-400">⭐⭐⭐ Advanced</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIGMA PLUGIN PATH -->
+    <section id="figma" class="mb-16">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-rose-500/10 flex items-center justify-center text-2xl">🎨</div>
+        <div>
+          <h2 class="m-0">Path 1: Figma Plugin</h2>
+          <p class="text-sm text-zinc-500 m-0">The easiest way to get started</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Step 1 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">1</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2">Install (30 seconds)</h3>
+              <ol class="text-sm space-y-2">
+                <li>Open Figma (desktop or web)</li>
+                <li>Click <strong>Plugins</strong> in the menu</li>
+                <li>Select <strong>Browse plugins in Community</strong></li>
+                <li>Search: "UX-Master"</li>
+                <li>Click <strong>Install</strong></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">2</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2" data-i18n="tut_quickstart_step2">Generate Design System</h3>
+              <ol class="text-sm space-y-2">
+                <li>Open any Figma file</li>
+                <li>Go to <strong>Plugins → UX-Master</strong></li>
+                <li>In the <strong>Generate</strong> tab, type:</li>
+              </ol>
+              <div class="code-block mt-4">
+                <div class="code-header">
+                  <span class="code-lang">Input</span>
+                </div>
+                <pre><code>A fintech dashboard with dark mode and real-time charts</code></pre>
+              </div>
+              <p class="text-sm mt-4">Click <strong>✨ Generate Magic</strong> and wait 2-3 seconds</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">3</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2" data-i18n="tut_quickstart_step3">Apply to Figma</h3>
+              <p class="text-sm mb-4">You'll see:</p>
+              <ul class="text-sm space-y-2">
+                <li>🎨 Color palette (primary, secondary, accent)</li>
+                <li>✍️ Typography recommendations</li>
+                <li>🧠 UX Laws applied (e.g., "Fitts's Law: 48px touch targets")</li>
+                <li>✓ Design Tests passed</li>
+              </ul>
+              <p class="text-sm mt-4">Click <strong>"Apply to Figma"</strong> to create Variables automatically!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MCP SERVER PATH -->
+    <section id="mcp" class="mb-16">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 flex items-center justify-center text-2xl">🖥️</div>
+        <div>
+          <h2 class="m-0">Path 2: MCP Server</h2>
+          <p class="text-sm text-zinc-500 m-0">For Teams & AI Integration</p>
+        </div>
+      </div>
+
+      <p class="text-sm bg-blue-500/5 border border-blue-500/10 rounded-xl p-4 mb-6">
+        <strong class="text-blue-400">What is MCP?</strong> MCP = Model Context Protocol. It lets AI assistants (Claude, Cursor) use UX-Master tools directly.
+      </p>
+
+      <div class="space-y-6">
+        <!-- Step 1 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">1</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2">Install CLI</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">Bash</span>
+                  <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+                </div>
+                <pre><code># Install UX-Master CLI
+pip install uxmaster[mcp]
+
+# Or with pipx (recommended)
+pipx install uxmaster[mcp]</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">2</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2">Start MCP Server</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span class="code-lang">Bash</span>
+                  <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+                </div>
+                <pre><code># Start the server
+uxm mcp start
+
+# Or run in background
+uxm mcp start -d
+
+# Check status
+uxm mcp status</code></pre>
+              </div>
+              <p class="text-sm mt-4">You should see:</p>
+              <div class="code-block mt-2">
+                <pre><code>✓ MCP Server running on http://localhost:3000
+✓ 8 tools available</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">3</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2">Configure Your AI Assistant</h3>
+              
+              <h4 class="text-sm font-semibold text-white mt-4 mb-2">For Claude Code</h4>
+              <p class="text-sm">Add to <code>.claude/settings.json</code>:</p>
+              <div class="code-block mt-2">
+                <div class="code-header">
+                  <span class="code-lang">JSON</span>
+                  <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+                </div>
+                <pre><code>{
+  "mcpServers": {
+    "ux-master": {
+      "command": "python",
+      "args": ["-m", "mcp.server"],
+      "env": {
+        "PORT": "3000"
+      }
+    }
+  }
+}</code></pre>
+              </div>
+
+              <h4 class="text-sm font-semibold text-white mt-4 mb-2">For Cursor</h4>
+              <p class="text-sm">Add to <code>.cursor/mcp.json</code>:</p>
+              <div class="code-block mt-2">
+                <div class="code-header">
+                  <span class="code-lang">JSON</span>
+                  <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+                </div>
+                <pre><code>{
+  "mcpServers": {
+    "ux-master": {
+      "url": "http://localhost:3000"
+    }
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start gap-4">
+            <div class="step-number">4</div>
+            <div class="flex-1">
+              <h3 class="m-0 mb-2">Use in AI Chat</h3>
+              <p class="text-sm mb-4">Now you can ask:</p>
+              <div class="code-block">
+                <pre><code>"Create a landing page for my SaaS product"</code></pre>
+              </div>
+              <p class="text-sm mt-4">The AI will:</p>
+              <ol class="text-sm space-y-1">
+                <li>Call UX-Master to generate design system</li>
+                <li>Apply 48 UX Laws automatically</li>
+                <li>Show you the results with recommendations</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLI PATH -->
+    <section id="cli" class="mb-16">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 flex items-center justify-center text-2xl">💻</div>
+        <div>
+          <h2 class="m-0">Path 3: CLI Commands</h2>
+          <p class="text-sm text-zinc-500 m-0">For Power Users</p>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 mb-6">
+        <h3 class="m-0 mb-4">Basic Commands</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Install UX-Master
+pip install uxmaster
+
+# Install for specific AI assistant
+uxm init --ai claude
+
+# Generate design system
+uxm search "fintech dashboard" --design-system
+
+# Search UX Laws
+uxm search "mobile touch targets" --domain ux-laws
+
+# Validate HTML file
+uxm validate index.html --suite mobile</code></pre>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6">
+        <h3 class="m-0 mb-4">Complete Workflow Example</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># 1. Install for Claude Code
+uxm init --ai claude
+
+# 2. Generate design system
+uxm search "healthcare app for elderly" --design-system -p "CareConnect"
+
+# Output:
+# 🎨 Style: Soft UI Evolution
+# 🎨 Colors: #3B82F6 primary, #10B981 success
+# ✍️ Typography: Inter / 16px body
+# 🧠 UX Laws: Fitts's Law (48px targets), High contrast (WCAG AAA)
+
+# 3. Persist for later use
+uxm search "healthcare app" --design-system --persist -p "CareConnect"
+# Creates: design-system/careconnect/MASTER.md
+
+# 4. Search specific UX Laws for mobile
+uxm search "mobile app fitts" --domain ux-laws -n 3
+
+# 5. Get design tests for validation
+uxm search "mobile touch target" --domain design-tests</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT STEPS -->
+    <section class="glass-card rounded-2xl p-8 text-center">
+      <h2 class="m-0 mb-4" data-i18n="tut_quickstart_ready">🎉 You're Ready!</h2>
+      <p class="text-zinc-400 mb-6" data-i18n="tut_quickstart_ready_desc">Start creating beautiful, UX-compliant designs with AI.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="user-guide.html" class="cta-primary text-white font-semibold px-8 py-3 rounded-xl transition-all cursor-pointer glow-purple">
+          Read Full User Guide →
+        </a>
+        <a href="tutorials.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+          Browse All Tutorials
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="../technical/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    initI18n();
+    
+    function copyCode(btn) {
+      const pre = btn.closest('.code-block').querySelector('pre');
+      const code = pre.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = window.i18n ? window.i18n.t('btn_copied') : 'Copied!';
+        setTimeout(() => btn.textContent = window.i18n ? window.i18n.t('btn_copy') : 'Copy', 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

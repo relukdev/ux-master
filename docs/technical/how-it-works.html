@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works — UX Master | Technical Deep Dive</title>
+  <meta name="description"
+    content="Deep technical dive into UX Master v4. Extraction pipeline, AI analysis, code generation, and architecture diagrams.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="How It Works — UX Master">
+  <meta property="og:description" content="Deep technical dive into the extraction pipeline and AI analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .code-block {
+      background: linear-gradient(145deg, #0d0d12 0%, #111116 100%);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .code-header {
+      background: rgba(124, 58, 237, 0.08);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .code-lang {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+    .pipeline-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 1rem 0;
+    }
+    .pipeline-stage {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(236, 72, 153, 0.05));
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .pipeline-arrow {
+      text-align: center;
+      color: #71717a;
+      font-size: 20px;
+      margin: 8px 0;
+    }
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #fafafa;
+      scroll-margin-top: 100px;
+    }
+    .prose h3 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #e4e4e7;
+    }
+    .prose h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #d4d4d8;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+    .prose ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .feature-table th {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    .feature-table td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #a1a1aa;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_home">Home</a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_guides">Guides</a>
+      <a href="../tutorials/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_tutorials">Tutorials</a>
+      <a href="index.html" class="text-white transition-colors cursor-pointer" data-i18n="nav_technical">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0">Try
+        It Free</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_home">Home</a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_guides">Guides</a>
+    <a href="../tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_tutorials">Tutorials</a>
+    <a href="index.html" onclick="closeMobileMenu()" class="text-white py-2" data-i18n="nav_technical">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[40vh] flex items-center justify-center px-4 pt-24 pb-8 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-6">
+        <span class="text-accent-light">⚙️</span>
+        <span data-i18n="tech_how_badge">Technical Deep Dive</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05] mb-4">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent" data-i18n="tech_how_h1">How UX Master Works</span>
+      </h1>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="tech_how_desc">
+        Deep technical dive into the extraction pipeline, AI analysis, and code generation.
+      </p>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 pb-24 prose">
+
+    <!-- ARCHITECTURE OVERVIEW -->
+    <section>
+      <h2 data-i18n="tech_how_overview">Architecture Overview</h2>
+      
+      <div class="pipeline-box">
+        <div class="text-center text-zinc-500 text-sm mb-6">UX Master v4 Pipeline</div>
+        
+        <div class="grid grid-cols-3 gap-4 text-center text-xs mb-4">
+          <div class="text-zinc-400">INPUT</div>
+          <div class="text-zinc-400">PROCESSING</div>
+          <div class="text-zinc-400">OUTPUT</div>
+        </div>
+
+        <div class="pipeline-stage">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🌐</span>
+            <div>
+              <div class="font-semibold text-white">Website URL</div>
+              <div class="text-sm text-zinc-400">Input target for extraction</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-stage">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🔍</span>
+            <div>
+              <div class="font-semibold text-white">Browser Crawler</div>
+              <div class="text-sm text-zinc-400">Headless Chromium, visual stability wait</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-stage">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🤖</span>
+            <div>
+              <div class="font-semibold text-white">AI Extractor (harvester_v4.js)</div>
+              <div class="text-sm text-zinc-400">Color histograms, typography, layout grids</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-stage">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🏗️</span>
+            <div>
+              <div class="font-semibold text-white">Semi Design Mapper</div>
+              <div class="text-sm text-zinc-400">150+ CSS variables, 7-state color variants</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="pipeline-stage">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">⚛️</span>
+            <div>
+              <div class="font-semibold text-white">Component Generator</div>
+              <div class="text-sm text-zinc-400">React/Vue/Semi/shadcn code</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pipeline-arrow">↓</div>
+
+        <div class="bg-surface-200 border border-white/10 rounded-xl p-4">
+          <div class="text-sm font-semibold text-white mb-2">📦 Outputs</div>
+          <ul class="text-xs text-zinc-400 space-y-1 m-0">
+            <li>📄 design-system.css (150+ CSS variables)</li>
+            <li>📄 design-system.json (Structured tokens)</li>
+            <li>📄 figma-tokens.json (Tokens Studio format)</li>
+            <li>📄 DESIGN.md (Stitch-compatible)</li>
+            <li>📁 components/ (React/Vue/Semi/shadcn)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 1 -->
+    <section>
+      <h2 data-i18n="tech_how_stage1">Stage 1: Browser Extraction</h2>
+      
+      <h3>What Happens</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">Python</span>
+        </div>
+        <pre><code>class HarvesterBrowser:
+    async def extract(self, url: str) -> HarvestResult:
+        """
+        1. Launch headless Chromium
+        2. Navigate to URL
+        3. Wait for visual stability
+        4. Inject harvester_v4.js
+        5. Execute AI extraction
+        6. Capture screenshot
+        7. Return structured data
+        """</code></pre>
+      </div>
+
+      <h3>Key Features</h3>
+      <table class="feature-table">
+        <thead>
+          <tr><th>Feature</th><th>Implementation</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Headless Browser</td><td>Playwright Chromium</td><td>Accurate rendering</td></tr>
+          <tr><td>Visual Stability</td><td>wait_seconds parameter</td><td>Let animations finish</td></tr>
+          <tr><td>Mobile Detection</td><td>Viewport emulation</td><td>Responsive design analysis</td></tr>
+          <tr><td>Error Resilience</td><td>Try/catch in browser</td><td>Handle broken sites</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- STAGE 2 -->
+    <section>
+      <h2 data-i18n="tech_how_stage2">Stage 2: AI Extraction</h2>
+
+      <h3>Core Algorithm</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">JavaScript</span>
+        </div>
+        <pre><code>class HarvesterV4 {
+    extract(options) {
+        return {
+            // Visual Analysis
+            colors: this.extractColors(),
+            typography: this.extractTypography(),
+            spacing: this.extractSpacing(),
+            components: this.extractComponents(),
+            
+            // Structural
+            layout: this.analyzeLayout(),
+            pageType: this.detectPageType(),
+            
+            // Metadata
+            _version: 4,
+            _timestamp: Date.now()
+        };
+    }
+}</code></pre>
+      </div>
+
+      <h3>Color Extraction</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">JavaScript</span>
+        </div>
+        <pre><code>extractColors() {
+    const elements = document.querySelectorAll('*');
+    const frequency = new Map();
+    
+    // Collect all colors
+    elements.forEach(el => {
+        const style = window.getComputedStyle(el);
+        const bg = style.backgroundColor;
+        const text = style.color;
+        const border = style.borderColor;
+        
+        [bg, text, border].forEach(color => {
+            if (color && color !== 'transparent') {
+                frequency.set(color, (frequency.get(color) || 0) + 1);
+            }
+        });
+    });
+    
+    // Sort by frequency
+    const sorted = [...frequency.entries()]
+        .sort((a, b) => b[1] - a[1]);
+    
+    return {
+        histogram: { background, text, border },
+        dominant: this.extractDominant(sorted)
+    };
+}</code></pre>
+      </div>
+
+      <h3>Component Detection</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">JavaScript</span>
+        </div>
+        <pre><code>extractComponents() {
+    const blueprints = [];
+    
+    // Button detection
+    document.querySelectorAll('button, [role="button"]')
+        .forEach(el => blueprints.push(this.analyzeButton(el)));
+    
+    // Input detection
+    document.querySelectorAll('input, textarea, select')
+        .forEach(el => blueprints.push(this.analyzeInput(el)));
+    
+    // Card detection
+    document.querySelectorAll('.card, [class*="card"]')
+        .forEach(el => blueprints.push(this.analyzeCard(el)));
+    
+    return { blueprints, count: blueprints.length };
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- STAGE 3 -->
+    <section>
+      <h2 data-i18n="tech_how_stage3">Stage 3: Semi Design Mapper</h2>
+      
+      <p>The mapper converts raw harvest data to standardized Semi Design tokens:</p>
+      
+      <ul>
+        <li><strong>Color System:</strong> Primary, Secondary, Tertiary, Neutrals (50-900)</li>
+        <li><strong>Background Scale:</strong> bg-0 → bg-4</li>
+        <li><strong>Fill States:</strong> fill-0 → fill-2</li>
+        <li><strong>Text Hierarchy:</strong> text-0 → text-3</li>
+        <li><strong>Spacing System:</strong> none → super-loose (10 steps)</li>
+        <li><strong>Border Radius:</strong> xs → full</li>
+        <li><strong>Shadow System:</strong> sm → elevated → lg</li>
+      </ul>
+    </section>
+
+    <!-- STAGE 4 -->
+    <section>
+      <h2 data-i18n="tech_how_stage4">Stage 4: Component Generator</h2>
+      
+      <p>Generates production-ready components from blueprints:</p>
+
+      <h3>Supported Frameworks</h3>
+      <ul>
+        <li>React + Tailwind</li>
+        <li>Vue 3 + Tailwind</li>
+        <li>Semi Design (DouyinFE)</li>
+        <li>shadcn/ui</li>
+      </ul>
+
+      <h3>Generated Components</h3>
+      <ul>
+        <li>Button (primary, secondary, outline, ghost, danger)</li>
+        <li>Card (default, bordered, elevated)</li>
+        <li>Input (text, password, textarea, select)</li>
+        <li>Badge/Tag (default, success, warning, danger, info)</li>
+        <li>Avatar (circle, square, sizes)</li>
+        <li>Alert (info, success, warning, error)</li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="glass-card rounded-2xl p-8 text-center mt-16">
+      <h2 class="m-0 mb-4">🔬 Tìm hiểu thêm</h2>
+      <p class="text-zinc-400 mb-6">Khám phá API reference và bắt đầu sử dụng Harvester v4.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="api-reference.html" class="cta-primary text-white font-semibold px-8 py-3 rounded-xl transition-all cursor-pointer glow-purple">
+          API Reference →
+        </a>
+        <a href="harvester-v4.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+          Harvester v4 Guide
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../tutorials/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/main.js"></script>
+  <script>initI18n();</script>
+</body>
+
+</html>

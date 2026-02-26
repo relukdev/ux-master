@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference — UX Master | Complete API Documentation</title>
+  <meta name="description"
+    content="Complete API documentation for UX Master v2.0.0. CLI API, MCP Server, Python SDK, Validation Engine, and Harvester API.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="API Reference — UX Master">
+  <meta property="og:description" content="Complete API documentation. CLI, MCP Server, Python SDK, Validation Engine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .code-block {
+      background: linear-gradient(145deg, #0d0d12 0%, #111116 100%);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .code-header {
+      background: rgba(124, 58, 237, 0.08);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .code-lang {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+    .endpoint-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .endpoint-get {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+    .endpoint-post {
+      background: rgba(124, 58, 237, 0.15);
+      color: #a78bfa;
+    }
+    .endpoint-put {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #fafafa;
+      scroll-margin-top: 100px;
+    }
+    .prose h3 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #e4e4e7;
+      scroll-margin-top: 100px;
+    }
+    .prose h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #d4d4d8;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+    .prose ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .prose th {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    .prose td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #a1a1aa;
+    }
+    .toc-link {
+      color: #71717a;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0;
+      font-size: 0.85rem;
+    }
+    .toc-link:hover {
+      color: #a78bfa;
+    }
+    .api-section {
+      border-left: 2px solid rgba(124, 58, 237, 0.3);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_home">Home</a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_guides">Guides</a>
+      <a href="../tutorials/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_tutorials">Tutorials</a>
+      <a href="index.html" class="text-white transition-colors cursor-pointer" data-i18n="nav_technical">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0">Try
+        It Free</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_home">Home</a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_guides">Guides</a>
+    <a href="../tutorials/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_tutorials">Tutorials</a>
+    <a href="index.html" onclick="closeMobileMenu()" class="text-white py-2" data-i18n="nav_technical">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[40vh] flex items-center justify-center px-4 pt-24 pb-8 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-6">
+        <span class="text-accent-light">📡</span>
+        <span data-i18n="tech_api_badge">API Reference v2.0.0</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05] mb-4">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent" data-i18n="tech_api_h1">API Reference</span>
+      </h1>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="tech_api_desc">
+        Complete API documentation for UX Master. CLI, MCP Server, Python SDK, Validation Engine, and Harvester API.
+      </p>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto mb-8"></div>
+
+  <div class="max-w-6xl mx-auto px-4 pb-24 flex gap-8">
+    <!-- TABLE OF CONTENTS -->
+    <aside class="hidden lg:block w-64 flex-shrink-0">
+      <div class="sticky top-28">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Contents</h3>
+        <nav class="space-y-1">
+          <a href="#cli" class="toc-link" data-i18n="tech_api_cli">CLI API</a>
+          <a href="#cli-init" class="toc-link pl-4">uxm init</a>
+          <a href="#cli-search" class="toc-link pl-4">uxm search</a>
+          <a href="#cli-validate" class="toc-link pl-4">uxm validate</a>
+          <a href="#cli-extract" class="toc-link pl-4">uxm extract</a>
+          <a href="#mcp" class="toc-link" data-i18n="tech_api_mcp">MCP Server</a>
+          <a href="#mcp-tools" class="toc-link pl-4">Tools</a>
+          <a href="#python" class="toc-link" data-i18n="tech_api_python">Python SDK</a>
+          <a href="#validation" class="toc-link" data-i18n="tech_api_validation">Validation Engine</a>
+          <a href="#harvester" class="toc-link" data-i18n="tech_api_harvester">Harvester API</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="flex-1 prose min-w-0">
+
+      <!-- CLI API -->
+      <section id="cli">
+        <h2>CLI API</h2>
+        <p>Command-line interface for UX Master.</p>
+
+        <h3 id="cli-init">uxm init</h3>
+        <p>Install UX-Master skill for AI assistants.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Bash</span>
+            </div>
+            <pre><code>uxm init --ai &lt;platform> [options]</code></pre>
+          </div>
+
+          <h4>Options</h4>
+          <table>
+            <thead>
+              <tr><th>Option</th><th>Description</th><th>Default</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--ai, -a</code></td><td>Target AI platform (required)</td><td>-</td></tr>
+              <tr><td><code>--global, -g</code></td><td>Install to global config</td><td>false</td></tr>
+              <tr><td><code>--force, -f</code></td><td>Overwrite existing files</td><td>false</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Supported Platforms</h4>
+          <ul>
+            <li><code>claude</code> - Claude Code</li>
+            <li><code>cursor</code> - Cursor IDE</li>
+            <li><code>windsurf</code> - Windsurf IDE</li>
+            <li><code>vscode</code> - VS Code MCP</li>
+            <li><code>figma</code> - Figma Plugin</li>
+            <li><code>all</code> - All platforms</li>
+          </ul>
+
+          <h4>Example</h4>
+          <div class="code-block">
+            <pre><code># Install for Claude Code
+uxm init --ai claude
+
+# Install globally with force
+uxm init --ai claude --global --force</code></pre>
+          </div>
+        </div>
+
+        <h3 id="cli-search">uxm search</h3>
+        <p>Search UX-Master knowledge base.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Bash</span>
+            </div>
+            <pre><code>uxm search &lt;query> [options]</code></pre>
+          </div>
+
+          <h4>Options</h4>
+          <table>
+            <thead>
+              <tr><th>Option</th><th>Description</th><th>Default</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--domain, -d</code></td><td>Search domain</td><td>-</td></tr>
+              <tr><td><code>--stack, -s</code></td><td>Technology stack</td><td>-</td></tr>
+              <tr><td><code>--max-results, -n</code></td><td>Max results</td><td>3</td></tr>
+              <tr><td><code>--design-system, -ds</code></td><td>Generate design system</td><td>false</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="cli-validate">uxm validate</h3>
+        <p>Validate UI against 37 Design Tests.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Bash</span>
+            </div>
+            <pre><code>uxm validate &lt;target> [options]</code></pre>
+          </div>
+
+          <h4>Test Suites</h4>
+          <ul>
+            <li><code>all</code> - All 37 tests</li>
+            <li><code>mobile</code> - Mobile-specific (7 tests)</li>
+            <li><code>landing</code> - Landing page (6 tests)</li>
+            <li><code>dashboard</code> - Dashboard (6 tests)</li>
+            <li><code>a11y</code> - Accessibility (5 tests)</li>
+          </ul>
+
+          <h4>Output Formats</h4>
+          <ul>
+            <li><code>rich</code> - Terminal with colors</li>
+            <li><code>json</code> - JSON output</li>
+            <li><code>markdown</code> - Markdown report</li>
+            <li><code>html</code> - HTML dashboard</li>
+          </ul>
+
+          <h4>Example</h4>
+          <div class="code-block">
+            <pre><code># Validate HTML file
+uxm validate index.html --suite mobile
+
+# Validate URL
+uxm validate https://stripe.com --url --suite all
+
+# Generate HTML report
+uxm validate index.html --format html --output report.html</code></pre>
+          </div>
+        </div>
+
+        <h3 id="cli-extract">uxm extract</h3>
+        <p>Extract design system from website.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Bash</span>
+            </div>
+            <pre><code>uxm extract &lt;url> [options]</code></pre>
+          </div>
+
+          <h4>Example</h4>
+          <div class="code-block">
+            <pre><code># Extract to JSON
+uxm extract https://stripe.com --output stripe.json
+
+# Export to Figma
+uxm extract https://linear.app --figma
+
+# Deep crawl with screenshots
+uxm extract https://vercel.com --depth 2 --screenshots</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCP SERVER -->
+      <section id="mcp">
+        <h2>MCP Server API</h2>
+        <p>Model Context Protocol server for AI assistants.</p>
+
+        <div class="glass-card rounded-xl p-4 mb-6">
+          <p class="text-sm text-zinc-400 m-0"><strong class="text-white">Base URL:</strong> <code>http://localhost:3000</code></p>
+          <p class="text-sm text-zinc-400 m-0"><strong class="text-white">Authentication:</strong> None required for local development</p>
+        </div>
+
+        <h3 id="mcp-tools">Available Tools</h3>
+
+        <h4>search_ux_laws</h4>
+        <p>Search 48 UX Laws for psychology-driven design.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="endpoint-badge endpoint-post">POST</span>
+              <span class="code-lang">/mcp/v1/tools/call</span>
+            </div>
+            <pre><code>{
+  "name": "search_ux_laws",
+  "arguments": {
+    "query": "mobile touch targets",
+    "product_type": "mobile",
+    "max_results": 5
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <h4>validate_design</h4>
+        <p>Validate UI code against 37 Design Tests.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="endpoint-badge endpoint-post">POST</span>
+              <span class="code-lang">/mcp/v1/tools/call</span>
+            </div>
+            <pre><code>{
+  "name": "validate_design",
+  "arguments": {
+    "html": "&lt;button style='width: 100px'&gt;Click&lt;/button&gt;",
+    "css": "button { padding: 10px; }",
+    "test_suite": "all"
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <h4>extract_design_system</h4>
+        <p>Extract design system from website using Harvester v4.</p>
+        <div class="api-section">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="endpoint-badge endpoint-post">POST</span>
+              <span class="code-lang">/mcp/v1/tools/call</span>
+            </div>
+            <pre><code>{
+  "name": "extract_design_system",
+  "arguments": {
+    "url": "https://stripe.com",
+    "depth": 1,
+    "include_screenshots": false
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- PYTHON SDK -->
+      <section id="python">
+        <h2>Python SDK</h2>
+
+        <h3>Validation Engine</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Python</span>
+          </div>
+          <pre><code>from validation_engine import ValidationEngine
+
+# Create engine
+engine = ValidationEngine()
+
+# Load harvester data
+with open('harvest.json') as f:
+    data = json.load(f)
+
+# Run validation
+report = engine.validate(data, test_suite='all')
+
+# Check results
+print(f"Score: {report.score}/100")
+print(f"Passed: {report.passed_count}/{report.total_count}")</code></pre>
+        </div>
+
+        <h3>Search Engine</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Python</span>
+          </div>
+          <pre><code>from search_engine import SearchEngine
+
+engine = SearchEngine()
+
+# Search UX Laws
+results = engine.search(
+    query="mobile touch targets",
+    domain="ux-laws",
+    max_results=5
+)
+
+# Generate design system
+system = engine.generate_design_system(
+    query="fintech dashboard",
+    project_name="MyApp"
+)</code></pre>
+        </div>
+      </section>
+
+      <!-- VALIDATION ENGINE -->
+      <section id="validation">
+        <h2>Validation Engine</h2>
+
+        <h3>Test Categories</h3>
+
+        <h4>Mobile Tests (7)</h4>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Severity</th><th>Check</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DT-MOB-001</td><td>Fitts's Law</td><td>Critical</td><td>Touch targets ≥ 44px</td></tr>
+            <tr><td>DT-MOB-002</td><td>Thumb Zone</td><td>High</td><td>Actions in bottom 25%</td></tr>
+            <tr><td>DT-MOB-003</td><td>Touch Feedback</td><td>High</td><td>Hover/active states</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Landing Page Tests (6)</h4>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Severity</th><th>Check</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DT-LND-001</td><td>Hero Clarity</td><td>Critical</td><td>Value prop in 5 sec</td></tr>
+            <tr><td>DT-LND-002</td><td>CTA Prominence</td><td>Critical</td><td>Visual dominance</td></tr>
+            <tr><td>DT-LND-003</td><td>Social Proof</td><td>High</td><td>Above the fold</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Accessibility Tests (5)</h4>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Severity</th><th>Check</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DT-A11-001</td><td>Focus States</td><td>Critical</td><td>Visible focus</td></tr>
+            <tr><td>DT-A11-002</td><td>Input Labels</td><td>Critical</td><td>Associated labels</td></tr>
+            <tr><td>DT-A11-003</td><td>ARIA Usage</td><td>High</td><td>Proper attributes</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- HARVESTER API -->
+      <section id="harvester">
+        <h2>Harvester API</h2>
+
+        <h3>Browser Injection</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">JavaScript</span>
+          </div>
+          <pre><code>// Inject harvester_v4.js into browser console
+const harvester = document.createElement('script');
+harvester.src = 'https://ux-master.dev/harvester_v4.js';
+document.head.appendChild(harvester);
+
+// Run extraction
+const data = window.UXMasterHarvester.extract();
+console.log(JSON.stringify(data, null, 2));</code></pre>
+        </div>
+
+        <h3>Python API</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Python</span>
+          </div>
+          <pre><code>from harvester_browser import BrowserHarvester
+
+harvester = BrowserHarvester()
+
+# Harvest single page
+result = harvester.harvest("https://example.com")
+
+if result["success"]:
+    data = result["data"]
+    print(f"Extracted {len(data['components']['blueprints'])} components")</code></pre>
+        </div>
+
+        <h3>Output Format</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">JSON</span>
+          </div>
+          <pre><code>{
+  "_version": 4,
+  "meta": {
+    "url": "https://example.com",
+    "title": "Page Title",
+    "pageType": "dashboard",
+    "timestamp": "2024-01-01T00:00:00Z"
+  },
+  "visualAnalysis": {
+    "colors": {
+      "semantic": {...},
+      "neutrals": {...}
+    },
+    "typography": {...},
+    "layout": {...},
+    "spacing": {...}
+  },
+  "components": {
+    "blueprints": {...}
+  }
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ERROR CODES -->
+      <section>
+        <h2>Error Codes</h2>
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Meaning</th><th>Resolution</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>400</td><td>Bad Request</td><td>Check parameters</td></tr>
+            <tr><td>404</td><td>Not Found</td><td>Check URL/file path</td></tr>
+            <tr><td>422</td><td>Validation Error</td><td>Check input format</td></tr>
+            <tr><td>500</td><td>Server Error</td><td>Check logs</td></tr>
+            <tr><td>503</td><td>Service Unavailable</td><td>MCP server not running</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CTA -->
+      <section class="glass-card rounded-2xl p-8 text-center mt-16">
+        <h2 class="m-0 mb-4">🚀 Ready to build?</h2>
+        <p class="text-zinc-400 mb-6">Start with our tutorials or explore the Harvester v4 documentation.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="../tutorials/index.html" class="cta-primary text-white font-semibold px-8 py-3 rounded-xl transition-all cursor-pointer glow-purple">
+            Browse Tutorials →
+          </a>
+          <a href="harvester-v4.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+            Harvester v4 Docs
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="../tutorials/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/main.js"></script>
+  <script>initI18n();</script>
+</body>
+
+</html>

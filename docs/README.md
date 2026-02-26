@@ -40,6 +40,25 @@ docs/
 
 ---
 
+## 🔧 Supported Framework Skills
+
+UX Master includes **deep mastery skills** for 8 popular frameworks — 250+ rules each:
+
+| Category | Framework | Focus Areas | Rules |
+|----------|-----------|-------------|-------|
+| **Web** | React | State, Hooks, Performance, TypeScript, Testing | 253 |
+| **Web** | Next.js | App Router, RSC, Server Actions, Caching, Security | 226 |
+| **Web** | Vue 3 | Composition API, Pinia, Vue Router, Reactivity | 223 |
+| **Web** | Svelte 5 | Runes, Stores, SvelteKit, Transitions, Actions | 221 |
+| **Mobile** | SwiftUI | @State/@Observable, NavigationStack, MVVM | 227 |
+| **Mobile** | React Native | FlatList, Reanimated, Expo, Detox | 217 |
+| **Mobile** | Flutter | Widgets, Riverpod, GoRouter, Material 3 | 225 |
+| **Styling** | Tailwind CSS | Utilities, Responsive, Accessibility, Dark Mode | 229 |
+
+**Total: 1,821 framework-specific rules** across Web, Mobile, and Styling.
+
+---
+
 ## 📖 Quick Reference
 
 ### By Task

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Guide — UX Master | Complete Documentation</title>
+  <meta name="description"
+    content="Complete guide to using UX Master v2.0.0 for design validation and system generation. CLI, Figma Plugin, MCP Server, and best practices.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="User Guide — UX Master | Complete Documentation">
+  <meta property="og:description" content="Complete guide to UX Master. Installation, CLI usage, Figma plugin, validation, and best practices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .code-block {
+      background: linear-gradient(145deg, #0d0d12 0%, #111116 100%);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .code-header {
+      background: rgba(124, 58, 237, 0.08);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .code-lang {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a78bfa;
+      font-weight: 600;
+    }
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #a1a1aa;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .copy-btn:hover {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: rgba(124, 58, 237, 0.4);
+      color: #a78bfa;
+    }
+    pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: 'Fira Code', monospace;
+    }
+    code {
+      font-family: 'Fira Code', monospace;
+      color: #e4e4e7;
+    }
+    .prose h2 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #fafafa;
+      scroll-margin-top: 100px;
+    }
+    .prose h3 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #e4e4e7;
+      scroll-margin-top: 100px;
+    }
+    .prose h4 {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #d4d4d8;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: #a1a1aa;
+    }
+    .prose ul {
+      list-style: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .prose ol {
+      list-style: decimal;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #a1a1aa;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose strong {
+      color: #fafafa;
+      font-weight: 600;
+    }
+    .prose table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .prose th {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      font-weight: 600;
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    .prose td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #a1a1aa;
+    }
+    .prose tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .toc-link {
+      color: #71717a;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0;
+    }
+    .toc-link:hover {
+      color: #a78bfa;
+    }
+    .severity-critical { color: #ef4444; }
+    .severity-high { color: #f97316; }
+    .severity-medium { color: #eab308; }
+    .severity-low { color: #22c55e; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_home">Home</a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_guides">Guides</a>
+      <a href="index.html" class="text-white transition-colors cursor-pointer" data-i18n="nav_tutorials">Tutorials</a>
+      <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_technical">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0">Try
+        It Free</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_home">Home</a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_guides">Guides</a>
+    <a href="index.html" onclick="closeMobileMenu()" class="text-white py-2" data-i18n="nav_tutorials">Tutorials</a>
+    <a href="../technical/index.html" onclick="closeMobileMenu()"
+      class="text-zinc-300 hover:text-white py-2" data-i18n="nav_technical">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[40vh] flex items-center justify-center px-4 pt-24 pb-8 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-6">
+        <span class="text-accent-light">📖</span>
+        <span data-i18n="tut_guide_badge">Complete Documentation</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05] mb-4">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent" data-i18n="tut_guide_h1">User Guide</span>
+      </h1>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="tut_guide_desc">
+        Complete guide to using UX Master v2.0.0 for design validation and system generation.
+      </p>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto mb-8"></div>
+
+  <div class="max-w-6xl mx-auto px-4 pb-24 flex gap-8">
+    <!-- TABLE OF CONTENTS -->
+    <aside class="hidden lg:block w-64 flex-shrink-0">
+      <div class="sticky top-28">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">Table of Contents</h3>
+        <nav class="space-y-1 text-sm">
+          <a href="#getting-started" class="toc-link" data-i18n="tut_guide_getting_started">Getting Started</a>
+          <a href="#installation" class="toc-link pl-4" data-i18n="tut_guide_installation">Installation</a>
+          <a href="#cli" class="toc-link" data-i18n="tut_guide_cli">CLI Usage</a>
+          <a href="#figma" class="toc-link" data-i18n="tut_guide_figma">Figma Plugin</a>
+          <a href="#mcp" class="toc-link" data-i18n="tut_guide_mcp">MCP Server</a>
+          <a href="#validation" class="toc-link" data-i18n="tut_guide_validation">Validation</a>
+          <a href="#design-system" class="toc-link" data-i18n="tut_guide_design_system">Design System</a>
+          <a href="#best-practices" class="toc-link" data-i18n="tut_guide_best_practices">Best Practices</a>
+          <a href="#troubleshooting" class="toc-link" data-i18n="tut_guide_troubleshooting">Troubleshooting</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="flex-1 prose min-w-0">
+      
+      <!-- GETTING STARTED -->
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        
+        <h3 id="what-is">What is UX-Master?</h3>
+        <p>UX-Master is an AI-powered design intelligence platform that helps you:</p>
+        <ul>
+          <li>✅ <strong>Validate</strong> designs against 37 Design Tests</li>
+          <li>✅ <strong>Generate</strong> complete design systems in seconds</li>
+          <li>✅ <strong>Extract</strong> design tokens from any website</li>
+          <li>✅ <strong>Apply</strong> 48 UX Laws for psychology-driven design</li>
+        </ul>
+
+        <h3>Who is it for?</h3>
+        <ul>
+          <li><strong>Designers</strong> - Validate designs before handoff</li>
+          <li><strong>Developers</strong> - Ensure UI meets UX standards</li>
+          <li><strong>Product Managers</strong> - Quick design quality checks</li>
+          <li><strong>Teams</strong> - Maintain consistency across products</li>
+        </ul>
+      </section>
+
+      <!-- INSTALLATION -->
+      <section id="installation">
+        <h2>Installation</h2>
+        
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Python 3.10+</li>
+          <li>pip or uv</li>
+          <li>(Optional) Node.js for Figma plugin development</li>
+        </ul>
+
+        <h3>Install UX-Master CLI</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>pip install uxmaster-cli</code></pre>
+        </div>
+
+        <p>Or with uv (faster):</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>uv pip install uxmaster-cli</code></pre>
+        </div>
+
+        <h3>Verify Installation</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>uxm --version
+# Should print: uxmaster, version 2.0.0</code></pre>
+        </div>
+      </section>
+
+      <!-- CLI USAGE -->
+      <section id="cli">
+        <h2>CLI Usage</h2>
+        
+        <h3>Command Overview</h3>
+        <div class="code-block">
+          <pre><code>uxm [command] [arguments] [options]</code></pre>
+        </div>
+
+        <h3>Common Workflows</h3>
+        
+        <h4>Workflow 1: Design System from Scratch</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Generate design system
+uxm search "e-commerce mobile app" --design-system -p "ShopApp"
+
+# Save to file
+uxm search "e-commerce mobile app" --design-system --format markdown --output design-system.md</code></pre>
+        </div>
+
+        <h4>Workflow 2: Validate Existing Design</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Extract from website
+uxm extract https://competitor.com --output competitor.json
+
+# Validate extracted design
+uxm validate competitor.json --suite all --format html --output report.html
+
+# Open report
+open report.html</code></pre>
+        </div>
+      </section>
+
+      <!-- FIGMA PLUGIN -->
+      <section id="figma">
+        <h2>Figma Plugin</h2>
+        
+        <h3>Installation</h3>
+        <ol>
+          <li>Open Figma Desktop</li>
+          <li>Go to <strong>Plugins → Development → Import Plugin from Manifest</strong></li>
+          <li>Select <code>mcp/integrations/figma/plugin/manifest.json</code></li>
+        </ol>
+
+        <h3>Generate Design System</h3>
+        <ol>
+          <li>Open plugin from Figma menu</li>
+          <li>Click <strong>✨ Generate</strong> tab</li>
+          <li>Describe your project:</li>
+        </ol>
+        <div class="code-block">
+          <pre><code>A fintech dashboard with dark mode, modern glassmorphism style</code></pre>
+        </div>
+        <ol start="4">
+          <li>Click <strong>✨ Generate Magic</strong></li>
+          <li>Wait 2-3 seconds</li>
+          <li>Review generated tokens</li>
+          <li>Click <strong>Apply to Figma</strong> to create Variables</li>
+        </ol>
+
+        <h3>Understanding Validation Results</h3>
+        
+        <h4>Score Interpretation</h4>
+        <table>
+          <thead>
+            <tr><th>Score</th><th>Rating</th><th>Action</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>90-100</td><td>Excellent</td><td>Ship it!</td></tr>
+            <tr><td>80-89</td><td>Good</td><td>Minor tweaks</td></tr>
+            <tr><td>70-79</td><td>Fair</td><td>Review issues</td></tr>
+            <tr><td>60-69</td><td>Needs Work</td><td>Fix critical issues</td></tr>
+            <tr><td>&lt;60</td><td>Poor</td><td>Major revisions</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Issue Severity</h4>
+        <ul>
+          <li><span class="severity-critical">🔴 Critical</span> - Must fix before shipping</li>
+          <li><span class="severity-high">🟠 High</span> - Should fix for good UX</li>
+          <li><span class="severity-medium">🟡 Medium</span> - Fix if time permits</li>
+          <li><span class="severity-low">🟢 Low</span> - Nice to have</li>
+        </ul>
+      </section>
+
+      <!-- MCP SERVER -->
+      <section id="mcp">
+        <h2>MCP Server</h2>
+        
+        <h3>What is MCP?</h3>
+        <p>Model Context Protocol (MCP) allows AI assistants like Claude, Cursor, and VS Code to use UX-Master tools directly.</p>
+
+        <h3>Starting the Server</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Default port 3000
+uxm mcp start
+
+# Custom port
+uxm mcp start --port 8080
+
+# With Figma integration
+uxm mcp start --figma-token YOUR_TOKEN</code></pre>
+        </div>
+
+        <h3>Using with Claude Code</h3>
+        <p>Once installed (<code>uxm init --ai claude</code>), Claude can:</p>
+        <div class="code-block">
+          <pre><code>You: Create a landing page for my SaaS
+
+Claude: I'll design a landing page for you. Let me check the UX guidelines first...
+
+[Claude uses UX-Master internally]
+
+Claude: Based on UX-Master's recommendations, here's your design:
+- Hero section with clear value proposition
+- Primary CTA in contrasting color
+- Social proof above the fold
+- Form limited to 3 fields
+
+I've applied Fitts's Law (44px touch targets) and Hick's Law 
+(limited choices) to optimize conversions.</code></pre>
+        </div>
+      </section>
+
+      <!-- VALIDATION -->
+      <section id="validation">
+        <h2>Validation</h2>
+        
+        <h3>Test Suites Explained</h3>
+        
+        <h4>All Tests (37)</h4>
+        <p>Complete validation across all categories:</p>
+        <ul>
+          <li>Mobile (7 tests)</li>
+          <li>Landing Page (6 tests)</li>
+          <li>Dashboard (6 tests)</li>
+          <li>Typography (4 tests)</li>
+          <li>Color (4 tests)</li>
+          <li>Layout (4 tests)</li>
+          <li>Accessibility (5 tests)</li>
+          <li>Interaction (5 tests)</li>
+        </ul>
+
+        <h4>Validation Tests Reference</h4>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Severity</th><th>Check</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DT-MOB-001</td><td>Fitts's Law</td><td class="severity-critical">Critical</td><td>Touch targets ≥ 44px</td></tr>
+            <tr><td>DT-MOB-002</td><td>Thumb Zone</td><td class="severity-high">High</td><td>Actions in bottom 25%</td></tr>
+            <tr><td>DT-LND-001</td><td>Hero Clarity</td><td class="severity-critical">Critical</td><td>Value prop in 5 sec</td></tr>
+            <tr><td>DT-LND-002</td><td>CTA Prominence</td><td class="severity-critical">Critical</td><td>Visual dominance</td></tr>
+            <tr><td>DT-A11-001</td><td>Focus States</td><td class="severity-critical">Critical</td><td>Visible focus</td></tr>
+            <tr><td>DT-CLR-001</td><td>WCAG Contrast</td><td class="severity-critical">Critical</td><td>4.5:1 ratio</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- DESIGN SYSTEM -->
+      <section id="design-system">
+        <h2>Design System Generation</h2>
+        
+        <h3>From Description</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>uxm search "dark mode fintech dashboard with glassmorphism" --design-system</code></pre>
+        </div>
+
+        <h3>From Website</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Extract existing design
+uxm extract https://linear.app --output linear.json
+
+# Generate based on extracted style
+uxm search "similar to linear.app but for healthcare" --design-system</code></pre>
+        </div>
+
+        <h3>Output Formats</h3>
+        
+        <h4>Markdown (Human-readable)</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>uxm search "fintech dashboard" --design-system --format markdown --output design.md</code></pre>
+        </div>
+
+        <h4>JSON (Machine-readable)</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code>uxm search "fintech dashboard" --design-system --format json --output tokens.json</code></pre>
+        </div>
+      </section>
+
+      <!-- BEST PRACTICES -->
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        
+        <h3>Design Validation Workflow</h3>
+        <ol>
+          <li><strong>Design Phase</strong> - Create initial design in Figma, run validation every 30 minutes, fix critical issues immediately</li>
+          <li><strong>Before Handoff</strong> - Run full validation suite, score should be >= 80, generate validation report</li>
+          <li><strong>During Development</strong> - Validate components as built, run CI/CD validation checks, monitor regression</li>
+          <li><strong>Before Launch</strong> - Final validation pass, document exceptions, archive reports</li>
+        </ol>
+
+        <h3>Validation Frequency</h3>
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>Frequency</th><th>Suite</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Exploration</td><td>As needed</td><td>Quick</td></tr>
+            <tr><td>Design</td><td>Every 30 min</td><td>Mobile/Landing/Dashboard</td></tr>
+            <tr><td>Review</td><td>Before handoff</td><td>All</td></tr>
+            <tr><td>Development</td><td>Per component</td><td>Component-specific</td></tr>
+            <tr><td>Pre-launch</td><td>Once</td><td>All + A11y</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- TROUBLESHOOTING -->
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        
+        <h3>Common Issues</h3>
+        
+        <h4>Issue: <code>command not found: uxm</code></h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Check Python path
+which python3
+
+# Reinstall with --user
+pip install --user uxmaster-cli
+
+# Or use full path
+python3 -m uxmaster --help</code></pre>
+        </div>
+
+        <h4>Issue: <code>MCP server not running</code></h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-lang">Bash</span>
+            <button class="copy-btn" onclick="copyCode(this)" data-i18n="btn_copy">Copy</button>
+          </div>
+          <pre><code># Start server
+uxm mcp start
+
+# Check if running
+curl http://localhost:3000/health
+
+# Check port availability
+lsof -i :3000</code></pre>
+        </div>
+
+        <h3>Getting Help</h3>
+        <ul>
+          <li>Check documentation: <code>uxm docs</code></li>
+          <li>Verbose output: <code>uxm validate file.html -v</code></li>
+          <li>Community Discord: <a href="https://discord.gg/uxmaster" class="text-accent-light hover:underline">discord.gg/uxmaster</a></li>
+          <li>GitHub Issues: <a href="https://github.com/uxmaster/ux-master/issues" class="text-accent-light hover:underline">github.com/uxmaster/ux-master/issues</a></li>
+        </ul>
+      </section>
+
+      <!-- CTA -->
+      <section class="glass-card rounded-2xl p-8 text-center mt-16">
+        <h2 class="m-0 mb-4" data-i18n="sub_guides_cta_h2">Ready to dive deeper?</h2>
+        <p class="text-zinc-400 mb-6">Explore our tutorials and API reference.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="tutorials.html" class="cta-primary text-white font-semibold px-8 py-3 rounded-xl transition-all cursor-pointer glow-purple">
+            Browse Tutorials →
+          </a>
+          <a href="../technical/api-reference.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+            API Reference
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="../technical/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    initI18n();
+    
+    function copyCode(btn) {
+      const pre = btn.closest('.code-block').querySelector('pre');
+      const code = pre.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = window.i18n ? window.i18n.t('btn_copied') : 'Copied!';
+        setTimeout(() => btn.textContent = window.i18n ? window.i18n.t('btn_copy') : 'Copy', 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

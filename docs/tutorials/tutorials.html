@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials Library — UX Master | Step-by-Step Guides</title>
+  <meta name="description"
+    content="Step-by-step tutorials for UX Master. Learn validation, design system generation, website analysis, Figma workflows, and CI/CD integration.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%237c3aed'/><text x='50' y='72' text-anchor='middle' font-size='60' fill='white'>✦</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tutorials Library — UX Master">
+  <meta property="og:description" content="7 comprehensive tutorials. From first validation to CI/CD integration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          },
+          colors: {
+            surface: { 50: '#fafafa', 100: '#18181b', 200: '#111114', 300: '#0c0c0f', 400: '#09090b' },
+            accent: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#6d28d9', soft: '#ede9fe' },
+            magic: { DEFAULT: '#ec4899', light: '#f472b6', dark: '#db2777' },
+            success: { DEFAULT: '#10b981', light: '#34d399' },
+            warn: { DEFAULT: '#f59e0b', light: '#fbbf24' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .tutorial-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .tutorial-card:hover {
+      background: rgba(124, 58, 237, 0.05);
+      border-color: rgba(124, 58, 237, 0.2);
+      transform: translateY(-4px);
+    }
+    .difficulty-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .difficulty-beginner {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+    .difficulty-intermediate {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+    .difficulty-advanced {
+      background: rgba(236, 72, 153, 0.15);
+      color: #f472b6;
+    }
+    .time-badge {
+      font-size: 11px;
+      color: #71717a;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .progress-indicator {
+      display: flex;
+      gap: 4px;
+      margin-top: 12px;
+    }
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .progress-dot.completed {
+      background: #10b981;
+    }
+    .progress-dot.current {
+      background: #a78bfa;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAVBAR -->
+  <nav
+    class="nav-glass fixed top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-50 rounded-2xl px-4 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between max-w-6xl mx-auto">
+    <a href="../index.html" class="flex items-center gap-2.5 group">
+      <div
+        class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white shrink-0">
+        ✦</div>
+      <span class="font-heading font-bold text-base sm:text-lg tracking-tight">UX Master</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+      <a href="../index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_home">Home</a>
+      <a href="../guides/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_guides">Guides</a>
+      <a href="index.html" class="text-white transition-colors cursor-pointer" data-i18n="nav_tutorials">Tutorials</a>
+      <a href="../technical/index.html" class="hover:text-white transition-colors cursor-pointer" data-i18n="nav_technical">Technical</a>
+    </div>
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <div class="lang-dropdown" id="langDropdown">
+        <button
+          class="lang-trigger h-9 px-2.5 sm:px-3 flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl font-medium shrink-0"
+          onclick="toggleLangMenu()">
+          <span id="currentLangLabel" class="text-xs uppercase tracking-wide">EN</span>
+          <span class="text-[10px] opacity-70">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button data-lang="en" onclick="setLang('en')">🇺🇸 English</button>
+          <button data-lang="vi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+        </div>
+      </div>
+      <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+        class="hidden lg:inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 text-sm font-medium px-4 h-9 rounded-xl border border-white/10 transition-all cursor-pointer">⭐
+        Star</a>
+      <a href="../index.html#start"
+        class="cta-primary text-white text-sm font-semibold px-4 h-9 rounded-xl transition-all cursor-pointer hidden md:flex items-center justify-center shrink-0">Try
+        It Free</a>
+      <button class="md:hidden lang-trigger w-9 h-9 flex items-center justify-center rounded-xl shrink-0 !px-0"
+        onclick="toggleMobileMenu()">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden mobile-menu fixed top-20 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex flex-col gap-4 text-sm font-medium shadow-2xl">
+    <a href="../index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_home">Home</a>
+    <a href="../guides/index.html" onclick="closeMobileMenu()" class="text-zinc-300 hover:text-white py-2" data-i18n="nav_guides">Guides</a>
+    <a href="index.html" onclick="closeMobileMenu()" class="text-white py-2" data-i18n="nav_tutorials">Tutorials</a>
+    <a href="../technical/index.html" onclick="closeMobileMenu()"
+      class="text-zinc-300 hover:text-white py-2" data-i18n="nav_technical">Technical</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative min-h-[40vh] flex items-center justify-center px-4 pt-24 pb-8 overflow-hidden">
+    <div class="hero-bg"></div>
+    <div class="grid-pattern"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div
+        class="float-badge inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-zinc-300 mb-6">
+        <span class="text-accent-light">🎓</span>
+        <span data-i18n="tut_library_badge">7 Comprehensive Tutorials</span>
+      </div>
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl tracking-tight leading-[1.05] mb-4">
+        <span class="bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent" data-i18n="tut_library_h1">Tutorial Library</span>
+      </h1>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed" data-i18n="tut_library_desc">
+        Step-by-step guides to master UX Master. From your first validation to advanced CI/CD integration.
+      </p>
+    </div>
+  </section>
+  <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+
+  <!-- TUTORIALS GRID -->
+  <main class="max-w-6xl mx-auto px-4 pb-24">
+    
+    <!-- BEGINNER TUTORIALS -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-xl bg-success/10 flex items-center justify-center">
+          <span class="text-success text-xl">🌱</span>
+        </div>
+        <div>
+          <h2 class="font-heading font-bold text-2xl text-white" data-i18n="tut_library_beginner">Beginner</h2>
+          <p class="text-sm text-zinc-500">Start your UX Master journey</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Tutorial 1 -->
+        <a href="quickstart.html" class="tutorial-card block group">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">⚡</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white group-hover:text-accent-light transition-colors">5-Minute Quick Start</h3>
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              5 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Get UX Master running in 5 minutes. Figma plugin, MCP server, or CLI — choose your path.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>✓ Installation</li>
+            <li>✓ First design system</li>
+            <li>✓ Basic validation</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot completed"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </a>
+
+        <!-- Tutorial 2 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">✅</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Your First Validation</h3>
+                <span class="difficulty-badge difficulty-beginner">Beginner</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              5 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Learn to validate a design against UX best practices. Fix common issues and improve your score.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>✓ Validate HTML files</li>
+            <li>✓ Reading results</li>
+            <li>✓ Fixing issues</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERMEDIATE TUTORIALS -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-xl bg-warn/10 flex items-center justify-center">
+          <span class="text-warn text-xl">🚀</span>
+        </div>
+        <div>
+          <h2 class="font-heading font-bold text-2xl text-white" data-i18n="tut_library_intermediate">Intermediate</h2>
+          <p class="text-sm text-zinc-500">Level up your skills</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Tutorial 3 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🎨</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Design System Generation</h3>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              10 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Create a complete design system from a description. Export to different formats.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>★ Generate from text</li>
+            <li>★ Understanding tokens</li>
+            <li>★ Export formats</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+
+        <!-- Tutorial 4 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🔍</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Website Analysis</h3>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              15 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Extract and analyze design tokens from any website. Competitive analysis.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>★ Extract tokens</li>
+            <li>★ Harvester output</li>
+            <li>★ Competitive analysis</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+
+        <!-- Tutorial 5 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🎯</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Figma Plugin Workflow</h3>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              10 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Use UX-Master directly in Figma. Generate design systems and validate in real-time.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>★ Using Figma plugin</li>
+            <li>★ Real-time validation</li>
+            <li>★ Applying tokens</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVANCED TUTORIALS -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-10 h-10 rounded-xl bg-magic/10 flex items-center justify-center">
+          <span class="text-magic text-xl">⚡</span>
+        </div>
+        <div>
+          <h2 class="font-heading font-bold text-2xl text-white" data-i18n="tut_library_advanced">Advanced</h2>
+          <p class="text-sm text-zinc-500">Master-level techniques</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Tutorial 6 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">📦</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Component Library Validation</h3>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              20 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Validate a component library against best practices. Batch validation and reporting.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>⚡ Component-level validation</li>
+            <li>⚡ Batch validation</li>
+            <li>⚡ Validation reports</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+
+        <!-- Tutorial 7 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🔄</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">CI/CD Integration</h3>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              15 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Add UX validation to your deployment pipeline. GitHub Actions integration.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>⚡ GitHub Actions</li>
+            <li>⚡ Automated validation</li>
+            <li>⚡ PR comments</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+
+        <!-- Tutorial 8 -->
+        <div class="tutorial-card">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">🔧</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-white">Custom Validation Rules</h3>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+              </div>
+            </div>
+            <span class="time-badge">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              20 min
+            </span>
+          </div>
+          <p class="text-zinc-400 text-sm mb-4">Extend UX-Master with your own validation rules. Brand-specific validation.</p>
+          <ul class="text-xs text-zinc-500 space-y-1">
+            <li>⚡ Creating custom tests</li>
+            <li>⚡ Extending Validation Engine</li>
+            <li>⚡ Brand-specific rules</li>
+          </ul>
+          <div class="progress-indicator">
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="glass-card rounded-2xl p-8 text-center">
+      <h2 class="font-heading font-bold text-2xl text-white mb-4" data-i18n="tut_library_start">🎓 Start Learning</h2>
+      <p class="text-zinc-400 mb-6">Begin with the Quick Start guide and work your way up.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="quickstart.html" class="cta-primary text-white font-semibold px-8 py-3 rounded-xl transition-all cursor-pointer glow-purple">
+          Start with Quick Start →
+        </a>
+        <a href="user-guide.html" class="bg-white/5 hover:bg-white/10 text-zinc-300 font-medium px-8 py-3 rounded-xl border border-white/10 transition-all cursor-pointer">
+          Read User Guide
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-4 py-16">
+    <div class="glow-line max-w-4xl mx-auto mb-12"></div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2.5 mb-6">
+        <div
+          class="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-magic flex items-center justify-center text-sm font-bold text-white">
+          ✦</div>
+        <span class="font-heading font-bold text-lg tracking-tight">UX Master</span>
+      </div>
+      <p class="text-zinc-600 text-sm mb-6">Biến AI thành design studio của bạn.</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-700 mb-8">
+        <a href="../index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Home</a><span>·</span>
+        <a href="../guides/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Guides</a><span>·</span>
+        <a href="index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Tutorials</a><span>·</span>
+        <a href="../technical/index.html" class="hover:text-zinc-300 transition-colors cursor-pointer">Technical</a><span>·</span>
+        <a href="https://github.com/relukdev/ux-master" target="_blank" rel="noopener"
+          class="hover:text-zinc-300 transition-colors cursor-pointer">GitHub</a>
+      </div>
+      <p class="text-zinc-800 text-xs">Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.</p>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/lang/en.js"></script>
+  <script src="../js/lang/vi.js"></script>
+  <script src="../js/main.js"></script>
+  <script>initI18n();</script>
+</body>
+
+</html>

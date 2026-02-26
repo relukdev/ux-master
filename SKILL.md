@@ -287,7 +287,7 @@ python3 scripts/design_doc_generator.py --project <slug> --open
 | UX Laws | 48 ✅ | 48 ✅ |
 | Design Tests | 37 ✅ | 37 ✅ |
 | UI Styles | 67 ✅ | 67 ✅ |
-| Platform Support | 6 ✅ | 6 ✅ |
+| Platform Support | 8 ✅ | 8 ✅ |
 | Framework Stacks | 17 ✅ | 17 ✅ |
 | Animation Patterns | 30 ✅ | 30 ✅ |
 | Responsive Patterns | 25 ✅ | 25 ✅ |
