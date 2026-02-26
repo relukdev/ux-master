@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["ko"] = {
   "feature_3_desc": "37개 자동 테스트로 표준 준수를 확인합니다. 콘트라스트 충분? 반응형? 접근성?",
   "feature_4_title": "좋아하는 사이트를 클론하세요",
   "feature_4_desc": "Linear, Stripe, Airbnb 디자인이 마음에 드시나요? UX Master가 색상, 글꼴, 간격을 추출합니다.",
-  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode — 한 번 설치, 영원히 사용.",
+  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw — 한 번 설치, 영원히 사용.",
   "feature_6_title": "전환율 최적화",
   "feature_6_desc": "CTA가 올바른 위치, 간결한 폼, 부드러운 흐름 — 전환율이 즉시 향상됩니다.",
   "who_tag": "누구를 위한 것인가요?",

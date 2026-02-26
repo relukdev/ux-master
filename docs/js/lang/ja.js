@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["ja"] = {
   "feature_3_desc": "37の自動テストで標準準拠を確認。コントラストは十分？レスポンシブ？アクセシブル？",
   "feature_4_title": "お気に入りのサイトをクローン",
   "feature_4_desc": "Linear、Stripe、Airbnbのデザインが好き？UX Masterが色、フォント、スペーシングを抽出。",
-  "feature_5_desc": "Cursor、Claude、Gemini、Amp、OpenCode — 一度インストール、永久に使用。",
+  "feature_5_desc": "Cursor、Claude、Gemini、Amp、OpenCode, OpenClaw — 一度インストール、永久に使用。",
   "feature_6_title": "コンバージョン率を最適化",
   "feature_6_desc": "CTAを適切に配置、簡潔なフォーム、スムーズなフロー — コンバージョン率が即座に向上。",
   "who_tag": "誰のためのもの？",

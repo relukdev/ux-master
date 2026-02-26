@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["ru"] = {
   "feature_3_desc": "37 автотестов проверяют соответствие стандартам. Контраст достаточный? Адаптивный? Доступный?",
   "feature_4_title": "Клонируйте любимые сайты",
   "feature_4_desc": "Нравится дизайн Linear, Stripe или Airbnb? UX Master извлекает цвета, шрифты, отступы.",
-  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode — установите один раз, используйте навсегда.",
+  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw — установите один раз, используйте навсегда.",
   "feature_6_title": "Оптимизация конверсии",
   "feature_6_desc": "CTA на своём месте, лаконичные формы, плавный поток — мгновенное повышение конверсии.",
   "who_tag": "Для кого это?",

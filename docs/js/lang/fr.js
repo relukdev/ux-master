@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["fr"] = {
   "feature_3_desc": "37 tests automatisés vérifient la conformité. Contraste suffisant? Responsive? Accessible?",
   "feature_4_title": "Clonez vos sites préférés",
   "feature_4_desc": "Vous aimez le design de Linear, Stripe ou Airbnb? UX Master extrait couleurs, polices, espacement.",
-  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode — installez une fois, utilisez pour toujours.",
+  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw — installez une fois, utilisez pour toujours.",
   "feature_6_title": "Optimisation des conversions",
   "feature_6_desc": "CTA bien placés, formulaires concis, flux fluide — augmentation instantanée des conversions.",
   "who_tag": "Pour qui est-ce?",

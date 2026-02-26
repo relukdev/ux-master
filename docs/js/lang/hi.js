@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["hi"] = {
   "feature_3_desc": "37 ऑटो टेस्ट मानक अनुपालन सुनिश्चित करते हैं। कंट्रास्ट पर्याप्त? रिस्पॉन्सिव? एक्सेसिबल?",
   "feature_4_title": "पसंदीदा साइट क्लोन करें",
   "feature_4_desc": "Linear, Stripe या Airbnb पसंद? UX Master रंग, फ़ॉन्ट, स्पेसिंग एक्सट्रैक्ट करता है।",
-  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode — एक बार इंस्टॉल, हमेशा उपयोग।",
+  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw — एक बार इंस्टॉल, हमेशा उपयोग।",
   "feature_6_title": "कन्वर्ज़न रेट ऑप्टिमाइज़ेशन",
   "feature_6_desc": "CTA सही जगह, संक्षिप्त फ़ॉर्म, स्मूथ फ़्लो — कन्वर्ज़न तुरंत बढ़ता है।",
   "who_tag": "यह किसके लिए है?",

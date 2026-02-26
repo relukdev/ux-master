@@ -53,7 +53,7 @@ window.T = window.T || {}; window.T["id"] = {
   "feature_3_desc": "37 tes otomatis memastikan kepatuhan standar. Kontras cukup? Responsif? Aksesibel?",
   "feature_4_title": "Klon situs favorit Anda",
   "feature_4_desc": "Suka desain Linear, Stripe, atau Airbnb? UX Master mengekstrak warna, font, jarak.",
-  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode — instal sekali, gunakan selamanya.",
+  "feature_5_desc": "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw — instal sekali, gunakan selamanya.",
   "feature_6_title": "Optimasi tingkat konversi",
   "feature_6_desc": "CTA di tempat tepat, formulir ringkas, alur lancar — langsung meningkatkan konversi.",
   "who_tag": "Untuk siapa ini?",
