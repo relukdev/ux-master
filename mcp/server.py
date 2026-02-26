@@ -16,6 +16,7 @@ Environment Variables:
 
 import os
 import json
+from pathlib import Path
 from typing import Any, Optional
 from contextlib import asynccontextmanager
 
@@ -146,6 +147,9 @@ class UXMasterMCPServer:
             "search_domain": self.handle_search_domain,
             "export_to_figma": self.handle_export_to_figma,
             "get_stack_guidelines": self.handle_get_stack_guidelines,
+            "list_design_systems": self.handle_list_design_systems,
+            "get_design_tokens": self.handle_get_design_tokens,
+            "build_design_system": self.handle_build_design_system,
         }
     
     # -------------------------------------------------------------------------
@@ -616,12 +620,88 @@ class UXMasterMCPServer:
         handler = self.tools[name]
         return handler(arguments)
 
+    # ── Design System Management Tools ────────────────────────
+
+    def handle_list_design_systems(self, params: dict) -> dict:
+        """List all design system projects in the central registry."""
+        try:
+            sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+            from project_registry import ProjectRegistry
+            registry = ProjectRegistry()
+            projects = registry.list_all()
+            return {
+                "projects": projects,
+                "count": len(projects),
+                "registry_path": str(registry.output_dir)
+            }
+        except Exception as e:
+            return {"error": str(e), "projects": []}
+
+    def handle_get_design_tokens(self, params: dict) -> dict:
+        """Get CSS design tokens for a project."""
+        slug = params.get("slug", "")
+        if not slug:
+            return {"error": "slug is required"}
+        try:
+            sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+            from project_registry import ProjectRegistry
+            registry = ProjectRegistry()
+            project = registry.get(slug)
+            if not project:
+                return {"error": f"Project '{slug}' not found"}
+
+            project_dir = registry.get_project_dir(slug)
+            ds_path = project_dir / "design-system.json"
+            if ds_path.exists():
+                with open(ds_path) as f:
+                    return {"slug": slug, "design_system": json.load(f)}
+            return {"slug": slug, "design_system": {}, "warning": "No design-system.json found"}
+        except Exception as e:
+            return {"error": str(e)}
+
+    def handle_build_design_system(self, params: dict) -> dict:
+        """Build/rebuild guideline site for a project."""
+        slug = params.get("slug", "")
+        if not slug:
+            return {"error": "slug is required"}
+        try:
+            sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+            from project_registry import ProjectRegistry
+            from site_generator import SiteGenerator
+
+            registry = ProjectRegistry()
+            project = registry.get(slug)
+            if not project:
+                return {"error": f"Project '{slug}' not found"}
+
+            project_dir = registry.get_project_dir(slug)
+            site_dir = registry.get_site_dir(slug)
+
+            ds_path = project_dir / "design-system.json"
+            design_system = json.load(open(ds_path)) if ds_path.exists() else {}
+
+            gen = SiteGenerator(
+                design_system=design_system,
+                tokens={},
+                meta=project,
+                output_dir=site_dir,
+            )
+            gen.generate()
+            return {
+                "status": "success",
+                "slug": slug,
+                "site_path": str(site_dir),
+                "pages": ["index.html", "tokens.html", "components.html"]
+            }
+        except Exception as e:
+            return {"error": str(e)}
+
 
 # ============================================================================
 # FastAPI Application
 # ============================================================================
 
-from pathlib import Path
+
 
 app = FastAPI(
     title="UX-Master MCP Server",
