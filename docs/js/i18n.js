@@ -61,6 +61,9 @@ function applyLang(code) {
     document.querySelectorAll('.lang-menu button').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === code);
     });
+
+    // Notify listeners
+    window.dispatchEvent(new CustomEvent('langChanged', { detail: { lang: code } }));
 }
 
 function setLang(code) {

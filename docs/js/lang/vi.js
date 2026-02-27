@@ -483,5 +483,27 @@ window.T = window.T || {}; window.T["vi"] = {
   "fw_tailwind_desc": "Utilities, Responsive, A11y",
   "fw_stat_fw": "Skill chuyên sâu",
   "fw_stat_rules": "Quy tắc Framework",
-  "fw_stat_plat": "Nền tảng"
+  "fw_stat_plat": "Nền tảng",
+  "magic_cases": {
+    "generate": {
+      "title": "Tạo giao diện (Generate UI)",
+      "prompt": "Thiết kế giúp tôi trang đích cho dịch vụ spa cao cấp, phong cách sang trọng, có booking form.",
+      "response": "🐾 Đang phân tích yêu cầu... Áp dụng 1032+ quy tắc thiết kế. Kết quả: Phong cách Glassmorphism, font Playfair, định luật Hick đã được áp dụng. ✅ Xong!"
+    },
+    "extract": {
+      "title": "Trích xuất Design (Extract)",
+      "prompt": "Sao chép thiết kế từ https://linear.app",
+      "response": "🐾 Thu thập 120+ tokens... Đã lấy 24 màu, 8 font. Tạo file design-system.json thành công. ✅ Đã đồng bộ vào Cursor!"
+    },
+    "audit": {
+      "title": "Kiểm tra UX (Audit)",
+      "prompt": "Kiểm tra tính khả dụng của landing page hiện tại.",
+      "response": "🐾 Đang chạy 37 bài test... Phát hiện lỗi: Độ tương phản nút bấm thấp, vi phạm Fitts' Law. Điểm: 85/100. ✅ Đã đề xuất bản vá!"
+    },
+    "mobile": {
+      "title": "Thiết kế Mobile (Mobile)",
+      "prompt": "Tạo dashboard ngân hàng trên di động với chế độ tối.",
+      "response": "🐾 Áp dụng chuẩn Mobile UX. Nút bấm ≥ 44px, ưu tiên phân cấp thông tin. Kết quả: Cảm giác mượt mà, dễ dùng. ✅ Đã xuất code!"
+    }
+  }
 };

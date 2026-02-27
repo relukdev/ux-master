@@ -483,5 +483,27 @@ window.T = window.T || {}; window.T["en"] = {
   "fw_tailwind_desc": "Utilities, Responsive, A11y",
   "fw_stat_fw": "Deep Skills",
   "fw_stat_rules": "Framework Rules",
-  "fw_stat_plat": "Platforms"
+  "fw_stat_plat": "Platforms",
+  "magic_cases": {
+    "generate": {
+      "title": "Generate UI",
+      "prompt": "Design a luxury spa landing page, premium style, with booking form.",
+      "response": "🐾 Analyzing requirements... Applying 1032+ design rules. Result: Glassmorphism style, Playfair font, Hick's Law applied. ✅ Done!"
+    },
+    "extract": {
+      "title": "Extract Design",
+      "prompt": "Clone design from https://linear.app",
+      "response": "🐾 Harvesting 120+ tokens... Extracted 24 colors, 8 fonts. Generated design-system.json successfully. ✅ Synced to Cursor!"
+    },
+    "audit": {
+      "title": "UX Audit",
+      "prompt": "Check my current landing page for usability.",
+      "response": "🐾 Running 37 design tests... Found issues: Contrasts on buttons too low, Fitts' Law violation. Score: 85/100. ✅ Fix proposed!"
+    },
+    "mobile": {
+      "title": "Mobile Design",
+      "prompt": "Create a fintech mobile dashboard with dark mode.",
+      "response": "🐾 Applying Mobile UX patterns. 44px touch targets, hierarchy first. Result: Native feel, accessible. ✅ Code exported!"
+    }
+  }
 };
