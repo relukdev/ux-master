@@ -52,7 +52,7 @@ Chúng tôi đã nâng cấp toàn diện sức mạnh của bộ kit:
 
 ## 🧠 Bộ não thiết kế đích thực
 
-UX Master không phải là một cái template. Nó là một ma trận trí tuệ chứa **838+ quy tắc thiết kế**, bao phủ **13 tech stacks** và **13 ngành hàng** (Fintech, SaaS, Thương mại điện tử...).
+UX Master không phải là một cái template. Nó là một ma trận trí tuệ chứa **1032+ quy tắc thiết kế**, bao phủ **17 tech stacks** và **16 lĩnh vực** (Fintech, SaaS, Thương mại điện tử...).
 
 - **67 Phong cách UI:** Từ Glassmorphism thanh lịch tới Brutalism táo bạo.
 - **96 Bảng màu & 57 Cặp font chữ:** Chọn lọc khắt khe cho hiệu ứng thị giác tối đa.
@@ -113,7 +113,7 @@ Hòa hợp kỳ diệu cùng luồng làm việc của bạn:
 | Tính năng | Free | Pro |
 |---------|------|-----|
 | Mức Giá | **$0** | **$39** (One-time) |
-| Design Rules & UX Laws | 838+ & 48 | 838+ & 48 |
+| Design Rules & UX Laws | 1032+ & 48 | 1032+ & 48 |
 | Design Tests | 37 | 37 |
 | Harvester (Trích xuất) | **v1 (~15 tokens)** | **v3 (80+ tokens)** 🔥 |
 | Token Mapper | ❌ | ✅ CSS/Figma |

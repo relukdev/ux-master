@@ -18,7 +18,7 @@ translations = {
     "Try It\n        Free →": ("nav_try", "Try It\n        Free →"),
 
     # Hero
-    "Founders & PMs đang dùng trên 6 nền tảng AI": ("hero_badge", "Founders & PMs using on 6 AI platforms"),
+    "Founders & PMs đang dùng trên 8 nền tảng AI": ("hero_badge", "Founders & PMs using on 8 AI platforms"),
     "Bạn nói ý\n          tưởng.": ("hero_h1a", "You speak the\n          idea."),
     "AI biến\n          nó thành sản phẩm đẹp.": ("hero_h1b", "AI turns\n          it into beautiful products."),
     "Không cần biết code. Không cần thuê designer.": ("hero_p1", "No coding skills needed. No designer required."),
@@ -76,7 +76,7 @@ translations = {
     "Copy design từ site yêu thích": ("feature_4_title", "Clone your favorite sites"),
     "Thích design của Linear, Stripe hay Airbnb? UX Master trích\n          xuất màu sắc, font, spacing.": ("feature_4_desc", "Love Linear, Stripe, or Airbnb's design? UX Master extracts colors, fonts, spacing."),
     "Mọi AI tool đều dùng được": ("feature_5_title", "Works with any AI tool"),
-    "Cursor, Claude, Gemini, Amp, OpenCode — cài 1 lần, dùng mãi.": ("feature_5_desc", "Cursor, Claude, Gemini, Amp, OpenCode — install once, use forever."),
+    "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw, ZeroClaw — cài 1 lần, dùng mãi.": ("feature_5_desc", "Cursor, Claude, Gemini, Amp, OpenCode, OpenClaw, ZeroClaw — install once, use forever."),
     "Tối ưu conversion rate": ("feature_6_title", "Optimizes conversion rates"),
     "CTA đặt đúng chỗ, form ngắn gọn, flow mượt mà — tăng tỷ lệ\n          chuyển đổi ngay từ lần đầu.": ("feature_6_desc", "CTAs placed right, concise forms, smooth flow — instantly boosts conversion rates."),
 
@@ -106,7 +106,7 @@ translations = {
     "Gọi tên": ("how_s2_title", "Invoke"),
     "Thêm <code class=\"text-xs text-magic\">@ux-master</code> vào prompt của bạn.": ("how_s2_desc", "Add <code class=\"text-xs text-magic\">@ux-master</code> to your prompt."),
     "Tận hưởng": ("how_s3_title", "Enjoy"),
-    "AI tự động áp dụng 838+ quy tắc thiết kế vào code của bạn.": ("how_s3_desc", "AI automatically applies 838+ design rules to your code."),
+    "AI tự động áp dụng 1032+ quy tắc thiết kế vào code của bạn.": ("how_s3_desc", "AI automatically applies 1032+ design rules to your code."),
 
     # Proof
     "Kết quả thật": ("proof_tag", "Real Results"),
@@ -118,7 +118,7 @@ translations = {
     # Use Cases
     "Mọi ngành, mọi sản phẩm": ("use_tag", "Every Industry, Every Product"),
     "UX Master biết ngành của bạn.": ("use_h2", "UX Master knows your industry."),
-    "838+ quy tắc thiết kế được ánh xạ vào 13 lĩnh vực.": ("use_sub", "838+ design rules mapped across 13 domains."),
+    "1032+ quy tắc thiết kế được ánh xạ vào 16 lĩnh vực.": ("use_sub", "1032+ design rules mapped across 16 domains."),
 
     # Start
     "Bắt đầu ngay": ("start_tag", "Start Now"),
@@ -130,7 +130,7 @@ translations = {
 
     # Under the hood
     "Under the Hood": ("data_tag", "Under the Hood"),
-    "838+ quy tắc. 13 domains. Không phải\n        template.": ("data_h2", "838+ rules. 13 domains. Not a template."),
+    "1032+ quy tắc. 16 domains. Không phải\n        template.": ("data_h2", "1032+ rules. 16 domains. Not a template."),
     "Mỗi quy tắc được ánh xạ theo ngành, loại sản phẩm, và context\n        cụ thể.": ("data_sub", "Every rule is mapped by industry, product type, and specific context."),
     "Quy tắc Colors & Theme": ("data_1", "Color & Theme Rules"),
     "Quy tắc Typography": ("data_2", "Typography Rules"),
@@ -144,15 +144,15 @@ translations = {
     # Pricing
     "Pricing": ("price_tag", "Pricing"),
     "Free forever. Pro when you need power.\n      ": ("price_h2", "Free forever. Pro when you need power."),
-    "838+ rules free. Upgrade to Pro for Harvester v3, Token\n        Mapper, and the full design extraction pipeline.": ("price_sub", "838+ rules free. Upgrade to Pro for Harvester v3, Token Mapper, and the full design extraction pipeline."),
+    "1032+ rules free. Upgrade to Pro for Harvester v3, Token\n        Mapper, and the full design extraction pipeline.": ("price_sub", "1032+ rules free. Upgrade to Pro for Harvester v3, Token Mapper, and the full design extraction pipeline."),
     
     "Free forever, no catch": ("price_free_sub", "Free forever, no catch"),
     "forever": ("price_free_dur", "forever"),
-    "838+ design rules": ("ft_rules", "838+ design rules"),
+    "1032+ design rules": ("ft_rules", "1032+ design rules"),
     "48 UX Laws": ("ft_ux", "48 UX Laws"),
     "37 Design Tests": ("ft_tests", "37 Design Tests"),
     "67 UI styles, 96 color\n            palettes": ("ft_styles", "67 UI styles, 96 color palettes"),
-    "6 AI platform support": ("ft_platform", "6 AI platform support"),
+    "8 AI platform support": ("ft_platform", "8 AI platform support"),
     "Harvester v1 (~15\n            tokens)": ("ft_harv1", "Harvester v1 (~15 tokens)"),
     "Harvester v3 (80+ tokens)": ("ft_harv3", "Harvester v3 (80+ tokens)"),
     "Token Mapper": ("ft_mapper", "Token Mapper"),
@@ -219,7 +219,7 @@ translations = {
     "Hướng dẫn": ("footer_guide", "Guide"),
     "Miễn phí mãi mãi": ("footer_f1", "Free forever"),
     "6 nền tảng AI": ("footer_f2", "6 AI platforms"),
-    "838+ quy tắc\n          design": ("footer_f3", "838+ design rules"),
+    "1032+ quy tắc\n          design": ("footer_f3", "1032+ design rules"),
     "Bạn mơ nó. AI xây nó. UX Master làm nó đẹp.": ("footer_tagline", "You dream it. AI builds it. UX Master makes it beautiful.")
 }
 
