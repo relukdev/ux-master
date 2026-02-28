@@ -38,7 +38,7 @@ SKILL_DESCRIPTION = (
     "Ultimate UI/UX design intelligence (Free Tier). 48 UX Laws, 37 Design Tests, "
     "Design System Extractor. "
     "Use when designing, building, or improving any UI/UX. "
-    "Upgrade to Pro for Harvester v3 & Token Mapper: https://ux-master.dev/pro"
+    "Upgrade to Pro for Harvester v3 & Token Mapper: https://ux-master.todyai.io"
 )
 SKILL_DESCRIPTION_LONG = (
     "UI/UX design intelligence (Free Tier). 67 styles, 96 palettes, 57 font pairings, 48 UX Laws, "
@@ -47,7 +47,7 @@ SKILL_DESCRIPTION_LONG = (
     "Actions: plan, build, create, design, implement, review, fix, improve, optimize UI/UX code. "
     "Topics: color palette, accessibility, layout, typography, font pairing, "
     "UX laws, design tests, design system extraction. "
-    "Upgrade to Pro (Harvester v3, Token Mapper, Design Docs): https://ux-master.dev/pro"
+    "Upgrade to Pro (Harvester v3, Token Mapper, Design Docs): https://ux-master.todyai.io"
 )
 
 PLATFORMS = {

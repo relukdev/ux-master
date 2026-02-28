@@ -327,7 +327,7 @@ def platforms():
 @cli.command()
 def docs():
     """Open UX-Master documentation."""
-    click.launch("https://ux-master.dev/docs")
+    click.launch("https://ux-master.todyai.io")
 
 
 # Import and add MCP commands

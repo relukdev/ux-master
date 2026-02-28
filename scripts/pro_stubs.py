@@ -106,7 +106,7 @@ def show_all_features():
             print(f"│     {chunk:<47}│")
     
     print("├──────────────────────────────────────────────────────┤")
-    print("│  → https://ux-master.dev/pro                         │")
+    print("│  → https://ux-master.todyai.io                         │")
     print("│  One-time payment. Lifetime access.                   │")
     print("│  All future updates included.                         │")
     print("└──────────────────────────────────────────────────────┘")

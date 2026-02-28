@@ -19,7 +19,7 @@ Usage:
 import os
 
 
-PRO_URL = "https://ux-master.dev/pro"
+PRO_URL = "https://ux-master.todyai.io"
 ENV_KEY = "UX_MASTER_PRO_KEY"
 
 
